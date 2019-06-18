@@ -1,0 +1,51 @@
+-- JOINS --
+
+# Inner joins - join of two tables returning ONLY ROWS MATCHING the join CONDITION
+		- SELECT * FROM Departments AS e
+			INNER JOIN Departments AS d
+			ON e.DepartmentID = d.DepartmentID
+
+# Left, Right, Full outer 
+	* LEFT JOIN - взима всички записи от лявата таблица (тази след FROM) и тези от дясната (тази след JOIN), с които има съвпадение, а там където не съвпадне не се изпускат колони - запълват се с NULL
+		- SELECT * 
+		    FROM Employees AS e
+		  LEFT JOIN Departments AS d
+		  ON e.DepartmentID = d.DepartmentID
+    
+    * Right
+		- SELECT * 
+		    FROM Employees AS e
+		  RIGHT JOIN Departments AS d
+		  ON e.DepartmentID = d.DepartmentID
+
+
+# Cross - mix tables
+
+# Full Join - събира всички
+
+
+# SUBQUERY
+
+	WITH Employees_CTE (FirstName, LastName, DepartmentName)
+	  AS
+		(
+			SELECT e.FirstName, e.LastName, d.[Name]
+			  FROM Employees AS e
+			LEFT JOIN Departments AS d ON d.DepartmentID = e.DepartmentID
+		)
+
+	SELECT FirstName, LastName, DepartmentName
+	  FROM Employees_CTE	
+
+# Временни таблици
+	* Не се записват в базата, а в TempDB
+	* Създава се временна таблица с #Име
+
+	CREATE TABLE #TempTable
+	(
+		Id INT PRIMARY KEY
+		, FirstName VARCHAR(50) NOT NULL
+		, LastName VARCHAR(50)
+		, Address VARCHAR(50)
+	)	  
+	SELECT * FROM #TempTable

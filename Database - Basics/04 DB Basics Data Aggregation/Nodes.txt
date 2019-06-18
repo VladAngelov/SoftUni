@@ -1,0 +1,85 @@
+-- Групиране --
+ 
+ * За да се използва дадена колона от SELECT-a, трябва да бъде включена в GROUP BY. Но промения цялата логика!
+
+  # GROUP BY
+   В групирането не може да участват уникални колони (PRIMARY KEY) - като ID
+
+ 	SELECT e.DepartmentID
+ 	  FROM Employees AS e
+ 	GROUP BY e.DepartmentID
+
+  # DISTINCT - връща уникален списък без повтоерния
+
+-- Aggregate Functions --
+
+ * Non-empty groups
+ * Data analysis
+ 	- MIN
+ 	- MAX 
+ 	- AVG
+ 	- COUNT 
+ 	- etc...
+ * Ignore NULL
+
+ # COUNT - брои колко записа има в дадена група
+ 	- COUNT(ColumnName)
+	 	SELECT
+	 		e.DepartmentID
+	 		, COUNT(e.Salary) AS SalaryCount
+	 	  FROM Employees AS e
+	 	GROUP BY e.DepartmentID  	
+
+# SUM - sum the values
+
+# MAX
+
+# MIN
+
+# STRING_AGG - агрегиране върху стрингови полета
+  * Позволява да се вземат всички стойности в групата и слага разделители
+
+
+# WITHIN GROUP - взелисме нужното от колоните, може да извършване допълнителни процедури
+
+		SELECT
+			DepartmentID
+			, ManagerID
+			, MAX(Salary) AS [Max Salary]
+			, MIN(Salary)AS [Min Salary]
+			, MAX(Salary) - MIN(Salary) AS [Diff]
+			, COUNT(EmployeeID) AS [Employees Count]
+			, AVG(Salary) AS [Avg Salary]
+			, STRING_AGG(Salary, CHAR(13)) WITHIN GROUP (ORDER BY Salary DESC)
+		  FROM Employees
+		  --WHERE DepartmentID IN (1)
+		GROUP BY ManagerID, DepartmentID
+
+# HAVING clause - филтрира в група/групи. Същото като WHERE, но след GROUP BY		
+	* WHERE филтрира данните преди групирането, а HAVING филтрира още веднъж след групирането
+	* Замества вложен SELECT за допълнителна филтрация
+
+		SELECT 
+			e.DepartmentID
+			, SUM(e.Salary) AS [Total Salary]
+		 FROM Employees AS e
+		 WHERE 
+			e.DepartmentID IN (1, 3, 15)
+		GROUP BY 
+			e.DepartmentID
+		  HAVING SUM(e.Salary) >= 15000
+
+-- Pivot Tables --
+	* Обръща редове и колони
+
+		SELECT 
+			'AverageCost' AS Cost_Sorted_By_Production_Days
+			, [0], [1], [2], [3], [4]
+		  FROM 
+		    (SELECT DaysToManufacture, StandartCost
+		    	FROM Production.Product) AS SourceTable
+		    PIVOT
+		    (
+		    	AVG(StandartCost)
+		    	FOR DaysToManufacure IN ([0], [1], [2], [3], [4])
+		    ) AS PivotTable		

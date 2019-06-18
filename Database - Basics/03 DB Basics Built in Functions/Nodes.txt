@@ -1,0 +1,298 @@
+-- Функции с текст --
+
+# Concatenation - combines strings (събиране на текстове)
+	- SELECT FirstName + ' ' + LastName AS [Full Name] FROM Employee
+	- SELECT CONCAT(FirstName, ' ', LastName) AS [Full Name] FROM Employee 
+	- CONCAT заменя NULL стойностите с празен стринг (empty string) и конкатенира всички поддадени текстови обекти
+	- CONCAT_WS(' ', FirstName, LastName) AS [Full Name] FROM Employee 
+		* CONCAT_WS е от 2017 версия, избира се първо сепаратор, след това се изреждат обектите, по-умен е от "CONCAT" 
+
+# SUBSTRING - extracts a part of string
+	- SUBSTRING(String, StringIndex, Lenght)
+	- SUBSTRING('SoftUni', 5, 3) => Uni
+		* брои от 1, а не от 0
+		* взимане част от текст
+
+# REPLACE - replaces a specific string with another
+	- REPLACE(String, Pattern, Replacement)
+	 	пример: REPLACE('SoftUni', 'Soft', 'Hard') => HardUni
+	 			SELECT REPLACE(Title, 'blood', '*****') AS Title FROM Album
+	 	* Може да се заместват и колони. С '' се избира дума, ако е без '' ще избере колона. 
+	 	* Не замества NULL и празен стринг
+	 	* Case Insensitive - няма значение дали трърсим с малко или голяма буква
+
+# LTRIM & RTRIM
+	- Премахване на интервали - ляво и дясно
+	- LTRIM(String)
+	- RTRIM(String)
+
+# LEN - counts the number of characters (отброява броя на символите)
+	- LEN(String)
+	* Тримва от двете страни текста
+
+# DATALENGHT - gets the number of used bytes (байтовете използвани за текста)
+	- DATALENGHT(String)
+	* Зависи от кодировката на текста
+
+# LEFT & RIGHT - get characters from the beginning or the end of a string
+	- LEFT(String, Count)
+	- RIGHT(String, Count)
+	* Взимат определен брой символи
+
+# Заменяне на част от текст от колона (пример)	
+	- SELECT
+		CustomerID,
+		FirstName,
+		LastName,
+		CONCAT(SUBSTRING(PaymentNumber, 1, 6), REPLICATE('*', LEN(PaymentNumber) - 6)) AS PaymentNumber
+	  FROM Customers
+	  * CONCAT(SUBSTRING(име на таблица, начало на текст[№ символ], край на текст[№ символ]), REPLICATE('символ, с който ще се замества', LEN(име на таблица) - 6)[определя колко символа да замени]) AS име на таблица за изглед
+	- SELECT 
+		CustomerID,
+		FirstName,
+		LastName,
+		LEFT(PaymentNumber, 6) + '**********'
+	  FROM 	Customers
+	  * Същия пример, втори, по-каратък начин
+
+# LOWER & UPPER - change leter casing (променя буквите - малки и ГОЛЕМИ)
+	- LOWER(String)
+	- UPPER(String)
+
+# REVERSE - reverses order of all characters in a string
+	- REVERSE(String)
+
+# REPLICATE - repeats a string
+	- REPLICATE(String, Count)
+	* взима стринг и го повтаря Count пъти
+
+# CHARINDEX - locates a specific pattern (subsrting) in a string
+	- CHARINDEX(Pattern, String, [StartIndex])
+		SELECT CHARINDEX('is', 'This is a long text') => 3 (позицията на патерна)
+	* Ако не се избере стартов индекс, започва от начало
+	* Показва първата позиция, на която го намери
+	* case insensitive - намира без значение от Г/м
+
+# STUFF - inserts a substring at a specific position (пълнени чушки :D)
+	- STUFF(String, StartIndex, Lenght, Substring)
+	* Може да вмъква или препокрива текст с дадена дължина
+		- SELECT STUFF('This is a bad idea', 11, 0, 'very ')
+		 	=> 'This is a very bad idea'
+		- SELECT STUFF('This is a bad idea', 11, 3, 'good')
+		 	=> 'This is a good idea'
+ 	* Не е полезна за важна информация
+
+# FORMAT - returns a value formatted with the specified format and optional culture in SQL Server 2017 (date/time and number values as string) - специфично поведение SSMS, само той работи с това форматиране
+	- FORMAT(value, format, [culture])
+		- SELECT FORMAT(67.23, 'C', 'bg-BG') => 67.23 лв.
+		- SELECT FORMAT(0.75, 'P', 'bg-BG') => 0.75%
+		- SELECT FORMAT(CAST('2019-01-21' AS date), 'D', 'bg-BG') => Понеделник, 21 Януари 2019
+		- SELECT FORMAT(CAST('2019-01-21' AS date), N'dd.MM.yyyy г.', 'bg-BG') => 21.01.2019 г.
+
+# TRANSLATE - транс литерация - търси силволи в стринг и ги заменя с други
+	- TRANSLATE(inputString, characters, translations)
+		- SELECT TRANSLATE('2*[3+4]/{7-2}', '[]{}', '()()')
+			 => 2*(3+4)/(7-2)
+	- Търси силволи в стринг и ги заменя с други. Замения за същия подред символ от TRANSLATE
+		- SELECT TRANSLATE(N'проба', N'абвгдезиклмнопрстуфхц', 'abvgdeziklmnoprstufhc')
+			 => proba
+
+# IIF(условие, положителен резултат, отрицателен) - наподобява тернарен оператор (if на един ред)
+		- SELECT IIF(LEN(LastName) < 6 , LastName, 'Too long') FROM Customers
+			* ще замени всички от LastName, които са с по-голяма дължина от 6 символа, с Too long
+
+-------------------------------------------------------------------------------------------------
+
+-- Математически функции --
+
+# ABS - absolute value
+	- ABS(Value)
+
+# SQRT - square root (the result will be float)
+	- SQRT(Value)
+
+# SQUARE - raise to power ot two
+	- SQUARE(Value)
+		- пример - намиране на дължина на линия:
+		 SELECT 
+			Id, X1, Y1, X2, Y2,
+			SQRT(SQUARE(X1-X2) + SQUARE(Y1-Y2))
+		 AS Length
+		 FROM Lines
+
+# POWER - rises value to the desired exponent (степенуване)
+	- POWER(Value, Exponent)
+
+# ROUND - obtains the desired precision (закръгляне, след запетая)
+	- SELECT ROUND(число, знак след запетая, до който ще закръгля)
+				  (Value, Precision)
+
+# FLOOR & CEILING - return the nearest integer (закръгляне до цяло число)
+	- FLOOR(Value)
+	- CEILING(Value)
+
+- пример:
+	SELECT
+		[Name],
+		Quantity,
+		BoxCapacity,
+		CEILING(CAST(
+				CEILING(CAST(
+						Quantity AS float) / BoxCapacity) AS float) / PalleteCapacity) 
+		AS Pallete
+	FROM Products
+
+
+# SING - returns 1, -1 or 0, depending on the value of the sign
+	- SIGN(Value)
+		- SELECT SIGN (123) => 1
+		- SELECT SIGN (-123) => -1
+		- SELECT SIGN (0) => 0
+
+# RAND - gets a random float value in the range [0, 1]
+
+-------------------------------------------------------------------------------------------
+
+-- Функции с дати --
+
+# DATEPART - extract a sement from a date as an integer
+	- DATEPART(Part, Date)
+		Примери:
+		- SELECT DATEPART(WEEK, '2019-01-21') => 4 (четвърта седмица)
+		- SELECT * FROM Projects WHERE DATEPARTH(QUARTER, StartDate) = 3
+			=> ще изведе всички проекти започнали в 3 тримесечие
+		- SELECT
+			ProducName,
+			YEAR(OrderDate) AS [Year],
+			MONTH(OrderDate) AS [Month],
+			DAY(OrderDate) AS [Day],
+			DATEPARTH(QUARTER, OrderDate) AS [Quarter]
+		  FROM Orders
+		  	=> ще върне име, година, месец, ден и тримесечие, за това кога е направена поръчката	
+		  	* Може вместо YEAR, MONTH, DAY, да се използва DATEPARTH
+
+# DATEDIFF - finds the difference between two dates (разликате между две дати)
+	- DATEDIFF(Part, FirstDate, SecondDate)
+	- В [Part] показваме в какво искаме да видим разликата
+		- SELECT DATEDIFF(SECOND, '2019-01-21T21:11:48', '2019-01-21T21:11:58') => 10 секунди
+
+		- SELECT
+			CONCAT_WS(', ', LastName, FirstName) AS [Employee],
+			DATEDIFF(yera, HireDate, GETDATE()) AS [Years Of Service]
+		  FROM Employees
+		  	=> ще върне годините работа на раотника от наемането му
+
+# DATENAME - gets a string representation of date's part
+	- DATENAME(Part, Date)
+		- SELECT DATENAME(weekday, GETDATE())
+			=> ще изведе кой ден е днес
+
+# DATEADD - performs date arithmetic
+	- DATEADD(Part, Number, Date)
+	- Part - any part and format of date or time
+		- SELECT 
+			HireDate,
+			DATEADD(YEAR, 5, HireDate) AS Exp
+		  FROM Employees	
+		  	=> ще добави 5 години стаж на работниците
+
+# GETDATE - obtains the current date and time
+	- SELECT GETDATE()
+
+# EOMONTH - this function returns the last day of the month containing a specified date, with an optional offset
+	- EOMONTH(StartDate, [MonthToAdd])
+		- SELECT EOMONTH(GETDATE())
+			=> ще покаже броя на дните в настоящия мисец
+
+------------------------------------------------------------------------
+
+-- Форматиране функции --
+
+# CAST & CONVERT - conversion between data types
+	- CAST(Data AS NewType)
+		  (данни AS желания тип)	
+	- CONVERT(NewType, Data)
+		  ( желания тип, данни)
+
+# ISNULL - swaps NULL values with a specified default values (Microsoft only*)
+	- ISNULL(Data, defaulValue)
+		- SELECT 
+			Project
+			, Name
+			, ISNULL(CAST(EndDate AS varchar), 'Not Finished')
+		  FROM Projects
+	* Проверява дали select-ната стойност е NULL. Ако не е NULL - връща нея, ако е NULL - връща това което е зададено по дефолтно
+	* CAST(EndDate AS varchar) -> каства се, защото не може да конвентира само
+
+# COALESCE - evaluates the arguments in order and returns the current value of the first expression that initially does not evaluate to NULL
+	- Приема списък от параметри и връща първия, който не е NULL
+		- SELECT COALESCE(NULL, NULL, 'third_value', 'fourth_value')
+			=> third_value
+
+# OFFSET & FETCH - get only specific rows from the result set (~ Scip & Take)
+	- Пише се с ORDER BY
+		- SELECT ID, FirstName, LastName
+		  	FROM Employyes
+		  ORDER BY ID
+		  	OFFSET 10 ROWS (прескача 'n' реда)
+		  	 FETCH NEXT 5 ROWS ONLY	(важи за следващите 'n' само)	
+----------------------------------------------------------------
+
+-- Ранк функции --
+
+# ROW_NUMBER - always generate unique values without any gaps, even if there are ties
+	- Използва се за уникален индетификатор за VIEW-та
+	- Отброява без да пропуска, дори да се повтаря нещо
+		- SELECT 
+			ID
+			, FirstName
+			, LastName
+			ROW_NUMBER() OVER (ORDER BY Firstname)
+		  	FROM Employees
+
+# RANK - can have gaps in its sequence and when values are the same, they get the same rank
+	- Отброява, но пропуска позиция ако се повтаря нещо - извежда един и същи ранк
+			- SELECT 
+				ID
+				, FirstName
+				, LastName
+				RANK() OVER (ORDER BY Firstname)
+			  	FROM Employees
+
+# DENSE_RANK - returns the same rank for ties, but it doesn't have any gaps in the sequence
+	- Отброява и ако се повтаря нещо - извежда един и същи ранк. Не пропуска позицията
+				- SELECT 
+					ID
+					, FirstName
+					, LastName
+					DENSE_RANK() OVER (ORDER BY Firstname)
+				  	FROM Employees
+
+----------------------------------------------------------------------------------------
+
+-- WILD CARD --
+
+- Използва се в WHERE клаузите
+	- SELECT
+		ID
+		, FirstName
+		, LastName
+	  FROM Employees
+	  WHERE FirstName LIKE 'Ro%'	
+	  *Wild card -> LIKE 'Ro%' (в този случай)
+	  * С % оказваме от къде да търси - 'Ro%' (започяващо с Ro), '&ro' (завършва с ro) или '%ro%' (ro е в средата) 
+
+	- Wild cards :
+		- '%''   -> any string, including zero-length  
+		- '_'    -> any single character - може да пропусне 1 символ
+		- [...]  -> any character within range - всички букви между
+		- [^...] -> any character not in the range - всички, които не са измежду
+
+	# ESCAPE - specify a prefix to treat special characters as normal
+			- SELECT 
+				ID
+				, Name
+				, LastName
+			  FROM Employees
+			  WHERE FirstName LIKE 'And[yr]%' (съдържащи след 'And' - 'y' или 'r')	
+			  					   'And[^r]' (не съдържат след 'And' - 'r') 
