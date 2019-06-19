@@ -1,0 +1,2 @@
+internal class ChangeTracker<T> where T: class, new()
+internal - за да не се достъпва отвън, върешен клас

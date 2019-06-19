@@ -1,0 +1,1 @@
+Scaffold-DbContext -Connection "Server=.\SQLEXPRESS(име на сървър);Database=SoftUni(име на бд);Integrated Security=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data/Models(entities които ще се използват)

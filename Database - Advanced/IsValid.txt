@@ -1,0 +1,14 @@
+В Deserializer 
+
+private static bool IsValid(object entity)
+        {
+            var validationContext = new ValidationContext(entity);
+
+            var validationResult = new List<ValidationResult>();
+
+            bool isValid = 
+                Validator
+                    .TryValidateObject(entity, validationContext, validationResult, true);
+
+            return isValid;
+        }

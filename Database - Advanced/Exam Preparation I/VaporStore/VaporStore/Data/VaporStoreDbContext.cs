@@ -1,0 +1,78 @@
+﻿namespace VaporStore.Data
+{
+	using Microsoft.EntityFrameworkCore;
+
+    using Models;
+
+    public class VaporStoreDbContext : DbContext
+	{
+		public VaporStoreDbContext()
+		{
+		}
+
+		public VaporStoreDbContext(DbContextOptions options)
+			: base(options)
+		{
+		}
+
+        public DbSet<Card> Cards { get; set; }
+        public DbSet<Developer> Developers { get; set; }
+        public DbSet<Game> Games { get; set; }
+        public DbSet<GameTag> GameTags { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<User> Users { get; set; }
+
+		protected override void OnConfiguring(DbContextOptionsBuilder options)
+		{
+			if (!options.IsConfigured)
+			{
+				options
+					.UseSqlServer(Configuration.ConnectionString);
+			}
+		}
+
+		protected override void OnModelCreating(ModelBuilder model)
+        {
+            ModelCreatingGameTag(model);
+
+          //  ModelCreatingUser(model);
+        }
+
+        private void ModelCreatingUser(ModelBuilder model)
+        {
+            model
+                .Entity<User>()
+                .HasKey(k => k.Id);
+
+            model
+                .Entity<User>()
+                .Property(p => p.Username)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            model
+                .Entity<User>()
+                .Property(p => p.FullName)
+                .IsRequired();
+
+            model
+                .Entity<User>()
+                .HasMany(c => c.Cards)
+                .WithOne(u => u.User);
+        }
+
+        private void ModelCreatingGameTag(ModelBuilder model)
+        {
+            // композитен ключ на GameTag
+            model
+                .Entity<GameTag>()
+                .HasKey(k => new
+                {
+                    k.GameId,
+                    k.TagId
+                });
+        }
+    }
+}

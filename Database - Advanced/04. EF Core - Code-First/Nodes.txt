@@ -1,0 +1,67 @@
+# Lazy Loading
+
+	* Препоръчва се Include пред Lazy loading.
+
+	* В WEB, не се препоръчва използването на Lazy loading.
+
+	* Lazy loading работи с Proxy.
+
+	* Navigartion proparties - virtual, за да работи Lazy loading.
+
+	* Включва се по 2 начиана Lazy loading-а:
+		- от настройки
+		- включване и изключване в контекста, на места където трябва
+			-> context.ChangeReacker.LazyLoadingEnabled = true;
+
+	* Прави допълнителна заявка, което бави процеса.
+
+#Code-First
+
+	* При Code-First, при премахване на обект/таблица не се трие от БД, а от кода. EF ще се погрижи за връзките между таблиците.
+
+	* Fluent API & Data Annotations
+
+	* navigation properties - достъпване информация с таблица, с която имаме релация.
+
+	* Ако proparty-то се казва Id, EF ще го разпознае като primary key. Но се препоръчва да се пише [Key].
+
+	* Препоръчва се да се праввят моделите в различни class library.
+
+# DbSet Type
+	* Трябва да има primary key.
+	
+# DbQuery Type 
+	* Може да използваме за да гледаме view-та и сторнати процедури.
+	* Readonly type - ръща ienumerable резултат.
+	* Няма Add, Attach, Remove, Find.
+	* Може да бъде анонимент тип.
+
+# DbContext
+	* Съдържа много DbSet-ове.
+	* CRUID операции чрез LINQ.
+	* Може да се използва повече от един DbContext.
+
+
+* Моделите, които работят с БД-то, се държат в папка Data.
+
+* Да преценяваме за всяко proparty дали трябва да има [].
+
+* Ако включим XML коментарите, ще се заяжда ако се пропусне коментар на property
+
+* Трябва да описяваме на всяко proparty какво е с /// <summary>:
+		->  /// <summary>
+			/// Заглавие
+			/// </summary>
+			[StringLenght(250, MinimumLenght = 10)]
+			public string Title {get; set;}
+
+* ЗАДЪЛЖИТЕЛНО за заглавието:
+		->  [StringLenght(250, MinimumLenght = 10)]
+			public string Title {get; set;}
+
+* Коментара излиза и в интелисенса, за да подскаже кое property за какво е.
+
+* Може да кръщаваме таблиците и колоните с [Table("Table name")], [Column("Column name")]
+		-> [Key]
+		   [Column("Id")]
+		   public int Id  {get; set;}
