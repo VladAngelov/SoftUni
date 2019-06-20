@@ -1,0 +1,1 @@
+Open in VS -> Build -> Copy .exe to current solution folder -> Run .exe -> Follow steps
