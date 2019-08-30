@@ -16,9 +16,10 @@
 
         private readonly ICloudinaryService cloudinaryService;
 
-        public CarController(ICarService carService)
+        public CarController(ICarService carService, ICloudinaryService cloudinaryService)
         {
             this.carService = carService;
+            this.cloudinaryService = cloudinaryService;
         }
 
         [HttpGet(Name = "Create")]
@@ -37,19 +38,18 @@
                 Group = carCreateBindingModel.Group,
                 ManufacturedOn = carCreateBindingModel.ManufacturedOn,
                 PricePerDay = carCreateBindingModel.PricePerDay,
-              //  Picture = carCreateBindingModel.Picture,
                 AirConditioner = carCreateBindingModel.AirConditioner,
                 Diesel = carCreateBindingModel.Diesel,
                 AutomaticGearbox = carCreateBindingModel.AutomaticGearbox
             };
 
-            //string pictureUrl = await this.cloudinaryService.UploadPictureAsync(
-            //       carCreateBindingModel.Picture,
-            //       carCreateBindingModel.Model);
+            string pictureUrl = await this.cloudinaryService.UploadPictureAsync(
+                   carCreateBindingModel.Picture,
+                   carCreateBindingModel.Model);
 
-          //  CarServiceModel carServiceModel = AutoMapper.Mapper.Map<CarServiceModel>(carCreateBindingModel);
+        //    CarServiceModel carServiceModel = AutoMapper.Mapper.Map<CarServiceModel>(carCreateBindingModel);
 
-            //carServiceModel.Picture = pictureUrl;
+            carServiceModel.Picture = pictureUrl;
 
             await this.carService.Create(carServiceModel);
 

@@ -11,9 +11,7 @@
 <h1 class="bg-primary text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Add car in the garage</h1>
 
 <div class="row col-md-6">
-    <form method="post"
-          class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3"
-          enctype="multipart/form-data">
+    <form method="post" class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group mx-auto">
             <div class="d-flex justify-content-center">
@@ -53,18 +51,19 @@
             <span asp-validation-for="ManufacturedOn" class="text-danger" />
         </div>
 
-        @*<div id="picture-holder" class="d-flex justify-content-between">
-            <div class="form-group mx-auto w-45">
+        <div class="form-group mx-auto w-45">
+            <div class="d-flex justify-content-between">
                 <div class="d-flex justify-content-center">
                     <label asp-for="Picture" class="text-primary h5">Picture</label>
                 </div>
                 <input type="file"
-                       class="form-control text-center"
-                       id="pictuer"
-                       placeholder="Picture Link..."
-                       asp-for="Picture" />
+                       class="form-control text-primary text-center"
+                       id="picture"
+                       placeholder="Picture..."
+                       asp-for="Picture">
+                <span asp-validation-for="Picture" class="text-danger" />
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             <div class="d-flex justify-content-center">

@@ -1,6 +1,5 @@
 ﻿namespace RentACar.Web.BindingModels
 {
-    using AutoMapper;
     using Data.Models;
     using Microsoft.AspNetCore.Http;
     using RentACar.Service.Mapping;
@@ -8,45 +7,33 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class CarCreateBindingModel : IMapTo<CarServiceModel>/*, IHaveCustomMappings*/
+    public class CarCreateBindingModel : IMapTo<CarServiceModel>
     {
-     //   private static string errorMessage = "Required!";
-
-        [Required(ErrorMessage = "Required!")]
+        [Required(ErrorMessage = "Required brand!")]
         public string Brand { get; set; }
 
-        [Required(ErrorMessage = "Required!")]
+        [Required(ErrorMessage = "Required model!")]
         public string Model { get; set; }
 
-        [Required(ErrorMessage = "Required!")]
+        [Required(ErrorMessage = "Required manufactured on date!")]
         public DateTime ManufacturedOn { get; set; }
 
-        [Required(ErrorMessage = "Required!")]
+        [Required(ErrorMessage = "Required price per day!")]
         public decimal PricePerDay { get; set; }
 
-        [Required(ErrorMessage = "Required!")]
+        [Required(ErrorMessage = "Required availability!")]
         public CarEquipment AirConditioner { get; set; }
 
-        [Required(ErrorMessage = "Required!")]
+        [Required(ErrorMessage = "Required availability!")]
         public CarEquipment AutomaticGearbox { get; set; }
 
-        [Required(ErrorMessage = "Required!")]
+        [Required(ErrorMessage = "Required availability!")]
         public CarEquipment Diesel { get; set; }
 
-       // [Required(ErrorMessage = "Required!")]
+        [Required(ErrorMessage = "Required picture!")]
         public IFormFile Picture { get; set; }
 
-        [Required(ErrorMessage = "Required!")]
+        [Required(ErrorMessage = "Required car group!")]
         public CarGroup Group { get; set; }
-
-
-        //public void CreateMappings(IProfileExpression configuration)
-        //{
-        //    configuration
-        //        .CreateMap<CarCreateBindingModel, CarServiceModel>()
-        //        .ForMember(destination => destination.Group,
-        //                    opts => opts.MapFrom(origin => new CarGroupServiceModel { Id = (int)origin.Group }));
-        //    // TODO: Refactor
-        //}
     }
 }

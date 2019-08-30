@@ -25,7 +25,7 @@
                 Group = carServiceModel.Group,
                 ManufacturedOn = carServiceModel.ManufacturedOn,
                 PricePerDay = carServiceModel.PricePerDay,
-                //Picture = carServiceModel.Picture,
+                Picture = carServiceModel.Picture,
                 AirConditioner = carServiceModel.AirConditioner,
                 Diesel = carServiceModel.Diesel,
                 AutomaticGearbox = carServiceModel.AutomaticGearbox
@@ -33,14 +33,29 @@
 
             this.context.Cars.Add(car);
 
-           int result = await this.context.SaveChangesAsync();
+            int result = await this.context.SaveChangesAsync();
 
             return result > 0;
         }
 
         public IQueryable<CarServiceModel> GetAllCars()
         {
-            return this.context.Cars.To<CarServiceModel>();
+            return this.context.Cars
+                .Select(car => new CarServiceModel
+                {
+                    Brand = car.Brand,
+                    Model = car.Model,
+                    PricePerDay = car.PricePerDay,
+                    Picture = car.Picture,
+                    ManufacturedOn = car.ManufacturedOn,
+                    AirConditioner = car.AirConditioner,
+                    AutomaticGearbox = car.AutomaticGearbox,
+                    Diesel = car.Diesel,
+                    Group = car.Group,
+                    IsBooked = car.IsBooked
+                });
+
+            // return this.context.Cars.To<CarServiceModel>();
         }
     }
 }

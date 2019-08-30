@@ -1,9 +1,80 @@
-﻿@{
+﻿@model List<RentACar.Web.ViewModels.Home.Index.CarHomeViewModel>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="jumbotron bg-primary mt-3 mb-3">
-    <h1 class="font-weight-bold text-white">Rent a Car</h1>
-    <hr class="bg-white hr-2"/>
-    <h3 class="text-white">Have a nice drive experience!</h3>
-</div> 
+@if (!this.User.Identity.IsAuthenticated)
+{
+    <div id="products" class="mt-3">
+        @for (int i = 0; i < Model.Count; i += 5)
+        {
+            <div class="products-row row d-flex justify-content-around my-5">
+                @for (int j = i; j < i + 5; j++)
+                {
+                    if (j < Model.Count)
+                    {
+                        <div class="product col-md-2">
+                            <div class="image-holder d-flex justify-content-center">
+                                <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
+                            </div>
+                            <h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>
+                            <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
+                            @*<h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn</h5>*@
+                            <h5 class="text-primary text-center mt-3">Price: $@Model[j].PricePerDay.ToString("F2")</h5>
+                            <h5 class="text-primary text-center mt-3">@Model[j].IsBooked</h5>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="product col-md-2 empty">
+                        </div>
+                    }
+                }
+            </div>
+        }
+    </div>
+
+}
+else
+{
+    <div id="products" class="mt-3">
+        @for (int i = 0; i < Model.Count; i += 5)
+        {
+            <div class="products-row row d-flex justify-content-around my-5">
+                @for (int j = i; j < i + 5; j++)
+                {
+                    if (j < Model.Count)
+                    {
+                <div class="product col-md-2">
+                    <div class="image-holder d-flex justify-content-center">
+                        <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
+                    </div>
+                    <h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>
+                    <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
+                   @* <h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn</h5>*@
+                    <h5 class="text-primary text-center mt-3">Price: $@Model[j].PricePerDay.ToString("F2")</h5>
+                    @*<h5 class="text-primary text-center mt-3">@Model[j].CarGroup</h5>
+                    <h5 class="text-primary text-center mt-3">Air Conditioner: @Model[j].AirConditioner</h5>
+                    <h5 class="text-primary text-center mt-3">Automatic Gearbox: @Model[j].AutomaticGearbox</h5>
+                    <h5 class="text-primary text-center mt-3">Disel: @Model[j].Disel</h5>*@
+                    <h5 class="text-primary text-center mt-3">Booked: @Model[j].IsBooked</h5>
+                </div>
+                    }
+                    else
+                    {
+                        <div class="product col-md-2 empty">
+                        </div>
+                    }
+                }
+            </div>
+        }
+    </div>
+
+}
+
+@*<div class="jumbotron bg-primary mt-3 mb-3">
+        <h1 class="font-weight-bold text-white">Rent a Car</h1>
+        <hr class="bg-white hr-2" />
+        <h3 class="text-white">Have a nice drive experience!</h3>
+    </div>*@ 

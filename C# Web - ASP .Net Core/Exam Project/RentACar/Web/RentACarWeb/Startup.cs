@@ -1,5 +1,6 @@
 ﻿namespace RentACarWeb
 {
+    using CloudinaryDotNet;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -11,6 +12,7 @@
     using RentACar.Data;
     using RentACar.Data.Models;
     using RentACar.Services;
+    using System.Globalization;
     using System.Linq;
 
     public class Startup
@@ -26,7 +28,6 @@
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
@@ -38,6 +39,15 @@
             services.AddIdentity<RentACarUser, IdentityRole>()
                 .AddEntityFrameworkStores<RentACarDbContext>()
                 .AddDefaultTokenProviders();
+
+            Account cloudinaryCredentials = new Account(
+                this.Configuration["Cloudinary:CloudName"],
+                this.Configuration["Cloudinary:ApiKey"],
+                this.Configuration["Cloudinary:ApiSecret"]);
+
+            Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
+
+            services.AddSingleton(cloudinaryUtility);
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -54,12 +64,16 @@
             });
 
             services.AddTransient<ICarService, CarService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetRequiredService<RentACarDbContext>())
