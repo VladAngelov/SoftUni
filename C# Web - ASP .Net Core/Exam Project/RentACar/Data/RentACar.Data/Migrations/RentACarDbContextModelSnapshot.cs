@@ -153,7 +153,8 @@ namespace RentACar.Data.Migrations
                     b.Property<string>("Model")
                         .IsRequired();
 
-                    b.Property<string>("Picture");
+                    b.Property<string>("Picture")
+                        .IsRequired();
 
                     b.Property<decimal>("PricePerDay");
 

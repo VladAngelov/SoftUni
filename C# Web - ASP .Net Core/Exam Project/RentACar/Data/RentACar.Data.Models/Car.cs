@@ -19,6 +19,8 @@
         public string Model { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime ManufacturedOn { get; set; }
 
         [Required]

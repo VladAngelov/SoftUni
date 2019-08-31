@@ -18,18 +18,7 @@
 
         public async Task<bool> Create(CarServiceModel carServiceModel)
         {
-            Car car = new Car
-            {
-                Brand = carServiceModel.Brand,
-                Model = carServiceModel.Model,
-                Group = carServiceModel.Group,
-                ManufacturedOn = carServiceModel.ManufacturedOn,
-                PricePerDay = carServiceModel.PricePerDay,
-                Picture = carServiceModel.Picture,
-                AirConditioner = carServiceModel.AirConditioner,
-                Diesel = carServiceModel.Diesel,
-                AutomaticGearbox = carServiceModel.AutomaticGearbox
-            };
+            Car car = AutoMapper.Mapper.Map<Car>(carServiceModel);
 
             this.context.Cars.Add(car);
 
@@ -38,24 +27,9 @@
             return result > 0;
         }
 
-        public IQueryable<CarServiceModel> GetAllCars()
+        IQueryable<CarServiceModel> ICarService.GetAllCars()
         {
-            return this.context.Cars
-                .Select(car => new CarServiceModel
-                {
-                    Brand = car.Brand,
-                    Model = car.Model,
-                    PricePerDay = car.PricePerDay,
-                    Picture = car.Picture,
-                    ManufacturedOn = car.ManufacturedOn,
-                    AirConditioner = car.AirConditioner,
-                    AutomaticGearbox = car.AutomaticGearbox,
-                    Diesel = car.Diesel,
-                    Group = car.Group,
-                    IsBooked = car.IsBooked
-                });
-
-            // return this.context.Cars.To<CarServiceModel>();
+            return this.context.Cars.To<CarServiceModel>();
         }
     }
 }

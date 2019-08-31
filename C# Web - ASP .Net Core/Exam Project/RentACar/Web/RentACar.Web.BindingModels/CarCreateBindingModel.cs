@@ -1,6 +1,5 @@
 ﻿namespace RentACar.Web.BindingModels
 {
-    using Data.Models;
     using Microsoft.AspNetCore.Http;
     using RentACar.Service.Mapping;
     using RentACar.Services.Models;
@@ -22,18 +21,18 @@
         public decimal PricePerDay { get; set; }
 
         [Required(ErrorMessage = "Required availability!")]
-        public CarEquipment AirConditioner { get; set; }
+        public CarEquipmentBindingModel AirConditioner { get; set; }
 
         [Required(ErrorMessage = "Required availability!")]
-        public CarEquipment AutomaticGearbox { get; set; }
+        public CarEquipmentBindingModel AutomaticGearbox { get; set; }
 
         [Required(ErrorMessage = "Required availability!")]
-        public CarEquipment Diesel { get; set; }
+        public CarEquipmentBindingModel Diesel { get; set; }
 
         [Required(ErrorMessage = "Required picture!")]
         public IFormFile Picture { get; set; }
 
         [Required(ErrorMessage = "Required car group!")]
-        public CarGroup Group { get; set; }
+        public CarGroupBindingModel Group { get; set; }
     }
 }

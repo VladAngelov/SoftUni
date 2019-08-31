@@ -4,6 +4,22 @@
     ViewData["Title"] = "Home Page";
 }
 
+<div class="d-flex justify-content-between">
+    <div id="products-search-bar-holder" class="form-group d-flex justify-content-between w-50">
+        <input type="text" class="form-control text-primary" id="products-search-bar" name="search" placeholder="Search..." />
+    </div>
+    @*<div id="sort-holder" class="form-group w-40 d-flex justify-content-between">
+        <label for="sort" class="text-primary font-weight-bold w-30 h4 mt-1 text-right">Order By: </label>
+        <select id="sort" class="form-control text-primary pl-2 ml-3 w-70">
+            <option value="none" selected>None</option>
+            <option value="none">Price (lowest to highest)</option>
+            <option value="none">Price (highest to lowest)</option>
+            <option value="none">Date of Manufacturing (oldest to newest)</option>
+            <option value="none">Date of Manufacturing (newest to oldest)</option>
+        </select>
+    </div>*@
+</div>
+
 @if (!this.User.Identity.IsAuthenticated)
 {
     <div id="products" class="mt-3">
@@ -20,7 +36,6 @@
                             </div>
                             <h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>
                             <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
-                            @*<h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn</h5>*@
                             <h5 class="text-primary text-center mt-3">Price: $@Model[j].PricePerDay.ToString("F2")</h5>
                             <h5 class="text-primary text-center mt-3">@Model[j].IsBooked</h5>
                         </div>
@@ -34,7 +49,6 @@
             </div>
         }
     </div>
-
 }
 else
 {
@@ -46,20 +60,15 @@ else
                 {
                     if (j < Model.Count)
                     {
-                <div class="product col-md-2">
-                    <div class="image-holder d-flex justify-content-center">
-                        <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
-                    </div>
-                    <h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>
-                    <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
-                   @* <h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn</h5>*@
-                    <h5 class="text-primary text-center mt-3">Price: $@Model[j].PricePerDay.ToString("F2")</h5>
-                    @*<h5 class="text-primary text-center mt-3">@Model[j].CarGroup</h5>
-                    <h5 class="text-primary text-center mt-3">Air Conditioner: @Model[j].AirConditioner</h5>
-                    <h5 class="text-primary text-center mt-3">Automatic Gearbox: @Model[j].AutomaticGearbox</h5>
-                    <h5 class="text-primary text-center mt-3">Disel: @Model[j].Disel</h5>*@
-                    <h5 class="text-primary text-center mt-3">Booked: @Model[j].IsBooked</h5>
-                </div>
+                        <div class="product col-md-2">
+                            <div class="image-holder d-flex justify-content-center">
+                                <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
+                            </div>
+                            <h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>
+                            <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
+                            <h5 class="text-primary text-center mt-3">Price: $@Model[j].PricePerDay.ToString("F2")</h5>
+                            <h5 class="text-primary text-center mt-3">Booked: @Model[j].IsBooked</h5>
+                        </div>
                     }
                     else
                     {
@@ -70,11 +79,19 @@ else
             </div>
         }
     </div>
-
 }
 
-@*<div class="jumbotron bg-primary mt-3 mb-3">
-        <h1 class="font-weight-bold text-white">Rent a Car</h1>
-        <hr class="bg-white hr-2" />
-        <h3 class="text-white">Have a nice drive experience!</h3>
-    </div>*@ 
+<script>
+    $('#products-search-bar').on("change paste keyup", function () {
+        $('.product').show();
+
+        let searchValue = $('#products-search-bar').val();
+
+        for (let elem of $('.product')) {
+            let productName = $($(elem).children()[1]).text();
+
+            if (!productName.toLowerCase().includes(searchValue.toLowerCase())) {
+                $(elem).hide();
+            }
+        }
+    });</script>
