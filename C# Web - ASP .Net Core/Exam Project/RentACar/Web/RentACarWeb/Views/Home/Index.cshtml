@@ -37,7 +37,7 @@
                             <h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>
                             <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
                             <h5 class="text-primary text-center mt-3">Price: $@Model[j].PricePerDay.ToString("F2")</h5>
-                            <h5 class="text-primary text-center mt-3">@Model[j].IsBooked</h5>
+                            @*<h5 class="text-primary text-center mt-3">@Model[j].IsBooked</h5>*@
                         </div>
                     }
                     else
@@ -68,6 +68,7 @@ else
                             <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
                             <h5 class="text-primary text-center mt-3">Price: $@Model[j].PricePerDay.ToString("F2")</h5>
                             <h5 class="text-primary text-center mt-3">Booked: @Model[j].IsBooked</h5>
+                            <button class="btn btn-primary font-weight-bold">Booking</button>
                         </div>
                     }
                     else
