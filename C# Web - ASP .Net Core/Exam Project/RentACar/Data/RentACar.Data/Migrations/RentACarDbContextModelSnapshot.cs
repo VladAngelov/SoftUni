@@ -171,26 +171,21 @@ namespace RentACar.Data.Migrations
 
                     b.Property<int>("CarId");
 
-                    b.Property<int>("DaysBeforeStart");
-
                     b.Property<DateTime>("EndDate");
-
-                    b.Property<decimal>("Fee");
 
                     b.Property<DateTime>("IssuedOn");
 
-                    b.Property<int>("RrentDays");
-
                     b.Property<DateTime>("StartDate");
 
-                    b.Property<int>("Status");
+                    b.Property<int>("StatusId");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
+
+                    b.HasIndex("StatusId");
 
                     b.HasIndex("UserId");
 
@@ -258,6 +253,19 @@ namespace RentACar.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("RentACar.Data.Models.RentStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RentStatuses");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -310,10 +318,14 @@ namespace RentACar.Data.Migrations
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("RentACar.Data.Models.RentStatus", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("RentACar.Data.Models.RentACarUser", "User")
                         .WithMany("Rents")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

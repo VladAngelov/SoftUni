@@ -4,8 +4,6 @@
     using Models;
     using RentACar.Services;
     using RentACar.Web.ViewModels.Home.Index;
-    using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
@@ -38,29 +36,14 @@
             return View(cars);
         }
 
-        //public async Task<IActionResult> AllRrents()
-        //{
-        //    if (this.User.Identity.IsAuthenticated)
-        //    {
-        //        List<RentHomeViewModel> rents = await this.rentService.()
-        //            .Select(rent => new RentHomeViewModel
-        //            {
-        //                User = rent.User.UserName,
-        //                CarBrand = rent.Car.Brand,
-        //                CarModel = rent.Car.Model,
-        //                Fee = rent.Fee
-        //            })
-        //            .ToListAsync();
-
-        //        return this.View(rents);
-        //    }
-
-        //    return this.View();
-        //}
-
         public async Task<IActionResult> About()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Profile()
+        {
+            return this.View();
         }
 
         [ResponseCache(Duration = 0,

@@ -108,6 +108,21 @@
 
                         context.SaveChanges();
                     }
+
+                    if (!context.RentStatuses.Any())
+                    {
+                        context.RentStatuses.Add(new RentStatus
+                        {
+                            Name = "Active"
+                        });
+
+                        context.RentStatuses.Add(new RentStatus
+                        {
+                            Name = "Ended"
+                        });
+
+                        context.SaveChanges();
+                    }
                 }
             }
 

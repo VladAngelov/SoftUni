@@ -1,8 +1,8 @@
 ﻿namespace RentACar.Data.Models
 {
-    public enum RentStatus
+    public class RentStatus
     {
-        Active = 1,
-        NotActove = 2
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

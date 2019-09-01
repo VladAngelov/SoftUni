@@ -11,6 +11,8 @@
 
         public DbSet<Rent> Rents { get; set; }
 
+        public DbSet<RentStatus> RentStatuses { get; set; }
+
         public RentACarDbContext(DbContextOptions options) : base(options)
         {
         }
