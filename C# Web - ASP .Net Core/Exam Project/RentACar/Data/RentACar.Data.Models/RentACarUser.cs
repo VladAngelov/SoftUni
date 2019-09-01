@@ -20,10 +20,18 @@
         [MaxLength(30)]
         public string LastName { get; set; }
 
-    //    public RentACarUserRole UserRole { get; set; }
+        public string FullName => FirstName + " " + LastName;
 
         public bool Premium { get; set; }
 
         public ICollection<Rent> Rents { get; set; }
+
+        private void IsPremium()
+        {
+            if (this.Rents.Count >= 3)
+            {
+                this.Premium = true;
+            }
+        }
     }
 }

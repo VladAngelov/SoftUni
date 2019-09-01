@@ -26,6 +26,7 @@
             var cars = this.carService.GetAllCars()
                 .Select(car => new CarHomeViewModel()
                 {
+                    Id = car.Id,
                     Brand = car.Brand,
                     IsBooked = car.IsBooked,
                     Model = car.Model,
@@ -37,25 +38,25 @@
             return View(cars);
         }
 
-        public async Task<IActionResult> AllRrents()
-        {
-            if (this.User.Identity.IsAuthenticated)
-            {
-                List<RentHomeViewModel> rents = await this.rentService.GetAllRents()
-                    .Select(rent => new RentHomeViewModel
-                    {
-                        User = rent.User.UserName,
-                        CarBrand = rent.Car.Brand,
-                        CarModel = rent.Car.Model,
-                        Fee = rent.Fee
-                    })
-                    .ToListAsync();
+        //public async Task<IActionResult> AllRrents()
+        //{
+        //    if (this.User.Identity.IsAuthenticated)
+        //    {
+        //        List<RentHomeViewModel> rents = await this.rentService.()
+        //            .Select(rent => new RentHomeViewModel
+        //            {
+        //                User = rent.User.UserName,
+        //                CarBrand = rent.Car.Brand,
+        //                CarModel = rent.Car.Model,
+        //                Fee = rent.Fee
+        //            })
+        //            .ToListAsync();
 
-                return this.View(rents);
-            }
+        //        return this.View(rents);
+        //    }
 
-            return this.View();
-        }
+        //    return this.View();
+        //}
 
         public async Task<IActionResult> About()
         {

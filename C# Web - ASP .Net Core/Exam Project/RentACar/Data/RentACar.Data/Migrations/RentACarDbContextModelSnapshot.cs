@@ -171,11 +171,15 @@ namespace RentACar.Data.Migrations
 
                     b.Property<int>("CarId");
 
+                    b.Property<int>("DaysBeforeStart");
+
                     b.Property<DateTime>("EndDate");
 
                     b.Property<decimal>("Fee");
 
                     b.Property<DateTime>("IssuedOn");
+
+                    b.Property<int>("RrentDays");
 
                     b.Property<DateTime>("StartDate");
 

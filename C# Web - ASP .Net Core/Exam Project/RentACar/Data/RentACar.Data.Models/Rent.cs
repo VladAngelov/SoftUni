@@ -7,25 +7,25 @@
     {
         public int Id { get; set; }
 
-        public decimal Fee { get; set; }
+       // public decimal Fee { get; set; }
 
         [Required]
         public DateTime IssuedOn { get; set; } = DateTime.UtcNow;
 
-        [Required]
+     //   [Required]
         public DateTime StartDate { get; set; }
 
-        [Required]
+      //  [Required]
         public DateTime EndDate { get; set; }
 
         public RentStatus Status { get; set; }
 
-        [Required]
+     //   [Required]
         public int CarId { get; set; }
 
         public Car Car { get; set; }
 
-        [Required]
+     //   [Required]
         public string UserId { get; set; }
 
         public RentACarUser User { get; set; }

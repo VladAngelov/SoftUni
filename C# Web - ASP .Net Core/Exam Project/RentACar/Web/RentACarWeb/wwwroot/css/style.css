@@ -19,6 +19,11 @@ hr.hr-2 {
     height: 200px;
 }
 
+.product-details{
+  /*  width: 600px; */
+    height: 450px;
+}
+
 .w-30 {
     width: 30%;
 }

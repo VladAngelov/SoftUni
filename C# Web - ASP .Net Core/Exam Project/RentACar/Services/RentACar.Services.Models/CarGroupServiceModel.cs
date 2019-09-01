@@ -2,7 +2,6 @@
 {
     using Data.Models;
 
-    //public class CarGroupServiceModel : IMapFrom<CarGroup>, IMapTo<CarGroup>
     public enum CarGroupServiceModel 
     {
         Hybrid = CarGroup.Hybrid,

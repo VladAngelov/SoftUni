@@ -27,6 +27,13 @@
             return result > 0;
         }
 
+        public CarServiceModel GetById(int id)
+        {
+            return this.context.Cars
+                .To<CarServiceModel>()
+                .SingleOrDefault(car => car.Id == id);
+        }
+
         IQueryable<CarServiceModel> ICarService.GetAllCars()
         {
             return this.context.Cars.To<CarServiceModel>();

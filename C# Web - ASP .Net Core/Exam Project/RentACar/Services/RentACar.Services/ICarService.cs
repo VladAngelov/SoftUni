@@ -9,5 +9,7 @@
         Task<bool> Create(CarServiceModel carServiceModel);
 
         IQueryable<CarServiceModel> GetAllCars();
+
+        CarServiceModel GetById(int id);
     }
 }

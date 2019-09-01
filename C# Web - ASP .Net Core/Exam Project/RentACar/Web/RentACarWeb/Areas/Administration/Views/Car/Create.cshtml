@@ -43,7 +43,7 @@
                     <label asp-for="ManufacturedOn" class="text-primary h5">Manufactured On</label>
                 </div>
             </div>
-            <input type="text"
+            <input type="date"
                    class="form-control text-primary text-center"
                    id="manufacturedOn"
                    placeholder="Manufactured On..."
@@ -126,13 +126,15 @@
     </form>
 </div>
 
+
 <script>
     window.onload = () => {
         $('#manufacturedOn').datetimepicker({
-            format: 'd.m.Y',
+            format: 'd.m.Y H:i',
             lang: 'en'
         });
-    };</script>
+    };
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

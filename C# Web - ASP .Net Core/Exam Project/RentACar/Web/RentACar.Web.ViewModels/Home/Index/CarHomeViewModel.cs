@@ -1,9 +1,12 @@
-﻿using System;
-
-namespace RentACar.Web.ViewModels.Home.Index
+﻿namespace RentACar.Web.ViewModels.Home.Index
 {
+    using RentACar.Web.BindingModels;
+    using System;
+
     public class CarHomeViewModel
     {
+        public int Id { get; set; }
+
         public string Brand { get; set; }
 
         public string Model { get; set; }
@@ -15,5 +18,7 @@ namespace RentACar.Web.ViewModels.Home.Index
         public DateTime ManufacturedOn { get; set; }
 
         public bool IsBooked { get; set; }
+
+        public CarGroupBindingModel Group { get; set; }
     }
 }

@@ -31,13 +31,13 @@
 
         public bool IsBooked { get; set; }
 
-      //  [Required]
+        [Required]
         public CarEquipment AirConditioner { get; set; }
 
-        //[Required]
+        [Required]
         public CarEquipment AutomaticGearbox { get; set; }
 
-        //[Required]
+        [Required]
         public CarEquipment Diesel { get; set; }
 
         [Required]

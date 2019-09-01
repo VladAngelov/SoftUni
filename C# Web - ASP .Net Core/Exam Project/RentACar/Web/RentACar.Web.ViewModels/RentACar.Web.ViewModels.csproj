@@ -8,4 +8,8 @@
     <ProjectReference Include="..\RentACar.Web.BindingModels\RentACar.Web.BindingModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Car\Create\" />
+  </ItemGroup>
+
 </Project>
