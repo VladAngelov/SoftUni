@@ -1,0 +1,84 @@
+﻿@model RentACar.Web.ViewModels.Car.Details.CarDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="mt-3 mb-3">
+    <form method="post" class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3">
+        <h3 class="font-weight-bold text-center btn-primary">Car Details</h3>
+        <div id="product-image-and-navigation-holder" calss="col-md-5 row">
+            <div id="image-holder">
+                <img src="@Model.Picture"
+                     alt="..." class="img-thumbnail product-details justify-content-between" />
+            </div>
+        </div>
+
+        <div id="product-data-holder" class="form-group mx-auto text-center col-md-5">
+            <h4 class="text-left">Brand: @Model.Brand</h4>
+            <h4 class="text-left">Model: @Model.Model</h4>
+            <h4 class="text-left">Manufactured on: @Model.ManufacturedOn.ToString("dd/MM/yyyy")</h4>
+            <h4 class="text-left">Group: @Model.Group</h4>
+            <h4 class="text-left">Price per Day: &euro;@Model.PricePerDay.ToString("F2")</h4>
+            <div class="form-group mt-4">
+
+                <button type="button" class="btn btn-primary text-white"
+                        data-toggle="modal" data-target="#rentModal">
+                    Rent
+                </button>
+
+                @if (this.User.IsInRole("Admin"))
+                {
+                    <a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Delete</a>
+                }
+                <a href="/" class="btn btn-primary text-white">Back</a>
+            </div>
+        </div>
+    </form>
+</main>
+
+
+<div class="modal fade" id="rentModal" tabindex="-1" role="dialog" aria-labelledby="rentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rentModalLabel">Rent - @Model.Brand @Model.Model</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="rent-form" action="/Car/Rent" method="post">
+                    <div class="form-group">
+                        <label for="startDate" class="col-form-label">Start date:</label>
+                        <input type="date"
+                               class="form-control text-primary text-center"
+                               id="startDate"
+                               placeholder="Start date..."
+                               name="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate" class="col-form-label">End date:</label>
+                        <input type="date"
+                               class="form-control text-primary text-center"
+                               id="endDate"
+                               placeholder="End date..."
+                               name="endDate">
+                    </div>
+                    <input type="hidden" value="@Model.Id" name="carId" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="complete-rent-button">Complete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#complete-rent-button').click(function () {
+        $('#rent-form').submit();
+    });
+</script>

@@ -1,0 +1,41 @@
+﻿@model RentACar.Web.BindingModels.RentACarUserBindingModel
+
+@{
+    ViewData["Title"] = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>UserProfile</h1>
+
+<body>
+    <h1 class="text-center">User Details</h1>
+    <hr class="hr-2 bg-panda">
+    <div class="mx-auto">
+        <hr class="hr-2 bg-panda">
+        <div class="d-flex justify-content-between">
+
+            <div>
+                <h4>RentACarUserBindingModel</h4>
+                <hr />
+                <dl class="row">
+                    <div class="d-flex justify-content-between">
+                        <h4>User full name:</h4>
+                        <h5>@Model.FullName</h5>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h4>Is user premium:</h4>
+                        @Html.DisplayFor(@model => @model.Premium)
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h4>User rents count:</h4>
+                        @Html.DisplayNameFor(@model => @model.Rents.Count)
+                    </div>
+                </dl>
+            </div>
+            <div>
+                @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</body>
