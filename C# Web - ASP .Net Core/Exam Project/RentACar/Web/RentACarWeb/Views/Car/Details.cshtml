@@ -25,33 +25,34 @@
             <h4 class="text-left">Цена на ден: @Model.PricePerDay.ToString("F2") лв.</h4>
 
             @*<h4 class="text-left">Brand: @Model.Brand</h4>
-            <h4 class="text-left">Model: @Model.Model</h4>
-            <h4 class="text-left">Manufactured on: @Model.ManufacturedOn.ToString("dd/MM/yyyy")</h4>
-            <h4 class="text-left">Group: @Model.Group</h4>
-            <h4 class="text-left">Price per Day: &euro;@Model.PricePerDay.ToString("F2")</h4>*@
+                <h4 class="text-left">Model: @Model.Model</h4>
+                <h4 class="text-left">Manufactured on: @Model.ManufacturedOn.ToString("dd/MM/yyyy")</h4>
+                <h4 class="text-left">Group: @Model.Group</h4>
+                <h4 class="text-left">Price per Day: &euro;@Model.PricePerDay.ToString("F2")</h4>*@
 
-        <div class="form-group mt-4">
+            <div class="form-group mt-4">
 
-            <button type="button" class="btn btn-primary text-white"
-                    data-toggle="modal" data-target="#rentModal">
-                Наеми
-            </button>
+                <button type="button" class="btn btn-primary text-white"
+                        data-toggle="modal" data-target="#rentModal">
+                    Наеми
+                </button>
 
-            @*<button type="button" class="btn btn-primary text-white"
-                data-toggle="modal" data-target="#rentModal">
-            Rent
-        </button>*@
+                @*<button type="button" class="btn btn-primary text-white"
+                            data-toggle="modal" data-target="#rentModal">
+                        Rent
+                    </button>*@
 
-            @if (this.User.IsInRole("Admin"))
-            {
-                <a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Изтрий</a>
-                @*<a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Delete</a>*@
+                @if (this.User.IsInRole("Admin"))
+                {
+                    <a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Изтрий</a>
+                    @*<a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Delete</a>*@
 
-            }
-            <a href="/" class="btn btn-primary text-white">Назад</a>
-            @*<a href="/" class="btn btn-primary text-white">Back</a>*@
+                }
 
-        </div>
+                <a href="/" class="btn btn-primary text-white">Назад</a>
+                @*<a href="/" class="btn btn-primary text-white">Back</a>*@
+
+            </div>
         </div>
     </form>
 </main>
@@ -61,6 +62,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
+
                 <h5 class="modal-title" id="rentModalLabel">Наеми - @Model.Brand @Model.Model</h5>
                 @*<h5 class="modal-title" id="rentModalLabel">Rent - @Model.Brand @Model.Model</h5>*@
 
@@ -90,34 +92,35 @@
                 </form>
 
                 @*<form id="rent-form" action="/Car/Rent" method="post">
-                <div class="form-group">
-                    <label for="startDate" class="col-form-label">Start date:</label>
-                    <input type="date"
-                           class="form-control text-primary text-center"
-                           id="startDate"
-                           placeholder="Start date..."
-                           name="startDate">
-                </div>
-                <div class="form-group">
-                    <label for="endDate" class="col-form-label">End date:</label>
-                    <input type="date"
-                           class="form-control text-primary text-center"
-                           id="endDate"
-                           placeholder="End date..."
-                           name="endDate">
-                </div>
-                <input type="hidden" value="@Model.Id" name="carId" />
-            </form>*@
+                        <div class="form-group">
+                            <label for="startDate" class="col-form-label">Start date:</label>
+                            <input type="date"
+                                   class="form-control text-primary text-center"
+                                   id="startDate"
+                                   placeholder="Start date..."
+                                   name="startDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate" class="col-form-label">End date:</label>
+                            <input type="date"
+                                   class="form-control text-primary text-center"
+                                   id="endDate"
+                                   placeholder="End date..."
+                                   name="endDate">
+                        </div>
+                        <input type="hidden" value="@Model.Id" name="carId" />
+                    </form>*@
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Затвори</button>
                 <button type="button" class="btn btn-primary" id="complete-rent-button">Завърши наема</button>
             </div>
+
             @*<div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="complete-rent-button">Complete</button>
-            </div>*@
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="complete-rent-button">Complete</button>
+                </div>*@
 
         </div>
     </div>

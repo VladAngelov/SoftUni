@@ -22,23 +22,23 @@
                 {
                     if (j < Model.Count)
                     {
-                        <div class="product col-md-2">
+                        <div class="product col-md-3">
                             <div class="image-holder d-flex justify-content-center">
                                 <a href="/Car/Details/@Model[j].Id">
                                     <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
                                 </a>
                             </div>
-                            <h6 class="text-primary text-center mt-3">Марка: @Model[j].Brand</h6>
+                            <h5 class="text-primary text-center mt-3">Марка: @Model[j].Brand</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>*@
 
-                            <h6 class="text-primary text-center mt-3">Модел: @Model[j].Model</h6>
+                            <h5 class="text-primary text-center mt-3">Модел: @Model[j].Model</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].Model</h5>*@
 
+                            <h5 class="text-primary text-center mt-3">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>*@
-                            <h6 class="text-primary text-center mt-3">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h6>
 
+                            <h5 class="text-primary text-center mt-3">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h5>
                             @*<h5 class="text-primary text-center mt-3">Price: &euro;@Model[j].PricePerDay.ToString("F2")</h5>*@
-                            <h6 class="text-primary text-center mt-3">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h6>
 
                         </div>
                     }
@@ -63,22 +63,22 @@ else
 
                     if (j < Model.Count)
                     {
-                        <div class="product col-md-2">
+                        <div class="product col-md-3">
                             <div class="image-holder d-flex justify-content-center">
                                 <a href="/Car/Details/@Model[j].Id">
                                     <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
                                 </a>
                             </div>
-                            <h6 class="text-primary text-center mt-3">Марка: @Model[j].Brand</h6>
+                            <h5 class="text-primary text-center mt-3">Марка: @Model[j].Brand</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>*@
 
-                            <h6 class="text-primary text-center mt-3">Модел: @Model[j].Model</h6>
+                            <h5 class="text-primary text-center mt-3">Модел: @Model[j].Model</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].Model</h5>*@
 
+                            <h5 class="text-primary text-center mt-3">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>*@
-                            <h6 class="text-primary text-center mt-3">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h6>
 
-                            <h6 class="text-primary text-center mt-3">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h6>
+                            <h5 class="text-primary text-center mt-3">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h5>
                             @*<h5 class="text-primary text-center mt-3">Price: &euro;@Model[j].PricePerDay.ToString("F2")</h5>*@
 
                             @if (!Model[j].IsBooked)
@@ -96,7 +96,7 @@ else
                     }
                     else
                     {
-                        <div class="product col-md-2 empty">
+                        <div class="product col-md-3 empty">
                         </div>
                     }
 
@@ -105,6 +105,29 @@ else
         }
     </div>
 }
+
+<div class="form-group mx-auto section">
+
+    <div class="d-flex justify-content-left mt-1 ml-3">
+        <h6>
+            Актуална пътна обсатовна -
+            <a href="http://www.api.bg/index.php/bg/promeni"> www.api.bg</a>
+        </h6>
+    </div>
+
+</div>
+
+<div class="form-group mx-auto section">
+
+    <div class="d-flex justify-content-left ml-3">
+        <h6>
+            Времето -
+            <a href="http://www.sinoptik.bg">www.sinoptik.bg</a>
+            или
+            <a href="http://www.dalivali.bg">www.dalivali.bg</a>
+        </h6>
+    </div>
+</div>
 
 <script>
     $('#products-search-bar').on("change paste keyup", function () {
