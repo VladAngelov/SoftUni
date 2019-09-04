@@ -7,13 +7,35 @@ hr.hr-2 {
 }
 
 .border-primary-4 {
+    border: 4px solid #656565 !important;
+}
+
+/*.border-primary-4 {
     border: 4px solid #007bff;
+}*/
+
+.navbar {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    border-radius: unset !important;
+}
+
+.bg-primary {
+    background-color: #656565 !important;   
 }
 
 .border-primary-5 {
-    border: 5px solid #007bff;
+    border: 5px solid #656565 !important;
 }
 
+.btn-primary {
+    background-color: #656565 !important;
+    border: 1px solid #656565 !important;
+}
+/*.border-primary-5 {
+    border: 5px solid #007bff;
+}*/
 .product-in-user-profil-image {
     max-width: 50%;
 }

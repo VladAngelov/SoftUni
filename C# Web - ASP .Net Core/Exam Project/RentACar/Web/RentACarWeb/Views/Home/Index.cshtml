@@ -6,7 +6,9 @@
 
 <div class="d-flex justify-content-between">
     <div id="products-search-bar-holder" class="form-group d-flex justify-content-between w-50">
-        <input type="text" class="form-control text-primary" id="products-search-bar" name="search" placeholder="Search..." />
+        <input type="text" class="form-control text-primary" id="products-search-bar" name="search" placeholder="Търсене..." />
+        @*<input type="text" class="form-control text-primary" id="products-search-bar" name="search" placeholder="Search..." />*@
+
     </div>
 </div>
 
@@ -26,10 +28,18 @@
                                     <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
                                 </a>
                             </div>
-                            <h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>
-                            <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
-                            <h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>
-                            <h5 class="text-primary text-center mt-3">Price: &euro;@Model[j].PricePerDay.ToString("F2")</h5>
+                            <h6 class="text-primary text-center mt-3">Марка: @Model[j].Brand</h6>
+                            @*<h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>*@
+
+                            <h6 class="text-primary text-center mt-3">Модел: @Model[j].Model</h6>
+                            @*<h5 class="text-primary text-center mt-3">@Model[j].Model</h5>*@
+
+                            @*<h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>*@
+                            <h6 class="text-primary text-center mt-3">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h6>
+
+                            @*<h5 class="text-primary text-center mt-3">Price: &euro;@Model[j].PricePerDay.ToString("F2")</h5>*@
+                            <h6 class="text-primary text-center mt-3">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h6>
+
                         </div>
                     }
                     else
@@ -59,17 +69,28 @@ else
                                     <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
                                 </a>
                             </div>
-                            <h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>
-                            <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
-                            <h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>
-                            <h5 class="text-primary text-center mt-3">Price: &euro;@Model[j].PricePerDay.ToString("F2")</h5>
+                            <h6 class="text-primary text-center mt-3">Марка: @Model[j].Brand</h6>
+                            @*<h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>*@
+
+                            <h6 class="text-primary text-center mt-3">Модел: @Model[j].Model</h6>
+                            @*<h5 class="text-primary text-center mt-3">@Model[j].Model</h5>*@
+
+                            @*<h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>*@
+                            <h6 class="text-primary text-center mt-3">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h6>
+
+                            <h6 class="text-primary text-center mt-3">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h6>
+                            @*<h5 class="text-primary text-center mt-3">Price: &euro;@Model[j].PricePerDay.ToString("F2")</h5>*@
+
                             @if (!Model[j].IsBooked)
                             {
-                                <a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Booking</a>
+                                <a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Наемане</a>
+                                @*<a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Booking</a>*@
                             }
                             else
                             {
-                                <button class="btn btn-primary font-weight-bold">Booked!</button>
+                                <button class="btn btn-primary font-weight-bold">Заета!</button>
+                                @*<button class="btn btn-primary font-weight-bold">Booked!</button>*@
+
                             }
                         </div>
                     }
