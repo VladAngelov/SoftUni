@@ -1,6 +1,6 @@
 ﻿namespace RentACar.Services.Models
 {
-    using Data.Models;
+    using Data.Models.Car;
 
     public enum CarGroupServiceModel 
     {

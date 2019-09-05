@@ -8,31 +8,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="bg-primary text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Add car in the garage</h1>
+<h1 class="bg-primary text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Добави кола в гаража</h1>
 
 <div class="row col-md-6">
     <form method="post" class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group mx-auto">
             <div class="d-flex justify-content-center">
-                <label asp-for="Brand" class="text-primary h5">Brand</label>
+                <label asp-for="Brand" class="text-primary h5">Марка</label>
             </div>
             <input type="text"
                    id="model"
                    class="form-control text-primary text-center"
-                   placeholder="Brand..."
+                   placeholder="Марка..."
                    asp-for="Brand" />
             <span asp-validation-for="Brand" class="text-danger" />
         </div>
 
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="Model" class="text-primary h5">Model</label>
+                <label asp-for="Model" class="text-primary h5">Модел</label>
             </div>
             <input type="text"
                    id="model"
                    class="form-control text-primary text-center"
-                   placeholder="Model..."
+                   placeholder="Модел..."
                    asp-for="Model" />
             <span asp-validation-for="Model" class="text-danger" />
         </div>
@@ -40,13 +40,13 @@
         <div class="form-group">
             <div class="d-flex justify-content-center">
                 <div class="d-flex justify-content-center">
-                    <label asp-for="ManufacturedOn" class="text-primary h5">Manufactured On</label>
+                    <label asp-for="ManufacturedOn" class="text-primary h5">Дата на създаване</label>
                 </div>
             </div>
             <input type="date"
                    class="form-control text-primary text-center"
                    id="manufacturedOn"
-                   placeholder="Manufactured On..."
+                   placeholder="Дата на създаване..."
                    asp-for="ManufacturedOn">
             <span asp-validation-for="ManufacturedOn" class="text-danger" />
         </div>
@@ -54,12 +54,12 @@
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-between">
                 <div class="d-flex justify-content-center">
-                    <label asp-for="Picture" class="text-primary h5">Picture</label>
+                    <label asp-for="Picture" class="text-primary h5">Снимка</label>
                 </div>
                 <input type="file"
                        class="form-control text-primary text-center"
                        id="picture"
-                       placeholder="Picture..."
+                       placeholder="Снимка..."
                        asp-for="Picture">
                 <span asp-validation-for="Picture" class="text-danger" />
             </div>
@@ -67,11 +67,11 @@
 
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="Group" class="text-primary h5">Car Group</label>
+                <label asp-for="Group" class="text-primary h5">Група на колата</label>
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="Group" asp-items="@(Html.GetEnumSelectList<CarGroupBindingModel>())">
-                    <option selected="selected" value="">Please select</option>
+                    <option selected="selected" value="">Избери</option>
                 </select>
                 <span asp-validation-for="Group" class="text-danger" />
             </div>
@@ -79,30 +79,35 @@
 
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="PricePerDay" class="text-primary h5">Price per day</label>
+                <label asp-for="PricePerDay" class="text-primary h5">Цена на ден</label>
             </div>
-            <input asp-for="PricePerDay" class="form-control" />
+            <input type="number"
+                   step="0.01"
+                   class="form-control text-primary text-center"
+                   id="price"
+                   placeholder="Цена на ден..."
+                   asp-for="PricePerDay" />
             <span asp-validation-for="PricePerDay" class="text-danger" />
         </div>
 
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="AirConditioner" class="text-primary h5">Air Conditioner</label>
+                <label asp-for="AirConditioner" class="text-primary h5">Климатик</label>
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="AirConditioner" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
-                    <option selected="selected" value="">Please select</option>
+                    <option selected="selected" value="">Избери</option>
                 </select>
             </div>
         </div>
 
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="AutomaticGearbox" class="text-primary h5">Automatic Gearbox</label>
+                <label asp-for="AutomaticGearbox" class="text-primary h5">Автоматична скоростна кутия</label>
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="AutomaticGearbox" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
-                    <option selected="selected" value="">Please select</option>
+                    <option selected="selected" value="">Избери</option>
                 </select>
                 <span asp-validation-for="AutomaticGearbox" class="text-danger" />
             </div>
@@ -110,18 +115,18 @@
 
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="Diesel" class="text-primary h5">Diesel</label>
+                <label asp-for="Diesel" class="text-primary h5">Дизел</label>
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="Diesel" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
-                    <option selected="selected" value="">Please select</option>
+                    <option selected="selected" value="">Избери</option>
                 </select>
                 <span asp-validation-for="Diesel" class="text-danger" />
             </div>
         </div>
 
         <div class="form-group text-center">
-            <input type="submit" value="Create" class="btn btn-primary" />
+            <input type="submit" value="Добави" class="btn btn-primary" />
         </div>
     </form>
 </div>
@@ -139,3 +144,128 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+@*
+
+
+    <h1 class="bg-primary text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Add car in the garage</h1>
+
+    <div class="row col-md-6">
+        <form method="post" class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mx-auto">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="Brand" class="text-primary h5">Brand</label>
+                </div>
+                <input type="text"
+                       id="model"
+                       class="form-control text-primary text-center"
+                       placeholder="Brand..."
+                       asp-for="Brand" />
+                <span asp-validation-for="Brand" class="text-danger" />
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="Model" class="text-primary h5">Model</label>
+                </div>
+                <input type="text"
+                       id="model"
+                       class="form-control text-primary text-center"
+                       placeholder="Model..."
+                       asp-for="Model" />
+                <span asp-validation-for="Model" class="text-danger" />
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center">
+                        <label asp-for="ManufacturedOn" class="text-primary h5">Manufactured On</label>
+                    </div>
+                </div>
+                <input type="date"
+                       class="form-control text-primary text-center"
+                       id="manufacturedOn"
+                       placeholder="Manufactured On..."
+                       asp-for="ManufacturedOn">
+                <span asp-validation-for="ManufacturedOn" class="text-danger" />
+            </div>
+
+            <div class="form-group mx-auto w-45">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-center">
+                        <label asp-for="Picture" class="text-primary h5">Picture</label>
+                    </div>
+                    <input type="file"
+                           class="form-control text-primary text-center"
+                           id="picture"
+                           placeholder="Picture..."
+                           asp-for="Picture">
+                    <span asp-validation-for="Picture" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="Group" class="text-primary h5">Car Group</label>
+                </div>
+                <div class="col-md-10 text-center">
+                    <select asp-for="Group" asp-items="@(Html.GetEnumSelectList<CarGroupBindingModel>())">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                    <span asp-validation-for="Group" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="PricePerDay" class="text-primary h5">Price per day</label>
+                </div>
+                <input asp-for="PricePerDay" class="form-control" />
+                <span asp-validation-for="PricePerDay" class="text-danger" />
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="AirConditioner" class="text-primary h5">Air Conditioner</label>
+                </div>
+                <div class="col-md-10 text-center">
+                    <select asp-for="AirConditioner" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="AutomaticGearbox" class="text-primary h5">Automatic Gearbox</label>
+                </div>
+                <div class="col-md-10 text-center">
+                    <select asp-for="AutomaticGearbox" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                    <span asp-validation-for="AutomaticGearbox" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="Diesel" class="text-primary h5">Diesel</label>
+                </div>
+                <div class="col-md-10 text-center">
+                    <select asp-for="Diesel" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
+                        <option selected="selected" value="">Please select</option>
+                    </select>
+                    <span asp-validation-for="Diesel" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+
+*@

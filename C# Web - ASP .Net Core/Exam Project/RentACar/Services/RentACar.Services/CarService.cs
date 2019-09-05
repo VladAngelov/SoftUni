@@ -1,7 +1,7 @@
 ﻿namespace RentACar.Services
 {
     using Data;
-    using Data.Models;
+    using Data.Models.Car;
     using Models;
     using RentACar.Service.Mapping;
     using System.Linq;
@@ -18,7 +18,12 @@
 
         public async Task<bool> Create(CarServiceModel carServiceModel)
         {
+            //CarStatus carStatusFromDb = context.CarStatuses
+            //    .First(carStatus => carStatus.Name == carServiceModel.Status.Name);
+
             Car car = AutoMapper.Mapper.Map<Car>(carServiceModel);
+
+            //car.CarStatus = carStatusFromDb;
 
             this.context.Cars.Add(car);
 

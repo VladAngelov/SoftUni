@@ -1,6 +1,6 @@
 ﻿namespace RentACar.Services.Models
 {
-    using Data.Models;
+    using Data.Models.Rent;
     using Service.Mapping;
     using System;
 

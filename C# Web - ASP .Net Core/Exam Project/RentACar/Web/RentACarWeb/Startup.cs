@@ -10,7 +10,9 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using RentACar.Data;
-    using RentACar.Data.Models;
+    using RentACar.Data.Models.Car;
+    using RentACar.Data.Models.Rent;
+    using RentACar.Data.Models.User;
     using RentACar.Service.Mapping;
     using RentACar.Services;
     using RentACar.Services.Models;
@@ -56,15 +58,13 @@
 
             services.Configure<IdentityOptions>(options =>
             {
-                // Password settings.
-                // TODO: Change settings
+                // TODO: Change Password settings
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 3;
                 options.Password.RequiredUniqueChars = 0;
-
                 options.User.RequireUniqueEmail = true;
             });
 
@@ -82,7 +82,7 @@
                 typeof(CarHomeViewModel).GetTypeInfo().Assembly,
                 typeof(CarServiceModel).GetTypeInfo().Assembly,
                 typeof(RentServiceModel).GetTypeInfo().Assembly);
-                    
+
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
@@ -119,6 +119,55 @@
                         context.RentStatuses.Add(new RentStatus
                         {
                             Name = "Ended"
+                        });
+
+                        context.SaveChanges();
+                    }
+
+                    if (!context.CarStatuses.Any())
+                    {
+                        context.CarStatuses.Add(new CarStatus
+                        {
+                            Name = "Free"
+                        });
+
+                        context.SaveChanges();
+
+                        context.CarStatuses.Add(new CarStatus
+                        {
+                            Name = "Booked"
+                        });
+
+                        context.SaveChanges();
+                    }
+
+                    //if (!context.CarStatuses.Any())
+                    //{
+                    //    context.CarStatuses.Add(new CarStatus
+                    //    {
+                    //        Name = "Free"
+                    //    });
+
+                    //    context.CarStatuses.Add(new CarStatus
+                    //    {
+                    //        Name = "Booked"
+                    //    });
+
+                    //    context.SaveChanges();
+                    //}
+
+                    if (!context.UserStatuses.Any())
+                    {
+                        context.UserStatuses.Add(new RentACarUserStatus
+                        {
+                            Name = "Not Premium"
+                        });
+
+                        context.SaveChanges();
+
+                        context.UserStatuses.Add(new RentACarUserStatus
+                        {
+                            Name = "Premium"
                         });
 
                         context.SaveChanges();

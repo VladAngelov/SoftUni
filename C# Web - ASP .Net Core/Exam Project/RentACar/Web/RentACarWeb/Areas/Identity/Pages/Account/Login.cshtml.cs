@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
-    using RentACar.Data.Models;
+    using RentACar.Data.Models.User;
     using System.ComponentModel.DataAnnotations;
     using System.Threading.Tasks;
 
@@ -31,6 +31,8 @@
         {
             [Required]
             [Display(Name = "Username")]
+            [MaxLength(30)]
+            //[Display(Name = "Username")]
             public string Username { get; set; }
 
             [Required]

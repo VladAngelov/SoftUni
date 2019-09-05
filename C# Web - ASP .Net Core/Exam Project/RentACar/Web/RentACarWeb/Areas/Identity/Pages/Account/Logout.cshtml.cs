@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
-    using RentACar.Data.Models;
+    using RentACar.Data.Models.User;
     using System.Threading.Tasks;
 
     [AllowAnonymous]

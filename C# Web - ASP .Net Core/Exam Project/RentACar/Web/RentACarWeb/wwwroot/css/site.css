@@ -19,10 +19,16 @@ html {
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #656565;
 }
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #656565;
+    border-bottom-color: #656565;
+}
+
+.border-left-right {
+    border-left: 1px solid #656565;
+    border-right: 1px solid #656565;
 }
 
 .box-shadow {
@@ -42,9 +48,11 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: lightgray;
 }
+
 .footer {
   position: absolute;
   bottom: 0;

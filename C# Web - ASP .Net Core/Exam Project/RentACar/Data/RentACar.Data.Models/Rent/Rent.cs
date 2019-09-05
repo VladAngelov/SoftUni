@@ -1,7 +1,8 @@
-﻿namespace RentACar.Data.Models
+﻿namespace RentACar.Data.Models.Rent
 {
+    using Car;
+    using User;
     using System;
-    using System.ComponentModel.DataAnnotations;
 
     public class Rent
     {
@@ -12,6 +13,8 @@
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
+
+        public decimal Fee { get; set; }
 
         public int StatusId { get; set; }
 

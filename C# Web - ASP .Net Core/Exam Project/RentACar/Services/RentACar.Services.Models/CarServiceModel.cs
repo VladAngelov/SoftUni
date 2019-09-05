@@ -1,6 +1,6 @@
 ﻿namespace RentACar.Services.Models
 {
-    using Data.Models;
+    using Data.Models.Car;
     using Service.Mapping;
     using System;
 
@@ -18,7 +18,7 @@
 
         public decimal PricePerDay { get; set; }
 
-        public bool IsBooked { get; set; }
+        public CarStatus Status { get; set; }
 
         public CarEquipment AirConditioner { get; set; }
 

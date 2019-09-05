@@ -1,8 +1,8 @@
 ﻿namespace RentACar.Services.Models
 {
-    using Data.Models;
+    using Data.Models.Car;
 
-    public enum CarEquipmentServiceModel //: IMapFrom<CarEquipment>, IMapTo<CarEquipment>
+    public enum CarEquipmentServiceModel
     {
         Yes = CarEquipment.Yes,
         No = CarEquipment.No

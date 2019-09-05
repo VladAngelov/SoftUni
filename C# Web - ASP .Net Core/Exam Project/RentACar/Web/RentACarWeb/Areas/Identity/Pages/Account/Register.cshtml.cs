@@ -5,7 +5,7 @@ namespace RentACarWeb.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
-    using RentACar.Data.Models;
+    using RentACar.Data.Models.User;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Threading.Tasks;
@@ -23,13 +23,11 @@ namespace RentACarWeb.Areas.Identity.Pages.Account
             UserManager<RentACarUser> userManager,
             SignInManager<RentACarUser> signInManager,
             RoleManager<IdentityRole> roleManager
-           // ILogger<RegisterModel> logger,
             /*IEmailSender emailSender*/)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
-         //   _logger = logger;
          //   _emailSender = emailSender;
         }
 
@@ -41,37 +39,49 @@ namespace RentACarWeb.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "Username")]
+            [Display(Name = "Потребителско име")]
+            //[Display(Name = "Username")]
             public string Username { get; set; }
 
             [Required]
-            [Display(Name = "First name")]
-            [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [Display(Name = "Първо име")]
+            [StringLength(30, ErrorMessage = "{0}, трябва да бъде между {2} и {1} символа.", MinimumLength = 3)]
+            //[Display(Name = "First name")]
+            //[StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             public string FirstName { get; set; }
 
             [Required]
-            [Display(Name = "Last name")]
-            [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [Display(Name = "Фамилия")]
+            [StringLength(30, ErrorMessage = "{0}, трябва да бъде между {2} и {1} символа.", MinimumLength = 3)]
+            //[Display(Name = "Last name")]
+            //[StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             public string LastName { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
-            //  [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Парола")]
+            [StringLength(30, ErrorMessage = "{0}, трябва да бъде между {2} и {1} символа.", MinimumLength = 3)]
+            //[StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            //[DataType(DataType.Password)]
+            //[Display(Name = "Password")]
             public string Password { get; set; }
 
-            //  [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Required]
+            [Display(Name = "Потвърджение на парола")]
+            [Compare("Password", ErrorMessage = "Паролите не съвпадат!")]
+            //[DataType(DataType.Password)]
+            //[Display(Name = "Confirm password")]
+            //[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
             [Required]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Телефонен номер")]
+            //[Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "Електронна поща")]
+            //[Display(Name = "Email")]
             public string Email { get; set; }
         }
 
@@ -94,15 +104,16 @@ namespace RentACarWeb.Areas.Identity.Pages.Account
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
                     PhoneNumber = Input.PhoneNumber,
-                    Email = Input.Email
+                    Email = Input.Email,
+                    FullName = Input.FirstName + " " + Input.LastName
+
+                    // TODO: maybe bug??
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
-                    // _logger.LogInformation("User created a new account with password.");
-
                     if (isRoot)
                     {
                         await _userManager.AddToRoleAsync(user, "Admin");
@@ -125,7 +136,6 @@ namespace RentACarWeb.Areas.Identity.Pages.Account
                     //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
                     #endregion
 
-                    //  await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
 

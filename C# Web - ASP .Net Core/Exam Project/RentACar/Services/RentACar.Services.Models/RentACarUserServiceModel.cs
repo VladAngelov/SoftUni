@@ -1,6 +1,6 @@
 ﻿namespace RentACar.Services.Models
 {
-    using Data.Models;
+    using Data.Models.User;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Service.Mapping;
     using System.Collections.Generic;
@@ -9,7 +9,7 @@
     {
         public string FullName { get; set; }
 
-        public bool Premium { get; set; }
+        public RentACarUserStatusServiceModel Status { get; set; }
 
         public HashSet<RentServiceModel> Rents { get; set; }
     }

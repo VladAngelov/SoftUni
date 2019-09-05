@@ -5,37 +5,95 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>UserProfile</h1>
+<h1>Профил</h1>
 
 <body>
-    <h1 class="text-center">User Details</h1>
+    <h1 class="text-center">Детайли на потребителя</h1>
     <hr class="hr-2 bg-panda">
     <div class="mx-auto">
         <hr class="hr-2 bg-panda">
         <div class="d-flex justify-content-between">
-
             <div>
-                <h4>RentACarUserBindingModel</h4>
-                <hr />
                 <dl class="row">
                     <div class="d-flex justify-content-between">
-                        <h4>User full name:</h4>
+                        <h4>Пълно име:</h4>
                         <h5>@Model.FullName</h5>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <h4>Is user premium:</h4>
-                        @Html.DisplayFor(@model => @model.Premium)
+                        <h4>Статус на потребителя:</h4>
+                        <h5>@Model.Premium.Name</h5>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <h4>User rents count:</h4>
-                        @Html.DisplayNameFor(@model => @model.Rents.Count)
+                        <h4>Брой на наеми:</h4>
+                        <h5>@Model.Rents.Count</h5>
+                    </div>
+                    <div claass="d-flex justify-content-between">
+                        <h4>Active rent:</h4>
+                        @if (Model.Rents.Any())
+                        {
+                            foreach (var rent in Model.Rents.Where(rent => rent.Status.Name == "Active"))
+                            {
+                                <form class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3">
+                                    <h4>Марка: @rent.Car.Brand</h4>
+                                    <h4>Модел: @rent.Car.Model</h4>
+                                    <h4>Дата на създаване: @rent.Car.ManufacturedOn.ToString("dd/MM/yyyy")</h4>
+                                    <h4>Група: @rent.Car.Group</h4>
+                                    <h4>Климатик: @rent.Car.AirConditioner</h4>
+                                    <h4>Автоматична скоростна кутия: @rent.Car.AutomaticGearbox</h4>
+                                    <h4>Дизел: @rent.Car.Diesel</h4>
+                                    <Img class="col-md-3 img-thubnail product-in-user-profil-image"
+                                         src="@rent.Car.Picture" alt="@rent.Car.Brand @rent.Car.Model">
+                                    <h4>
+                                        Rents count: @Model.Rents.Count
+                                    </h4>
+                                </form>
+                            }
+                        }
+                        else
+                        {
+                            <h4>No active rents.</h4>
+                        }
                     </div>
                 </dl>
             </div>
             <div>
-                @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-                <a asp-action="Index">Back to List</a>
+                <a asp-action="Index">Назад</a>
             </div>
         </div>
     </div>
 </body>
+
+
+@*<h1>UserProfile</h1>*@
+
+@*<body>
+        <h1 class="text-center">User Details</h1>
+        <hr class="hr-2 bg-panda">
+        <div class="mx-auto">
+            <hr class="hr-2 bg-panda">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h4>RentACarUserBindingModel</h4>
+                    <hr />
+                    <dl class="row">
+                        <div class="d-flex justify-content-between">
+                            <h4>User full name:</h4>
+                            <h5>@Model.FullName</h5>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h4>Is user premium:</h4>
+                            <h5>@Model.Premium.Name</h5>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h4>User rents count:</h4>
+                            <h5>@Model.Rents.Count</h5>
+                        </div>
+                    </dl>
+                </div>
+                <div>
+                    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </body>*@

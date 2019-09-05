@@ -17,7 +17,7 @@
 
         public DateTime ManufacturedOn { get; set; }
 
-        public bool IsBooked { get; set; }
+        public RentACarCarStatusBindingModel Status { get; set; }
 
         public CarGroupBindingModel Group { get; set; }
     }

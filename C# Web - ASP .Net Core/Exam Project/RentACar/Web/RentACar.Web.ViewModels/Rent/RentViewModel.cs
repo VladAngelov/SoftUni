@@ -32,6 +32,13 @@
             set
             {
                 this.fee = (decimal)(EndDate.Date - StartDate.Date).Days * PricePerDay;
+
+                decimal sum = (decimal)(EndDate.Date - StartDate.Date).Days * PricePerDay;
+
+                if (this.User.Premium.Name == "Premium")
+                {
+                    this.fee = sum * 0.3m;
+                }
             }
         }
     }

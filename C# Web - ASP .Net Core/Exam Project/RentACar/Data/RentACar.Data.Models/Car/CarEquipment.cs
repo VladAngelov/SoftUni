@@ -1,4 +1,4 @@
-﻿namespace RentACar.Data.Models
+﻿namespace RentACar.Data.Models.Car
 {
     public enum CarEquipment
     {

@@ -1,9 +1,9 @@
 ﻿namespace RentACar.Services.Models
 {
-    using Data.Models.Rent;
+    using Data.Models.Car;
     using Service.Mapping;
 
-    public class RentStatusServiceModel : IMapFrom<RentStatus>
+    public class CarStatusServiceModel : IMapFrom<CarStatus>, IMapTo<CarStatus>
     {
         public string Name { get; set; }
     }

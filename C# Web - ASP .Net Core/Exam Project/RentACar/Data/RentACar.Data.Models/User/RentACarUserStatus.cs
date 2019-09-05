@@ -1,8 +1,9 @@
-﻿namespace RentACar.Data.Models
+﻿namespace RentACar.Data.Models.User
 {
-    public class RentStatus
+    public class RentACarUserStatus
     {
         public int Id { get; set; }
+
         public string Name { get; set; }
     }
 }

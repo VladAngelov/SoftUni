@@ -11,12 +11,10 @@
     public class HomeController : Controller
     {
         private readonly ICarService carService;
-        private readonly IRentService rentService;
 
-        public HomeController(ICarService carService, IRentService rentService)
+        public HomeController(ICarService carService)
         {
             this.carService = carService;
-            this.rentService = rentService;
         }
 
         public async Task<IActionResult> Index()
@@ -26,11 +24,10 @@
                 {
                     Id = car.Id,
                     Brand = car.Brand,
-                    IsBooked = car.IsBooked,
                     Model = car.Model,
                     Picture = car.Picture,
                     PricePerDay = car.PricePerDay,
-                    ManufacturedOn = car.ManufacturedOn
+                    ManufacturedOn = car.ManufacturedOn,
                 }).ToList();
 
             return View(cars);

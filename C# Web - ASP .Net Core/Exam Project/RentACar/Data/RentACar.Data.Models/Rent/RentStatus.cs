@@ -1,8 +1,9 @@
-﻿namespace RentACar.Data.Models
+﻿namespace RentACar.Data.Models.Rent
 {
-    public class CarIsBooked
+    public class RentStatus
     {
         public int Id { get; set; }
+
         public string Name { get; set; }
     }
 }

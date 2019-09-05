@@ -1,7 +1,7 @@
 ﻿namespace RentACar.Services
 {
     using Data;
-    using Data.Models;
+    using Data.Models.Rent;
     using Microsoft.EntityFrameworkCore;
     using Models;
     using RentACar.Service.Mapping;
@@ -25,9 +25,7 @@
             rent.Status = await context.RentStatuses
                 .SingleOrDefaultAsync(rentStatus => rentStatus.Name == "Active");
 
-           // rent.Car.IsBooked = true;
-
-            // TODO: Data validation
+            rent.Car.CarStatus.Name = "Booked";
 
             rent.IssuedOn = DateTime.UtcNow;
 

@@ -20,5 +20,7 @@
         public string Picture { get; set; }
 
         public CarGroupBindingModel Group { get; set; }
+
+        public RentACarCarStatusBindingModel CarStatus { get; set; } //??
     }
 }

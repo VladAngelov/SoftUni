@@ -1,15 +1,18 @@
-﻿namespace RentACar.Data.Models
+﻿namespace RentACar.Data.Models.User
 {
     using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Rent;
 
     public class RentACarUser : IdentityUser
     {
+        private string fullName;
+
         public RentACarUser()
         {
-            this.Premium = false;
             this.Rents = new HashSet<Rent>();
+            this.StatusId = 1;
         }
 
         [Required]
@@ -20,9 +23,21 @@
         [MaxLength(30)]
         public string LastName { get; set; }
 
-        public string FullName => FirstName + " " + LastName;
+        public string FullName
+        {
+            get
+            {
+                return this.fullName;
+            }
+            set
+            {
+                this.fullName = FirstName + " " + LastName;
+            }
+        }
 
-        public bool Premium { get; set; }
+        public int StatusId { get; set; }
+
+        public RentACarUserStatus Status { get; set; }
 
         public ICollection<Rent> Rents { get; set; }
 
@@ -30,7 +45,7 @@
         {
             if (this.Rents.Count >= 3)
             {
-                this.Premium = true;
+                this.Status.Name = "Premium";
             }
         }
     }
