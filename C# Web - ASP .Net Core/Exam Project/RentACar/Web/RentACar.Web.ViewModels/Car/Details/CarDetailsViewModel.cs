@@ -21,6 +21,6 @@
 
         public CarGroupBindingModel Group { get; set; }
 
-        public RentACarCarStatusBindingModel CarStatus { get; set; } //??
+        public CarStatusBindingModel CarStatus { get; set; } //??
     }
 }

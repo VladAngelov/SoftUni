@@ -57,13 +57,14 @@
         //[Required(ErrorMessage = "Required picture!")]
         public IFormFile Picture { get; set; }
 
+        [Required(ErrorMessage = "Задължително да се избере статус на колата!")]
         public string CarStatus { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration
                 .CreateMap<CarCreateBindingModel, CarServiceModel>()
-                .ForMember(destination => destination.Status,
+                .ForMember(destination => destination.CarStatus,
                             opts => opts.MapFrom(origin => new CarStatusServiceModel { Name = origin.CarStatus }));
         }
     }

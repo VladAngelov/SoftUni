@@ -4,11 +4,6 @@
 
     public class Car
     {
-        public Car()
-        {
-            //this.CarStatus.Name = "Free";
-        }
-
         public int Id { get; set; }
 
         public string Brand { get; set; }
@@ -21,7 +16,7 @@
 
         public decimal PricePerDay { get; set; }
 
-     //   public int CarStatusId { get; set; }
+        public int CarStatusId { get; set; }
 
         public CarStatus CarStatus { get; set; }
 

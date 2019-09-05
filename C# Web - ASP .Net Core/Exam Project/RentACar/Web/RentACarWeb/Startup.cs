@@ -141,21 +141,6 @@
                         context.SaveChanges();
                     }
 
-                    //if (!context.CarStatuses.Any())
-                    //{
-                    //    context.CarStatuses.Add(new CarStatus
-                    //    {
-                    //        Name = "Free"
-                    //    });
-
-                    //    context.CarStatuses.Add(new CarStatus
-                    //    {
-                    //        Name = "Booked"
-                    //    });
-
-                    //    context.SaveChanges();
-                    //}
-
                     if (!context.UserStatuses.Any())
                     {
                         context.UserStatuses.Add(new RentACarUserStatus

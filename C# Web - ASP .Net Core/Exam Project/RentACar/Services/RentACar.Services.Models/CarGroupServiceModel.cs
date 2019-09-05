@@ -2,7 +2,7 @@
 {
     using Data.Models.Car;
 
-    public enum CarGroupServiceModel 
+    public enum CarGroupServiceModel
     {
         Hybrid = CarGroup.Hybrid,
         Compact = CarGroup.Compact,

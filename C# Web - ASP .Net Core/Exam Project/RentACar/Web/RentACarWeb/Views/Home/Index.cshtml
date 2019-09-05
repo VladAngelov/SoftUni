@@ -1,7 +1,7 @@
 ﻿@model List<RentACar.Web.ViewModels.Home.Index.CarHomeViewModel>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Коли под наем";
 }
 
 <div class="d-flex justify-content-between">
@@ -81,8 +81,8 @@ else
                             <h5 class="text-primary text-center mt-2">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h5>
                             @*<h5 class="text-primary text-center mt-3">Price: &euro;@Model[j].PricePerDay.ToString("F2")</h5>*@
 
-                            @*@if (Model[j].Status.Name.Equals("Free"))*@
-                            @*{*@
+                            @*@if (Model[j].Status.Name == "Free")
+                            {*@
                                 <a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Наемане</a>
                                 @*<a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Booking</a>
                             }

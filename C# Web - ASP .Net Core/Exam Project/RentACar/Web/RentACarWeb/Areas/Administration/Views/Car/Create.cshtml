@@ -2,6 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @using RentACar.Web.BindingModels
+@using RentACar.Web.ViewModels.Car.Status
 
 @{
     ViewData["Title"] = "Create";
@@ -96,7 +97,7 @@
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="AirConditioner" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
-                    <option selected="selected" value="">Избери</option>
+                    <option selected disabled>--- Избери ---</option>
                 </select>
             </div>
         </div>
@@ -107,7 +108,7 @@
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="AutomaticGearbox" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
-                    <option selected="selected" value="">Избери</option>
+                    <option selected disabled>--- Избери ---</option>
                 </select>
                 <span asp-validation-for="AutomaticGearbox" class="text-danger" />
             </div>
@@ -119,10 +120,24 @@
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="Diesel" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
-                    <option selected="selected" value="">Избери</option>
+                    <option selected disabled>--- Избери ---</option>
                 </select>
                 <span asp-validation-for="Diesel" class="text-danger" />
             </div>
+        </div>
+
+        <div class="form-group mx-auto w-45">
+            <div class="d-flex justify-content-center">
+                <label asp-for="CarStatus" class="text-primary h5">Статус на колата</label>
+            </div>
+            <select class="form-control text-primary" id="type" asp-for="CarStatus">
+                <option selected disabled>--- Избери тип ---</option>
+                @foreach (var status in (IEnumerable<CarCreateCarStatusViewModel>)this.ViewData["statuses"])
+                {
+                    <option value="@status.Name">@status.Name</option>
+                }
+            </select>
+            <span asp-validation-for="CarStatus" class="text-danger"></span>
         </div>
 
         <div class="form-group text-center">
@@ -130,7 +145,6 @@
         </div>
     </form>
 </div>
-
 
 <script>
     window.onload = () => {
@@ -146,7 +160,6 @@
 }
 
 @*
-
 
     <h1 class="bg-primary text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Add car in the garage</h1>
 

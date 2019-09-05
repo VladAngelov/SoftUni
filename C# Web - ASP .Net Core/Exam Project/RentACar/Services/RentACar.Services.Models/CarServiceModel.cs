@@ -18,7 +18,9 @@
 
         public decimal PricePerDay { get; set; }
 
-        public CarStatus Status { get; set; }
+        public int CarStatusId { get; set; }
+
+        public CarStatus CarStatus { get; set; }
 
         public CarEquipment AirConditioner { get; set; }
 

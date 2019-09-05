@@ -11,5 +11,7 @@
         IQueryable<CarServiceModel> GetAllCars();
 
         CarServiceModel GetById(int id);
+
+        IQueryable<CarStatusServiceModel> GetAllStatuses();
     }
 }
