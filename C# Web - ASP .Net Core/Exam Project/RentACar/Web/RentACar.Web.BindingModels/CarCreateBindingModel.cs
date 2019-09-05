@@ -1,12 +1,13 @@
 ﻿namespace RentACar.Web.BindingModels
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Http;
     using RentACar.Service.Mapping;
     using RentACar.Services.Models;
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class CarCreateBindingModel : IMapTo<CarServiceModel>
+    public class CarCreateBindingModel : IMapTo<CarServiceModel>, IHaveCustomMappings
     {
         [Required(ErrorMessage = "Въведи марката на колата!")]
         [StringLength(20, ErrorMessage = "Въведи валидна марка!", MinimumLength = 2)]
@@ -55,5 +56,15 @@
         [Required(ErrorMessage = "Задължително да се избере снимка!")]
         //[Required(ErrorMessage = "Required picture!")]
         public IFormFile Picture { get; set; }
+
+        public string CarStatus { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration
+                .CreateMap<CarCreateBindingModel, CarServiceModel>()
+                .ForMember(destination => destination.Status,
+                            opts => opts.MapFrom(origin => new CarStatusServiceModel { Name = origin.CarStatus }));
+        }
     }
 }
