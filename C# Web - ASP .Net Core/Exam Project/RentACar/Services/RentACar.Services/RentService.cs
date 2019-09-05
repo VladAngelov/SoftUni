@@ -36,7 +36,7 @@
             return result > 0;
         }
 
-        public IQueryable<RentServiceModel> AllRents()
+        public IQueryable<RentServiceModel> GetAllRents()
         {
              return this.context.Rents.To<RentServiceModel>();
         }

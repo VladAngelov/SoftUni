@@ -8,6 +8,6 @@
     {
         Task<bool> CreateRent(RentServiceModel rentServiceModel);
 
-        IQueryable<RentServiceModel> AllRents();
+        IQueryable<RentServiceModel> GetAllRents();
     }
 }
