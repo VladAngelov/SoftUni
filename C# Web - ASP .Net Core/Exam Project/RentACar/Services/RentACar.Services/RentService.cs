@@ -5,6 +5,7 @@
     using Microsoft.EntityFrameworkCore;
     using Models;
     using RentACar.Service.Mapping;
+    using RentACar.Web.ViewModels.Rent;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
@@ -25,7 +26,9 @@
             rent.Status = await context.RentStatuses
                 .SingleOrDefaultAsync(rentStatus => rentStatus.Name == "Active");
 
-            rent.Car.CarStatus.Name = "Booked";
+            var carStatus = this.context.CarStatuses.FirstOrDefault(status => status.Name == "Booked");
+
+            rent.Car.CarStatus = carStatus; // TODO: FIX
 
             rent.IssuedOn = DateTime.UtcNow;
 
@@ -36,9 +39,9 @@
             return result > 0;
         }
 
-        public IQueryable<RentServiceModel> GetAllRents()
+        public IQueryable<RentServiceModel> GetAllRents(string criteria = null)
         {
-             return this.context.Rents.To<RentServiceModel>();
+            return this.context.Rents.To<RentServiceModel>();
         }
     }
 }

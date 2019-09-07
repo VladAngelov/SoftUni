@@ -17,12 +17,81 @@
             </div>
         </div>
 
-        <div id="product-data-holder" class="form-group mx-auto text-center col-md-5">
+        <div id="product-data-holder" class="form-group mx-auto text-center col-md-5 my-3 border-t">
             <h4 class="text-left">Марка: @Model.Brand</h4>
             <h4 class="text-left">Модел: @Model.Model</h4>
             <h4 class="text-left">Дата на производство: @Model.ManufacturedOn.ToString("dd/MM/yyyy")</h4>
-            <h4 class="text-left">Група: @Model.Group</h4>
-            <h4 class="text-left">Цена на ден: @Model.PricePerDay.ToString("F2") лв.</h4>
+            <h4 class="text-left">
+                Група: @switch (Model.Group)
+                {
+                    case RentACar.Web.BindingModels.CarGroupBindingModel.Hybrid:
+                        <a>Хибрид</a>
+                        break;
+                    case RentACar.Web.BindingModels.CarGroupBindingModel.Compact:
+                        <a>Хечбек</a>
+                        break;
+                    case RentACar.Web.BindingModels.CarGroupBindingModel.FullSize:
+                        <a>Седан</a>
+                        break;
+                    case RentACar.Web.BindingModels.CarGroupBindingModel.Estate:
+                        <a>Комби</a>
+                        break;
+                    case RentACar.Web.BindingModels.CarGroupBindingModel.Minivan:
+                        <a>Миниван</a>
+                        break;
+                    case RentACar.Web.BindingModels.CarGroupBindingModel.SUV:
+                        <a>СУВ</a>
+                        break;
+                    case RentACar.Web.BindingModels.CarGroupBindingModel.Luxury:
+                        <a>Лимозина</a>
+                        break;
+                    default:
+                        break;
+                }
+            </h4>
+            <h4 class="text-left">
+                Климатик: @switch (Model.AirConditioner)
+                {
+                    case RentACar.Web.BindingModels.CarEquipmentBindingModel.Yes:
+                        <a>Да</a>
+                        break;
+                    case RentACar.Web.BindingModels.CarEquipmentBindingModel.No:
+                        <a>Не</a>
+                        break;
+                    default:
+                        break;
+                }
+            </h4>
+
+            <h4 class="text-left">
+                Автоматична скоростна кутия: @switch (Model.AutomaticGearbox)
+                {
+                    case RentACar.Web.BindingModels.CarEquipmentBindingModel.Yes:
+                        <a>Да</a>
+                        break;
+                    case RentACar.Web.BindingModels.CarEquipmentBindingModel.No:
+                        <a>Не</a>
+                        break;
+                    default:
+                        break;
+                }
+            </h4>
+
+            <h4 class="text-left">
+                Дизел: @switch (Model.Diesel)
+                {
+                    case RentACar.Web.BindingModels.CarEquipmentBindingModel.Yes:
+                        <a>Да</a>
+                        break;
+                    case RentACar.Web.BindingModels.CarEquipmentBindingModel.No:
+                        <a>Не</a>
+                        break;
+                    default:
+                        break;
+                }
+            </h4>
+
+            <h4 class="text-left border-bot">Цена на ден: @Model.PricePerDay.ToString("F2") лв.</h4>
 
             @*<h4 class="text-left">Brand: @Model.Brand</h4>
                 <h4 class="text-left">Model: @Model.Model</h4>

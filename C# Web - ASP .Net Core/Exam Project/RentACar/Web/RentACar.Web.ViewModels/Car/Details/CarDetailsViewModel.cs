@@ -5,7 +5,7 @@
     using RentACar.Web.BindingModels;
     using System;
 
-    public class CarDetailsViewModel : IMapFrom<CarServiceModel>
+    public class CarDetailsViewModel : IMapFrom<CarServiceModel>, IMapTo<CarServiceModel>
     {
         public int Id { get; set; }
 
@@ -21,6 +21,11 @@
 
         public CarGroupBindingModel Group { get; set; }
 
-        public CarStatusBindingModel CarStatus { get; set; } //??
+
+        public CarEquipmentBindingModel AirConditioner { get; set; }
+
+        public CarEquipmentBindingModel AutomaticGearbox { get; set; }
+
+        public CarEquipmentBindingModel Diesel { get; set; }
     }
 }

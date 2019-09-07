@@ -22,7 +22,7 @@
                 {
                     if (j < Model.Count)
                     {
-                        <div class="product col-md-3">
+                        <div class="product col-md-4 border-bot">
                             <div class="image-holder d-flex justify-content-center">
                                 <a href="/Car/Details/@Model[j].Id">
                                     <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
@@ -44,7 +44,7 @@
                     }
                     else
                     {
-                        <div class="product col-md-2 empty">
+                        <div class="product col-md-6 empty">
                         </div>
                     }
                 }
@@ -57,49 +57,47 @@ else
     <div id="products" class="mt-3 border-left-right">
         @for (int i = 0; i < Model.Count; i += 5)
         {
-            <div class="products-row row d-flex justify-content-around my-5">
+            <div class="products-row row d-flex  justify-content-around my-xl-2" >
                 @for (int j = i; j < i + 5; j++)
                 {
-
                     if (j < Model.Count)
                     {
-                        <div class="product col-md-5">
-                            <div class="image-holder d-flex justify-content-center mt-5">
+                        <div class="product col-md-4 border-bot">
+                            <div class="image-holder d-flex justify-content-center">
                                 <a href="/Car/Details/@Model[j].Id">
-                                    <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="@Model[j].Brand @Model[j].Model">
+                                    <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
                                 </a>
                             </div>
-                            <h5 class="text-primary text-center mt-2">Марка: @Model[j].Brand</h5>
+                            <h5 class="text-primary text-center mt-3">Марка: @Model[j].Brand</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>*@
 
-                            <h5 class="text-primary text-center mt-2">Модел: @Model[j].Model</h5>
+                            <h5 class="text-primary text-center mt-3">Модел: @Model[j].Model</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].Model</h5>*@
 
-                            <h5 class="text-primary text-center mt-2">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>
+                            <h5 class="text-primary text-center mt-3">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>*@
 
-                            <h5 class="text-primary text-center mt-2">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h5>
+                            <h5 class="text-primary text-center mt-3">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h5>
                             @*<h5 class="text-primary text-center mt-3">Price: &euro;@Model[j].PricePerDay.ToString("F2")</h5>*@
 
-                            @*@if (Model[j].Status.Name == "Free")
-                            {*@
-                                <a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Наемане</a>
-                                @*<a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Booking</a>
-                            }
-                            else if(Model[j].Status.Name == "Booked")
-                            {
-                                <button class="btn btn-primary font-weight-bold">Заета!</button>
-                                @*<button class="btn btn-primary font-weight-bold">Booked!</button>
 
+                            @* TODO: Fix this bug  *@
+
+                            @*@if (Model[j].CarStatus.Name.ToString() == "Free")
+                            {
+                                <a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Наемане</a>
+                            }
+                            else
+                            {
+                                <a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Booking</a>
                             }*@
                         </div>
                     }
                     else
                     {
-                        <div class="product col-md-3 empty">
+                        <div class="product col-md-6 empty">
                         </div>
                     }
-
                 }
             </div>
         }
@@ -107,18 +105,15 @@ else
 }
 
 <div class="form-group mx-auto section mt-5">
-
     <div class="d-flex justify-content-left mt-1 ml-3">
         <h6>
             Актуална пътна обсатовна -
             <a href="http://www.api.bg/index.php/bg/promeni"> www.api.bg</a>
         </h6>
     </div>
-
 </div>
 
 <div class="form-group mx-auto section mt-5">
-
     <div class="d-flex justify-content-left ml-3">
         <h6>
             Времето -

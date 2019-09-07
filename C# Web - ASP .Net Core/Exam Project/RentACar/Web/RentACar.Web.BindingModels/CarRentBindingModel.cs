@@ -7,6 +7,6 @@
     {
         public int CarId { get; set; }
 
-        public RentACarUserBindingModel User { get; set; }
+       // public RentACarUserBindingModel User { get; set; }
     }
 }

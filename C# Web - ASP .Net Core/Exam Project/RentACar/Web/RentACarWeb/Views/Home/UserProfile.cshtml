@@ -21,7 +21,14 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <h4>Статус на потребителя:</h4>
-                        <h5>@Model.Premium.Name</h5>
+                        @if (Model.Rents.Count >= 3)
+                        {
+                            <h5>Премиум</h5>
+                        }
+                        else
+                        {
+                            <h5>Стандартен</h5>
+                        }
                     </div>
                     <div class="d-flex justify-content-between">
                         <h4>Брой на наеми:</h4>

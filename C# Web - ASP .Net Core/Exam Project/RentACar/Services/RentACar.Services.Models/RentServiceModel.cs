@@ -12,7 +12,7 @@
 
         public string UserId { get; set; }
 
-        public RentACarUserServiceModel User { get; set; }
+        public UserServiceModel User { get; set; }
 
         public DateTime IssuedOn { get; set; } = DateTime.UtcNow;
 
@@ -21,5 +21,7 @@
         public DateTime EndDate { get; set; }
 
         public RentStatusServiceModel Status { get; set; }
+
+        public decimal Fee { get; set; }
     }
 }

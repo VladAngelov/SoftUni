@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\RentACar.Data\RentACar.Data.csproj" />
+    <ProjectReference Include="..\..\Web\RentACar.Web.ViewModels\RentACar.Web.ViewModels.csproj" />
     <ProjectReference Include="..\RentACar.Services.Models\RentACar.Services.Models.csproj" />
   </ItemGroup>
 

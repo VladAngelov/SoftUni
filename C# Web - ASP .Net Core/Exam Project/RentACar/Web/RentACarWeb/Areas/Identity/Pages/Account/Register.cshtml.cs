@@ -98,7 +98,7 @@ namespace RentACarWeb.Areas.Identity.Pages.Account
             {
                 var isRoot = !_userManager.Users.Any();
 
-                var user = new RentACarUser
+                RentACarUser user = new RentACarUser
                 {
                     UserName = Input.Username,
                     FirstName = Input.FirstName,
@@ -106,8 +106,6 @@ namespace RentACarWeb.Areas.Identity.Pages.Account
                     PhoneNumber = Input.PhoneNumber,
                     Email = Input.Email,
                     FullName = Input.FirstName + " " + Input.LastName
-
-                    // TODO: maybe bug??
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -121,7 +119,6 @@ namespace RentACarWeb.Areas.Identity.Pages.Account
                     else
                     {
                         await _userManager.AddToRoleAsync(user, "User");
-
                     }
 
                     #region Email Functionality

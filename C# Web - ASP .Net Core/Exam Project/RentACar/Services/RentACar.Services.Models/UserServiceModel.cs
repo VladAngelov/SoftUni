@@ -5,11 +5,9 @@
     using Service.Mapping;
     using System.Collections.Generic;
 
-    public class RentACarUserServiceModel : IdentityUser, IMapFrom<RentACarUser>
+    public class UserServiceModel : IdentityUser, IMapFrom<RentACarUser>
     {
         public string FullName { get; set; }
-
-        public RentACarUserStatusServiceModel Status { get; set; }
 
         public HashSet<RentServiceModel> Rents { get; set; }
     }

@@ -18,12 +18,12 @@ html {
   }
 }
 
-.border-top {
+.border-t {
     border-top: 1px solid #656565;
 }
-.border-bottom {
+
+.border-bot {
     border-bottom: 1px solid #656565;
-    border-bottom-color: #656565;
 }
 
 .border-left-right {

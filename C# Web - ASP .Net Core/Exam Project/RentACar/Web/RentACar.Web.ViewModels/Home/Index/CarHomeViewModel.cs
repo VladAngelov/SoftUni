@@ -17,7 +17,7 @@
 
         public DateTime ManufacturedOn { get; set; }
 
-        public CarStatusBindingModel Status { get; set; }
+        public CarStatusBindingModel CarStatus { get; set; }
 
         public CarGroupBindingModel Group { get; set; }
     }
