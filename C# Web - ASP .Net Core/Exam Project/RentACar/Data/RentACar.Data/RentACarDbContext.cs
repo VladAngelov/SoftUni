@@ -10,8 +10,6 @@
 
     public class RentACarDbContext : IdentityDbContext<RentACarUser, IdentityRole, string>
     {
-        public DbSet<RentACarUserStatus> UserStatuses { get; set; }
-
         public DbSet<Car> Cars { get; set; }
 
         public DbSet<Rent> Rents { get; set; }

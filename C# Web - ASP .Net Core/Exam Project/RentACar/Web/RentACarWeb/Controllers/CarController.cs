@@ -38,9 +38,6 @@
 
             rentServiceModel.UserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            //  rentServiceModel.Car.IsBooked = true;
-            // TODO: Change rentServiceModel.Car.IsBooked => To rentServiceModel.Car.IsBooked.Name = "Busy"
-
             await this.rentService.CreateRent(rentServiceModel);
 
             return this.Redirect("/");

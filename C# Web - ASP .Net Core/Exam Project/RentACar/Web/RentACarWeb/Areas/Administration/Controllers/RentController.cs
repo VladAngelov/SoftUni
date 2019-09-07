@@ -19,31 +19,45 @@
             this.rentService = rentService;
         }
 
-        //[HttpGet(Name = "Rents")]
-        //[Route("/Rent/Rents")]
-        //public async Task<IActionResult> Index()
+
+        //[HttpGet("Rents")]
+        //[Route("/Administration/Rents")]
+        //public async Task<IActionResult> Rents()
         //{
         //    List<RentViewModel> rents = await this.rentService
-        //       .GetAllRents()
-        //       .Where(rent => rent.Status.Name == "Active"
-        //        && rent.UserId == this.User.FindFirst(ClaimTypes.NameIdentifier).Value)
-        //       .To<RentViewModel>()
-        //       .ToListAsync();
+        //        .GetAllRents()
+        //        .Where(rent => rent.Status.Name == "Active")
+        //        .To<RentViewModel>()
+        //        .ToListAsync();
 
         //    return this.View(rents);
         //}
 
-        [HttpGet("Rents")]
-        public async Task<IActionResult> Rents()
-        {
-            List<RentViewModel> rents = await this.rentService
-                .GetAllRents()
-                .Where(rent => rent.Status.Name == "Active"
-                 && rent.UserId == this.User.FindFirst(ClaimTypes.NameIdentifier).Value)
-                .To<RentViewModel>()
-                .ToListAsync();
 
-            return this.View(rents);
+        [HttpGet("Rents")]
+        [Route("/Administration/Rents")]
+        public async Task<IActionResult> Rents([FromQuery]string criteria = null)
+        {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                List<RentViewModel> rents = await this.rentService.GetAllRents(criteria)
+                    .Select(rent => new RentViewModel
+                    {
+                        CarPicture = rent.Car.Picture,
+                        CarModel = rent.Car.Model,
+                        PricePerDay = rent.Car.PricePerDay,
+                        StartDate = rent.StartDate,
+                        EndDate = rent.EndDate,
+                        Fee = rent.Fee,
+                    })
+                    .ToListAsync();
+
+                this.ViewData["criteria"] = criteria;
+
+                return this.View(rents);
+            }
+
+            return View();
         }
     }
 }

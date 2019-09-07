@@ -140,23 +140,6 @@
 
                         context.SaveChanges();
                     }
-
-                    if (!context.UserStatuses.Any())
-                    {
-                        context.UserStatuses.Add(new RentACarUserStatus
-                        {
-                            Name = "Not Premium"
-                        });
-
-                        context.SaveChanges();
-
-                        context.UserStatuses.Add(new RentACarUserStatus
-                        {
-                            Name = "Premium"
-                        });
-
-                        context.SaveChanges();
-                    }
                 }
             }
 

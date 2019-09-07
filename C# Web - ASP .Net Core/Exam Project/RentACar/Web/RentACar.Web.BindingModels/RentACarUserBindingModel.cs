@@ -4,12 +4,10 @@
     using Services.Models;
     using System.Collections.Generic;
 
-    public class RentACarUserBindingModel : IMapTo<RentACarUserServiceModel>
+    public class RentACarUserBindingModel : IMapTo<UserServiceModel>
     {
 
         public string FullName { get; set; }
-
-        public RentACarUserStatusServiceModel Premium { get; set; }
 
         public List<RentServiceModel> Rents { get; set; }
     }
