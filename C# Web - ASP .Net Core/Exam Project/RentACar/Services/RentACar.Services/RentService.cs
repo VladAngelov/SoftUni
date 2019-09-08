@@ -4,6 +4,7 @@
     using Data.Models.Rent;
     using Microsoft.EntityFrameworkCore;
     using Models;
+    using RentACar.Data.Models.Car;
     using RentACar.Service.Mapping;
     using RentACar.Web.ViewModels.Rent;
     using System;
@@ -26,11 +27,20 @@
             rent.Status = await context.RentStatuses
                 .SingleOrDefaultAsync(rentStatus => rentStatus.Name == "Active");
 
-            var carStatus = this.context.CarStatuses.FirstOrDefault(status => status.Name == "Booked");
+            IQueryable<decimal> price = context.Cars
+                .Where(c => c.Id == rent.CarId)
+                .Select(s => s.PricePerDay);
 
-            rent.Car.CarStatus = carStatus; // TODO: FIX
+            decimal fee = ((decimal)(rent.EndDate.Date - rent.StartDate.Date).Days * price.FirstOrDefault());
+
+            rent.Fee = fee;
 
             rent.IssuedOn = DateTime.UtcNow;
+
+            //var status = context.CarStatuses
+            //     .SingleOrDefault(carStatus => carStatus.Name == "Booked");// TODO: FIX
+
+            //rent.Car.CarStatus
 
             this.context.Rents.Add(rent);
 
@@ -39,7 +49,7 @@
             return result > 0;
         }
 
-        public IQueryable<RentServiceModel> GetAllRents(string criteria = null)
+        public IQueryable<RentServiceModel> GetAllRents()
         {
             return this.context.Rents.To<RentServiceModel>();
         }

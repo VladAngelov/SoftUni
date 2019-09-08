@@ -6,6 +6,8 @@
 
     public class RentServiceModel : IMapFrom<Rent>, IMapTo<Rent>
     {
+        public int Id { get; set; }
+
         public int CarId { get; set; }
 
         public CarServiceModel Car { get; set; }
@@ -14,7 +16,7 @@
 
         public UserServiceModel User { get; set; }
 
-        public DateTime IssuedOn { get; set; } = DateTime.UtcNow;
+        public DateTime IssuedOn { get; set; }
 
         public DateTime StartDate { get; set; }
 
@@ -23,5 +25,9 @@
         public RentStatusServiceModel Status { get; set; }
 
         public decimal Fee { get; set; }
+
+        public int CarStatusId { get; set; }
+
+        public CarStatusServiceModel CarStatus { get; set; }
     }
 }

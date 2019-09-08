@@ -38,7 +38,7 @@
             return View();
         }
 
-        public async Task<IActionResult> Profile()
+        public async Task<IActionResult> UserProfile()
         {
             return this.View();
         }

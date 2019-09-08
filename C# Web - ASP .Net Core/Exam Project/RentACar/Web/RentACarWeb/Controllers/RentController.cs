@@ -20,8 +20,11 @@
             this.rentService = rentService;
         }
 
+
+
+
         [HttpGet("Rents")]
-        public async Task<IActionResult> Rents()
+        public async Task<IActionResult> MyRents()
         {
             List<RentViewModel> rents = await this.rentService
                 .GetAllRents()

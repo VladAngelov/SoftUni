@@ -21,11 +21,13 @@
 
         public CarGroupBindingModel Group { get; set; }
 
-
         public CarEquipmentBindingModel AirConditioner { get; set; }
 
         public CarEquipmentBindingModel AutomaticGearbox { get; set; }
 
         public CarEquipmentBindingModel Diesel { get; set; }
+
+
+        public CarRentBindingModel CarRentBindingModel { get; set; }
     }
 }

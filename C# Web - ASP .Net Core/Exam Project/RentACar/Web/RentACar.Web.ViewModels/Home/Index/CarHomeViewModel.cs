@@ -1,9 +1,11 @@
 ﻿namespace RentACar.Web.ViewModels.Home.Index
 {
+    using RentACar.Service.Mapping;
+    using RentACar.Services.Models;
     using RentACar.Web.BindingModels;
     using System;
 
-    public class CarHomeViewModel
+    public class CarHomeViewModel : IMapFrom<CarServiceModel>
     {
         public int Id { get; set; }
 

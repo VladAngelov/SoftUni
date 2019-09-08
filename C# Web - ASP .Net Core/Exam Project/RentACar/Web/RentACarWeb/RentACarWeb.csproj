@@ -23,4 +23,9 @@
     <ProjectReference Include="..\RentACar.Web.ViewModels\RentACar.Web.ViewModels.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Views\Rent\" />
+  </ItemGroup>
+
 </Project>

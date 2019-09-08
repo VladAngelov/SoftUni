@@ -19,6 +19,16 @@
                         <h4>Пълно име:</h4>
                         <h5>@Model.FullName</h5>
                     </div>
+
+                    <div class="d-flex justify-content-between">
+                        <h4>Пълно име:</h4>
+                        <h5>@Model.PhoneNumber</h5>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h4>Пълно име:</h4>
+                        <h5>@Model.Email</h5>
+                    </div>
+
                     <div class="d-flex justify-content-between">
                         <h4>Статус на потребителя:</h4>
                         @if (Model.Rents.Count >= 3)
@@ -33,33 +43,6 @@
                     <div class="d-flex justify-content-between">
                         <h4>Брой на наеми:</h4>
                         <h5>@Model.Rents.Count</h5>
-                    </div>
-                    <div claass="d-flex justify-content-between">
-                        <h4>Active rent:</h4>
-                        @if (Model.Rents.Any())
-                        {
-                            foreach (var rent in Model.Rents.Where(rent => rent.Status.Name == "Active"))
-                            {
-                                <form class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3">
-                                    <h4>Марка: @rent.Car.Brand</h4>
-                                    <h4>Модел: @rent.Car.Model</h4>
-                                    <h4>Дата на създаване: @rent.Car.ManufacturedOn.ToString("dd/MM/yyyy")</h4>
-                                    <h4>Група: @rent.Car.Group</h4>
-                                    <h4>Климатик: @rent.Car.AirConditioner</h4>
-                                    <h4>Автоматична скоростна кутия: @rent.Car.AutomaticGearbox</h4>
-                                    <h4>Дизел: @rent.Car.Diesel</h4>
-                                    <Img class="col-md-3 img-thubnail product-in-user-profil-image"
-                                         src="@rent.Car.Picture" alt="@rent.Car.Brand @rent.Car.Model">
-                                    <h4>
-                                        Rents count: @Model.Rents.Count
-                                    </h4>
-                                </form>
-                            }
-                        }
-                        else
-                        {
-                            <h4>No active rents.</h4>
-                        }
                     </div>
                 </dl>
             </div>
