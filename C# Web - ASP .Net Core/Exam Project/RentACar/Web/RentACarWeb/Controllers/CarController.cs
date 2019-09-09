@@ -22,10 +22,10 @@
         }
 
         [HttpGet(Name = "Details")]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            CarDetailsViewModel carDetailsViewModel = this.carService
-                .GetById(id)
+            CarDetailsViewModel carDetailsViewModel = (await this.carService
+                .GetById(id))
                 .To<CarDetailsViewModel>();
 
             return View(carDetailsViewModel);

@@ -8,10 +8,14 @@
     {
         Task<bool> Create(CarServiceModel carServiceModel);
 
-        IQueryable<CarServiceModel> GetAllCars();
+        IQueryable<CarServiceModel> GetAllCars(string criteria = null);
 
-        CarServiceModel GetById(int id);
+        Task<CarServiceModel> GetById(int id);
 
         IQueryable<CarStatusServiceModel> GetAllStatuses();
+
+        Task<bool> Edit(int id, CarServiceModel carServiceModel);
+
+        Task<bool> Delete(int id);
     }
 }

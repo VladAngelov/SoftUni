@@ -14,6 +14,10 @@ hr.hr-2 {
     border: 1px solid #656565 !important;
 }
 
+.text-primary {
+    color: #656565 !important;
+}
+
 .section {
     float: left;
     height: 146px;

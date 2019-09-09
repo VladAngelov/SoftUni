@@ -2,6 +2,14 @@
 
 @{
     ViewData["Title"] = "Коли под наем";
+
+    var criteria = new Dictionary<string, string>()
+{
+        { "price-lowest-to-highest", "Цена (ниска към висока)" },
+        { "price-highest-to-lowest", "Цена (висока към ниска)" },
+        { "date-oldest-to-newest", "Дата на създаване (стара към нова)" },
+        { "date-newest-to-oldest", "Дата на създаване (нова към стара)" }
+    };
 }
 
 <div class="d-flex justify-content-between">
@@ -9,6 +17,34 @@
         <input type="text" class="form-control text-primary" id="products-search-bar" name="search" placeholder="Търсене..." />
         @*<input type="text" class="form-control text-primary" id="products-search-bar" name="search" placeholder="Search..." />*@
 
+    </div>
+    <div id="sort-holder" class="form-group w-40 d-flex justify-content-between">
+        <label for="sort" class="text-primary font-weight-bold w-30 h7 mt-1 text-right">Подреди по: </label>
+        @*<label for="sort" class="text-primary font-weight-bold w-30 h4 mt-1 text-right">Order By: </label>*@
+        <form id="rent-form" action="/" method="get">
+            <select id="sort" class="form-control text-primary text-center pl-2 ml-3 w-70" name="criteria">
+                @if (this.ViewData["criteria"] == null)
+                {
+                    <option selected>--- Избери ---</option>
+                }
+                else
+                {
+                    <option selected>--- Избери ---</option>
+                }
+
+                @foreach (var elem in criteria)
+                {
+                    if (elem.Key == (string)this.ViewData["criteria"])
+                    {
+                        <option value="@elem.Key" selected>@elem.Value</option>
+                    }
+                    else
+                    {
+                        <option value="@elem.Key">@elem.Value</option>
+                    }
+                }
+            </select>
+        </form>
     </div>
 </div>
 
@@ -23,7 +59,7 @@
                     if (j < Model.Count)
                     {
                         <div class="product col-md-4 border-bot">
-                            <div class="image-holder d-flex justify-content-center">
+                            <div class="image-holder mt-2 d-flex justify-content-center">
                                 <a href="/Car/Details/@Model[j].Id">
                                     <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
                                 </a>
@@ -63,21 +99,21 @@ else
                     if (j < Model.Count)
                     {
                         <div class="product col-md-4 border-bot">
-                            <div class="image-holder d-flex justify-content-center">
+                            <div class="image-holder mt-2 d-flex justify-content-center">
                                 <a href="/Car/Details/@Model[j].Id">
                                     <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
                                 </a>
                             </div>
-                            <h5 class="text-primary text-center mt-3">Марка: @Model[j].Brand</h5>
+                            <h5 class="text-primary text-left mt-3">Марка: @Model[j].Brand</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>*@
 
-                            <h5 class="text-primary text-center mt-3">Модел: @Model[j].Model</h5>
+                            <h5 class="text-primary text-left mt-3">Модел: @Model[j].Model</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].Model</h5>*@
 
-                            <h5 class="text-primary text-center mt-3">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>
+                            <h5 class="text-primary text-left mt-3">Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>
                             @*<h5 class="text-primary text-center mt-3">@Model[j].ManufacturedOn.ToString("dd/MM/yyyy")</h5>*@
 
-                            <h5 class="text-primary text-center mt-3">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h5>
+                            <h5 class="text-primary text-left mt-3">Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.</h5>
                             @*<h5 class="text-primary text-center mt-3">Price: &euro;@Model[j].PricePerDay.ToString("F2")</h5>*@
 
                             @*<a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Наемане</a>*@
@@ -85,22 +121,22 @@ else
                             @* TODO: Fix this bug  *@
 
                             @*@if (Model[j].CarStatus.Name == "Booked")
-                            {
-                                <a class="btn btn-primary font-weight-bold">Заета</a>
-                            }
-                            else
-                            {
-                                <a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Наемане</a>
-                            }*@
-
-                            @if (Model[j].Id == 11 || Model[j].Id == 14)
                                 {
                                     <a class="btn btn-primary font-weight-bold">Заета</a>
                                 }
                                 else
                                 {
                                     <a href="/Car/Details/@Model[j].Id" class="btn btn-primary font-weight-bold">Наемане</a>
-                                }
+                                }*@
+
+                            @if (Model[j].Id == 11 || Model[j].Id == 14)
+                            {
+                                <a class="btn btn-primary mb-2 font-weight-bold">Заета</a>
+                            }
+                            else
+                            {
+                                <a href="/Car/Details/@Model[j].Id" class="btn btn-primary mb-2 font-weight-bold">Наемане</a>
+                            }
 
                         </div>
                     }
@@ -136,6 +172,10 @@ else
 </div>
 
 <script>
+      $('#sort').change(function () {
+        $('#rent-form').submit();
+      });
+
     $('#products-search-bar').on("change paste keyup", function () {
         $('.product').show();
 
@@ -148,4 +188,5 @@ else
                 $(elem).hide();
             }
         }
-    });</script>
+    });
+</script>

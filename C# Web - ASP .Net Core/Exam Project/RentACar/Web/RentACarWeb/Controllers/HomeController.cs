@@ -17,9 +17,9 @@
             this.carService = carService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery]string criteria = null)
         {
-            var cars = this.carService.GetAllCars()
+            var cars = this.carService.GetAllCars(criteria)
                 .Select(car => new CarHomeViewModel()
                 {
                     Id = car.Id,
@@ -29,6 +29,8 @@
                     PricePerDay = car.PricePerDay,
                     ManufacturedOn = car.ManufacturedOn,
                 }).ToList();
+
+            this.ViewData["criteria"] = criteria;
 
             return View(cars);
         }
