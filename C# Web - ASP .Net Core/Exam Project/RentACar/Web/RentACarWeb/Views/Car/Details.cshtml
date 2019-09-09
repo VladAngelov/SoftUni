@@ -63,7 +63,6 @@
                         break;
                 }
             </h4>
-
             <h4 class="text-left">
                 Автоматична скоростна кутия: @switch (Model.AutomaticGearbox)
                 {
@@ -77,7 +76,6 @@
                         break;
                 }
             </h4>
-
             <h4 class="text-left">
                 Дизел: @switch (Model.Diesel)
                 {
@@ -91,7 +89,6 @@
                         break;
                 }
             </h4>
-
             <h4 class="text-left border-bot">Цена на ден: @Model.PricePerDay.ToString("F2") лв.</h4>
 
             @*<h4 class="text-left">Brand: @Model.Brand</h4>
@@ -100,29 +97,30 @@
                 <h4 class="text-left">Group: @Model.Group</h4>
                 <h4 class="text-left">Price per Day: &euro;@Model.PricePerDay.ToString("F2")</h4>*@
 
-            <div class="form-group mt-4">
+        <div class="form-group mt-4">
 
-                <button type="button" class="btn btn-primary text-white"
-                        data-toggle="modal" data-target="#rentModal">
-                    Наеми
-                </button>
+            <button type="button" class="btn btn-primary text-white"
+                    data-toggle="modal" data-target="#rentModal">
+                Наеми
+            </button>
 
-                @*<button type="button" class="btn btn-primary text-white"
-                            data-toggle="modal" data-target="#rentModal">
-                        Rent
-                    </button>*@
+            @*<button type="button" class="btn btn-primary text-white"
+                data-toggle="modal" data-target="#rentModal">
+            Rent
+        </button>*@
 
-                @if (this.User.IsInRole("Admin"))
-                {
-                    <a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Изтрий</a>
-                    @*<a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Delete</a>*@
+            @if (this.User.IsInRole("Admin"))
+            {
+                <a href="/Administration/Car/Edit/@Model.Id" class="btn btn-primary text-white">Промени</a>
+                <a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Изтрий</a>
+                @*<a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Delete</a>*@
 
-                }
+            }
 
-                <a href="/" class="btn btn-primary text-white">Назад</a>
-                @*<a href="/" class="btn btn-primary text-white">Back</a>*@
+            <a href="/" class="btn btn-primary mt-1 text-white">Назад</a>
+            @*<a href="/" class="btn btn-primary text-white">Back</a>*@
 
-            </div>
+        </div>
         </div>
     </form>
 </main>
