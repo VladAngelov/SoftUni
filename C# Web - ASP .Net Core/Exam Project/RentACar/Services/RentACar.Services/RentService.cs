@@ -4,9 +4,7 @@
     using Data.Models.Rent;
     using Microsoft.EntityFrameworkCore;
     using Models;
-    using RentACar.Data.Models.Car;
     using RentACar.Service.Mapping;
-    using RentACar.Web.ViewModels.Rent;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
@@ -51,7 +49,11 @@
 
         public IQueryable<RentServiceModel> GetAllRents()
         {
-            return this.context.Rents.To<RentServiceModel>();
+            var rents = this.context.Rents.To<RentServiceModel>();
+
+
+
+            return rents;
         }
     }
 }

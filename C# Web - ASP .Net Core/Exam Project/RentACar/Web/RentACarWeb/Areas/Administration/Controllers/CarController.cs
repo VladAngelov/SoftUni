@@ -88,12 +88,13 @@
                 return this.Redirect("/");
             }
 
-            var allProductTypes = await this.carService.GetAllStatuses().ToListAsync();
+            var allCarStatuses = await this.carService.GetAllStatuses().ToListAsync();
 
-            this.ViewData["types"] = allProductTypes.Select(carStatus => new CarCreateCarStatusViewModel
+            this.ViewData["types"] = allCarStatuses.Select(carStatus => new CarCreateCarStatusViewModel
             {
                 Name = carStatus.Name
-            }).ToList();
+            })
+                .ToList();
 
             return this.View(carEditInputModel);
         }
@@ -121,7 +122,7 @@
             CarServiceModel carServiceModel = AutoMapper.Mapper.Map<CarServiceModel>(carEditInputModel);
 
             carServiceModel.Picture = pictureUrl;
-
+         
             await this.carService.Edit(id, carServiceModel);
 
             return this.Redirect("/");
@@ -130,21 +131,14 @@
         [HttpGet(Name = "Delete")]
         public async Task<IActionResult> Delete(int id)
         {
-            CarDeleteViewModel carDeleteViewModel = (await this.carService.GetById(id)
-                ).To<CarDeleteViewModel>();
+            CarDeleteViewModel carDeleteViewModel = (await this.carService.GetById(id))
+                .To<CarDeleteViewModel>();
 
             if (carDeleteViewModel == null)
             {
                 // TODO: Error Handling
                 return this.Redirect("/");
             }
-
-            //var allProductTypes = await this.productService.GetAllProductTypes().ToListAsync();
-
-            //this.ViewData["types"] = allProductTypes.Select(productType => new ProductCreateProductTypeViewModel
-            //{
-            //    Name = productType.Name
-            //}).ToList();
 
             return this.View(carDeleteViewModel);
         }
@@ -157,5 +151,6 @@
 
             return this.Redirect("/");
         }
+
     }
 }

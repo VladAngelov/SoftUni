@@ -5,7 +5,7 @@
     using RentACar.Web.BindingModels;
     using System;
 
-    public class RentViewModel : IMapFrom<RentServiceModel>
+    public class RentViewModel : IMapFrom<RentServiceModel>, IMapTo<RentServiceModel>
     {
         private decimal fee;
 
@@ -15,8 +15,6 @@
 
         public string CarModel { get; set; }
 
-        public RentACarUserBindingModel User { get; set; }
-
         public string CarPicture { get; set; }
 
         public decimal PricePerDay { get; set; }
@@ -24,6 +22,8 @@
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
+
+        public RentACarUserBindingModel User { get; set; }
 
         public decimal Fee
         {

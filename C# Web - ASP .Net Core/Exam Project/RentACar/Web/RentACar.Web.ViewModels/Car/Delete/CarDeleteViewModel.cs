@@ -15,7 +15,5 @@ namespace RentACar.Web.ViewModels.Car.Delete
         public decimal PricePerDay { get; set; }
 
         public string Picture { get; set; }
-
-        // bug ??
     }
 }
