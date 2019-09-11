@@ -14,13 +14,13 @@
 
 <div class="d-flex justify-content-between">
     <div id="products-search-bar-holder" class="form-group d-flex justify-content-between w-50">
-        <input type="text" class="form-control text-primary" id="products-search-bar" name="search" placeholder="Търсене..." />
+        <input type="text" class="form-control text-dark" id="products-search-bar" name="search" placeholder="Търсене..." />
 
     </div>
     <div id="sort-holder" class="form-group w-40 d-flex justify-content-between">
-        <label for="sort" class="text-primary font-weight-bold w-30 h7 mt-1 text-right">Подреди по: </label>
+        <label for="sort" class="text-dark font-weight-bold w-30 h7 mt-1 text-right">Подреди по: </label>
         <form id="rent-form" action="/" method="get">
-            <select id="sort" class="form-control text-primary text-center pl-2 ml-3 w-70" name="criteria">
+            <select id="sort" class="form-control text-dark text-center pl-2 ml-3 w-70" name="criteria">
                 @if (this.ViewData["criteria"] == null)
                 {
                     <option selected>--- Избери ---</option>
@@ -59,18 +59,18 @@
                         <div class="product col-md-4 border-bot">
                             <div class="image-holder mt-2 d-flex justify-content-center">
 
-                                <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
+                                <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="@Model[j].Brand @Model[j].Model">
 
                             </div>
-                            <h5 class="text-primary text-center mt-3">Марка: @Model[j].Brand</h5>
+                            <h5 class="text-dark text-center mt-3">Марка: @Model[j].Brand</h5>
 
-                            <h5 class="text-primary text-center mt-3">Модел: @Model[j].Model</h5>
+                            <h5 class="text-dark text-center mt-3">Модел: @Model[j].Model</h5>
 
-                            <h5 class="text-primary text-center mt-3">
+                            <h5 class="text-dark text-center mt-3">
                                 Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")
                             </h5>
 
-                            <h5 class="text-primary text-center mt-3">
+                            <h5 class="text-dark text-center mt-3">
                                 Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.
                             </h5>
 
@@ -99,28 +99,28 @@ else
                         <div class="product col-md-4 border-bot">
                             <div class="image-holder mt-2 d-flex justify-content-center">
 
-                                <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
+                                <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="@Model[j].Brand @Model[j].Model">
                             </div>
-                            <h5 class="text-primary text-left mt-3">Марка: @Model[j].Brand</h5>
+                            <h5 class="text-dark text-left mt-3">Марка: @Model[j].Brand</h5>
 
-                            <h5 class="text-primary text-left mt-3">Модел: @Model[j].Model</h5>
+                            <h5 class="text-dark text-left mt-3">Модел: @Model[j].Model</h5>
 
-                            <h5 class="text-primary text-left mt-3">
+                            <h5 class="text-dark text-left mt-3">
                                 Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")
                             </h5>
 
-                            <h5 class="text-primary text-left mt-3">
+                            <h5 class="text-dark text-left mt-3">
                                 Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.
                             </h5>
 
-                            @if (Model[j].Id == 11 || Model[j].Id == 14)
+                            @if (Model[j].CarStatus == "Booked")
                             {
-                                <a class="btn btn-primary mb-2 font-weight-bold">Заета</a>
+                                <a class="btn btn-outline-danger busy-btn-disabled">Заета</a>
                             }
                             else
                             {
-                                <a href="/Car/Details/@Model[j].Id" class="btn btn-primary mb-2 font-weight-bold">
-                                    Наемане
+                                <a href="/Car/Details/@Model[j].Id" class="btn btn-dark mb-2 font-weight-bold">
+                                    Свободна
                                 </a>
                             }
 

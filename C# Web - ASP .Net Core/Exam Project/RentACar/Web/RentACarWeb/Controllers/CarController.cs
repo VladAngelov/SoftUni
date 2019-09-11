@@ -30,17 +30,5 @@
 
             return View(carDetailsViewModel);
         }
-
-        [HttpPost(Name = "Rent")]
-        public async Task<IActionResult> Rent(CarRentBindingModel carRentBindingModel)
-        {
-            RentServiceModel rentServiceModel = carRentBindingModel.To<RentServiceModel>();
-
-            rentServiceModel.UserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            await this.rentService.CreateRent(rentServiceModel);
-
-            return this.Redirect("/");
-        }
     }
 }

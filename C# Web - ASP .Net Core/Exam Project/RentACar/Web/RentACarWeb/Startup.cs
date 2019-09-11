@@ -2,6 +2,7 @@
 {
     using CloudinaryDotNet;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Cors.Infrastructure;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
@@ -71,6 +72,7 @@
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<IRentService, RentService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
+            //services.AddCors(d => d.AddPolicy("IsUserAdmin", new CorsPolicy() { }));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -149,6 +151,7 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            //app.UseCors();
 
             app.UseAuthentication();
 

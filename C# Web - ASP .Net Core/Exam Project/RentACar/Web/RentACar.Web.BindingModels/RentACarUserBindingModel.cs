@@ -1,11 +1,12 @@
-﻿namespace RentACar.Web.BindingModels
+﻿
+namespace RentACar.Web.BindingModels
 {
-    using Service.Mapping;
-    using Services.Models;
+    using RentACar.Services.Models;
     using System.Collections.Generic;
 
-    public class RentACarUserBindingModel : IMapTo<UserServiceModel>
+    public class RentACarUserBindingModel
     {
+        public string Id { get; set; }
 
         public string FullName { get; set; }
 

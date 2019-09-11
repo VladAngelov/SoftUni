@@ -7,7 +7,6 @@
 
     public class RentViewModel : IMapFrom<RentServiceModel>, IMapTo<RentServiceModel>
     {
-        private decimal fee;
 
         public int Id { get; set; }
 
@@ -25,11 +24,13 @@
 
         public RentACarUserBindingModel User { get; set; }
 
+        private decimal fee;
+
         public decimal Fee
         {
             get
             {
-                return this.fee;
+                return fee;
             }
             set
             {
@@ -37,12 +38,14 @@
 
                 if (this.User.Rents.Count >= 3)
                 {
-                    this.fee = sum * 0.3m;
+                    fee = sum * 0.3m;
                 }
                 else
                 {
-                    this.fee = sum;
+                    fee = sum;
                 }
+
+                //fee = value;
             }
         }
     }

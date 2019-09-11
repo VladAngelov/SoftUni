@@ -4,6 +4,7 @@
     using Models;
     using RentACar.Services;
     using RentACar.Web.ViewModels.Home.Index;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
@@ -19,7 +20,7 @@
 
         public async Task<IActionResult> Index([FromQuery]string criteria = null)
         {
-            var cars = this.carService.GetAllCars(criteria)
+            List<CarHomeViewModel> cars = this.carService.GetAllCars(criteria)
                 .Select(car => new CarHomeViewModel()
                 {
                     Id = car.Id,
@@ -28,6 +29,7 @@
                     Picture = car.Picture,
                     PricePerDay = car.PricePerDay,
                     ManufacturedOn = car.ManufacturedOn,
+                    CarStatus = car.CarStatus.Name
                 }).ToList();
 
             this.ViewData["criteria"] = criteria;

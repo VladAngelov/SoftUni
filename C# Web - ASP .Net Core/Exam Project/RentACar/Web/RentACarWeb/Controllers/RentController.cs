@@ -9,6 +9,8 @@
     using Microsoft.EntityFrameworkCore;
     using RentACar.Service.Mapping;
     using RentACar.Services;
+    using RentACar.Services.Models;
+    using RentACar.Web.BindingModels;
     using RentACar.Web.ViewModels.Rent;
 
     public class RentController : Controller
@@ -23,14 +25,23 @@
         [HttpGet("MyRents")]
         public async Task<IActionResult> MyRents()
         {
+            string myUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             List<RentViewModel> rents = await this.rentService
-                .GetAllRents()
-                .Where(rent => rent.Status.Name == "Active"
-                 && rent.UserId == this.User.FindFirst(ClaimTypes.NameIdentifier).Value)
-                .To<RentViewModel>()
-                .ToListAsync();
+                .GetMyRentsAsync(myUserId);
 
             return this.View(rents);
+        }
+
+
+        [HttpPost(Name = "Create")]
+        public async Task<IActionResult> Create(CarRentBindingModel carRentBindingModel)
+        {
+            string userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            await this.rentService.CreateRent(carRentBindingModel, userId);
+
+            return this.Redirect("/");
         }
     }
 }

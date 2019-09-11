@@ -14,8 +14,8 @@ hr.hr-2 {
     border: 1px solid #656565 !important;
 }
 
-.text-primary {
-    color: #656565 !important;
+.busy-btn-disabled {
+    cursor: not-allowed;
 }
 
 .section {
@@ -31,19 +31,6 @@ hr.hr-2 {
     z-index: 999;
     width: 100%;
     border-radius: unset !important;
-}
-
-.bg-primary {
-    background-color: #656565 !important;   
-}
-
-.border-primary-5 {
-    border: 5px solid #656565 !important;
-}
-
-.btn-primary {
-    background-color: #656565 !important;
-    border: 1px solid #656565 !important;
 }
 
 .product-in-user-profil-image {

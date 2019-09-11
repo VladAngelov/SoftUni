@@ -92,18 +92,18 @@
 
         <div class="form-group mt-4">
 
-            <button type="button" class="btn btn-primary text-white"
+            <button type="button" class="btn btn-outline-success"
                     data-toggle="modal" data-target="#rentModal">
                 Наеми
             </button>
 
             @if (this.User.IsInRole("Admin"))
             {
-                <a href="/Administration/Car/Edit/@Model.Id" class="btn btn-primary text-white">Промени</a>
-                <a href="/Administration/Car/Delete/@Model.Id" class="btn btn-primary text-white">Изтрий</a>
+                <a href="/Administration/Car/Edit/@Model.Id" class="btn btn-outline-warning">Промени</a>
+                <a href="/Administration/Car/Delete/@Model.Id" class="btn btn-outline-danger">Изтрий</a>
             }
 
-            <a href="/" class="btn btn-primary mt-1 text-white">Назад</a>
+            <a href="/" class="btn btn-outline-primary mt-1  ">Назад</a>
 
         </div>
         </div>
@@ -124,7 +124,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="rent-form" action="/Car/Rent" method="post">
+                <form id="rent-form" action="/Rent/Create" method="post">
                     <div class="form-group">
                         <label for="startDate" class="col-form-label">Start date:</label>
                         <input type="date"
@@ -150,7 +150,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Затвори</button>
-                <button type="button" class="btn btn-primary" id="complete-rent-button">Завърши наема</button>
+                <button type="button" class="btn btn-success" id="complete-rent-button">Завърши наема</button>
             </div>
         </div>
     </div>
@@ -158,6 +158,13 @@
 
 <script>
     $('#complete-rent-button').click(function () {
+
+        //date 1
+
+        //date 2
+
+        //date 1 < date 2
+
         $('#rent-form').submit();
     });
 </script>

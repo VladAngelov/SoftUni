@@ -5,12 +5,25 @@
     using Microsoft.EntityFrameworkCore;
     using Models;
     using RentACar.Service.Mapping;
+    using RentACar.Web.BindingModels;
+    using RentACar.Web.ViewModels.Rent;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
+    public static class StaticConstantsRentService
+    {
+        public const string RENT_STATUS_ACTIVE = "Active";
+
+        public const string CAR_STATUS_BOOKED = "Booked";
+
+        public const string CAR_STATUS_Free = "Free";
+    }
+
     public class RentService : IRentService
     {
+
         private readonly RentACarDbContext context;
 
         public RentService(RentACarDbContext context)
@@ -18,40 +31,73 @@
             this.context = context;
         }
 
-        public async Task<bool> CreateRent(RentServiceModel rentServiceModel)
+        public async Task CreateRent(CarRentBindingModel carRentBindingModel, string userId)
         {
-            Rent rent = rentServiceModel.To<Rent>();
+            decimal price = context.Cars
+                .Where(c => c.Id == carRentBindingModel.CarId)
+                .Select(s => s.PricePerDay).FirstOrDefault();
 
-            rent.Status = await context.RentStatuses
-                .SingleOrDefaultAsync(rentStatus => rentStatus.Name == "Active");
+            decimal fee = ((carRentBindingModel.EndDate.Date - carRentBindingModel.StartDate.Date).Days * price);
 
-            IQueryable<decimal> price = context.Cars
-                .Where(c => c.Id == rent.CarId)
-                .Select(s => s.PricePerDay);
+            Rent rent = new Rent() {
+                EndDate = carRentBindingModel.EndDate,
+                StartDate = carRentBindingModel.StartDate,
+                CarId = carRentBindingModel.CarId,
+                StatusId = 1,
+                IssuedOn = DateTime.UtcNow,
+                Fee = fee,
+                UserId = userId
+            };
 
-            decimal fee = ((decimal)(rent.EndDate.Date - rent.StartDate.Date).Days * price.FirstOrDefault());
+            await this.context.Rents.AddAsync(rent);
 
-            rent.Fee = fee;
+            //Change car status to Booked 
+            var bookedDbCar = this.context.Cars.Where(c => c.Id == carRentBindingModel.CarId).FirstOrDefault();
+            bookedDbCar.CarStatusId = 2;
 
-            rent.IssuedOn = DateTime.UtcNow;
-
-            //var status = context.CarStatuses
-            //     .SingleOrDefault(carStatus => carStatus.Name == "Booked");// TODO: FIX
-
-            //rent.Car.CarStatus
-
-            this.context.Rents.Add(rent);
-
-            int result = await this.context.SaveChangesAsync();
-
-            return result > 0;
+            this.context.SaveChanges();
         }
 
-        public IQueryable<RentServiceModel> GetAllRents()
+        public async Task<List<RentViewModel>> GetAllRentsAsync()
         {
-            var rents = this.context.Rents.To<RentServiceModel>();
+            List<RentViewModel> rents = await this.context.Rents
+                .Select(rent => new RentViewModel()
+                {
+                    Id = rent.Id,
+                    CarBrand = rent.Car.Brand,
+                    CarModel = rent.Car.Model,
+                    StartDate = rent.StartDate,
+                    EndDate = rent.EndDate,
+                    CarPicture = rent.Car.Picture,
+                    User = this.context.Rents.Select(ru => new RentACarUserBindingModel()
+                        {
+                            Id = ru.UserId,
+                            Email = ru.User.Email,
+                            FullName = ru.User.FullName,
+                            PhoneNumber = ru.User.PhoneNumber,
+                            Rents = this.context.Rents
+                            .Where(rr => rr.UserId == ru.UserId)
+                            .Select(r => new RentServiceModel() {
+                                StartDate = rent.StartDate,
+                                EndDate = rent.EndDate
+                            }).ToList()
+                    })
+                        .Where(rudb => rudb.Id == rent.UserId)
+                        .FirstOrDefault(),
+                    PricePerDay = rent.Car.PricePerDay,
+                    Fee = rent.Fee
+                }).ToListAsync();
 
+            return rents;
+        }
 
+        public async Task<List<RentViewModel>> GetMyRentsAsync(string userId)
+        {
+            var rents = await this.context.Rents.To<RentServiceModel>()
+                .Where(rent => rent.Status.Name == StaticConstantsRentService.RENT_STATUS_ACTIVE
+                 && rent.UserId == userId)
+                .To<RentViewModel>()
+                .ToListAsync();
 
             return rents;
         }

@@ -16,7 +16,7 @@
     @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
     {
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
                 <a class="navbar-brand font-weight-bold h1" href="/">Коли под наем</a>
                 @* <a class="navbar-brand font-weight-bold" href="/">Rent a Car</a>*@
 
@@ -36,18 +36,18 @@
                             @*<a class="nav-link font-weight-bold" href="/">Home</a>*@
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link font-weight-bold" href="/Administration/Rents">Всички наеми</a>
-                            @* <a class="nav-link font-weight-bold" href="/Administration/Rent/Rents">All rents</a>*@
-                        </li>
+                                <a class="nav-link font-weight-bold" href="/Administration/Rents">Всички наеми</a>
+                                 @*<a class="nav-link font-weight-bold" href="/Administration/Rent/Rents">All rents</a>*@
+                            </li>
                         <li class="nav-item active">
                             <a class="nav-link font-weight-bold" href="/Administration/Car/Create">Създай кола</a>
                             @* <a class="nav-link font-weight-bold" href="/Administration/Car/Create">Create Car</a>*@
                         </li>
 
                         <li class="nav-item active">
-                            <a class="nav-link font-weight-bold" href="/UserProfile">Профил</a>
-                            @*<a class="nav-link font-weight-bold" href="/Views/User/Profile">Profile</a>*@
-                        </li>
+                                <a class="nav-link font-weight-bold" href="/UserProfile">Профил</a>
+                               @* <a class="nav-link font-weight-bold" href="/Views/User/Profile">Profile</a>*@
+                            </li>
 
                         <li class="nav-item active">
                             <a class="nav-link font-weight-bold" href="/Identity/Account/Logout">Изход</a>
@@ -78,12 +78,12 @@
                         <li class="nav-item active">
                             <a class="nav-link font-weight-bold" href="/">Начало</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link font-weight-bold" href="/User/UserProfile">Профил</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link font-weight-bold" href="/User/UserRent/MyRents">Наеми</a>
-                        </li>
+                        @*<li class="nav-item active">
+                                <a class="nav-link font-weight-bold" href="/User/UserProfile">Профил</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link font-weight-bold" href="/User/UserRent/MyRents">Наеми</a>
+                            </li>*@
                         <li class="nav-item active">
                             <a class="nav-link font-weight-bold" href="/Home/About">Контакти</a>
                         </li>
@@ -123,6 +123,9 @@
                         <li class="nav-item active">
                             <a class="nav-link font-weight-bold" href="/Identity/Account/Register">Регистрация</a>
                             @*<a class="nav-link font-weight-bold" href="/Identity/Account/Register">Register</a>*@
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/Home/About">Контакти</a>
+                        </li>
                         </li>
                     </ul>
                 </div>
