@@ -1,9 +1,10 @@
-﻿namespace RentACar.Web.ViewModels.Rent
+﻿using System;
+
+namespace RentACar.Web.ViewModels.Rent
 {
-    using RentACar.Service.Mapping;
-    using RentACar.Services.Models;
-    using RentACar.Web.BindingModels;
-    using System;
+    using Service.Mapping;
+    using Services.Models;
+    using Web.BindingModels;
 
     public class RentViewModel : IMapFrom<RentServiceModel>, IMapTo<RentServiceModel>
     {
@@ -44,8 +45,6 @@
                 {
                     fee = sum;
                 }
-
-                //fee = value;
             }
         }
     }

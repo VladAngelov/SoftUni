@@ -1,11 +1,11 @@
-﻿namespace RentACar.Services
-{
-    using CloudinaryDotNet;
-    using CloudinaryDotNet.Actions;
-    using Microsoft.AspNetCore.Http;
-    using System.IO;
-    using System.Threading.Tasks;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Threading.Tasks;
 
+namespace RentACar.Services
+{
     public class CloudinaryService : ICloudinaryService
     {
         private readonly Cloudinary cloudinaryUtility;

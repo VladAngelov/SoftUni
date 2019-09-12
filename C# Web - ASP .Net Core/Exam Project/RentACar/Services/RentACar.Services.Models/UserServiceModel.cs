@@ -1,9 +1,10 @@
-﻿namespace RentACar.Services.Models
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+
+namespace RentACar.Services.Models
 {
     using Data.Models.User;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using Service.Mapping;
-    using System.Collections.Generic;
 
     public class UserServiceModel : IdentityUser, IMapFrom<RentACarUser>
     {

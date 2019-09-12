@@ -1,14 +1,15 @@
-﻿namespace RentACar.Services
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace RentACar.Services
 {
     using Data;
     using Data.Models.Car;
-    using Microsoft.EntityFrameworkCore;
     using Models;
-    using RentACar.Service.Mapping;
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-
+    using Service.Mapping;
+  
     public class CarService : ICarService
     {
         private readonly RentACarDbContext context;

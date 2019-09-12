@@ -12,21 +12,20 @@
     };
 }
 
-<div class="d-flex justify-content-between mt-2">
-    <div id="products-search-bar-holder" 
+<div class="d-flex justify-content-between mt-3">
+    <div id="products-search-bar-holder"
          class="form-group d-flex justify-content-between w-50">
-        <input type="text" 
-               class="form-control text-dark" 
-               id="products-search-bar" 
-               name="search" 
+        <input type="text"
+               class="form-control text-dark"
+               id="products-search-bar"
+               name="search"
                placeholder="Търсене..." />
     </div>
 
-    <div id="sort-holder" 
-         class="form-group w-40 d-flex justify-content-between">
+    <div id="sort-holder" class="form-group w-40 d-flex justify-content-between">
         <label for="sort" class="text-dark font-weight-bold w-30 h7 mt-1 text-right">Подреди по: </label>
         <form id="rent-form" action="/" method="get">
-            <select id="sort" class="form-control text-dark text-center pl-2 ml-3 w-70" name="criteria">
+            <select id="sort" class="form-control text-dark text-center pl-2 ml-1 w-70" name="criteria">
                 @if (this.ViewData["criteria"] == null)
                 {
                     <option selected>--- Избери ---</option>
@@ -54,37 +53,37 @@
 
 @if (!this.User.Identity.IsAuthenticated)
 {
-    <div id="products" class="mt-3 border-left-right">
+    <div id="products" class="mt-2 border-left-right">
         @for (int i = 0; i < Model.Count; i += 5)
         {
-            <div class="products-row row d-flex justify-content-around my-5">
-                @for (int j = i; j < i + 5; j++)
+        <div class="products-row row d-flex justify-content-around my-5">
+            @for (int j = i; j < i + 5; j++)
+            {
+                if (j < Model.Count)
                 {
-                    if (j < Model.Count)
-                    {
-                        <div class="product col-md-4 border-bot">
-                            <div class="image-holder mt-2 d-flex justify-content-center">
-                                <img class="img-thumbnail product-image" 
-                                     src="@Model[j].Picture" 
-                                     alt="@Model[j].Brand @Model[j].Model">
-                            </div>
-                            <h5 class="text-dark text-center mt-3">Марка: @Model[j].Brand</h5>
-                            <h5 class="text-dark text-center mt-3">Модел: @Model[j].Model</h5>
-                            <h5 class="text-dark text-center mt-3">
-                                Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")
-                            </h5>
-                            <h5 class="text-dark text-center mt-3">
-                                Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.
-                            </h5>
+                    <div class="product col-md-4 border-bot">
+                        <div class="image-holder mt-2 d-flex justify-content-center">
+                            <img class="img-thumbnail product-image"
+                                 src="@Model[j].Picture"
+                                 alt="@Model[j].Brand @Model[j].Model">
                         </div>
-                    }
-                    else
-                    {
-                        <div class="product col-md-6 empty">
-                        </div>
-                    }
+                        <h5 class="text-dark text-center mt-3">Марка: @Model[j].Brand</h5>
+                        <h5 class="text-dark text-center mt-3">Модел: @Model[j].Model</h5>
+                        <h5 class="text-dark text-center mt-3">
+                            Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")
+                        </h5>
+                        <h5 class="text-dark text-center mt-3">
+                            Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.
+                        </h5>
+                    </div>
                 }
-            </div>
+                else
+                {
+                    <div class="product col-md-6 empty">
+                    </div>
+                }
+            }
+        </div>
         }
     </div>
 }
@@ -100,8 +99,9 @@ else
                     {
                         <div class="product col-md-4 border-bot">
                             <div class="image-holder mt-2 d-flex justify-content-center">
-
-                                <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="@Model[j].Brand @Model[j].Model">
+                                <img class="img-thumbnail product-image"
+                                     src="@Model[j].Picture"
+                                     alt="~/images/missingCar.jpg" />
                             </div>
                             <h5 class="text-dark text-left mt-3">Марка: @Model[j].Brand</h5>
 
@@ -121,11 +121,10 @@ else
                             }
                             else
                             {
-                                <a href="/Car/Details/@Model[j].Id" class="btn btn-dark mb-2 font-weight-bold">
+                                <a href="/Car/Details/@Model[j].Id" class="btn btn-outline-dark mb-2 font-weight-bold">
                                     Свободна
                                 </a>
                             }
-
                         </div>
                     }
                     else

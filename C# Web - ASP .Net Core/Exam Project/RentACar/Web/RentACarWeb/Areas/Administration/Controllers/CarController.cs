@@ -1,16 +1,18 @@
-﻿namespace RentACarWeb.Areas.Administration.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace RentACarWeb.Areas.Administration.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
+    
     using RentACar.Service.Mapping;
     using RentACar.Services;
     using RentACar.Services.Models;
     using RentACar.Web.BindingModels;
     using RentACar.Web.ViewModels.Car.Delete;
     using RentACar.Web.ViewModels.Car.Status;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class CarController : AdminController
     {
@@ -74,8 +76,6 @@
             return this.Redirect("/");
         }
 
-
-
         [HttpGet(Name = "Edit")]
         public async Task<IActionResult> Edit(int id)
         {
@@ -90,7 +90,8 @@
 
             var allCarStatuses = await this.carService.GetAllStatuses().ToListAsync();
 
-            this.ViewData["types"] = allCarStatuses.Select(carStatus => new CarCreateCarStatusViewModel
+            this.ViewData["types"] = allCarStatuses
+                .Select(carStatus => new CarCreateCarStatusViewModel
             {
                 Name = carStatus.Name
             })
@@ -104,9 +105,12 @@
         {
             if (!this.ModelState.IsValid)
             {
-                var allCarStatuses = await this.carService.GetAllStatuses().ToListAsync();
+                var allCarStatuses = await this.carService
+                    .GetAllStatuses()
+                    .ToListAsync();
 
-                this.ViewData["types"] = allCarStatuses.Select(productType => new CarCreateCarStatusViewModel
+                this.ViewData["types"] = allCarStatuses
+                    .Select(productType => new CarCreateCarStatusViewModel
                 {
                     Name = productType.Name
                 })
@@ -115,9 +119,10 @@
                 return this.View(carEditInputModel);
             }
 
-            string pictureUrl = await this.cloudinaryService.UploadPictureAsync(
-                carEditInputModel.Picture,
-                carEditInputModel.Model);
+            string pictureUrl = await this.cloudinaryService
+                .UploadPictureAsync(
+                    carEditInputModel.Picture,
+                    carEditInputModel.Model);
 
             CarServiceModel carServiceModel = AutoMapper.Mapper.Map<CarServiceModel>(carEditInputModel);
 

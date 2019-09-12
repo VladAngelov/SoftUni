@@ -1,11 +1,12 @@
-﻿namespace RentACar.Web.BindingModels
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace RentACar.Web.BindingModels
 {
     using AutoMapper;
-    using Microsoft.AspNetCore.Http;
-    using RentACar.Service.Mapping;
-    using RentACar.Services.Models;
-    using System;
-    using System.ComponentModel.DataAnnotations;
+    using Service.Mapping;
+    using Services.Models;
 
     public class CarEditInputModel : IMapFrom<CarServiceModel>, IMapTo<CarServiceModel>, IHaveCustomMappings
     {

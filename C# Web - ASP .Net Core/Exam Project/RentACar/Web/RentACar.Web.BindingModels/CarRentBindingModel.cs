@@ -1,8 +1,9 @@
-﻿namespace RentACar.Web.BindingModels
+﻿using System;
+
+namespace RentACar.Web.BindingModels
 {
-    using RentACar.Service.Mapping;
-    using RentACar.Services.Models;
-    using System;
+    using Service.Mapping;
+    using Services.Models;
 
     public class CarRentBindingModel : IMapTo<RentServiceModel>
     {

@@ -1,9 +1,10 @@
-﻿using RentACar.Service.Mapping;
-using RentACar.Services.Models;
-using System;
+﻿using System;
 
 namespace RentACar.Web.ViewModels.Car.Delete
 {
+    using Service.Mapping;
+    using Services.Models;
+
     public class CarDeleteViewModel : IMapFrom<CarServiceModel>
     {
         public string Brand { get; set; }

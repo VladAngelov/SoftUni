@@ -1,26 +1,18 @@
-﻿namespace RentACar.Services
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
+namespace RentACar.Services
 {
     using Data;
     using Data.Models.Rent;
-    using Microsoft.EntityFrameworkCore;
     using Models;
-    using RentACar.Service.Mapping;
-    using RentACar.Web.BindingModels;
-    using RentACar.Web.ViewModels.Rent;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-
-    public static class StaticConstantsRentService
-    {
-        public const string RENT_STATUS_ACTIVE = "Active";
-
-        public const string CAR_STATUS_BOOKED = "Booked";
-
-        public const string CAR_STATUS_Free = "Free";
-    }
-
+    using Service.Mapping;
+    using Web.BindingModels;
+    using Web.ViewModels.Rent;
+   
     public class RentService : IRentService
     {
 
@@ -35,7 +27,8 @@
         {
             decimal price = context.Cars
                 .Where(c => c.Id == carRentBindingModel.CarId)
-                .Select(s => s.PricePerDay).FirstOrDefault();
+                .Select(s => s.PricePerDay)
+                .FirstOrDefault();
 
             decimal fee = ((carRentBindingModel.EndDate.Date - carRentBindingModel.StartDate.Date).Days * price);
 
@@ -52,7 +45,10 @@
             await this.context.Rents.AddAsync(rent);
 
             //Change car status to Booked 
-            var bookedDbCar = this.context.Cars.Where(c => c.Id == carRentBindingModel.CarId).FirstOrDefault();
+            var bookedDbCar = this.context.Cars
+                .Where(c => c.Id == carRentBindingModel.CarId)
+                .FirstOrDefault();
+
             bookedDbCar.CarStatusId = 2;
 
             this.context.SaveChanges();

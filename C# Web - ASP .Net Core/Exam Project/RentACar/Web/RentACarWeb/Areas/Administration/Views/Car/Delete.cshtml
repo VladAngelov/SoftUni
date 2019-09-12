@@ -1,4 +1,4 @@
-﻿@using RentACar.Web.ViewModels
+﻿
 @model RentACar.Web.ViewModels.Car.Delete.CarDeleteViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="bg-primary text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Премахни кола</h2>
+<h3 class="bg-dark text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Премахни кола</h3>
 
 <form method="post" class="form border-primary-4 rounded p-3 w-60 mx-auto mt-3" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly"></div>
@@ -15,7 +15,7 @@
     <div id="name-and-price-holder" class="d-flex justify-content-between">
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="Brand" class="text-primary h5">Марка</label>
+                <label asp-for="Brand" class="text-dark h5">Марка</label>
             </div>
             <input type="text"
                    class="form-control text-primary text-center"
@@ -26,7 +26,7 @@
         </div>
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="Model" class="text-primary h5">Модел</label>
+                <label asp-for="Model" class="text-dark h5">Модел</label>
             </div>
             <input type="text"
                    class="form-control text-primary text-center"
@@ -37,7 +37,7 @@
         </div>
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="PricePerDay" class="text-primary h5">Цена за ден</label>
+                <label asp-for="PricePerDay" class="text-dark h5">Цена за ден</label>
             </div>
             <input type="number"
                    step="0.01"
@@ -52,7 +52,7 @@
     <div id="date-and-picture-holder" class="d-flex justify-content-between">
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="ManufacturedOn" class="text-primary h5">Дата на създаване</label>
+                <label asp-for="ManufacturedOn" class="text-dark h5">Дата на създаване</label>
             </div>
             <input type="text"
                    class="form-control text-primary text-center"
@@ -63,10 +63,10 @@
         </div>
     </div>
 
-    <hr class="hr-2 bg-primary mt-4">
+    <hr class="hr-2 bg-dark mt-3">
 
     <div class="d-flex justify-content-center mt-3">
-        <button class="btn btn-primary font-weight-bold">Премахни кола</button>
+        <button class="btn btn-outline-danger font-weight-bold mr-1">Премахни кола</button>
+        <a href="/" class="btn btn-outline-primary font-weight-bold">Назад</a>
     </div>
-
 </form>

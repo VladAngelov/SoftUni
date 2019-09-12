@@ -1,17 +1,13 @@
-﻿namespace RentACarWeb.Areas.Administration.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+
+namespace RentACarWeb.Areas.Administration.Controllers
 {
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using RentACar.Service.Mapping;
     using RentACar.Services;
-    using RentACar.Services.Models;
     using RentACar.Web.BindingModels;
     using RentACar.Web.ViewModels.Rent;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
 
     public class RentController : AdminController
     {

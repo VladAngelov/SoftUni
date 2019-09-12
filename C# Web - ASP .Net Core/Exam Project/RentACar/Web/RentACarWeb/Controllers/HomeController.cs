@@ -1,13 +1,14 @@
-﻿namespace RentACarWeb.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace RentACarWeb.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
     using Models;
     using RentACar.Services;
     using RentACar.Web.ViewModels.Home.Index;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class HomeController : Controller
     {

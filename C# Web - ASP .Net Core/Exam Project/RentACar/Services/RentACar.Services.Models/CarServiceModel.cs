@@ -1,8 +1,10 @@
-﻿namespace RentACar.Services.Models
+﻿using System;
+
+namespace RentACar.Services.Models
 {
     using Data.Models.Car;
     using Service.Mapping;
-    using System;
+  
 
     public class CarServiceModel : IMapFrom<Car>, IMapTo<Car>
     {

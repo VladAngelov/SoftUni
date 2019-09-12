@@ -1,9 +1,10 @@
-﻿namespace RentACar.Web.ViewModels.Car.Details
+﻿using System;
+
+namespace RentACar.Web.ViewModels.Car.Details
 {
-    using RentACar.Service.Mapping;
-    using RentACar.Services.Models;
-    using RentACar.Web.BindingModels;
-    using System;
+    using Service.Mapping;
+    using Services.Models;
+    using Web.BindingModels;
 
     public class CarDetailsViewModel : IMapFrom<CarServiceModel>, IMapTo<CarServiceModel>
     {
@@ -26,7 +27,6 @@
         public CarEquipmentBindingModel AutomaticGearbox { get; set; }
 
         public CarEquipmentBindingModel Diesel { get; set; }
-
 
         public CarRentBindingModel CarRentBindingModel { get; set; }
     }
