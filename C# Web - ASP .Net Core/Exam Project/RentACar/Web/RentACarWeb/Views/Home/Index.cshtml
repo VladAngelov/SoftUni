@@ -12,12 +12,18 @@
     };
 }
 
-<div class="d-flex justify-content-between">
-    <div id="products-search-bar-holder" class="form-group d-flex justify-content-between w-50">
-        <input type="text" class="form-control text-dark" id="products-search-bar" name="search" placeholder="Търсене..." />
-
+<div class="d-flex justify-content-between mt-2">
+    <div id="products-search-bar-holder" 
+         class="form-group d-flex justify-content-between w-50">
+        <input type="text" 
+               class="form-control text-dark" 
+               id="products-search-bar" 
+               name="search" 
+               placeholder="Търсене..." />
     </div>
-    <div id="sort-holder" class="form-group w-40 d-flex justify-content-between">
+
+    <div id="sort-holder" 
+         class="form-group w-40 d-flex justify-content-between">
         <label for="sort" class="text-dark font-weight-bold w-30 h7 mt-1 text-right">Подреди по: </label>
         <form id="rent-form" action="/" method="get">
             <select id="sort" class="form-control text-dark text-center pl-2 ml-3 w-70" name="criteria">
@@ -58,22 +64,18 @@
                     {
                         <div class="product col-md-4 border-bot">
                             <div class="image-holder mt-2 d-flex justify-content-center">
-
-                                <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="@Model[j].Brand @Model[j].Model">
-
+                                <img class="img-thumbnail product-image" 
+                                     src="@Model[j].Picture" 
+                                     alt="@Model[j].Brand @Model[j].Model">
                             </div>
                             <h5 class="text-dark text-center mt-3">Марка: @Model[j].Brand</h5>
-
                             <h5 class="text-dark text-center mt-3">Модел: @Model[j].Model</h5>
-
                             <h5 class="text-dark text-center mt-3">
                                 Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")
                             </h5>
-
                             <h5 class="text-dark text-center mt-3">
                                 Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.
                             </h5>
-
                         </div>
                     }
                     else

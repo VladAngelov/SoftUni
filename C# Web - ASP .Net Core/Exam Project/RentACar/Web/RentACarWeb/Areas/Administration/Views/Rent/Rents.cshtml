@@ -5,44 +5,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Rents</h1>
-
-<div>
-    <h4>RentViewModel</h4>
-    <hr />
-    <dl class="row">
-        @for (int i = 0; i < Model.Count; i++)
+<form class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3">
+    <h1 class="bg-dark text-white font-weight-bold text-center mx-auto rounded">Наеми</h1>
+    @for (int i = 1; i < Model.Count; i++)
+    {
+        if (i < 1)
         {
-            if (i < 1)
-            {
-                <h5>Няма наеми</h5>
-            }
-            <div class="product col-md-4 border-bot">
-                <h6>
-                    @Model[i].Id
-                </h6>
-                <img src="@Model[i].CarPicture" width="200" height="200" alt="No image"/>
-                    
-                <h6>
-                    @Model[i].CarBrand
-                </h6>
-                <h6>
-                    @Model[i].CarModel
-                </h6>
-                <h6>
-                    @Model[i].StartDate
-                </h6>
-                <h6>
-                    @Model[i].EndDate
-                </h6>
-                <h6>
-                    @Model[i].Fee
-                </h6>
-            </div>
+            <h5>Няма наеми</h5>
         }
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+        <div class="col-md-4 border-bot mt-2">
+            <h6>
+                Наемател: @Model[i].User.FullName
+            </h6>
+            <h6>
+                Кола: @Model[i].CarBrand  @Model[i].CarModel  
+                <img src="@Model[i].CarPicture" height="80" alt="No image" />
+            </h6>
+            <h6>
+                Начална дата: @Model[i].StartDate.ToString("dd/MM/yyyy")
+            </h6>
+            <h6>
+                Крайна дата: @Model[i].EndDate.ToString("dd/MM/yyyy")
+            </h6>
+            <h6>
+                Сума: @Model[i].Fee
+            </h6>
+        </div>
+    }
+</form>

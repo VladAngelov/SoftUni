@@ -1,17 +1,12 @@
 ﻿namespace RentACarWeb.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using RentACar.Service.Mapping;
     using RentACar.Services;
-    using RentACar.Services.Models;
     using RentACar.Web.BindingModels;
     using RentACar.Web.ViewModels.Rent;
+    using System.Collections.Generic;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
 
     public class RentController : Controller
     {
