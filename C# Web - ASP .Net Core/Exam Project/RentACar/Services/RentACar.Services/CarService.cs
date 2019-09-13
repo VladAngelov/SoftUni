@@ -1,22 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RentACar.Services
+﻿namespace RentACar.Services
 {
     using Data;
     using Data.Models.Car;
     using Models;
     using Service.Mapping;
-  
+    using Microsoft.EntityFrameworkCore;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public class CarService : ICarService
     {
-        private readonly RentACarDbContext context;
+        private readonly RentACarDbContext _context;
 
         public CarService(RentACarDbContext context)
         {
-            this.context = context;
+            this._context = context;
         }
 
         private const string PriceLowestToHighestCarRentCriteria = "price-lowest-to-highest";
@@ -30,7 +29,7 @@ namespace RentACar.Services
 
         public async Task<bool> Create(CarServiceModel carServiceModel)
         {
-            CarStatus carStatusFromDb = await this.context
+            CarStatus carStatusFromDb = await this._context
                 .CarStatuses
                 .SingleOrDefaultAsync(carStatus =>
                     carStatus.Name == carServiceModel.CarStatus.Name);
@@ -44,43 +43,45 @@ namespace RentACar.Services
 
             car.CarStatus = carStatusFromDb;
 
-            this.context.Cars.Add(car);
+            this._context.Cars.Add(car);
 
-            int result = await this.context.SaveChangesAsync();
+            int result = await this._context.SaveChangesAsync();
 
             return result > 0;
         }
 
         public IQueryable<CarStatusServiceModel> GetAllStatuses()
         {
-            return this.context.CarStatuses.To<CarStatusServiceModel>();
+            return this._context.CarStatuses.To<CarStatusServiceModel>();
         }
 
         public async Task<CarServiceModel> GetById(int id)
         {
-            return this.context.Cars
+            var car = await this._context.Cars
                 .To<CarServiceModel>()
-                .SingleOrDefault(car => car.Id == id);
+                .FirstAsync(c => c.Id == id);
+
+            return car;
         }
 
         private IQueryable<Car> GetAllCarsByPriceAscending()
         {
-            return this.context.Cars.OrderBy(car => car.PricePerDay);
+            return this._context.Cars.OrderBy(car => car.PricePerDay);
         }
 
         private IQueryable<Car> GetAllCarsByPriceDescending()
         {
-            return this.context.Cars.OrderByDescending(car => car.PricePerDay);
+            return this._context.Cars.OrderByDescending(car => car.PricePerDay);
         }
 
         private IQueryable<Car> GetAllCarsByManufacturedOnAscending()
         {
-            return this.context.Cars.OrderBy(car => car.ManufacturedOn);
+            return this._context.Cars.OrderBy(car => car.ManufacturedOn);
         }
 
         private IQueryable<Car> GetAllCarsByManufacturedOnDescending()
         {
-            return this.context.Cars.OrderByDescending(car => car.ManufacturedOn);
+            return this._context.Cars.OrderByDescending(car => car.ManufacturedOn);
         }
 
         public IQueryable<CarServiceModel> GetAllCars(string criteria = null)
@@ -100,16 +101,12 @@ namespace RentACar.Services
                     return this.GetAllCarsByManufacturedOnDescending().To<CarServiceModel>();
             }
 
-            return this.context.Cars.To<CarServiceModel>();
+            return this._context.Cars.To<CarServiceModel>();
         }
 
-        public async Task<bool> Edit(int id, CarServiceModel carServiceModel)
+        public async Task EditAsync(int id, CarServiceModel carServiceModel)
         {
-            CarStatus carStatusFromDb = this.context
-                .CarStatuses
-                .SingleOrDefault(carStatus => carStatus.Name == carServiceModel.CarStatus.Name);
-
-            Car carFromDb = await this.context.Cars.SingleOrDefaultAsync(car => car.Id == id);
+            Car carFromDb = await this._context.Cars.SingleOrDefaultAsync(car => car.Id == id);
 
             if (carFromDb == null)
             {
@@ -121,31 +118,31 @@ namespace RentACar.Services
             carFromDb.Picture = carServiceModel.Picture;
             carFromDb.PricePerDay = carServiceModel.PricePerDay;
             carFromDb.ManufacturedOn = carServiceModel.ManufacturedOn;
-            carFromDb.CarStatus = carStatusFromDb;
+            carFromDb.AirConditioner = carServiceModel.AirConditioner;
+            carFromDb.AutomaticGearbox = carServiceModel.AutomaticGearbox;
+            carFromDb.Diesel = carServiceModel.Diesel;
+            carFromDb.Group = carServiceModel.Group;
+            carFromDb.CarStatus = carServiceModel.CarStatus;
+            carFromDb.CarStatusId = carServiceModel.CarStatusId;
 
-            this.context.Cars.Update(carFromDb);
+            this._context.Cars.Update(carFromDb);
 
-            int result = await context.SaveChangesAsync();
-
-            return result > 0;
+            _context.SaveChanges();
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            Car carFromDb = await this.context
-                .Cars
-                .SingleOrDefaultAsync(car => car.Id == id);
+            Car carFromDb = await this._context
+                .Cars.FindAsync(id);
 
             if (carFromDb == null)
             {
                 throw new ArgumentNullException(nameof(carFromDb));
             }
 
-            this.context.Cars.Remove(carFromDb);
+            this._context.Cars.Remove(carFromDb);
 
-            int result = await this.context.SaveChangesAsync();
-
-            return result > 0;
+            this._context.SaveChanges();
         }
     }
 }

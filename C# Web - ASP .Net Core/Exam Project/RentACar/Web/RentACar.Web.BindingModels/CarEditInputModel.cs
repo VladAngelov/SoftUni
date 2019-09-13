@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace RentACar.Web.BindingModels
 {
     using AutoMapper;
+    using Microsoft.AspNetCore.Http;
     using Service.Mapping;
     using Services.Models;
+    using System;
+    using System.ComponentModel.DataAnnotations;
 
     public class CarEditInputModel : IMapFrom<CarServiceModel>, IMapTo<CarServiceModel>, IHaveCustomMappings
     {
@@ -26,7 +26,7 @@ namespace RentACar.Web.BindingModels
         public IFormFile Picture { get; set; }
 
         [Required(ErrorMessage = "Статусът на колата е задължителна!")]
-        public string CarStatus { get; set; }
+        public CarStatusBindingModel CarStatus { get; set; }
 
         [Required(ErrorMessage = "Групата на колата е задължителна!")]
         public CarGroupBindingModel Group { get; set; }
@@ -52,7 +52,7 @@ namespace RentACar.Web.BindingModels
             configuration
                 .CreateMap<CarEditInputModel, CarServiceModel>()
                 .ForMember(destination => destination.CarStatus,
-                            opts => opts.MapFrom(origin => new CarStatusServiceModel { Name = origin.CarStatus }));
+                            opts => opts.MapFrom(origin => new CarStatusServiceModel { Name = origin.CarStatus.Name }));
         }
     }
 }

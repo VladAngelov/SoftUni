@@ -15,8 +15,8 @@ namespace RentACar.Services
 
         IQueryable<CarStatusServiceModel> GetAllStatuses();
 
-        Task<bool> Edit(int id, CarServiceModel carServiceModel);
+        Task EditAsync(int id, CarServiceModel carServiceModel);
 
-        Task<bool> Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

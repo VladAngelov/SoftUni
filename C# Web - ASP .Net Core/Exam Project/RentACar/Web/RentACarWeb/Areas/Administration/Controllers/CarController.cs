@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RentACarWeb.Areas.Administration.Controllers
 {
-    
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Http.Internal;
+    using RentACar.Data.Models.Car;
     using RentACar.Service.Mapping;
     using RentACar.Services;
     using RentACar.Services.Models;
@@ -79,30 +81,27 @@ namespace RentACarWeb.Areas.Administration.Controllers
         [HttpGet(Name = "Edit")]
         public async Task<IActionResult> Edit(int id)
         {
-            CarEditInputModel carEditInputModel = (await this.carService.GetById(id))
-                .To<CarEditInputModel>();
+            CarServiceModel carServiceModel = (await this.carService.GetById(id));
 
-            if (carEditInputModel == null)
+            if (carServiceModel == null)
             {
                 // TODO: Error Handling
                 return this.Redirect("/");
             }
 
-            var allCarStatuses = await this.carService.GetAllStatuses().ToListAsync();
-
-            this.ViewData["types"] = allCarStatuses
-                .Select(carStatus => new CarCreateCarStatusViewModel
-            {
-                Name = carStatus.Name
-            })
-                .ToList();
-
-            return this.View(carEditInputModel);
+            return this.View(carServiceModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, CarEditInputModel carEditInputModel)
+        public async Task<IActionResult> Edit(int id, CarServiceModel carServiceModel)
         {
+
+            var car = carService.GetById(id).Result;
+            carServiceModel.Picture = car.Picture;
+            carServiceModel.CarStatus = car.CarStatus;
+            carServiceModel.CarStatusId = car.CarStatusId;
+
+
             if (!this.ModelState.IsValid)
             {
                 var allCarStatuses = await this.carService
@@ -114,21 +113,12 @@ namespace RentACarWeb.Areas.Administration.Controllers
                 {
                     Name = productType.Name
                 })
-                    .ToList(); ;
+                    .ToList(); 
 
-                return this.View(carEditInputModel);
+                return this.View(carServiceModel);
             }
-
-            string pictureUrl = await this.cloudinaryService
-                .UploadPictureAsync(
-                    carEditInputModel.Picture,
-                    carEditInputModel.Model);
-
-            CarServiceModel carServiceModel = AutoMapper.Mapper.Map<CarServiceModel>(carEditInputModel);
-
-            carServiceModel.Picture = pictureUrl;
          
-            await this.carService.Edit(id, carServiceModel);
+            await this.carService.EditAsync(id, carServiceModel);
 
             return this.Redirect("/");
         }
@@ -149,10 +139,10 @@ namespace RentACarWeb.Areas.Administration.Controllers
         }
 
         [HttpPost]
-        [Route("/Administration/Product/Delete/{id}")]
+        [Route("/Administration/Car/Delete/{id}")]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            await this.carService.Delete(id);
+            await this.carService.DeleteAsync(id);
 
             return this.Redirect("/");
         }
