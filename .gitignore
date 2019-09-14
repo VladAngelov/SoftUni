@@ -53,7 +53,7 @@ dlldata.c
 BenchmarkDotNet.Artifacts/
 
 # .NET Core
-SoftUni\C# Web - ASP .Net Core\Exam Project\RentACar\Web\RentACarWeb\appsettings.json
+SoftUni/C# Web - ASP .Net Core/Exam Project/RentACar/Web/RentACarWeb/appsettings.json
 project.lock.json
 project.fragment.lock.json
 artifacts/
