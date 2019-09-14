@@ -40,26 +40,17 @@
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+			var dbConnection = Configuration.GetConnectionString("AzureConnection");
+
             services.AddDbContext<RentACarDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(dbConnection));
 
             services.AddIdentity<RentACarUser, IdentityRole>()
                 .AddEntityFrameworkStores<RentACarDbContext>()
                 .AddDefaultTokenProviders();
 
-            Account cloudinaryCredentials = new Account(
-                this.Configuration["Cloudinary:CloudName"],
-                this.Configuration["Cloudinary:ApiKey"],
-                this.Configuration["Cloudinary:ApiSecret"]);
-
-            Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
-
-            services.AddSingleton(cloudinaryUtility);
-
             services.Configure<IdentityOptions>(options =>
             {
-                // TODO: Change Password settings
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
@@ -71,8 +62,18 @@
 
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<IRentService, RentService>();
+            services.AddCors(d => d.AddPolicy("IsUserAdmin", new CorsPolicy() { }));
+
+            Account cloudinaryCredentials = new Account(
+                this.Configuration["Cloudinary:CloudName"],
+                this.Configuration["Cloudinary:ApiKey"],
+                this.Configuration["Cloudinary:ApiSecret"]);
+
+            Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
+
+            services.AddSingleton(cloudinaryUtility);
+
             services.AddTransient<ICloudinaryService, CloudinaryService>();
-            //services.AddCors(d => d.AddPolicy("IsUserAdmin", new CorsPolicy() { }));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -88,70 +89,70 @@
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-            using (var serviceScope = app.ApplicationServices.CreateScope())
-            {
-                using (var context = serviceScope.ServiceProvider.GetRequiredService<RentACarDbContext>())
-                {
-                    context.Database.EnsureCreated();
+            //using (var serviceScope = app.ApplicationServices.CreateScope())
+            //{
+            //    using (var context = serviceScope.ServiceProvider.GetRequiredService<RentACarDbContext>())
+            //    {
+            //        context.Database.EnsureCreated();
 
-                    if (!context.Roles.Any())
-                    {
-                        context.Roles.Add(new IdentityRole
-                        {
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        });
+            //        if (!context.Roles.Any())
+            //        {
+            //            context.Roles.Add(new IdentityRole
+            //            {
+            //                Name = "Admin",
+            //                NormalizedName = "ADMIN"
+            //            });
 
-                        context.Roles.Add(new IdentityRole
-                        {
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
+            //            context.Roles.Add(new IdentityRole
+            //            {
+            //                Name = "User",
+            //                NormalizedName = "USER"
+            //            });
 
-                        context.SaveChanges();
-                    }
+            //            context.SaveChanges();
+            //        }
 
-                    if (!context.RentStatuses.Any())
-                    {
-                        context.RentStatuses.Add(new RentStatus
-                        {
-                            Name = "Active"
-                        });
+            //        if (!context.RentStatuses.Any())
+            //        {
+            //            context.RentStatuses.Add(new RentStatus
+            //            {
+            //                Name = "Active"
+            //            });
 
-                        context.RentStatuses.Add(new RentStatus
-                        {
-                            Name = "Ended"
-                        });
+            //            context.RentStatuses.Add(new RentStatus
+            //            {
+            //                Name = "Ended"
+            //            });
 
-                        context.SaveChanges();
-                    }
+            //            context.SaveChanges();
+            //        }
 
-                    if (!context.CarStatuses.Any())
-                    {
-                        context.CarStatuses.Add(new CarStatus
-                        {
-                            Name = "Free"
-                        });
+            //        if (!context.CarStatuses.Any())
+            //        {
+            //            context.CarStatuses.Add(new CarStatus
+            //            {
+            //                Name = "Free"
+            //            });
 
-                        context.SaveChanges();
+            //            context.SaveChanges();
 
-                        context.CarStatuses.Add(new CarStatus
-                        {
-                            Name = "Booked"
-                        });
+            //            context.CarStatuses.Add(new CarStatus
+            //            {
+            //                Name = "Booked"
+            //            });
 
-                        context.SaveChanges();
-                    }
-                }
-            }
+            //            context.SaveChanges();
+            //        }
+            //    }
+            //}
 
+            app.UseCors();
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            //app.UseCors();
 
             app.UseAuthentication();
 
