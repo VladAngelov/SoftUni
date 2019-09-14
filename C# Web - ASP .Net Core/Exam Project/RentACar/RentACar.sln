@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentACar.Web.BindingModels"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentACar.Services.Models", "Services\RentACar.Services.Models\RentACar.Services.Models.csproj", "{1C94C860-2914-4945-87C8-27D95932E8C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.Service.Mapping", "Services\RentACar.Service.Mapping\RentACar.Service.Mapping.csproj", "{F21C3F7E-EAD3-4B08-BB45-3B397620D6EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentACar.Service.Mapping", "Services\RentACar.Service.Mapping\RentACar.Service.Mapping.csproj", "{F21C3F7E-EAD3-4B08-BB45-3B397620D6EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

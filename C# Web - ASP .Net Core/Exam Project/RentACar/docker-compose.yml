@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  rentacarweb:
+    image: ${DOCKER_REGISTRY-}rentacarweb
+    build:
+      context: .
+      dockerfile: Web/RentACarWeb/Dockerfile
