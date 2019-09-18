@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-namespace RentACarWeb.Areas.Administration.Controllers
+﻿namespace RentACarWeb.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
     using RentACar.Services;
     using RentACar.Web.BindingModels;
     using RentACar.Web.ViewModels.Rent;
@@ -22,15 +21,10 @@ namespace RentACarWeb.Areas.Administration.Controllers
         [Route("/Administration/Rents")]
         public async Task<IActionResult> Rents()
         {
-            if (this.User.Identity.IsAuthenticated)
-            {
-                List<RentViewModel> rents = await this.rentService
-                    .GetAllRentsAsync();
+            List<RentViewModel> rents = await this.rentService
+                  .GetAllRentsAsync();
 
-                return View(rents);
-            }
-
-            return View();
+            return View(rents);
         }
 
         [HttpPost(Name = "Delete Rent")]

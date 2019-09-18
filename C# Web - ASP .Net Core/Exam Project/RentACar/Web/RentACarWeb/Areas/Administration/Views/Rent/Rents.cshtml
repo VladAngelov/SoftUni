@@ -7,28 +7,28 @@
 
 <form class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3">
     <h1 class="bg-dark text-white font-weight-bold text-center mx-auto rounded">Наеми</h1>
-    @for (int i = 1; i < Model.Count; i++)
+    @foreach (var rent in Model)
     {
-        if (i < 1)
+        if (rent == null)
         {
             <h5>Няма наеми</h5>
         }
         <div class="col-md-4 border-bot mt-2">
             <h6>
-                Наемател: @Model[i].User.FullName
+                Наемател: @rent.User.FullName
             </h6>
             <h6>
-                Кола: @Model[i].CarBrand  @Model[i].CarModel  
-                <img src="@Model[i].CarPicture" height="80" alt="No image" />
+                Кола: @rent.CarBrand  @rent.CarModel
+                <img src="@rent.CarPicture" height="80" alt="No image" />
             </h6>
             <h6>
-                Начална дата: @Model[i].StartDate.ToString("dd/MM/yyyy")
+                Начална дата: @rent.StartDate.ToString("dd/MM/yyyy")
             </h6>
             <h6>
-                Крайна дата: @Model[i].EndDate.ToString("dd/MM/yyyy")
+                Крайна дата: @rent.EndDate.ToString("dd/MM/yyyy")
             </h6>
             <h6>
-                Сума: @Model[i].Fee
+                Сума: @rent.Fee
             </h6>
         </div>
     }

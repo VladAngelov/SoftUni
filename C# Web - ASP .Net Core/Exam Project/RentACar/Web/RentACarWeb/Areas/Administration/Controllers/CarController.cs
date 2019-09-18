@@ -1,20 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RentACarWeb.Areas.Administration.Controllers
+﻿namespace RentACarWeb.Areas.Administration.Controllers
 {
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Http.Internal;
-    using RentACar.Data.Models.Car;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using RentACar.Service.Mapping;
     using RentACar.Services;
     using RentACar.Services.Models;
     using RentACar.Web.BindingModels;
     using RentACar.Web.ViewModels.Car.Delete;
     using RentACar.Web.ViewModels.Car.Status;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class CarController : AdminController
     {
