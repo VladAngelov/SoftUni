@@ -4,7 +4,7 @@
     using Service.Mapping;
     using System;
 
-    public class RentServiceModel 
+    public class RentServiceModel : IMapFrom<Rent>, IMapTo<Rent>
     {
         public int Id { get; set; }
 

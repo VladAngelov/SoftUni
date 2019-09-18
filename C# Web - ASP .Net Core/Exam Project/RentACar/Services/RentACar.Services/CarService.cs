@@ -11,11 +11,11 @@
 
     public class CarService : ICarService
     {
-        private readonly RentACarDbContext _context;
+        private readonly RentACarDbContext context;
 
         public CarService(RentACarDbContext context)
         {
-            this._context = context;
+            this.context = context;
         }
 
         private const string PriceLowestToHighestCarRentCriteria = "price-lowest-to-highest";
@@ -29,7 +29,7 @@
 
         public async Task<bool> Create(CarServiceModel carServiceModel)
         {
-            CarStatus carStatusFromDb = await this._context
+            CarStatus carStatusFromDb = await this.context
                 .CarStatuses
                 .SingleOrDefaultAsync(carStatus =>
                     carStatus.Name == carServiceModel.CarStatus.Name);
@@ -43,21 +43,21 @@
 
             car.CarStatus = carStatusFromDb;
 
-            this._context.Cars.Add(car);
+            this.context.Cars.Add(car);
 
-            int result = await this._context.SaveChangesAsync();
+            int result = await this.context.SaveChangesAsync();
 
             return result > 0;
         }
 
         public IQueryable<CarStatusServiceModel> GetAllStatuses()
         {
-            return this._context.CarStatuses.To<CarStatusServiceModel>();
+            return this.context.CarStatuses.To<CarStatusServiceModel>();
         }
 
         public async Task<CarServiceModel> GetById(int id)
         {
-            var car = await this._context.Cars
+            var car = await this.context.Cars
                 .To<CarServiceModel>()
                 .FirstAsync(c => c.Id == id);
 
@@ -66,22 +66,22 @@
 
         private IQueryable<Car> GetAllCarsByPriceAscending()
         {
-            return this._context.Cars.OrderBy(car => car.PricePerDay);
+            return this.context.Cars.OrderBy(car => car.PricePerDay);
         }
 
         private IQueryable<Car> GetAllCarsByPriceDescending()
         {
-            return this._context.Cars.OrderByDescending(car => car.PricePerDay);
+            return this.context.Cars.OrderByDescending(car => car.PricePerDay);
         }
 
         private IQueryable<Car> GetAllCarsByManufacturedOnAscending()
         {
-            return this._context.Cars.OrderBy(car => car.ManufacturedOn);
+            return this.context.Cars.OrderBy(car => car.ManufacturedOn);
         }
 
         private IQueryable<Car> GetAllCarsByManufacturedOnDescending()
         {
-            return this._context.Cars.OrderByDescending(car => car.ManufacturedOn);
+            return this.context.Cars.OrderByDescending(car => car.ManufacturedOn);
         }
 
         public IQueryable<CarServiceModel> GetAllCars(string criteria = null)
@@ -101,12 +101,14 @@
                     return this.GetAllCarsByManufacturedOnDescending().To<CarServiceModel>();
             }
 
-            return this._context.Cars.To<CarServiceModel>();
+            return this.context.Cars.To<CarServiceModel>();
         }
 
         public async Task EditAsync(int id, CarServiceModel carServiceModel)
         {
-            Car carFromDb = await this._context.Cars.SingleOrDefaultAsync(car => car.Id == id);
+            Car carFromDb = await this.context
+                .Cars
+                .SingleOrDefaultAsync(car => car.Id == id);
 
             if (carFromDb == null)
             {
@@ -125,14 +127,14 @@
             carFromDb.CarStatus = carServiceModel.CarStatus;
             carFromDb.CarStatusId = carServiceModel.CarStatusId;
 
-            this._context.Cars.Update(carFromDb);
+            this.context.Cars.Update(carFromDb);
 
-            _context.SaveChanges();
+            context.SaveChanges();
         }
 
         public async Task DeleteAsync(int id)
         {
-            Car carFromDb = await this._context
+            Car carFromDb = await this.context
                 .Cars.FindAsync(id);
 
             if (carFromDb == null)
@@ -140,9 +142,9 @@
                 throw new ArgumentNullException(nameof(carFromDb));
             }
 
-            this._context.Cars.Remove(carFromDb);
+            this.context.Cars.Remove(carFromDb);
 
-            this._context.SaveChanges();
+            this.context.SaveChanges();
         }
     }
 }

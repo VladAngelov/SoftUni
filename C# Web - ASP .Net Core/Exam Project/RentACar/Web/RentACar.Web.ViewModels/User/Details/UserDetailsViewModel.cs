@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace RentACar.Web.ViewModels.User.Details
 {
     using Services.Models;
     using Service.Mapping;
+    using System.Collections.Generic;
 
     public class UserDetailsViewModel : IMapFrom<UserServiceModel>, IMapTo<UserServiceModel>
     {

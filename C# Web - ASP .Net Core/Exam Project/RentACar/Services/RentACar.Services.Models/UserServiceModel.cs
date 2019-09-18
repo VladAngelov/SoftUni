@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Generic;
-
-namespace RentACar.Services.Models
+﻿namespace RentACar.Services.Models
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Collections.Generic;
     using Data.Models.User;
     using Service.Mapping;
 

@@ -40,7 +40,10 @@
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-			var dbConnection = Configuration.GetConnectionString("AzureConnection");
+            var dbConnection = Configuration.GetConnectionString("AzureConnection");
+
+            //var dbConnection = Configuration.GetConnectionString("DefaultConnection");
+
 
             services.AddDbContext<RentACarDbContext>(options =>
                 options.UseSqlServer(dbConnection));
@@ -60,6 +63,7 @@
                 options.User.RequireUniqueEmail = true;
             });
 
+            //services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<IRentService, RentService>();
             services.AddCors(d => d.AddPolicy("IsUserAdmin", new CorsPolicy() { }));
