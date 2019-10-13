@@ -13,12 +13,14 @@
             <h4 class="text-left">Име: @Model.FullName</h4>
             <h4 class="text-left">Електронна поща: @Model.Email</h4>
             <h4 class="text-left">Телефонен номер: @Model.PhoneNumber</h4>
-            @*<h4 class="text-left">Брой наеми: @Model.Rents.Count</h4>*@
-            @*<h4 class="text-left border-bot">
+
+            <h4 class="text-left">Брой наеми: @Model.Rents.Count</h4>
+            <h4 class="text-left border-bot">
                 Активен: @Model.Rents.Where(r => r.Status.Name == "Active").FirstOrDefault()
-            </h4>*@
+            </h4>
+
             <div class="form-group mt-4">
-                <a href="/" class="btn btn-outline-primary mt-1  ">Назад</a>
+                <a href="/" class="btn btn-outline-primary mt-1">Начало</a>
             </div>
         </div>
     </form>

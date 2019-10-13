@@ -40,10 +40,7 @@
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            var dbConnection = Configuration.GetConnectionString("AzureConnection");
-
-            //var dbConnection = Configuration.GetConnectionString("DefaultConnection");
-
+            var dbConnection = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<RentACarDbContext>(options =>
                 options.UseSqlServer(dbConnection));
@@ -63,7 +60,7 @@
                 options.User.RequireUniqueEmail = true;
             });
 
-            //services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<IRentService, RentService>();
             services.AddCors(d => d.AddPolicy("IsUserAdmin", new CorsPolicy() { }));
@@ -93,62 +90,62 @@
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-            //using (var serviceScope = app.ApplicationServices.CreateScope())
-            //{
-            //    using (var context = serviceScope.ServiceProvider.GetRequiredService<RentACarDbContext>())
-            //    {
-            //        context.Database.EnsureCreated();
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetRequiredService<RentACarDbContext>())
+                {
+                    context.Database.EnsureCreated();
 
-            //        if (!context.Roles.Any())
-            //        {
-            //            context.Roles.Add(new IdentityRole
-            //            {
-            //                Name = "Admin",
-            //                NormalizedName = "ADMIN"
-            //            });
+                    if (!context.Roles.Any())
+                    {
+                        context.Roles.Add(new IdentityRole
+                        {
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
 
-            //            context.Roles.Add(new IdentityRole
-            //            {
-            //                Name = "User",
-            //                NormalizedName = "USER"
-            //            });
+                        context.Roles.Add(new IdentityRole
+                        {
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
 
-            //            context.SaveChanges();
-            //        }
+                        context.SaveChanges();
+                    }
 
-            //        if (!context.RentStatuses.Any())
-            //        {
-            //            context.RentStatuses.Add(new RentStatus
-            //            {
-            //                Name = "Active"
-            //            });
+                    if (!context.RentStatuses.Any())
+                    {
+                        context.RentStatuses.Add(new RentStatus
+                        {
+                            Name = "Active"
+                        });
 
-            //            context.RentStatuses.Add(new RentStatus
-            //            {
-            //                Name = "Ended"
-            //            });
+                        context.RentStatuses.Add(new RentStatus
+                        {
+                            Name = "Ended"
+                        });
 
-            //            context.SaveChanges();
-            //        }
+                        context.SaveChanges();
+                    }
 
-            //        if (!context.CarStatuses.Any())
-            //        {
-            //            context.CarStatuses.Add(new CarStatus
-            //            {
-            //                Name = "Free"
-            //            });
+                    if (!context.CarStatuses.Any())
+                    {
+                        context.CarStatuses.Add(new CarStatus
+                        {
+                            Name = "Free"
+                        });
 
-            //            context.SaveChanges();
+                        context.SaveChanges();
 
-            //            context.CarStatuses.Add(new CarStatus
-            //            {
-            //                Name = "Booked"
-            //            });
+                        context.CarStatuses.Add(new CarStatus
+                        {
+                            Name = "Booked"
+                        });
 
-            //            context.SaveChanges();
-            //        }
-            //    }
-            //}
+                        context.SaveChanges();
+                    }
+                }
+            }
 
             app.UseCors();
             app.UseDeveloperExceptionPage();

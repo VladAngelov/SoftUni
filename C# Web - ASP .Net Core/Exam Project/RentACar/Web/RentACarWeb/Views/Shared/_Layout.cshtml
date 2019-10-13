@@ -14,105 +14,112 @@
 <body>
     @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
     {
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand font-weight-bold h1" href="/">Коли под наем</a>
-            <button class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" >@this.User.Identity.Name ( Admin )</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/">Начало</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/Administration/Rents">Всички наеми</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/Administration/Car/Create">Създай кола</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/Identity/Account/Logout">Изход</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand font-weight-bold h1" href="/">Коли под наем</a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a
+                               class="nav-link font-weight-bold"
+                               @*href="/User/Profile/@this.User.Identity.Name"*@>
+                                @this.User.Identity.Name ( Admin )
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/">Начало</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/Administration/Rents">Всички наеми</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/Administration/Car/Create">Създай кола</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/Identity/Account/Logout">Изход</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     }
     else if (this.User.Identity.IsAuthenticated && this.User.IsInRole("User"))
     {
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-            <a class="navbar-brand font-weight-bold h1" href="/">Коли под наем</a>
-            <button class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" >@this.User.Identity.Name ( User )</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/">Начало</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/Home/About">Контакти</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/Identity/Account/Logout">Изход</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+                <a class="navbar-brand font-weight-bold h1" href="/">Коли под наем</a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold"
+                               @*href="/User/Profile/@this.User.Identity.Name"*@>
+                                @this.User.Identity.Name ( User )
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/">Начало</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/Home/About">Контакти</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/Identity/Account/Logout">Изход</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     }
     else
     {
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand font-weight-bold" href="/">Коли под наем</a>
-            <button class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/">Начало</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/Identity/Account/Login">Вход</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/Identity/Account/Register">Регистрация</a>
-                    <li class="nav-item active">
-                        <a class="nav-link font-weight-bold" href="/Home/About">Контакти</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand font-weight-bold" href="/">Коли под наем</a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/">Начало</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/Identity/Account/Login">Вход</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/Identity/Account/Register">Регистрация</a>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="/Home/About">Контакти</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     }
 
     <div class="container">
@@ -124,8 +131,7 @@
 
     <footer class="footer text-muted border-t">
         <div class="container d-flex justify-content-center">
-
-            &copy; 2019 - Коли под наем - Владимир Ангелов -  Фк № 18250141005
+            &copy; 2019 - Коли под наем - Владимир Ангелов
         </div>
     </footer>
 

@@ -1,5 +1,4 @@
-﻿
-namespace RentACar.Web.ViewModels.User.Details
+﻿namespace RentACar.Web.ViewModels.User.Details
 {
     using Services.Models;
     using Service.Mapping;
