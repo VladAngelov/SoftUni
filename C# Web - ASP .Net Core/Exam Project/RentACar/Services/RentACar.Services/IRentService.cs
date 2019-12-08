@@ -10,7 +10,7 @@ namespace RentACar.Services
     {
         Task CreateRent(CarRentBindingModel carRentBindingModel, string userId);
 
-        Task<List<RentViewModel>> GetMyRentsAsync(string userId);
+       // Task<List<RentViewModel>> GetMyRentAsync(string userName);
 
         Task<List<RentViewModel>> GetAllRentsAsync();
     }

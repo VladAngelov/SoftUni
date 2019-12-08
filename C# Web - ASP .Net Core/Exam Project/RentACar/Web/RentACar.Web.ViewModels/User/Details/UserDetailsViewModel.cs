@@ -12,6 +12,6 @@
 
         public string Email { get; set; }
 
-        public List<RentServiceModel> Rents { get; set; }
+       // public List<RentServiceModel> Rents { get; set; }
     }
 }

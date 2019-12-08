@@ -31,7 +31,7 @@
                         <li class="nav-item active">
                             <a
                                class="nav-link font-weight-bold"
-                               @*href="/User/Profile/@this.User.Identity.Name"*@>
+                               href="/User/Profile">
                                 @this.User.Identity.Name ( Admin )
                             </a>
                         </li>
@@ -54,7 +54,6 @@
     }
     else if (this.User.Identity.IsAuthenticated && this.User.IsInRole("User"))
     {
-
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
                 <a class="navbar-brand font-weight-bold h1" href="/">Коли под наем</a>
@@ -71,7 +70,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item active">
                             <a class="nav-link font-weight-bold"
-                               @*href="/User/Profile/@this.User.Identity.Name"*@>
+                               href="/User/Profile/@this.User.Identity.Name">
                                 @this.User.Identity.Name ( User )
                             </a>
                         </li>

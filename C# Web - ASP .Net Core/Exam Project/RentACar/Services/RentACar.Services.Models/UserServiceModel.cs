@@ -9,6 +9,6 @@
     {
         public string FullName { get; set; }
 
-        public HashSet<RentServiceModel> Rents { get; set; }
+      //  public HashSet<RentServiceModel> Rents { get; set; }
     }
 }

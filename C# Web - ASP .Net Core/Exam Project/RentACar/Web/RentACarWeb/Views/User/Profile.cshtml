@@ -14,14 +14,13 @@
             <h4 class="text-left">Електронна поща: @Model.Email</h4>
             <h4 class="text-left">Телефонен номер: @Model.PhoneNumber</h4>
 
-            <h4 class="text-left">Брой наеми: @Model.Rents.Count</h4>
-            <h4 class="text-left border-bot">
-                Активен: @Model.Rents.Where(r => r.Status.Name == "Active").FirstOrDefault()
-            </h4>
-
-            <div class="form-group mt-4">
-                <a href="/" class="btn btn-outline-primary mt-1">Начало</a>
-            </div>
+        <div class="form-group mt-4">
+            <a href="/" class="btn btn-outline-primary mt-1">Начало</a>
+            @*<a href="/User/UserRent/@this.User.Identity.Name" 
+               class="btn btn-outline-info mt-1">
+                Активен наем
+            </a>*@
+        </div>
         </div>
     </form>
 </main>

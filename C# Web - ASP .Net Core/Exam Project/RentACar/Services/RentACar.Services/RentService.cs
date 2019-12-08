@@ -86,15 +86,18 @@
             return rents;
         }
 
-        public async Task<List<RentViewModel>> GetMyRentsAsync(string userId)
-        {
-            var rents = await this.context.Rents.To<RentServiceModel>()
-                .Where(rent => rent.Status.Name == StaticConstantsRentService.RENT_STATUS_ACTIVE
-                 && rent.UserId == userId)
-                .To<RentViewModel>()
-                .ToListAsync();
+        //public async Task<List<RentViewModel>> GetMyRentAsync(string userName)
+        //{
+        //    var rents = await this.context
+        //        .Rents
+        //        .To<RentServiceModel>()
+        //        .Where(rent => rent.Status
+        //            .Name == StaticConstantsRentService.RENT_STATUS_ACTIVE
+        //            && rent.User.UserName == userName)
+        //        .To<RentViewModel>()
+        //        .ToListAsync();
 
-            return rents;
-        }
+        //    return rents;
+        //}
     }
 }
