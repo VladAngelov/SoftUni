@@ -6,6 +6,8 @@ namespace RentACar.Web.BindingModels
 
     public class RentACarUserBindingModel
     {
+        public string Username { get; set; }
+
         public string Id { get; set; }
 
         public string FullName { get; set; }

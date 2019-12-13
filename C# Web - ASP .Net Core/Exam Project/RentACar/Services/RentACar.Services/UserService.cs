@@ -6,16 +6,18 @@
     using RentACar.Services.Models;
     using RentACar.Web.ViewModels.Rent;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
     public class UserService : IUserService
     {
         private readonly RentACarDbContext context;
+        private readonly IRentService rentService;
 
-        public UserService(RentACarDbContext context)
+        public UserService(RentACarDbContext context, 
+                           IRentService rentService)
         {
             this.context = context;
+            this.rentService = rentService;
         }
 
         public async Task<UserServiceModel> GetByUserNameAsync(string userName)
@@ -28,18 +30,12 @@
             return user;
         }
 
-        public async Task<RentViewModel> GetMyRentAsync(string userName)
+        public async Task<List<RentViewModel>> GetMyRentAsync(string userName)
         {
-            var rents = await this.context
-                .Rents
-                .To<RentServiceModel>()
-                .Where(rent => rent.Status
-                    .Name == StaticConstantsRentService.RENT_STATUS_ACTIVE
-                     && rent.User.UserName == userName)
-                .To<RentViewModel>().FirstOrDefaultAsync();
-                //.ToListAsync();
+            var rent = this.rentService.
+                GetMyRentAsync(userName);
 
-            return rents;
+            return await rent;
         }
     }
 }

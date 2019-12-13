@@ -1,0 +1,39 @@
+﻿@model List<RentACar.Web.ViewModels.Rent.RentViewModel>
+
+@{
+    ViewData["Title"] = "Rents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3">
+    <h1 class="bg-dark text-white font-weight-bold text-center mx-auto rounded">Активен наем</h1>
+
+    @foreach (var rent in Model)
+    {
+        if (rent.CarModel == null)
+        {
+            <h5>Няма наеми</h5>
+        }
+        else
+        {
+            <div class="col-md-4 border-bot mt-2">
+                <h6>
+                    Наемател: @rent.User.FullName
+                </h6>
+                <h6>
+                    Кола: @rent.CarBrand  @rent.CarModel
+                    <img src="@rent.CarPicture" height="80" alt="No image" />
+                </h6>
+                <h6>
+                    Начална дата: @rent.StartDate.ToString("dd/MM/yyyy")
+                </h6>
+                <h6>
+                    Крайна дата: @rent.EndDate.ToString("dd/MM/yyyy")
+                </h6>
+                <h6>
+                    Сума: @rent.Fee
+                </h6>
+            </div>
+        }
+    }
+</form>

@@ -11,7 +11,7 @@
     using Service.Mapping;
     using Web.BindingModels;
     using Web.ViewModels.Rent;
-   
+
     public class RentService : IRentService
     {
 
@@ -31,7 +31,8 @@
 
             decimal fee = ((carRentBindingModel.EndDate.Date - carRentBindingModel.StartDate.Date).Days * price);
 
-            Rent rent = new Rent() {
+            Rent rent = new Rent()
+            {
                 EndDate = carRentBindingModel.EndDate,
                 StartDate = carRentBindingModel.StartDate,
                 CarId = carRentBindingModel.CarId,
@@ -65,14 +66,15 @@
                     EndDate = rent.EndDate,
                     CarPicture = rent.Car.Picture,
                     User = this.context.Rents.Select(ru => new RentACarUserBindingModel()
-                        {
-                            Id = ru.UserId,
-                            Email = ru.User.Email,
-                            FullName = ru.User.FullName,
-                            PhoneNumber = ru.User.PhoneNumber,
-                            Rents = this.context.Rents
+                    {
+                        Id = ru.UserId,
+                        Email = ru.User.Email,
+                        FullName = ru.User.FullName,
+                        PhoneNumber = ru.User.PhoneNumber,
+                        Rents = this.context.Rents
                             .Where(rr => rr.UserId == ru.UserId)
-                            .Select(r => new RentServiceModel() {
+                            .Select(r => new RentServiceModel()
+                            {
                                 StartDate = rent.StartDate,
                                 EndDate = rent.EndDate
                             }).ToList()
@@ -86,18 +88,43 @@
             return rents;
         }
 
-        //public async Task<List<RentViewModel>> GetMyRentAsync(string userName)
-        //{
-        //    var rents = await this.context
-        //        .Rents
-        //        .To<RentServiceModel>()
-        //        .Where(rent => rent.Status
-        //            .Name == StaticConstantsRentService.RENT_STATUS_ACTIVE
-        //            && rent.User.UserName == userName)
-        //        .To<RentViewModel>()
-        //        .ToListAsync();
+        public async Task<List<RentViewModel>> GetMyRentAsync(string userName)
+        {
+            List<RentViewModel> rents = await this.context.Rents
+               .Select(rent => new RentViewModel()
+               {
+                   Id = rent.Id,
+                   CarBrand = rent.Car.Brand,
+                   CarModel = rent.Car.Model,
+                   StartDate = rent.StartDate,
+                   EndDate = rent.EndDate,
+                   CarPicture = rent.Car.Picture,
+                   User = this.context.Rents
+                   .Select(ru => new RentACarUserBindingModel()
+                   {
+                       Username = ru.User.UserName,
+                       Id = ru.UserId,
+                       Email = ru.User.Email,
+                       FullName = ru.User.FullName,
+                       PhoneNumber = ru.User.PhoneNumber,
+                       Rents = this.context.Rents
+                           .Where(rr => rr.UserId == ru.UserId)
+                           .Select(r => new RentServiceModel()
+                           {
+                               StartDate = rent.StartDate,
+                               EndDate = rent.EndDate
+                           }).ToList()
+                   })
+                       .Where(rudb => rudb.Id == rent.UserId)
+                       .FirstOrDefault(),
+                   PricePerDay = rent.Car.PricePerDay,
+                   Fee = rent.Fee
+               })
+               .Where(u => u.User.Username == userName)
+               .ToListAsync();
 
-        //    return rents;
-        //}
+            return rents;
+            // TODO: Check for bugs
+        }
     }
 }

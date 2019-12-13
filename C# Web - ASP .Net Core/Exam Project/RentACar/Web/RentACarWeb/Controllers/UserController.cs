@@ -3,7 +3,9 @@
     using Microsoft.AspNetCore.Mvc;
     using RentACar.Service.Mapping;
     using RentACar.Services;
+    using RentACar.Web.ViewModels.Rent;
     using RentACar.Web.ViewModels.User.Details;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class UserController : Controller
@@ -28,13 +30,13 @@
             return View(userDetailsViewModel);
         }
 
-        //[HttpGet(Name = "UserRent")]
-        //public async Task<IActionResult> UserRent()
-        //{
-        //    List<RentViewModel> rent = await this.rentService
-        //        .GetMyRentAsync(User.Identity.Name);
+        [HttpGet(Name = "UserRent")]
+        public async Task<IActionResult> UserRent()
+        {
+            List<RentViewModel> rent = await this.rentService
+                .GetMyRentAsync(User.Identity.Name);
 
-        //    return View(rent);
-        //}
+            return View(rent);
+        }
     }
 }

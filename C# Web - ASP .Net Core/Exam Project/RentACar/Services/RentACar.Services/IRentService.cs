@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace RentACar.Services
+﻿namespace RentACar.Services
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Web.BindingModels;
     using Web.ViewModels.Rent;
    
@@ -10,7 +9,7 @@ namespace RentACar.Services
     {
         Task CreateRent(CarRentBindingModel carRentBindingModel, string userId);
 
-       // Task<List<RentViewModel>> GetMyRentAsync(string userName);
+        Task<List<RentViewModel>> GetMyRentAsync(string userName);
 
         Task<List<RentViewModel>> GetAllRentsAsync();
     }
