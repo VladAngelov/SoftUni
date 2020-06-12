@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3 class="bg-dark text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Премахни кола</h3>
+<h3 class="bg-dark text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Delete the car</h3>
 
 <form method="post" class="form border-primary-4 rounded p-3 w-60 mx-auto mt-3" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly"></div>
@@ -15,35 +15,35 @@
     <div id="name-and-price-holder" class="d-flex justify-content-between">
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="Brand" class="text-dark h5">Марка</label>
+                <label asp-for="Brand" class="text-dark h5">Brand</label>
             </div>
             <input type="text"
                    class="form-control text-primary text-center"
                    id="brand"
-                   placeholder="Марка..."
+                   placeholder="Brand..."
                    value="@Model.Brand"
                    disabled>
         </div>
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="Model" class="text-dark h5">Модел</label>
+                <label asp-for="Model" class="text-dark h5">Model</label>
             </div>
             <input type="text"
                    class="form-control text-primary text-center"
                    id="model"
-                   placeholder="Модел..."
+                   placeholder="Model..."
                    value="@Model.Model"
                    disabled>
         </div>
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="PricePerDay" class="text-dark h5">Цена за ден</label>
+                <label asp-for="PricePerDay" class="text-dark h5">Price per day</label>
             </div>
             <input type="number"
                    step="0.01"
                    class="form-control text-primary text-center"
                    id="priceperday"
-                   placeholder="Цена за ден..."
+                   placeholder="Price per day..."
                    value="@Model.PricePerDay"
                    disabled>
         </div>
@@ -52,7 +52,7 @@
     <div id="date-and-picture-holder" class="d-flex justify-content-between">
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="ManufacturedOn" class="text-dark h5">Дата на създаване</label>
+                <label asp-for="ManufacturedOn" class="text-dark h5">Date of manufacture</label>
             </div>
             <input type="text"
                    class="form-control text-primary text-center"

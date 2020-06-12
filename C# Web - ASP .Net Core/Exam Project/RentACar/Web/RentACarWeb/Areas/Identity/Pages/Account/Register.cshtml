@@ -4,96 +4,98 @@
     ViewData["Title"] = "Register";
 }
 
-<h1 class="bg-dark text-white font-weight-bold text-center p-3 w-25 mx-auto rounded">Регистрация</h1>
-@*<h1 class="bg-primary text-white font-weight-bold text-center p-3 w-25 mx-auto rounded">Register</h1>*@
+@*<h1 class="bg-dark text-white font-weight-bold text-center p-3 w-25 mx-auto rounded">Регистрация</h1>
+
+    <form method="post" asp-action="/Identity/Account/Register" class="form border-primary-4 rounded p-3 w-25 mx-auto mt-3">
+        <div class="form-group mx-auto">
+            <div class="d-flex justify-content-center">
+                <label asp-for="Input.Username" class="text-dark h5">Потребителско име</label>
+            </div>
+            <input type="text"
+                   class="form-control text-primary text-center"
+                   id="username"
+                   placeholder="Потребителско име..."
+                   asp-for="Input.Username">
+            <span asp-validation-for="Input.Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="d-flex justify-content-center">
+                <label asp-for="Input.FirstName" class="text-dark h5">Първо име</label>
+            </div>
+            <input type="text"
+                   class="form-control text-primary text-center"
+                   id="firstname"
+                   placeholder="Първо име..."
+                   asp-for="Input.FirstName">
+            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="d-flex justify-content-center">
+                <label asp-for="Input.LastName" class="text-dark h5">Фамилия</label>
+            </div>
+            <input type="text"
+                   class="form-control text-primary text-center"
+                   id="lastname"
+                   placeholder="Фамилия..."
+                   asp-for="Input.LastName">
+            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group mx-auto">
+            <div class="d-flex justify-content-center">
+                <label asp-for="Input.Password" class="text-dark h5">Парола</label>
+            </div>
+            <input type="password"
+                   class="form-control text-primary text-center"
+                   id="password"
+                   placeholder="Парола..."
+                   asp-for="Input.Password">
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group mx-auto">
+            <div class="d-flex justify-content-center">
+                <label asp-for="Input.ConfirmPassword" class="text-dark h5">Потвърди парола</label>
+            </div>
+            <input type="password"
+                   class="form-control text-primary text-center"
+                   id="confirmPassword"
+                   placeholder="Потвърди парола..."
+                   asp-for="Input.ConfirmPassword">
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group mx-auto">
+            <div class="d-flex justify-content-center">
+                <label asp-for="Input.PhoneNumber" class="text-dark h5">Телефонен номер</label>
+            </div>
+            <input type="tel"
+                   class="form-control text-primary text-center"
+                   id="email"
+                   placeholder="Телефонен номер..."
+                   asp-for="Input.PhoneNumber">
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group mx-auto">
+            <div class="d-flex justify-content-center">
+                <label asp-for="Input.Email" class="text-dark h5">Електронна поща</label>
+            </div>
+            <input type="email"
+                   class="form-control text-primary text-center"
+                   id="email"
+                   placeholder="Електронна поща..."
+                   asp-for="Input.Email">
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <hr class="hr-2 bg-dark mt-4">
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-outline-success font-weight-bold mr-2">Регистрация</button>
+            <a href="/" class="btn btn-outline-danger font-weight-bold">Назад</a>
+        </div>
+    </form>*@
+
+
+<h1 class="bg-primary text-white font-weight-bold text-center p-3 w-25 mx-auto rounded">Register</h1>
+
 
 <form method="post" asp-action="/Identity/Account/Register" class="form border-primary-4 rounded p-3 w-25 mx-auto mt-3">
-    <div class="form-group mx-auto">
-        <div class="d-flex justify-content-center">
-            <label asp-for="Input.Username" class="text-dark h5">Потребителско име</label>
-        </div>
-        <input type="text"
-               class="form-control text-primary text-center"
-               id="username"
-               placeholder="Потребителско име..."
-               asp-for="Input.Username">
-        <span asp-validation-for="Input.Username" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <div class="d-flex justify-content-center">
-            <label asp-for="Input.FirstName" class="text-dark h5">Първо име</label>
-        </div>
-        <input type="text"
-               class="form-control text-primary text-center"
-               id="firstname"
-               placeholder="Първо име..."
-               asp-for="Input.FirstName">
-        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <div class="d-flex justify-content-center">
-            <label asp-for="Input.LastName" class="text-dark h5">Фамилия</label>
-        </div>
-        <input type="text"
-               class="form-control text-primary text-center"
-               id="lastname"
-               placeholder="Фамилия..."
-               asp-for="Input.LastName">
-        <span asp-validation-for="Input.LastName" class="text-danger"></span>
-    </div>
-    <div class="form-group mx-auto">
-        <div class="d-flex justify-content-center">
-            <label asp-for="Input.Password" class="text-dark h5">Парола</label>
-        </div>
-        <input type="password"
-               class="form-control text-primary text-center"
-               id="password"
-               placeholder="Парола..."
-               asp-for="Input.Password">
-        <span asp-validation-for="Input.Password" class="text-danger"></span>
-    </div>
-    <div class="form-group mx-auto">
-        <div class="d-flex justify-content-center">
-            <label asp-for="Input.ConfirmPassword" class="text-dark h5">Потвърди парола</label>
-        </div>
-        <input type="password"
-               class="form-control text-primary text-center"
-               id="confirmPassword"
-               placeholder="Потвърди парола..."
-               asp-for="Input.ConfirmPassword">
-        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-    </div>
-    <div class="form-group mx-auto">
-        <div class="d-flex justify-content-center">
-            <label asp-for="Input.PhoneNumber" class="text-dark h5">Телефонен номер</label>
-        </div>
-        <input type="tel"
-               class="form-control text-primary text-center"
-               id="email"
-               placeholder="Телефонен номер..."
-               asp-for="Input.PhoneNumber">
-        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-    </div>
-    <div class="form-group mx-auto">
-        <div class="d-flex justify-content-center">
-            <label asp-for="Input.Email" class="text-dark h5">Електронна поща</label>
-        </div>
-        <input type="email"
-               class="form-control text-primary text-center"
-               id="email"
-               placeholder="Електронна поща..."
-               asp-for="Input.Email">
-        <span asp-validation-for="Input.Email" class="text-danger"></span>
-    </div>
-    <hr class="hr-2 bg-dark mt-4">
-    <div class="d-flex justify-content-center mt-3">
-        <button class="btn btn-outline-success font-weight-bold mr-2">Регистрация</button>
-        <a href="/" class="btn btn-outline-danger font-weight-bold">Назад</a>
-    </div>
-</form>
-
-
-@*<form method="post" asp-action="/Identity/Account/Register" class="form border-primary-4 rounded p-3 w-25 mx-auto mt-3">
     <div class="form-group mx-auto">
         <div class="d-flex justify-content-center">
             <label asp-for="Input.Username" class="text-primary h5">Username</label>
@@ -175,7 +177,7 @@
     <div class="d-flex justify-content-center mt-3">
         <button class="btn btn-primary font-weight-bold">Register</button>
     </div>
-</form>*@
+</form>
 
 
 @section Scripts {

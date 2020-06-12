@@ -9,7 +9,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3 class="bg-dark text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Промени кола</h3>
+<h3 class="bg-dark text-white font-weight-bold text-center p-3 w-60 mx-auto rounded">Edit car</h3>
 
 <form method="post" class="form border-primary-4 rounded p-3 w-60 mx-auto mt-3" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly"></div>
@@ -17,13 +17,13 @@
     <div id="name-and-price-holder" class="d-flex justify-content-between">
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="Brand" class="text-dark h5">Марка</label>
+                <label asp-for="Brand" class="text-dark h5">Brand</label>
             </div>
 
             <input hidden type="text"
                    class="form-control text-primary text-center"
                    id="status"
-                   placeholder="Статус..."
+                   placeholder="Car status..."
                    value="@Model.CarStatus"
                    asp-for="CarStatus">
             <span asp-validation-for="CarStatus" class="text-danger"></span>
@@ -32,19 +32,19 @@
             <input type="text"
                    class="form-control text-primary text-center"
                    id="brand"
-                   placeholder="Марка..."
+                   placeholder="Brand..."
                    value="@Model.Brand"
                    asp-for="Brand">
             <span asp-validation-for="Brand" class="text-danger"></span>
         </div>
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="Model" class="text-dark h5">Модел</label>
+                <label asp-for="Model" class="text-dark h5">Model</label>
             </div>
             <input type="text"
                    class="form-control text-primary text-center"
                    id="model"
-                   placeholder="Модел..."
+                   placeholder="Model..."
                    value="@Model.Model"
                    asp-for="Model">
             <span asp-validation-for="Model" class="text-danger"></span>
@@ -52,13 +52,13 @@
 
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="PricePerDay" class="text-dark h5">Цена за ден</label>
+                <label asp-for="PricePerDay" class="text-dark h5">Price per day</label>
             </div>
             <input type="number"
                    step="0.01"
                    class="form-control text-primary text-center"
                    id="price"
-                   placeholder="Цена за ден..."
+                   placeholder="Price per day..."
                    value="@Model.PricePerDay"
                    asp-for="PricePerDay">
             <span asp-validation-for="PricePerDay" class="text-danger"></span>
@@ -69,24 +69,24 @@
         <div class="form-group">
             <div class="d-flex justify-content-center">
                 <div class="d-flex justify-content-center">
-                    <label asp-for="ManufacturedOn" class="text-dark h5">Дата на създаване</label>
+                    <label asp-for="ManufacturedOn" class="text-dark h5">Date of manufacture</label>
                 </div>
             </div>
             <input type="date"
                    class="form-control text-primary text-center"
                    id="manufacturedOn"
-                   placeholder="Дата на създаване..."
+                   placeholder="Date of manufacture..."
                    asp-for="ManufacturedOn">
             <span asp-validation-for="ManufacturedOn" class="text-danger" />
         </div>
         <div class="form-group mx-auto w-45">
             <div class="d-flex justify-content-center">
-                <label asp-for="Picture" class="text-dark h5">Снимка</label>
+                <label asp-for="Picture" class="text-dark h5">Photo</label>
             </div>
             <input type="file"
                    class="form-control text-primary text-center"
                    id="picture"
-                   placeholder="Снимка..."
+                   placeholder="Photo..."
                    value="@Model.Picture"
                    asp-for="Picture"
                    >
@@ -94,11 +94,11 @@
         </div>
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="Group" class="text-dark h5">Група на колата</label>
+                <label asp-for="Group" class="text-dark h5">Car group</label>
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="Group" asp-items="@(Html.GetEnumSelectList<CarGroupBindingModel>())">
-                    <option selected="selected" value="">Избери</option>
+                    <option selected="selected" value="">Select</option>
                 </select>
                 <span asp-validation-for="Group" class="text-danger" />
             </div>
@@ -108,22 +108,22 @@
     <div id="name-and-price-holder" class="d-flex justify-content-between">
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="AirConditioner" class="text-dark h5">Климатик</label>
+                <label asp-for="AirConditioner" class="text-dark h5">Air conditioner</label>
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="AirConditioner" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
-                    <option selected disabled>--- Избери ---</option>
+                    <option selected disabled>--- Select ---</option>
                 </select>
             </div>
         </div>
 
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="AutomaticGearbox" class="text-dark h5">Автоматична скоростна кутия</label>
+                <label asp-for="AutomaticGearbox" class="text-dark h5">Automatic gearbox</label>
             </div>
             <div class="col-md-10 text-center">
                 <select asp-for="AutomaticGearbox" asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
-                    <option selected disabled>--- Избери ---</option>
+                    <option selected disabled>--- Select ---</option>
                 </select>
                 <span asp-validation-for="AutomaticGearbox" class="text-danger" />
             </div>
@@ -131,19 +131,19 @@
 
         <div class="form-group">
             <div class="d-flex justify-content-center">
-                <label asp-for="Diesel" class="text-dark h5">Дизел</label>
+                <label asp-for="Diesel" class="text-dark h5">Diesel</label>
             </div>
             <div class="col-md-10 text-center">
                 <select  asp-for="Diesel"
                          asp-items="@(Html.GetEnumSelectList<CarEquipmentBindingModel>())">
-                    <option selected disabled>--- Избери ---</option>
+                    <option selected disabled>--- Select ---</option>
                 </select>
                 <span asp-validation-for="Diesel" class="text-danger" />
             </div>
         </div>
     </div>
     <div class="d-flex justify-content-center border-t mt-3">
-        <button class="btn btn-outline-warning mt-3 font-weight-bold mr-2">Промени колата</button>
-        <a href="/" class="btn btn-outline-primary mt-3 font-weight-bold">Назад</a>
+        <button class="btn btn-outline-warning mt-3 font-weight-bold mr-2">Edit the car</button>
+        <a href="/" class="btn btn-outline-primary mt-3 font-weight-bold">Back</a>
     </div>
 </form>

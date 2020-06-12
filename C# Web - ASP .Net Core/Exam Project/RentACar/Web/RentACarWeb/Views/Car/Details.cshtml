@@ -7,105 +7,105 @@
 
 <main class="mt-3 mb-3">
     <form method="post" class="form border-primary-4 rounded p-3 w-70 mx-auto mt-3">
-        <h3 class="font-weight-bold text-center text-white bg-dark" >Детайли на колата</h3>
+        <h3 class="font-weight-bold text-center text-white bg-dark">Details for the car</h3>
 
         <div id="product-image-and-navigation-holder" calss="col-md-5 row">
             <div id="image-holder">
                 <img src="@Model.Picture"
-                     alt="@Model.Brand @Model.Model" 
+                     alt="@Model.Brand @Model.Model"
                      class="img-thumbnail product-details justify-content-between" />
             </div>
         </div>
 
         <div id="product-data-holder" class="form-group mx-auto text-center col-md-5 my-3 border-t">
-            <h4 class="text-left">Марка: @Model.Brand</h4>
-            <h4 class="text-left">Модел: @Model.Model</h4>
-            <h4 class="text-left">Дата на производство: @Model.ManufacturedOn.ToString("dd/MM/yyyy")</h4>
+            <h4 class="text-left">Brand: @Model.Brand</h4>
+            <h4 class="text-left">Model: @Model.Model</h4>
+            <h4 class="text-left">Manufactured on: @Model.ManufacturedOn.ToString("dd/MM/yyyy")</h4>
             <h4 class="text-left">
-                Група: @switch (Model.Group)
+                Group: @switch (Model.Group)
                 {
                     case RentACar.Web.BindingModels.CarGroupBindingModel.Hybrid:
-                        <a>Хибрид</a>
+                        <a>Hybrid</a>
                         break;
                     case RentACar.Web.BindingModels.CarGroupBindingModel.Compact:
-                        <a>Хечбек</a>
+                        <a>Compact</a>
                         break;
                     case RentACar.Web.BindingModels.CarGroupBindingModel.FullSize:
-                        <a>Седан</a>
+                        <a>Full size</a>
                         break;
                     case RentACar.Web.BindingModels.CarGroupBindingModel.Estate:
-                        <a>Комби</a>
+                        <a>Estate</a>
                         break;
                     case RentACar.Web.BindingModels.CarGroupBindingModel.Minivan:
-                        <a>Миниван</a>
+                        <a>Minivan</a>
                         break;
                     case RentACar.Web.BindingModels.CarGroupBindingModel.SUV:
-                        <a>СУВ</a>
+                        <a>SUV</a>
                         break;
                     case RentACar.Web.BindingModels.CarGroupBindingModel.Luxury:
-                        <a>Лимозина</a>
+                        <a>Luxury</a>
                         break;
                     default:
                         break;
                 }
             </h4>
             <h4 class="text-left">
-                Климатик: @switch (Model.AirConditioner)
+                Air conditioner: @switch (Model.AirConditioner)
                 {
                     case RentACar.Web.BindingModels.CarEquipmentBindingModel.Yes:
-                        <a>Да</a>
+                        <a>Yes</a>
                         break;
                     case RentACar.Web.BindingModels.CarEquipmentBindingModel.No:
-                        <a>Не</a>
+                        <a>No</a>
                         break;
                     default:
                         break;
                 }
             </h4>
             <h4 class="text-left">
-                Автоматична скоростна кутия: @switch (Model.AutomaticGearbox)
+                Automatic Gearbox: @switch (Model.AutomaticGearbox)
                 {
                     case RentACar.Web.BindingModels.CarEquipmentBindingModel.Yes:
-                        <a>Да</a>
+                        <a>Yes</a>
                         break;
                     case RentACar.Web.BindingModels.CarEquipmentBindingModel.No:
-                        <a>Не</a>
+                        <a>No</a>
                         break;
                     default:
                         break;
                 }
             </h4>
             <h4 class="text-left">
-                Дизел: @switch (Model.Diesel)
+                Diesel: @switch (Model.Diesel)
                 {
                     case RentACar.Web.BindingModels.CarEquipmentBindingModel.Yes:
-                        <a>Да</a>
+                        <a>Yes</a>
                         break;
                     case RentACar.Web.BindingModels.CarEquipmentBindingModel.No:
-                        <a>Не</a>
+                        <a>No</a>
                         break;
                     default:
                         break;
                 }
             </h4>
-            <h4 class="text-left border-bot">Цена на ден: @Model.PricePerDay.ToString("F2") лв.</h4>
+            <h4 class="text-left border-bot">Price per day: @Model.PricePerDay.ToString("F2") lv.</h4>
 
-        <div class="form-group mt-4">
+            <div class="form-group mt-4">
 
-            <button type="button" class="btn btn-outline-success mt-1"
-                    data-toggle="modal" data-target="#rentModal">
-                Наеми
-            </button>
+                <button type="button" class="btn btn-outline-success mt-1"
+                        data-toggle="modal" data-target="#rentModal">
+                    Rent
+                </button>
 
-            @if (this.User.IsInRole("Admin"))
-            {
-                <a href="/Administration/Car/Edit/@Model.Id" class="btn btn-outline-warning">Промени</a>
-                <a href="/Administration/Car/Delete/@Model.Id" class="btn btn-outline-danger">Изтрий</a>
-            }
+                @if (this.User.IsInRole("Admin"))
+                {
+                    <a href="/Administration/Car/Edit/@Model.Id" class="btn btn-outline-warning">Edit</a>
+                    <a href="/Administration/Car/Delete/@Model.Id" class="btn btn-outline-danger">Delete</a>
+                }
 
-            <a href="/" class="btn btn-outline-primary mt-1  ">Назад</a>
+                <a href="/" class="btn btn-outline-primary mt-1">Back</a>
 
-        </div>
+            </div>
         </div>
     </form>
 </main>
@@ -116,7 +116,7 @@
             <div class="modal-header">
 
                 <h5 class="modal-title" id="rentModalLabel">
-                    Наеми - @Model.Brand @Model.Model
+                    Rent - @Model.Brand @Model.Model
                 </h5>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -130,7 +130,7 @@
                         <input type="date"
                                class="form-control text-primary text-center"
                                id="startDate"
-                               placeholder="Начална дата..."
+                               placeholder="Start date..."
                                asp-for="CarRentBindingModel.StartDate"
                                name="startDate">
                     </div>
@@ -139,7 +139,7 @@
                         <input type="date"
                                class="form-control text-primary text-center"
                                id="endDate"
-                               placeholder="Крайна дата..."
+                               placeholder="End date..."
                                asp-for="CarRentBindingModel.EndDate"
                                name="endDate">
                     </div>
@@ -149,8 +149,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Затвори</button>
-                <button type="button" class="btn btn-success" id="complete-rent-button">Завърши наема</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="complete-rent-button">Finish a rent</button>
             </div>
         </div>
     </div>

@@ -1,14 +1,14 @@
 ﻿@model List<RentACar.Web.ViewModels.Home.Index.CarHomeViewModel>
 
 @{
-    ViewData["Title"] = "Коли под наем";
+    ViewData["Title"] = "Rent a car";
 
     var criteria = new Dictionary<string, string>()
 {
-        { "price-lowest-to-highest", "Цена (ниска към висока)" },
-        { "price-highest-to-lowest", "Цена (висока към ниска)" },
-        { "date-oldest-to-newest", "Дата на създаване (стара към нова)" },
-        { "date-newest-to-oldest", "Дата на създаване (нова към стара)" }
+        { "price-lowest-to-highest", "Price (Low to High)" },
+        { "price-highest-to-lowest", "Price (High to Low)" },
+        { "date-oldest-to-newest", "Manufactured date (Old to New)" },
+        { "date-newest-to-oldest", "Manufactured date (New to Old)" }
     };
 }
 
@@ -19,20 +19,20 @@
                class="form-control text-dark"
                id="products-search-bar"
                name="search"
-               placeholder="Търсене..." />
+               placeholder="Search..." />
     </div>
 
     <div id="sort-holder" class="form-group w-40 d-flex justify-content-between">
-        <label for="sort" class="text-dark font-weight-bold w-30 h7 mt-1 text-right">Подреди по: </label>
+        <label for="sort" class="text-dark font-weight-bold w-30 h7 mt-1 text-right">Order by: </label>
         <form id="rent-form" action="/" method="get">
             <select id="sort" class="form-control text-dark text-center pl-2 ml-1 w-70" name="criteria">
                 @if (this.ViewData["criteria"] == null)
                 {
-                    <option selected>--- Избери ---</option>
+                    <option selected>--- Select ---</option>
                 }
                 else
                 {
-                    <option selected>--- Избери ---</option>
+                    <option selected>--- Select ---</option>
                 }
 
                 @foreach (var elem in criteria)
@@ -67,13 +67,13 @@
                                      src="@Model[j].Picture"
                                      alt="@Model[j].Brand @Model[j].Model">
                             </div>
-                            <h5 class="text-dark text-center mt-3">Марка: @Model[j].Brand</h5>
-                            <h5 class="text-dark text-center mt-3">Модел: @Model[j].Model</h5>
+                            <h5 class="text-dark text-center mt-3">Brand: @Model[j].Brand</h5>
+                            <h5 class="text-dark text-center mt-3">Model: @Model[j].Model</h5>
                             <h5 class="text-dark text-center mt-3">
-                                Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")
+                                Manufactured on: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")
                             </h5>
                             <h5 class="text-dark text-center mt-3">
-                                Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.
+                                Price per day: @Model[j].PricePerDay.ToString("F2") lv.
                             </h5>
                         </div>
                     }
@@ -103,26 +103,30 @@ else
                                      src="@Model[j].Picture"
                                      alt="~/images/missingCar.jpg" />
                             </div>
-                            <h5 class="text-dark text-left mt-3">Марка: @Model[j].Brand</h5>
+                            <h5 class="text-dark text-left mt-3">Brand: @Model[j].Brand</h5>
 
-                            <h5 class="text-dark text-left mt-3">Модел: @Model[j].Model</h5>
+                            <h5 class="text-dark text-left mt-3">Model: @Model[j].Model</h5>
 
                             <h5 class="text-dark text-left mt-3">
-                                Дата на производство: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")
+                                Manufactured on: @Model[j].ManufacturedOn.ToString("dd/MM/yyyy")
                             </h5>
 
                             <h5 class="text-dark text-left mt-3">
-                                Цена за ден: @Model[j].PricePerDay.ToString("F2") лв.
+                                Price per day: @Model[j].PricePerDay.ToString("F2") lv.
                             </h5>
 
                             @if (Model[j].CarStatus == "Booked")
                             {
-                                <a class="btn btn-outline-danger busy-btn-disabled">Заета</a>
+                                <a class="btn btn-outline-danger 
+                                   busy-btn-disabled">
+                                    Booked
+                                </a>
                             }
                             else
                             {
-                                <a href="/Car/Details/@Model[j].Id" class="btn btn-outline-dark mb-2 font-weight-bold">
-                                    Свободна
+                                <a href="/Car/Details/@Model[j].Id" 
+                                   class="btn btn-outline-dark mb-2 font-weight-bold">
+                                    Free
                                 </a>
                             }
                         </div>
@@ -140,7 +144,7 @@ else
 <div class="form-group mx-auto section mt-5">
     <div class="d-flex justify-content-left mt-1 ml-3">
         <h6>
-            Актуална пътна обсатовна -
+            Current road conditions -
             <a href="http://www.api.bg/index.php/bg/promeni"> www.api.bg</a>
         </h6>
     </div>
@@ -149,9 +153,9 @@ else
 <div class="form-group mx-auto section mt-5">
     <div class="d-flex justify-content-left ml-3">
         <h6>
-            Времето -
+            The weather -
             <a href="http://www.sinoptik.bg">www.sinoptik.bg</a>
-            или
+            or
             <a href="http://www.dalivali.bg">www.dalivali.bg</a>
         </h6>
     </div>
