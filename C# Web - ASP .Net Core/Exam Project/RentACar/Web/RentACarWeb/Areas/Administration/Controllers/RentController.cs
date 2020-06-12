@@ -27,18 +27,6 @@
             return View(rents);
         }
 
-        [HttpPost(Name = "Delete Rent")]
-        public async Task <IActionResult> DeleteRent()
-        {
-            return View();
-        }
-
-        [HttpPost(Name = "Edit Rent")]
-        public async Task<IActionResult> EditRent()
-        {
-            return View();
-        }
-
         [HttpPost(Name = "Create")]
         public async Task<IActionResult> Create(CarRentBindingModel carRentBindingModel)
         {

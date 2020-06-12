@@ -8,6 +8,8 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
+    using RentACar.Data.Models.Rent;
 
     public class CarService : ICarService
     {
@@ -99,6 +101,28 @@
 
                 case ManufacturedOnNewestToOldestCarRentCriteria:
                     return this.GetAllCarsByManufacturedOnDescending().To<CarServiceModel>();
+            }
+
+            List<Car> rentedCars = this.context
+                .Cars
+                .Where(c => c.CarStatusId == 2)
+                .ToList();
+
+            List<Rent> rents = this.context
+                .Rents
+                .ToList();
+            
+            foreach (var car in rentedCars)
+            {
+                Rent rent = rents.FirstOrDefault(r => r.CarId == car.Id);
+
+                if (rent.EndDate < DateTime.UtcNow)
+                {
+                    car.CarStatusId = 1;
+                    rent.StatusId = 2;
+
+                    this.context.SaveChanges();
+                }
             }
 
             return this.context.Cars.To<CarServiceModel>();

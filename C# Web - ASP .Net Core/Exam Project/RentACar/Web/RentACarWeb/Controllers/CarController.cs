@@ -1,17 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace RentACarWeb.Controllers
+﻿namespace RentACarWeb.Controllers
 {
     using RentACar.Service.Mapping;
     using RentACar.Services;
     using RentACar.Web.ViewModels.Car.Details;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
+
 
     public class CarController : Controller
     {
         private readonly ICarService carService;
 
-        public CarController(ICarService carService, IRentService rentService)
+        public CarController(ICarService carService)
         {
             this.carService = carService;
         }

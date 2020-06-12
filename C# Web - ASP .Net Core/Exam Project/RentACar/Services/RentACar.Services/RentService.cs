@@ -123,6 +123,14 @@
                .Where(u => u.User.Username == userName)
                .ToListAsync();
 
+            for (int i = 0; i < rents.Count; i++)
+            {
+                if (rents[i].EndDate < DateTime.UtcNow)
+                {
+                    rents.RemoveAt(i);
+                }
+            }
+
             return rents;
             // TODO: Check for bugs
         }
