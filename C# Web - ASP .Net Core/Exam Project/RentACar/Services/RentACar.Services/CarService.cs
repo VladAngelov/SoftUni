@@ -111,16 +111,15 @@
             List<Rent> rents = this.context
                 .Rents
                 .ToList();
-            
-            foreach (var car in rentedCars)
+
+            foreach (var rent in rents)
             {
-                Rent rent = rents.FirstOrDefault(r => r.CarId == car.Id);
+                var notActive = rent.EndDate < DateTime.Now && rent.StatusId == 1;
 
-                if (rent.EndDate < DateTime.UtcNow)
+                if (notActive)
                 {
-                    car.CarStatusId = 1;
                     rent.StatusId = 2;
-
+                    rent.Car.CarStatusId = 1;
                     this.context.SaveChanges();
                 }
             }

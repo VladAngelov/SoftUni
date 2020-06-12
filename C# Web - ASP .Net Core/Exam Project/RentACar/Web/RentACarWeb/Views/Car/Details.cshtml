@@ -159,11 +159,13 @@
 <script>
     $('#complete-rent-button').click(function () {
 
-        //date 1
+        var startDate = document.forms["rent-form"]["startDate"].value;
+        var endDate = document.forms["rent-form"]["endDate"].value
 
-        //date 2
-
-        //date 1 < date 2
+        if (startDate >= endDate) {
+            window.alert("Select correct End date!");
+            return false;
+        }
 
         $('#rent-form').submit();
     });
