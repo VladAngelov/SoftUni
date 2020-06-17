@@ -39,49 +39,49 @@ namespace RentACarWeb.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "Потребителско име")]
-            //[Display(Name = "Username")]
+            // [Display(Name = "Потребителско име")]
+            [Display(Name = "Username")]
             public string Username { get; set; }
 
             [Required]
-            [Display(Name = "Първо име")]
-            [StringLength(30, ErrorMessage = "{0}, трябва да бъде между {2} и {1} символа.", MinimumLength = 3)]
-            //[Display(Name = "First name")]
-            //[StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            // [Display(Name = "Първо име")]
+            // [StringLength(30, ErrorMessage = "{0}, трябва да бъде между {2} и {1} символа.", MinimumLength = 3)]
+            [Display(Name = "First name")]
+            [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             public string FirstName { get; set; }
 
             [Required]
-            [Display(Name = "Фамилия")]
-            [StringLength(30, ErrorMessage = "{0}, трябва да бъде между {2} и {1} символа.", MinimumLength = 3)]
-            //[Display(Name = "Last name")]
-            //[StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            // [Display(Name = "Фамилия")]
+            // [StringLength(30, ErrorMessage = "{0}, трябва да бъде между {2} и {1} символа.", MinimumLength = 3)]
+            [Display(Name = "Last name")]
+            [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             public string LastName { get; set; }
 
             [Required]
-            [Display(Name = "Парола")]
-            [StringLength(30, ErrorMessage = "{0}, трябва да бъде между {2} и {1} символа.", MinimumLength = 3)]
-            //[StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
-            //[DataType(DataType.Password)]
-            //[Display(Name = "Password")]
+            //[Display(Name = "Парола")]
+            //[StringLength(30, ErrorMessage = "{0}, трябва да бъде между {2} и {1} символа.", MinimumLength = 3)]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
             public string Password { get; set; }
 
             [Required]
-            [Display(Name = "Потвърджение на парола")]
-            [Compare("Password", ErrorMessage = "Паролите не съвпадат!")]
+            //[Display(Name = "Потвърджение на парола")]
+           // [Compare("Password", ErrorMessage = "Паролите не съвпадат!")]
             //[DataType(DataType.Password)]
-            //[Display(Name = "Confirm password")]
-            //[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
             [Required]
-            [Display(Name = "Телефонен номер")]
-            //[Display(Name = "Phone number")]
+            //[Display(Name = "Телефонен номер")]
+            [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
             [Required]
             [EmailAddress]
-            [Display(Name = "Електронна поща")]
-            //[Display(Name = "Email")]
+            //[Display(Name = "Електронна поща")]
+            [Display(Name = "Email")]
             public string Email { get; set; }
         }
 

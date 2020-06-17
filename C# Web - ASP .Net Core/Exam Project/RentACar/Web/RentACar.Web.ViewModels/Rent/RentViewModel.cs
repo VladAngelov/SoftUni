@@ -1,14 +1,12 @@
-﻿using System;
-
-namespace RentACar.Web.ViewModels.Rent
+﻿namespace RentACar.Web.ViewModels.Rent
 {
     using Service.Mapping;
     using Services.Models;
+    using System;
     using Web.BindingModels;
 
     public class RentViewModel : IMapFrom<RentServiceModel>, IMapTo<RentServiceModel>
     {
-
         public int Id { get; set; }
 
         public string CarBrand { get; set; }

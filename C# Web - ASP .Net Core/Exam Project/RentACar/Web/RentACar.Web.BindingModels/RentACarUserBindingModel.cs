@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace RentACar.Web.BindingModels
+﻿namespace RentACar.Web.BindingModels
 {
     using Services.Models;
+    using System.Collections.Generic;
 
     public class RentACarUserBindingModel
     {

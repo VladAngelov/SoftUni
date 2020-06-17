@@ -1,9 +1,8 @@
-﻿using System;
-
-namespace RentACar.Web.ViewModels.Car.Details
+﻿namespace RentACar.Web.ViewModels.Car.Details
 {
     using Service.Mapping;
     using Services.Models;
+    using System;
     using Web.BindingModels;
 
     public class CarDetailsViewModel : IMapFrom<CarServiceModel>, IMapTo<CarServiceModel>

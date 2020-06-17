@@ -30,18 +30,19 @@
         public class InputModel
         {
             [Required]
-            [Display(Name = "Потребителско име")]
+           // [Display(Name = "Потребителско име")]
             [MaxLength(30)]
-            //[Display(Name = "Username")]
+            [Display(Name = "Username")]
             public string Username { get; set; }
 
             [Required]
-            [Display(Name = "Парола")]
+            //[Display(Name = "Парола")]
+            [Display(Name = "Password")]
             // [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Запомни ме?")]
-            //[Display(Name = "Remember me?")]
+           // [Display(Name = "Запомни ме?")]
+            [Display(Name = "Remember me?")]
             public bool RememberMe { get; set; }
         }
 

@@ -1,12 +1,11 @@
 ﻿namespace RentACar.Data
 {
     using Models.User;
-
+    using Models.Car;
+    using Models.Rent;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Identity;
-    using RentACar.Data.Models.Car;
-    using RentACar.Data.Models.Rent;
 
     public class RentACarDbContext : IdentityDbContext<RentACarUser, IdentityRole, string>
     {
