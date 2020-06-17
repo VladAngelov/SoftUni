@@ -74,9 +74,9 @@
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Невалиден!");
+                    // ModelState.AddModelError(string.Empty, "Невалиден!");
                     
-                    //ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
 
                     return Page();
                 }
