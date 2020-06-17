@@ -1,8 +1,7 @@
 ﻿namespace RentACar.Web.ViewModels.User.Details
 {
-    using Services.Models;
     using Service.Mapping;
-    using System.Collections.Generic;
+    using Services.Models;
 
     public class UserDetailsViewModel : IMapFrom<UserServiceModel>, IMapTo<UserServiceModel>
     {
@@ -11,7 +10,5 @@
         public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
-
-       // public List<RentServiceModel> Rents { get; set; }
     }
 }
