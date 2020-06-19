@@ -1,14 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RentACarWeb.Controllers
+﻿namespace RentACarWeb.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     using Models;
     using RentACar.Services;
     using RentACar.Web.ViewModels.Home.Index;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class HomeController : Controller
     {
@@ -19,7 +18,7 @@ namespace RentACarWeb.Controllers
             this.carService = carService;
         }
 
-        public async Task<IActionResult> Index([FromQuery]string criteria = null)
+        public async Task<IActionResult> Index([FromQuery] string criteria = null)
         {
             List<CarHomeViewModel> cars = this.carService.GetAllCars(criteria)
                 .Select(car => new CarHomeViewModel()

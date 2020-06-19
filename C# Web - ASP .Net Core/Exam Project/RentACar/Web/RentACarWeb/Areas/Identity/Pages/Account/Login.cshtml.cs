@@ -30,7 +30,7 @@
         public class InputModel
         {
             [Required]
-           // [Display(Name = "Потребителско име")]
+            // [Display(Name = "Потребителско име")]
             [MaxLength(30)]
             [Display(Name = "Username")]
             public string Username { get; set; }
@@ -41,7 +41,7 @@
             // [DataType(DataType.Password)]
             public string Password { get; set; }
 
-           // [Display(Name = "Запомни ме?")]
+            // [Display(Name = "Запомни ме?")]
             [Display(Name = "Remember me?")]
             public bool RememberMe { get; set; }
         }
@@ -62,11 +62,22 @@
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(
-                    Input.Username, 
-                    Input.Password, 
-                    Input.RememberMe, 
-                    lockoutOnFailure: true);
+                var result = Microsoft.AspNetCore.Identity.SignInResult.Failed;
+
+                try
+                {
+                    result = await _signInManager.PasswordSignInAsync(
+                      Input.Username,
+                      Input.Password,
+                      Input.RememberMe,
+                      lockoutOnFailure: true);
+                }
+                catch (System.Exception)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return Page();
+                }
+
 
                 if (result.Succeeded)
                 {
@@ -75,7 +86,7 @@
                 else
                 {
                     // ModelState.AddModelError(string.Empty, "Невалиден!");
-                    
+
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
 
                     return Page();
