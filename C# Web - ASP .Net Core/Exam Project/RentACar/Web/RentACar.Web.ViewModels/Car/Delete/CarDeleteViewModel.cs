@@ -1,9 +1,8 @@
-﻿using System;
-
-namespace RentACar.Web.ViewModels.Car.Delete
+﻿namespace RentACar.Web.ViewModels.Car.Delete
 {
     using Service.Mapping;
     using Services.Models;
+    using System;
 
     public class CarDeleteViewModel : IMapFrom<CarServiceModel>
     {

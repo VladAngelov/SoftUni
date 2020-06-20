@@ -91,12 +91,10 @@
         [HttpPost]
         public async Task<IActionResult> Edit(int id, CarServiceModel carServiceModel)
         {
-
             var car = carService.GetById(id).Result;
             carServiceModel.Picture = car.Picture;
             carServiceModel.CarStatus = car.CarStatus;
             carServiceModel.CarStatusId = car.CarStatusId;
-
 
             if (!this.ModelState.IsValid)
             {
