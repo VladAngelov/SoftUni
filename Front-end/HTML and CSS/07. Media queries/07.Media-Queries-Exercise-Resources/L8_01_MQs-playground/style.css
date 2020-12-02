@@ -1,0 +1,22 @@
+section {
+  display: flex;
+  align-items: center;
+}
+
+p {
+  color: green;
+  margin-left: 3px;
+}
+
+@media all and (width: 600px) {
+  .mq-width {
+    width: 80%;
+  }
+    .mq-height {
+    height: 80%;
+  }
+
+  .mq-ar {
+    aspect-ratio: 8/5;
+  }
+}

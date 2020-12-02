@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+header ul {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+header ul li {
+  list-style: none;
+  color: #9d9d9d;
+  text-transform: uppercase;
+}
+
+header ul li:hover {
+  cursor: pointer;
+}
+
+section {
+  overflow: hidden;
+}
+
+section article {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.beasts-landing-main {
+  margin-top: 50px;
+  margin-left: 40px;
+  display: flex;
+}
+
+.beasts-landing-main img {
+  position: absolute;
+  width: 45%;
+  left: 750px;
+}
+
+.beasts-landing-main h1 {
+  font-size: 42px;
+}
+
+.beast-main-text {
+  margin-left: 50px;
+  margin-top: 220px;
+  width: 34%;
+}
+
+.btn {
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn-red {
+  background: #ff0000;
+  color: white;
+  border-radius: 32px;
+  padding: 10px 23px;
+  margin-top: 20px;
+}
+
+.powerbeats {
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.powerbeats img {
+  width: 80%;
+}
+
+.powerbeats span {
+  text-transform: uppercase;
+}
+
+.powerbeats h1 {
+  font-size: 56px;
+  margin: 0;
+}
+
+.powerbeats span {
+  float: right;
+}
+
+.powerbeats-text {
+  width: 30%;
+}
+
+.powerbeats-price {
+  font-size: 35px;
+  padding-right: 25px;
+  font-weight: bold;
+}
+
+.powerbeats-price-row {
+  display: flex;
+  align-content: center;
+}
+
+.grey-part {
+  margin-top: 50px;
+  background: #575757;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grey-part img {
+  margin-right: 100px;
+}
+
+.grey-part h1,
+.grey-part img {
+  margin-top: 40px;
+}
+
+.beats-logo-small {
+  align-items: center;
+}
+
+.beats-logo-small h1 {
+  font-size: 30px;
+}
+
+.btn-read {
+  background: transparent;
+  text-decoration: underline;
+  color: white;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.photos {
+  display: flex;
+  background-color: #dadada;
+}
+
+.photos h1 {
+  font-size: 150px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.red {
+  color: red;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.photos-text {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.photos-s-text {
+  font-size: 35px;
+}
+
+footer p {
+  font-size: 20px;
+  color: #333333;
+  display: flex;
+  justify-content: center;
+}

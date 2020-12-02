@@ -1,0 +1,172 @@
+html {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #eeeeee;
+}
+
+body {
+  margin: 0 auto;
+  width: 80%;
+}
+
+/* --- Header with menu --- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #2d2d2d;
+  flex-grow: 1;
+}
+
+.menu {
+  display: none;
+}
+
+header h1 {
+  text-transform: uppercase;
+}
+/* 
+header h1::after {
+  display: inline-block;
+  width: 100%;
+  background: black;
+  height: 2px;
+  content: "";
+} */
+
+header nav ul {
+  list-style: none;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  padding: 5px;
+}
+
+header nav ul li {
+  background: #2d2d2d;
+  border-radius: 8px;
+  color: white;
+  padding: 0 5px;
+  margin: 0 5px;
+}
+
+@media all and (max-width: 574px) {
+  h1 {
+    text-align: center;
+  }
+
+  header,
+  header ul {
+    flex-direction: column;
+  }
+
+  header {
+    display: block;
+  }
+
+  .menu {
+    display: block;
+    text-align: center;
+    margin: 10px auto 25px auto;
+  }
+
+  header nav ul {
+    border-radius: 0;
+    border-top: 2px solid #2d2d2d;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  header nav ul li {
+    margin: 5px 0;
+  }
+}
+
+/* --- Main ---*/
+
+main {
+  width: 70%;
+}
+
+main h1,
+main h2 {
+  margin-top: 30px;
+}
+
+img {
+  border: 2px solid black;
+  padding: 5px;
+  margin: 10px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+.right-side {
+  float: right;
+}
+
+.left-side {
+  float: left;
+}
+
+blockquote {
+  font-family: Georgia, serif;
+  font-style: italic;
+  border-left: 5px solid #d8d8d8;
+  padding-left: 30px;
+  width: 40%;
+}
+
+section {
+  display: flex;
+}
+
+aside {
+  width: 20%;
+  margin-left: 100px;
+}
+
+aside ul {
+  list-style: square;
+}
+
+aside ul li a {
+  color: #048e0b;
+}
+
+aside ul li a:hover {
+  cursor: pointer;
+}
+
+@media all and (max-width: 768px) {
+  header,
+  header ul {
+    flex-direction: column;
+  }
+
+  header {
+    display: block;
+  }
+
+  .menu {
+    display: block;
+    text-align: center;
+    margin: 10px auto 25px auto;
+  }
+
+  header nav ul {
+    border-radius: 0;
+    border-top: 2px solid #2d2d2d;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  header nav ul li {
+    margin: 5px 0;
+  }
+
+  section {
+    flex-direction: column;
+  }
+}

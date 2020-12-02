@@ -1,0 +1,32 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #eeeeee;
+  margin: 40px;
+}
+
+.gallery {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.gallery li {
+  display: inline-block;
+  vertical-align: middle;
+  border: 00.4rem solid black;
+  padding: 10px;
+  max-width: 300px;
+  margin: 10px;
+}
+
+.gallery li img {
+  width: 100%;
+}

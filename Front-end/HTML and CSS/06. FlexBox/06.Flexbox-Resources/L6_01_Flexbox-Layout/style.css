@@ -1,0 +1,41 @@
+html {
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  background: #eeeeee;
+  margin: 0;
+  padding: 30px;
+}
+
+body > * {
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+  background: white;
+  padding: 20px;
+  margin: 20px;
+  text-transform: uppercase;
+  flex-shrink: 1;
+}
+
+main {
+  flex-grow: 3;
+}
+
+aside {
+  flex-grow: 1;
+}
+
+aside,
+main {
+  min-height: 12em;
+}
+
+header,
+footer {
+  flex-basis: 100%;
+  flex-grow: 1;
+  min-height: 5em;
+}

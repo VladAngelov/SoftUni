@@ -1,0 +1,31 @@
+html {
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+nav {
+  display: inline-block;
+  padding-top: 20px;
+}
+
+nav span {
+  font-size: 52px;
+  margin-right: 20px;
+}
+
+nav a {
+  color: #009900;
+  padding-right: 10px;
+}
+
+nav ul {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+}

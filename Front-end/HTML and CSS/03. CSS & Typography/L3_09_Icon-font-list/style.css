@@ -1,0 +1,17 @@
+@import url("https://use.fontawesome.com/releases/v5.0.0/css/all.css");
+
+html {
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 40px;
+}
+
+ul {
+  list-style: none;
+}
+
+.icons {
+  width: auto;
+}

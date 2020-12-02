@@ -1,0 +1,33 @@
+body {
+  background: #eeeeee;
+  display: flex;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Georgia, serif;
+  font-size: 1em/1.2;
+}
+
+.gallery ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gallery ul li {
+  list-style: none;
+  border: 5px solid black;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.gallery ul li img {
+  padding: 5px;
+  justify-content: center;
+}

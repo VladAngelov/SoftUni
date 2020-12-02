@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import url("https://use.fontawesome.com/releases/v5.8.2/css/all.css");
+
+html {
+  font-family: "Lato", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+section {
+  width: 90%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 40px;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  align-items: center;
+}
+/* 
+.top-part {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url(./images/hero-certificates.jpg);
+
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  display: flex;
+  padding: 15% 15% 5% 15%;
+  position: relative;
+  top: -77px;
+  z-index: -1;
+} */
+
+.menu {
+  display: flex;
+  margin: 0;
+  align-items: center;
+}
+
+.menu li {
+  list-style: none;
+  margin: 0 10px;
+  border-top: 5px solid transparent;
+  border-collapse: separate;
+  border-spacing: 15px 30px;
+}
+
+.logo {
+  width: 160px;
+}
+
+.menu li.hovered {
+  border-top-color: #42abf8;
+}
+
+.profile {
+  border-radius: 50%;
+  background: #42abf8;
+  color: white;
+  padding: 6px 9px;
+  box-shadow: 0px 0px 12px 4px rgba(66, 171, 248, 0.7);
+}
+
+.main {
+  width: 90%;
+  margin: 50px;
+}
+
+.upper-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.b-box {
+  background: #263546;
+  border-radius: 8px;
+  padding: 20px;
+  color: white;
+}
+
+.s-box {
+  margin-left: 30px;
+  display: flex;
+}
+
+.s-certificat {
+  height: 90%;
+  position: relative;
+  top: 30px;
+}
+
+.b-box,
+.s-box img {
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.5);
+}
+
+.s-text {
+  display: block;
+  font-style: italic;
+}
+
+.diploma {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.diploma h2 {
+  display: flex;
+  align-self: center;
+}
+
+.diploma-text {
+  background: #f4f5f7;
+  padding: 20px;
+}
+
+.blured {
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  border-radius: 12px;
+  color: white;
+  background: linear-gradient(rgba(73, 73, 90, 0.5), rgba(73, 73, 90, 0.7)),
+    url(./images/sign-up-prompt-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.blured p {
+  width: 70%;
+  text-align: center;
+}
+
+.btns {
+  display: flex;
+}
+
+.btn {
+  margin: 30px;
+  border-radius: 12px;
+  border: 1px solid white;
+  padding: 10px 40px;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+}
+
+.apply {
+  background: white;
+  color: #42abf8;
+}
+
+.btns span {
+  font-size: 25px;
+  margin-top: 32px;
+}
+
+footer {
+  margin-top: 50px;
+  border-top: 1px solid #9ea5ae;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer article {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+footer article span {
+  padding-left: 20px;
+  color: #d0d0d0;
+}
+
+footer article ul {
+  display: flex;
+  list-style: none;
+}
+
+footer article ul li {
+  padding-left: 10px;
+  color: #3e4c5d;
+}

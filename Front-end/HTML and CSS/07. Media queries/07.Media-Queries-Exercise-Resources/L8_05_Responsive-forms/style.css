@@ -1,0 +1,84 @@
+@import url("https://use.fontawesome.com/releases/v5.8.2/css/all.css");
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  margin: 0;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+form {
+  border: 1px solid #2d2d2d;
+  border-radius: 4px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  padding: 15px;
+  width: 100%;
+}
+
+p {
+  font-weight: bold;
+}
+
+label {
+  display: flex;
+  margin: 15px;
+  align-items: center;
+}
+
+input {
+  border: none;
+  padding: 10px 0;
+}
+
+.login {
+  border: 1px solid #2d2d2d;
+  border-radius: 4px;
+  padding: 5px 10px;
+  top: -15px;
+  background: wheat;
+  z-index: 1;
+  width: 30%;
+  position: absolute;
+}
+
+i {
+  margin-left: 10px;
+}
+
+.box {
+  margin-top: 0px;
+  margin-left: 15px;
+  background: white;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+  flex-grow: 1;
+}
+
+.btn {
+  border-radius: 4px;
+  background: #2d2d2d;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  width: 30%;
+  margin: 20px;
+}
+
+@media all and (max-width: 600px) {
+  form label {
+    flex-direction: column;
+  }
+  section {
+    width: 60%;
+  }
+}

@@ -1,0 +1,69 @@
+html {
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Georgia, serif;
+}
+
+p {
+  color: #76797c;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 100px;
+}
+
+.title {
+  flex-basis: 100%;
+  margin-bottom: 30px;
+}
+
+.title h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.title p {
+  margin: 0;
+  padding: 0;
+}
+
+.background-text {
+  background-color: #cefde9;
+}
+
+.text {
+  width: 35%;
+}
+
+.btn {
+  text-transform: uppercase;
+  background: #03a87c;
+  color: white;
+  border: none;
+  padding: 10px 40px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-article {
+  align-self: end;
+  margin-right: 200px;
+}
+hr {
+  width: 25%;
+  margin-left: 310px;
+}

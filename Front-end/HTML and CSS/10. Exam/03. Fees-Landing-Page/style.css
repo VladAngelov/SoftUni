@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html {
+  font-family: "Lato", sans-serif;
+  color: #53536c;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+header nav ul {
+  display: flex;
+}
+
+header nav ul li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+header nav ul li:hover,
+.logo {
+  cursor: pointer;
+}
+
+.menu {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10%;
+  padding: 5px 0;
+}
+
+.logo {
+  max-width: 150px;
+}
+
+.calculator {
+  background-color: #54546d;
+  display: flex;
+  position: relative;
+  z-index: -1;
+}
+
+.calculator-icon {
+  position: relative;
+  left: -66px;
+  margin: 40px 0;
+}
+
+.taxes {
+  display: flex;
+  text-align: center;
+  width: 95%;
+  margin-left: 50px;
+  position: relative;
+  top: -200px;
+}
+
+.taxes-h {
+  color: white;
+  display: flex;
+  position: relative;
+  left: 500px;
+  margin-top: 45px;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.box {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.4);
+}
+
+.box h1 {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.box div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.box p {
+  text-align: center;
+}
+.btn {
+  border-radius: 32px;
+  background: #9a5dc6;
+  border: none;
+  padding: 12px 25px;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 40px auto;
+  color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.free {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 154, 60, 1) 30%,
+    rgba(75, 214, 128, 1) 100%
+  );
+}
+
+.fun {
+  background: linear-gradient(
+    90deg,
+    rgba(76, 107, 135, 1) 30%,
+    rgba(97, 153, 206, 1) 100%
+  );
+  display: flex;
+
+  margin-top: 25px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.bot {
+  width: 100%;
+  color: white;
+}
+
+hr {
+  color: white;
+}
+
+.prof {
+  background: linear-gradient(
+    90deg,
+    rgba(75, 56, 166, 1) 30%,
+    rgba(139, 124, 224, 1) 100%
+  );
+  display: flex;
+  margin-top: 25px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.bot-prices {
+  display: flex;
+
+  flex-direction: column;
+  width: 50%;
+}
+
+.text-block {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  top: -90px;
+}
+
+.text-block ul {
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  padding: 0;
+}
+
+.text-block ul li {
+  list-style: none;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-block ul li:nth-child(odd) {
+  background: #e6e6e6;
+}
+
+.ticks img {
+  margin-right: 40px;
+}
+
+.bank {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bank h1 {
+  font-size: 24px;
+}
+
+.bank-text {
+  width: 70%;
+}
+
+footer {
+  margin-top: 40px;
+  background: #54546d;
+  color: lightgray;
+  display: flex;
+  justify-content: center;
+}

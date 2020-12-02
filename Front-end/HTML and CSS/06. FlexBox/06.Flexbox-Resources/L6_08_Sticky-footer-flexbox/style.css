@@ -1,0 +1,39 @@
+html {
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: rgb(238, 238, 238);
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  flex-grow: 1;
+}
+
+header h1 {
+  margin: 10px 40px;
+  text-transform: uppercase;
+}
+
+main {
+  margin: 0 40px;
+}
+
+footer {
+  background: #666666;
+  margin-top: 50px;
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  flex-grow: 1;
+}
+
+footer p {
+  margin-left: 30px;
+}
