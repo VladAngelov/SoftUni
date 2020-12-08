@@ -1,0 +1,53 @@
+.teachers-body {
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.7)
+  );
+  display: flex;
+}
+
+.teachers {
+  width: 90%;
+  margin: 40px auto 0 auto;
+}
+
+.teachers h1 {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+
+.teachers ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.teachers ul li {
+  list-style: none;
+  background-color: #efa2a9;
+  border-top-right-radius: 32px;
+  margin: 30px;
+  padding: 25px;
+  width: 20%;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.5);
+}
+
+.teachers ul li h3,
+.teachers ul li h5 {
+  text-decoration: none;
+  color: black;
+}
+
+.teachers ul li h5 {
+  border-bottom: 1px solid black;
+}
+
+.teachers ul li a {
+  text-decoration: none;
+}
+
+.teachers ul li:hover {
+  cursor: pointer;
+  background-color: white;
+}

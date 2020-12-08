@@ -1,11 +1,9 @@
-// import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AwardsComponent } from './about/awards/awards.component';
 import { HistoryComponent } from './about/history/history.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
-import { TeachersComponent } from './about/teachers/teachers.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { FirefliesComponent } from './groups/fireflies/fireflies.component';
@@ -49,10 +47,6 @@ const routes: Routes = [
   {
     path: 'about/schools',
     component: SchoolsComponent
-  },
-  {
-    path: 'about/teachers',
-    component: TeachersComponent
   },
   {
     path: 'groups/fireflies',
@@ -105,9 +99,3 @@ const routes: Routes = [
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);
-
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule]
-// })
-// export class AppRoutingModule { }

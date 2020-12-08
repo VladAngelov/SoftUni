@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +10,6 @@ import { AwardsComponent } from './about/awards/awards.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
-import { TeachersComponent } from './about/teachers/teachers.component';
 import { FirefliesComponent } from './groups/fireflies/fireflies.component';
 import { LadybugsComponent } from './groups/ladybugs/ladybugs.component';
 import { LionsComponent } from './groups/lions/lions.component';
@@ -22,9 +22,10 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { NewsComponent } from './news/news.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { HeaderComponent } from './core/header/header.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { TeachersModule } from './about/teachers/teachers.module';
+import { AccessGuard } from './guards/access.guard';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,6 @@ import { SharedModule } from './shared/shared.module';
     MissionComponent,
     PlaceComponent,
     SchoolsComponent,
-    TeachersComponent,
     FirefliesComponent,
     LadybugsComponent,
     LionsComponent,
@@ -53,9 +53,13 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    TeachersModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AccessGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

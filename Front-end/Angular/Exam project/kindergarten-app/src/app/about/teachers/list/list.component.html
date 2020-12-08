@@ -1,0 +1,73 @@
+<body class="teachers-body">
+  <section class="teachers">
+    <h1>Учители</h1>
+
+    <app-loader [showLoader]="!teachersList"></app-loader>
+    <div *ngIf="teachersList">
+      <ul>
+        <li *ngFor="let teacher of teachersList">
+          <a [routerLink]="['/about/teachers/detail/', teacher.id]">
+            <h3>{{ teacher.username }}</h3>
+          </a>
+          <h5>Главен учител</h5>
+        </li>
+      </ul>
+    </div>
+  </section>
+</body>
+
+<!-- <ul>
+        <li>
+          <h3>Мариана Смиленова</h3>
+          <h4>Главен учител</h4>
+        </li>
+
+        <li>
+          <h3>Иво Ушатов</h3>
+          <h4>Старши учител</h4>
+        </li>
+
+        <li>
+          <h3>Валерия Христова</h3>
+          <h4>Учител</h4>
+        </li>
+
+        <li>
+          <h3>Борислава Георгиева</h3>
+          <h4>Старши учител</h4>
+        </li>
+
+        <li>
+          <h3>Михаела Войнова</h3>
+          <h4>Учител</h4>
+        </li>
+
+        <li>
+          <h3>Моника Ризова</h3>
+          <h4>Учител</h4>
+        </li>
+        <li>
+          <h3>Мая Цветкова</h3>
+          <h4>Учител</h4>
+        </li>
+        <li>
+          <h3>Йорданка Котева</h3>
+          <h4>Учител</h4>
+        </li>
+        <li>
+          <h3>Данаила Маникатова</h3>
+          <h4>Старши учител</h4>
+        </li>
+        <li>
+          <h3>Десислава Коларска</h3>
+          <h4>Учител</h4>
+        </li>
+        <li>
+          <h3>София Пържова</h3>
+          <h4>Учител</h4>
+        </li>
+        <li>
+          <h3>Роза Мишева</h3>
+          <h4>Учител</h4>
+        </li>
+      </ul> -->

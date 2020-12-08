@@ -1,0 +1,17 @@
+<app-loader [showLoader]="!teacher"></app-loader>
+<div *ngIf="teacher">
+  <h5>{{ teacher.username }}</h5>
+  <a
+    *ngIf="teacher.id - 1 > 1"
+    [routerLink]="['/about/teachers/detail', teacher.id - 1]"
+  >
+    Prev Teacher
+  </a>
+  <a routerLink="/about/teachers"> Back To Teachers List </a>
+  <a
+    *ngIf="teacher.id + 1 < 10"
+    [routerLink]="['/about/teachers/detail', teacher.id + 1]"
+  >
+    Next Teacher
+  </a>
+</div>
