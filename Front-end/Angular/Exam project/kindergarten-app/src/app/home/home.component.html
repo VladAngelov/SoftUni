@@ -13,13 +13,15 @@
       </a>
     </article>
 
-    <article>
-      <h4>Активно записване</h4>
-      <h5>
-        В момента в детската градина се приемат документи за записване в яслена
-        група и I група.
-      </h5>
-    </article>
+<article>
+    <ul>
+      <li *ngFor="let post of posts">
+        <h4>{{ post.title }}</h4>
+        <h5>{{ post.content }}</h5>
+      </li> 
+    </ul>
+  </article>
+
   </section>
   <section class="section-img">
     <img

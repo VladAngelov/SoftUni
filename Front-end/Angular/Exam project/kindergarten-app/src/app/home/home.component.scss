@@ -4,8 +4,14 @@ body {
 }
 
 article {
-  // width: 50%;
   margin: 30px auto;
+}
+
+article ul li {
+  list-style: none;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid grey;
 }
 
 .section-text {
@@ -21,10 +27,6 @@ article {
   margin: 30px 50px;
 }
 
-.documents-adrticle {
-  // margin: 50px;
-}
-
 .btn-documents {
   font-size: 16px;
   background: #20c578;
@@ -37,9 +39,6 @@ article {
 
 .btn-documents:hover {
   background: #232323;
-}
-
-.section-img {
 }
 
 .img-fluid {
