@@ -1,24 +1,27 @@
-<div class="container">
-    <form class="login" action="" method="post">
+<form #f="ngForm" class="login" (ngSubmit)="submitFormHandler(f.value)">
         <fieldset>
             <h2>Вход</h2>
 
             <p class="field field-icon">
-                <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                <input #userEmail 
-                       class="input-error" 
-                       type="email" 
+                <label for="email">
+                    <span><i class="fas fa-envelope"></i></span>
+                </label>
+                <input #userEmail="ngModel" 
+                       ngModel
+                       required
+                       appEmailValidator
+                       [class.input-error]="userEmail.touched && !!userEmail.errors"
+                       type="text" 
                        name="email" 
                        id="email" 
-                       placeholder="some.mail@gmail.com"
-                       (keyup)="updateInputValue('email', userEmail.value)">
+                       placeholder="some.mail@gmail.com">
             </p>
-            <p *ngIf="showEmailError" class="error">
-                Email is required!
+            <p *ngIf="userEmail.touched && userEmail.errors?.required" class="error">
+                Необходим е имейл!
             </p>
-            <!-- <p class="error">
-                Email is not valid!
-            </p> -->
+            <p *ngIf="userEmail.touched && userEmail.errors?.emailValidator" class="error">
+                Имейлът е невалиден!
+            </p>
 
             <p class="field field-icon">
                 <label for="password">
@@ -26,33 +29,32 @@
                         <i class="fas fa-lock"></i>
                     </span>
                 </label>
-                <input #userPassword
+                <input #userPassword="ngModel"
+                       ngModel
+                       required
+                       minlength="4"
+                       [class.input-error]="userPassword.touched && !!userPassword.errors"
                        type="password" 
                        name="password" 
                        id="password" 
-                       placeholder="******"
-                       (keyup)="updateInputValue('password', userPassword.value)">
+                       placeholder="******">
             </p>
-            <p class="error" *ngIf="showPasswordError">
-                Password is required!
+            <p class="error" *ngIf="userPassword.touched && userPassword.errors?.required">
+               Паролата е задължитлна!
             </p>
-            <p class="error" *ngIf="showPasswordError">
-                Password must be at least 4 characters!
+            <p class="error" *ngIf="userPassword.touched && userPassword.errors?.minlength">
+               Паролата, трябва да е поне 4 символа!
             </p>
 
-            <button type="button" 
-                    (click)="submitFormHandler()"
-                    [disabled]="hasFormErrors"
-                >Login
+            <button [disabled]="f.invalid">
+                Вход
             </button>
-
             <app-loader [isLoading]="isLoading"></app-loader>
 
             <p class="text-center">
-                Have an account?
-                <a routerLink="/user/register">Register</a>
+                Нямате акаунт?
+                <a routerLink="/user/register">Регистрация</a>
             </p>
 
         </fieldset>
-    </form>
-</div>
+</form>

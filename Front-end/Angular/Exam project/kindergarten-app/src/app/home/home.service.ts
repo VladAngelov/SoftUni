@@ -17,4 +17,8 @@ export class HomeService {
     return this.http.get<IMainPagePost[]>(`${apiUrl}/main-page-posts.json`);
   }
 
+  loadMainPost(id: string): Observable<IMainPagePost> {
+    return this.http.get<IMainPagePost>(`${apiUrl}/main-page-posts.json/${id}`);
+  }
+
 }

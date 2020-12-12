@@ -1,0 +1,37 @@
+
+.post-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-container span {
+    font-weight: bold;
+}
+
+.post-container h2, p {
+    padding: 0.3em 0 0.2em;
+    margin: 0;
+}
+
+.post-name-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3em 0.5em;
+    border: 1px solid #999;
+    border-radius: 0.3em;
+    font-size: 0.8em;
+    margin-top: 1em;
+}
+
+.post-title {
+    padding: 0;
+}
+
+.post-name {
+    width: 100%;
+}
+
+time {
+    font-weight: bold;
+}

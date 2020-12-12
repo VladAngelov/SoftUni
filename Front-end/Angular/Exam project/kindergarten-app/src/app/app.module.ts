@@ -28,11 +28,12 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { TeachersModule } from './about/teachers/teachers.module';
-import { AccessGuard } from './guards/access.guard';
 import { UserService } from './user/user.service';
 import { HomeService } from './home/home.service';
 import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AccessGuard } from './core/guards/access.guard';
+import { PostComponent } from './home/post/post.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NewsComponent,
     ProjectsComponent,
     ContactsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
