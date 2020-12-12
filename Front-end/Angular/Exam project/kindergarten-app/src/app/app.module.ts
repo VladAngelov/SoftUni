@@ -32,6 +32,7 @@ import { AccessGuard } from './guards/access.guard';
 import { UserService } from './user/user.service';
 import { HomeService } from './home/home.service';
 import { UserModule } from './user/user.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { UserModule } from './user/user.module';
     GalleryComponent,
     NewsComponent,
     ProjectsComponent,
-    ContactsComponent
+    ContactsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

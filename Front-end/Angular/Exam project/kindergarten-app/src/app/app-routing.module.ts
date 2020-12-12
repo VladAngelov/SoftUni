@@ -15,6 +15,7 @@ import { StarsComponent } from './groups/stars/stars.component';
 import { SunComponent } from './groups/sun/sun.component';
 import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { ParentsComponent } from './parents/parents.component';
 import { ProjectsComponent } from './projects/projects.component';
 
@@ -95,6 +96,10 @@ const routes: Routes = [
   {
     path: 'contacts',
     component: ContactsComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
