@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-// import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +29,9 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { TeachersModule } from './about/teachers/teachers.module';
 import { AccessGuard } from './guards/access.guard';
+import { UserService } from './user/user.service';
+import { HomeService } from './home/home.service';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,7 @@ import { AccessGuard } from './guards/access.guard';
     GalleryComponent,
     NewsComponent,
     ProjectsComponent,
-    ContactsComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,11 +63,13 @@ import { AccessGuard } from './guards/access.guard';
     TeachersModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    //AngularFireDatabaseModule
     AngularFirestoreModule,
+    UserModule
   ],
   providers: [
-    AccessGuard
+    AccessGuard,
+    UserService,
+    HomeService
   ],
   bootstrap: [AppComponent]
 })

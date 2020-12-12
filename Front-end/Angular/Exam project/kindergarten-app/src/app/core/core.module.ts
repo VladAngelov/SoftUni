@@ -3,17 +3,22 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { storageServiceProvider } from './storage.service';
 
 @NgModule({
   declarations: [
-    HeaderComponent, 
-    FooterComponent],
+    HeaderComponent,
+    FooterComponent
+  ],
   imports: [
     CommonModule,
     RouterModule
   ],
+  providers: [
+    storageServiceProvider
+  ],
   exports: [
-    HeaderComponent, 
+    HeaderComponent,
     FooterComponent]
 })
 export class CoreModule { }

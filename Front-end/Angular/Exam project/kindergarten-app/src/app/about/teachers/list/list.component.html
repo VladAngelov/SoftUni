@@ -2,7 +2,7 @@
   <section class="teachers">
     <h1>Учители</h1>
 
-    <app-loader [showLoader]="!teachersList"></app-loader>
+    <app-loader [isLoading]="!teachersList"></app-loader>
     <div *ngIf="teachersList">
       <ul>
         <li *ngFor="let teacher of teachersList">

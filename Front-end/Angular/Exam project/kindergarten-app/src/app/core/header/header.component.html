@@ -10,10 +10,24 @@
         </li>
       </ul>
     </article>
-    <article>
-      <a href="https://www.facebook.com/profile.php?id=100050140830300">
-        <i class="fab fa-facebook-f fb-icon"></i>
-      </a>
+    <article class="log-menu">
+      <ul *ngIf="!isLogged">
+        <li>
+          <a routerLink="/user/login">Вход</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a routerLink="/user/register">Регистрация</a>
+        </li>
+      </ul>
+      <ul *ngIf="isLogged">
+        <li>
+          <a routerLink="/user/profile">Профил</a>
+        </li>
+        <li>
+          <a href="#" (click)="logoutHandler()">Изход</a>
+        </li>
+      </ul>      
     </article>
   </section>
 

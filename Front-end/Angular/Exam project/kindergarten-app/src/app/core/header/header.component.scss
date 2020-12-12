@@ -48,6 +48,24 @@ body {
   }
 }
 
+.log-menu ul{
+  list-style: none;
+  display: flex;
+}
+
+.log-menu ul li {
+  margin-left: 5px;
+}
+
+.log-menu a {
+  text-decoration: none;
+  color: white;
+}
+
+.log-menu a:hover {
+  cursor: pointer;
+}
+
 /* --- Logo and info line --- */
 
 .logo-and-info-line {

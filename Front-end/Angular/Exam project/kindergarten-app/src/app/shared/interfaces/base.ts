@@ -1,5 +1,5 @@
 export interface IBase {
-    _id: number;
+    _id: string;
     created_at: string;
     updatedAt: string;
 }

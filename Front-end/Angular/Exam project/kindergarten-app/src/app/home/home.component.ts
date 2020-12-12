@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { IMainPagePost } from '../interfaces/main-page-post';
+import { IMainPagePost } from '../shared/interfaces/main-page-post';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -10,20 +11,26 @@ import { IMainPagePost } from '../interfaces/main-page-post';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  posts: any[];
+  // posts: any[];
 
-  constructor(db: AngularFireDatabase) {
-    db.list('/main-page-posts')
-      .valueChanges()
-      .subscribe(posts => {
-        this.posts = posts;
-        console.log(this.posts);
-      });
-  }
+  // constructor(db: AngularFireDatabase) {
+  //   db.list('/main-page-posts')
+  //     .valueChanges()
+  //     .subscribe(posts => {
+  //       this.posts = posts;
+  //       console.log('posts from component --> ', this.posts);
+  //     });
+  // }
+
+  constructor(private homeService: HomeService) { }
+
+  posts: IMainPagePost[];
 
   ngOnInit(): void {
+    this.homeService.loadMainPosts().subscribe(mainPosts => {
+      this.posts = mainPosts.slice(1);
+    });
   }
-
 
   ngOnDestroy(): void { } // TODO: Add memory cleaner (unsubscribe)
 
