@@ -20,13 +20,12 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {
-    const passwordControl = this.fb.control('', [Validators.required, Validators.minLength(4)]);
+    const passwordControl = this.fb.control('', [Validators.required, Validators.minLength(6)]);
     this.form = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, emailValidator]],
-      tel: [''],
       password: passwordControl,
-      rePassword: ['', [Validators.required, Validators.minLength(5), rePasswordValidatorFactory(passwordControl)]]
+      rePassword: ['', [Validators.required, Validators.minLength(6),
+      rePasswordValidatorFactory(passwordControl)]]
     });
   }
 
@@ -34,19 +33,12 @@ export class RegisterComponent implements OnInit {
   }
 
   submitHandler(): void {
-    // const data = this.form.value;
-    // this.isLoading = true;
+    const data = this.form.value;
+    this.isLoading = true;
 
-    // this.userService.register(data).subscribe({
-    //   next: () => {
-    //     this.isLoading = false;
-    //     this.router.navigate(['/']);
-    //   },
-    //   error: (err) => {
-    //     this.isLoading = false;
-    //     console.error(err);
-    //   }
-    // });
+    const email = this.form.controls['email'].value;
+    const password = this.form.controls['password'].value;
+
+    this.userService.register(email, password);
   }
-
 }

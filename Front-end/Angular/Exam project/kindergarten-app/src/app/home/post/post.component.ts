@@ -9,7 +9,7 @@ import { HomeService } from '../home.service';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-
+  isLoading = false;
   post: IMainPagePost;
 
   constructor(
@@ -23,5 +23,10 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     console.log('Post --> ', this.post);
   }
-
+  // submitFormHandler(fromValue: { title: string, password: string }): void {
+  //   this.isLoading = true;
+  //   this.homeService.loadMainPost(fromValue);
+  //   debugger;
+  //   this.isLoading = false;
+  // }
 }

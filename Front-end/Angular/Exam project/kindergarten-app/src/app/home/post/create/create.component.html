@@ -1,0 +1,32 @@
+<form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
+
+    <fieldset>
+        <h2>Добави пост</h2>
+
+        <!-- title -->
+        <label for="title">Заглавие: </label>
+
+        <p class="field field-icon">
+            <input [class.input-error]="form.get('title').touched && 
+                                !!form.get('title').errors" type="text" name="title" id="title" placeholder="Заглавие"
+                formControlName="title">
+        </p>
+        <p *ngIf="form.get('title').touched && form.get('title').errors?.required" class="error">
+            Заглавието е задължително!
+        </p>
+        <p *ngIf="form.get('title').touched && form.get('title').errors?.minlength" class="error">
+            Заглавието, трябва да е поне 5 символа!
+        </p>
+
+        <label for="content">Съдържание: </label>
+        <p>
+            <input type="text" name="content" id="content" placeholder="Съдържание" formControlName="content">
+        </p>
+        <p *ngIf="form.get('title').touched && form.get('title').errors?.required" class="error">
+            Съдържанието е задължително!
+        </p>
+    </fieldset>
+    <button [disabled]="isLoading || form.invalid">Добави</button>
+    <app-loader [isLoading]="isLoading"></app-loader>
+
+</form>

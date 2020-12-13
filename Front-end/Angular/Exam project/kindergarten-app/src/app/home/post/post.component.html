@@ -1,13 +1,33 @@
-<div class="post-content">
-    <div class="post-title">
-        <div class="post-name-wrapper">
+<!-- <form #f="ngForm" class="login" (ngSubmit)="submitFormHandler(f.value)">
+    <div class="post-content">
+        <div class="post-title">
+            <p class="field field-icon">
+                <label for="email">
+                    <span><i class="fas fa-envelope"></i></span>
+                </label>
+                <input #title="ngModel" ngModel required appTitleValidator
+                    [class.input-error]="title.touched && !!title.errors" type="text" name="title" id="title"
+                    placeholder={{ post.title }}>
+            </p>
+            <p *ngIf="title.touched && title.errors?.required" class="error">
+                Необходим е имейл!
+            </p>
+            <p *ngIf="title.touched && title.errors?.titleValidator" class="error">
+                Имейлът е невалиден!
+            </p>
+
+
+
             <div class="post-name">
                 <h2>{{ post.title }}</h2>
                 <p>Date: <time>{{ post.created_at }}</time></p>
             </div>
+
+        </div>
+        <div class="post-content">
+            <p> {{ post.content }}</p>
         </div>
     </div>
-    <div class="post-content">
-        <p> {{ post.content }}</p>
-    </div>
-</div>
+</form> -->
+
+<p>Post works!</p>

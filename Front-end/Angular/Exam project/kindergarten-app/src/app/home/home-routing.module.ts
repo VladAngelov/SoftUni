@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AccessGuard } from '../core/guards/access.guard';
+import { CreateComponent } from './post/create/create.component';
 import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
@@ -10,8 +11,15 @@ const routes: Routes = [
         ],
         children: [
             {
-                path: 'home/psot/:id',
-                component: PostComponent,
+                // path: 'post/:id',
+                // component: PostComponent,
+                // data: {
+                //     isLogged: true
+                // }
+            },
+            {
+                path: 'post/create',
+                component: CreateComponent,
                 data: {
                     isLogged: true
                 }

@@ -46,7 +46,7 @@
                Паролата, трябва да е поне 4 символа!
             </p>
 
-            <button [disabled]="f.invalid">
+            <button [disabled]="isLoading || f.invalid">
                 Вход
             </button>
             <app-loader [isLoading]="isLoading"></app-loader>
