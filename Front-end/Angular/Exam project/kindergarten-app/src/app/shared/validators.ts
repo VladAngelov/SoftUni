@@ -13,3 +13,11 @@ export function rePasswordValidatorFactory(targetControl: AbstractControl): Vali
         return areTheSame ? null : { rePasswordValidator: true };
     };
 }
+
+export function emailValidatorBackend(email: string): boolean {
+    return /^[a-zA-Z0-9\.-]{6,}@\w+\.(com|bg)$/.test(email);
+}
+
+export function titleValidator(title: string): boolean {
+    return /^[А-Я][а-я]{6,}\w+$/.test(title);
+}

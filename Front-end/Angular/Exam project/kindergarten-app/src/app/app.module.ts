@@ -7,7 +7,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { HistoryComponent } from './about/history/history.component';
 import { AwardsComponent } from './about/awards/awards.component';
 import { MissionComponent } from './about/mission/mission.component';
@@ -33,12 +32,11 @@ import { HomeService } from './home/home.service';
 import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AccessGuard } from './core/guards/access.guard';
-import { PostComponent } from './home/post/post.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HistoryComponent,
     AwardsComponent,
     MissionComponent,
@@ -56,8 +54,7 @@ import { PostComponent } from './home/post/post.component';
     NewsComponent,
     ProjectsComponent,
     ContactsComponent,
-    NotFoundComponent,
-    PostComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -65,10 +62,11 @@ import { PostComponent } from './home/post/post.component';
     CoreModule,
     SharedModule,
     TeachersModule,
-    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    UserModule
+    HttpClientModule,
+    UserModule,
+    HomeModule
   ],
   providers: [
     AccessGuard,

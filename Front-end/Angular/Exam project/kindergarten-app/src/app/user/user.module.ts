@@ -25,4 +25,5 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserService
   ]
 })
+
 export class UserModule { }

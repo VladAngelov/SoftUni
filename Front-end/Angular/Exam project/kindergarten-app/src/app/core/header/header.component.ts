@@ -9,20 +9,19 @@ import { UserService } from 'src/app/user/user.service';
 export class HeaderComponent implements OnInit {
 
   get isLogged(): boolean {
-    return this.userService.isLogged;
+    if (localStorage.getItem('auth')) {
+      return true;
+    }
+    return false;
   }
 
   constructor(public userService: UserService) { }
 
   ngOnInit(): void {
-  }
 
-  // loginHandler(): void {
-  //   this.userService.login();
-  // }
+  }
 
   logoutHandler(): void {
     this.userService.logout();
   }
-
 }
