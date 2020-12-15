@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 import { IBasePost } from '../shared/interfaces';
-import { environment } from '../../environments/environment';
 import { Post } from '../models/post.model';
 
 @Injectable()
@@ -43,13 +41,11 @@ export class HomeService {
   updateItem(key: string, title: string, content: string) {
     this.allMainPosts.update(key, { title: title, content: content });
   }
+
   deleteItem(key: string) {
     debugger;
     console.log('Key for delete --> ', key);
     this.allMainPosts.remove(key);
-  }
-  deleteEverything() {
-    this.allMainPosts.remove();
   }
 
   loadPostById(id: string): any {

@@ -1,4 +1,3 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,7 +7,7 @@ import { HomeService } from '../../home.service';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  styleUrls: ['./edit.component.scss', '../../../../form-style.scss']
 })
 export class EditComponent {
 

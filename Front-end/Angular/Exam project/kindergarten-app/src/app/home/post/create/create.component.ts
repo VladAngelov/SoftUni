@@ -6,7 +6,7 @@ import { HomeService } from '../../home.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss', '../../../../form-style.scss',]
+  styleUrls: ['./create.component.scss', '../../../../form-style.scss']
 })
 export class CreateComponent implements OnInit {
 

@@ -1,9 +1,6 @@
-import { Component, OnInit, OnDestroy, OnChanges, SimpleChanges, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Post } from '../models/post.model';
 import { IBasePost } from '../shared/interfaces';
-import { IMainPagePost } from '../shared/interfaces/main-page-post';
 import { HomeService } from './home.service';
 
 @Component({
@@ -24,11 +21,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isLoading = true;
     this.posts = this.homeService.loadAllPosts();
-    this.isLoading = false;
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
     }
+    this.isLoading = false;
   }
 
   onDelete(id: string): void {
