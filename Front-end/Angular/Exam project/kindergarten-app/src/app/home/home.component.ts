@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, SimpleChanges, EventEmitter, Output, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Post } from '../models/post.model';
 import { IBasePost } from '../shared/interfaces';
@@ -10,29 +11,32 @@ import { HomeService } from './home.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy, OnChanges {
+export class HomeComponent implements OnInit, OnDestroy {
 
-  posts: Post[] = [];
+  posts: IBasePost[];
   isLogged = false;
+  isLoading = false;
 
-  constructor(private homeService: HomeService) {
-    let postsFromService = this.homeService.loadMainPosts();
-    postsFromService.then(x => {
-      this.posts = x;
-    });
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-
-  }
+  constructor(
+    private homeService: HomeService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
+    this.posts = this.homeService.loadAllPosts();
+    this.isLoading = false;
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
     }
   }
 
+  onDelete(id: string): void {
+    this.homeService.deleteItem(id);
+    window.alert("Успешно изтрихте поста!");
+    this.router.navigate["/"];
+  }
   ngOnDestroy(): void {
-
+    this.posts = null;
   }
 }  

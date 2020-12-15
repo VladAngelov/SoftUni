@@ -1,62 +1,66 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, range } from 'rxjs';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
-import { IBasePost, IMainPagePost } from '../shared/interfaces';
+import { IBasePost } from '../shared/interfaces';
 import { environment } from '../../environments/environment';
-import { map } from 'rxjs/operators';
 import { Post } from '../models/post.model';
-
-const apiUrl = environment.apiUrl;
 
 @Injectable()
 export class HomeService {
 
-  mainPosts: Post[] = [];
+  posts: IBasePost[] = [];
 
-  constructor(private http: HttpClient, private database: AngularFireDatabase) { }
+  allMainPosts: AngularFireList<any>;
+  items: Observable<any[]>;
 
-  async loadMainPosts(): Promise<Post[]> {
-    await fetch(`${apiUrl}/main-page-posts.json`)
-      .then(x => x.json())
-      .then(x => {
-        for (const [key, value] of Object.entries(x)) {
+  constructor(private database: AngularFireDatabase) {
+    this.allMainPosts = this.database.list('main-page-posts');
+  }
 
-          let props = Object.values(value);
-
-          let id = key;
-          let content = props[0];
-          let title = props[2];
-          let created_at = props[1];
-
-          let post = new Post();
-
-          post._id = id;
-          post.content = content;
-          post.title = title;
-          post.created_at = created_at;
-
-          this.mainPosts.push(post);
-        }
+  loadAllPosts(): IBasePost[] {
+    this.posts = [];
+    this.allMainPosts = this.database.list('main-page-posts');
+    this.allMainPosts.snapshotChanges()
+      .subscribe(posts => {
+        posts.forEach(post => {
+          let p = new Post();
+          p._id = post.key;
+          p.title = post.payload.val().title;
+          p.content = post.payload.val().content;
+          p.created_at = post.payload.val().createdAt;
+          this.posts.push(p);
+        });
       });
-    return this.mainPosts;
+    return this.posts;
   }
 
-  loadMainPost(id: string): Observable<IBasePost> {
-    return this.http.get<IBasePost>(`${apiUrl}/main-page-posts/${id}.json`, { withCredentials: true });
+  createPost(title: string, content: string, createdAt: string) {
+    this.allMainPosts.push({ title: title, content: content, created_at: createdAt });
   }
 
-  createPost(title: string, content: string, createdAt: string): void {
-    fetch(`${apiUrl}/main-page-posts.json`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ title, content, createdAt }
-      ),
-    })
-      .catch(err => console.log(err));
+  updateItem(key: string, title: string, content: string) {
+    this.allMainPosts.update(key, { title: title, content: content });
+  }
+  deleteItem(key: string) {
+    debugger;
+    console.log('Key for delete --> ', key);
+    this.allMainPosts.remove(key);
+  }
+  deleteEverything() {
+    this.allMainPosts.remove();
   }
 
+  loadPostById(id: string): any {
+    let post = new Post;
+    let p = this.posts.find(x => x._id === id);
+
+    post._id = p._id;
+    post.content = p.content;
+    post.title = p.title;
+    post.created_at = p.created_at;
+
+    return post;
+  }
 }
-
-

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IMainPagePost } from 'src/app/shared/interfaces';
 import { HomeService } from '../../home.service';
 
@@ -11,15 +13,31 @@ import { HomeService } from '../../home.service';
 export class EditComponent {
 
   post: IMainPagePost;
+  isLoading = false;
+
+  form = new FormGroup({
+    title: new FormControl(''),
+    content: new FormControl('')
+  });
+
+  id: string;
 
   constructor(
     private homeService: HomeService,
-    activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
-    debugger;
-    const id = activatedRoute.snapshot.params.id;
-    homeService.loadMainPost(id).subscribe(post => {
-      this.post = post;
-    });
+    this.id = null;
+    this.id = activatedRoute.snapshot.params.id;
+    this.post = homeService.loadPostById(this.id);
+  }
+
+  submitHandler(): void {
+    this.isLoading = true;
+    const title = this.form.controls['title'].value;
+    const content = this.form.controls['content'].value;
+    this.homeService.updateItem(this.id, title, content);
+    this.isLoading = false;
+    this.router.navigate(['/']);
   }
 }

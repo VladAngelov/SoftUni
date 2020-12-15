@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
-import { title } from 'process';
-import { titleValidator } from 'src/app/shared/validators';
-
 import { HomeService } from '../../home.service';
 
 @Component({
@@ -22,16 +18,8 @@ export class CreateComponent implements OnInit {
   isLoading = false;
 
   constructor(
-    private fb: FormBuilder,
     private homeService: HomeService,
-    private router: Router
-  ) {
-    // debugger;
-    // this.form = this.fb.group({
-    //   title: ['', [Validators.required, Validators.minLength(6), titleValidator(title)]],
-    //   content: ['', [Validators.required]]
-    // })
-  }
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,9 +30,8 @@ export class CreateComponent implements OnInit {
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
     const createdAt = new Date();
-
     this.homeService.createPost(title, content, createdAt.toLocaleString());
-
     this.isLoading = false;
+    this.router.navigate(['/']);
   }
 }
