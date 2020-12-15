@@ -1,36 +1,43 @@
-<form class="register" (ngSubmit)="submitHandler()">
+<form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
 
     <fieldset>
         <h2>Добави пост</h2>
 
         <!-- title -->
-        <label for="title">Заглавие: </label>
-
         <p class="field field-icon">
-            <input [class.input-error]="form.get('title').touched && 
-                                !!form.get('title').errors" type="text" name="title" id="title" placeholder="Заглавие"
-                formControlName="title">
+            <label for="title">Заглавие:<span class="red">*</span></label>
+            <input formControlName="title" type="text" name="title" id="title" required minlength="5">
+            <!-- 
+                [class.input-error]="form.get('title').touched && 
+                   !!form.get('title').errors"-->
+
         </p>
-        <p *ngIf="form.get('title').touched && form.get('title').errors?.required" class="error">
+        <!-- <p class="error" *ngIf="title.touched && title.errors?.required">
             Заглавието е задължително!
         </p>
-        <p *ngIf="form.get('title').touched && form.get('title').errors?.minlength" class="error">
+        <p class="error" *ngIf="title.touched && title.errors?.minlength">
             Заглавието, трябва да е поне 5 символа!
-        </p>
+        </p> -->
 
         <label for="content">Съдържание: </label>
         <p>
-
+            <textarea formControlName="content" type="text" name="content" id="content" rows="8" cols="50"
+                class="height" required>
+            </textarea>
+            <!--  [class.input-error]="form.get('content').touched && 
+                        !!form.get('content').errors" -->
+            <!-- 
             <textarea name="content" id="content" rows="4" cols="50" placeholder="Съдържание"
-                formControlName="content"></textarea>
-
+                formControlName="content"></textarea> -->
         </p>
-        <p *ngIf="form.get('title').touched && form.get('title').errors?.required" class="error">
+        <!-- <p class="error" *ngIf="content.touched && content.errors?.required">
             Съдържанието е задължително!
-        </p>
+        </p> -->
     </fieldset>
-    <button [disabled]="isLoading || form.invalid">Добави</button>
+    <button>Добави</button>
 
+
+    <!-- [disabled]="isLoading || form.invalid" -->
     <!-- <app-loader [isLoading]="isLoading"></app-loader> -->
 
 </form>

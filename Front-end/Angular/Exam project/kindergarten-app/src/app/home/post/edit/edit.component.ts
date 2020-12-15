@@ -16,6 +16,7 @@ export class EditComponent {
     private homeService: HomeService,
     activatedRoute: ActivatedRoute
   ) {
+    debugger;
     const id = activatedRoute.snapshot.params.id;
     homeService.loadMainPost(id).subscribe(post => {
       this.post = post;

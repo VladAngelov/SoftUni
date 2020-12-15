@@ -19,5 +19,5 @@ export function emailValidatorBackend(email: string): boolean {
 }
 
 export function titleValidator(title: string): boolean {
-    return /^[А-Я][а-я]{6,}\w+$/.test(title);
+    return /^[А-Я][а-я-:,0-9]+$/.test(title);
 }

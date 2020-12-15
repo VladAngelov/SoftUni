@@ -1,4 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Post } from '../models/post.model';
+import { IBasePost } from '../shared/interfaces';
 import { IMainPagePost } from '../shared/interfaces/main-page-post';
 import { HomeService } from './home.service';
 
@@ -7,23 +10,29 @@ import { HomeService } from './home.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, OnChanges {
 
-  constructor(private homeService: HomeService) { }
-
-  posts: IMainPagePost[];
+  posts: Post[] = [];
   isLogged = false;
 
-  ngOnInit(): void {
-    this.homeService.loadMainPosts().subscribe(mainPosts => {
-      this.posts = mainPosts.slice(1);
-      console.log(this.posts);
+  constructor(private homeService: HomeService) {
+    let postsFromService = this.homeService.loadMainPosts();
+    postsFromService.then(x => {
+      this.posts = x;
     });
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
+
+  ngOnInit(): void {
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
     }
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy(): void {
+
+  }
 }  

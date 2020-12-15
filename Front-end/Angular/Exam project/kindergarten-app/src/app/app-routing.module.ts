@@ -14,8 +14,6 @@ import { PuhComponent } from './groups/puh/puh.component';
 import { StarsComponent } from './groups/stars/stars.component';
 import { SunComponent } from './groups/sun/sun.component';
 import { HomeComponent } from './home/home.component';
-import { CreateComponent } from './home/post/create/create.component';
-import { PostComponent } from './home/post/post.component';
 import { NewsComponent } from './news/news.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ParentsComponent } from './parents/parents.component';
@@ -30,14 +28,6 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
-  },
-  // {
-  //   path: 'home/post/:id',
-  //   component: PostComponent
-  // },
-  {
-    path: 'home/post/create',
-    component: CreateComponent
   },
   {
     path: 'about/history',
