@@ -43,6 +43,4 @@ export class EditComponent implements OnDestroy {
     this.isLoading = false;
     this.router.navigate(["/"]);
   }
-
-
 }

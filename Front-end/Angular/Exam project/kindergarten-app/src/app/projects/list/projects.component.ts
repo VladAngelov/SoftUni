@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IBasePost } from 'src/app/shared/interfaces';
 
+import { IBasePost } from 'src/app/shared/interfaces';
 import { ProjectService } from '../project.service';
 
 @Component({
@@ -25,8 +25,6 @@ export class ProjectsComponent implements OnInit {
     debugger;
     this.projects = this.projectService.loadAllProjects();
 
-    console.log('Projects --> ', this.projects);
-
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
     }
@@ -37,7 +35,7 @@ export class ProjectsComponent implements OnInit {
   onDelete(id: string): void {
     this.projectService.deleteProject(id);
     window.alert("Успешно изтрихте проекта!");
-    this.router.navigate["/home"];
+    window.location.reload();
   }
 
   ngOnDestroy(): void {

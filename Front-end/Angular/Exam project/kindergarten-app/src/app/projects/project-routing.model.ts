@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AccessGuard } from '../core/guards/access.guard';
+
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ProjectsComponent } from './list/projects.component';
@@ -12,7 +13,7 @@ const routes: Routes = [
         ],
         children: [
             {
-                path: '',
+                path: 'projects',
                 pathMatch: 'full',
                 component: ProjectsComponent
             },

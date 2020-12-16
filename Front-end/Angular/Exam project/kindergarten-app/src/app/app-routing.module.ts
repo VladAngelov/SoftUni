@@ -90,7 +90,7 @@ const routes: Routes = [
     component: NewsComponent
   },
   {
-    path: 'projects',
+    path: 'list/projects',
     component: ProjectsComponent
   },
   {
