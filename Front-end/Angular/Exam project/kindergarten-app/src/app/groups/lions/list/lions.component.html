@@ -1,0 +1,33 @@
+<body>
+    <section class="section-text">
+        <article class="welcome-text">
+            <h1>Добре дошли в група "Лъвчета"</h1>
+        </article>
+
+        <article class="content">
+            <ul>
+                <li *ngIf="isLogged">
+                    <button routerLink="/lions/create" class="btn btn-add">
+                        Добави
+                    </button>
+                </li>
+                <li *ngFor="let post of posts">
+                    <app-loader [isLoading]="isLoading"></app-loader>
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.content }}</p>
+                    <div *ngIf="isLogged">
+                        <button [routerLink]="['/lions/edit', post._id]" class="btn btn-edit">Промени</button>
+                        <button class="btn btn-delete" (click)="onDelete(post._id)">Изтрий</button>
+                    </div>
+                </li>
+            </ul>
+        </article>
+    </section>
+    <section class="section-img">
+        <img src="../../../assets/img/groups/lions.png" alt="banner-img" class="img-fluid" />
+        <p>
+            <i>Положителните емоции са важни за децата и тяхното развитие, затова ние ги осигуряваме ежедневно под
+                формата на игри, песни и занимания. </i>
+        </p>
+    </section>
+</body>

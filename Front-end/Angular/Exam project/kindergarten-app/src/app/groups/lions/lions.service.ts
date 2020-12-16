@@ -4,13 +4,13 @@ import { Post } from 'src/app/models/post.model';
 import { IBasePost } from 'src/app/shared/interfaces';
 
 @Injectable()
-export class LadybugsService {
+export class LionsService {
 
   posts: IBasePost[] = [];
   allPosts: AngularFireList<any>;
 
   constructor(private database: AngularFireDatabase) {
-    this.allPosts = this.database.list('groups/ladybugs');
+    this.allPosts = this.database.list('groups/lions');
   }
 
   loadAllPosts(): IBasePost[] {
