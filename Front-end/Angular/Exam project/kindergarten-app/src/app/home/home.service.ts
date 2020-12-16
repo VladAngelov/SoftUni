@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 import { IBasePost } from '../shared/interfaces';
@@ -11,7 +10,6 @@ export class HomeService {
   posts: IBasePost[] = [];
 
   allMainPosts: AngularFireList<any>;
-  items: Observable<any[]>;
 
   constructor(private database: AngularFireDatabase) {
     this.allMainPosts = this.database.list('main-page-posts');
@@ -19,7 +17,6 @@ export class HomeService {
 
   loadAllPosts(): IBasePost[] {
     this.posts = [];
-    this.allMainPosts = this.database.list('main-page-posts');
     this.allMainPosts.snapshotChanges()
       .subscribe(posts => {
         posts.forEach(post => {
@@ -31,6 +28,7 @@ export class HomeService {
           this.posts.push(p);
         });
       });
+    console.log('Posts --> ', this.posts);
     return this.posts;
   }
 
@@ -43,8 +41,6 @@ export class HomeService {
   }
 
   deleteItem(key: string) {
-    debugger;
-    console.log('Key for delete --> ', key);
     this.allMainPosts.remove(key);
   }
 

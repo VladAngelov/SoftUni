@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMainPagePost } from 'src/app/shared/interfaces';
@@ -9,8 +9,9 @@ import { HomeService } from '../../home.service';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss', '../../../../form-style.scss']
 })
-export class EditComponent {
+export class EditComponent implements OnDestroy {
 
+  id: string;
   post: IMainPagePost;
   isLoading = false;
 
@@ -18,8 +19,6 @@ export class EditComponent {
     title: new FormControl(''),
     content: new FormControl('')
   });
-
-  id: string;
 
   constructor(
     private homeService: HomeService,
@@ -30,6 +29,11 @@ export class EditComponent {
     this.id = activatedRoute.snapshot.params.id;
     this.post = homeService.loadPostById(this.id);
   }
+  ngOnDestroy(): void {
+    this.id = null;
+    this.post = null;
+    this.router.navigate(["/"]);
+  }
 
   submitHandler(): void {
     this.isLoading = true;
@@ -37,6 +41,8 @@ export class EditComponent {
     const content = this.form.controls['content'].value;
     this.homeService.updateItem(this.id, title, content);
     this.isLoading = false;
-    this.router.navigate(['/']);
+    this.router.navigate(["/"]);
   }
+
+
 }

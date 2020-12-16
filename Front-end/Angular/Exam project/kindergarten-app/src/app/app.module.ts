@@ -22,7 +22,6 @@ import { StarsComponent } from './groups/stars/stars.component';
 import { ParentsComponent } from './parents/parents.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { NewsComponent } from './news/news.component';
-import { ProjectsComponent } from './projects/projects.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -33,6 +32,9 @@ import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AccessGuard } from './core/guards/access.guard';
 import { HomeModule } from './home/home.module';
+import { ProjectService } from './projects/project.service';
+import { ProjectModule } from './projects/project.module';
+import { ProjectsComponent } from './projects/list/projects.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,6 @@ import { HomeModule } from './home/home.module';
     ParentsComponent,
     GalleryComponent,
     NewsComponent,
-    ProjectsComponent,
     ContactsComponent,
     NotFoundComponent
   ],
@@ -66,13 +67,16 @@ import { HomeModule } from './home/home.module';
     AngularFirestoreModule,
     HttpClientModule,
     UserModule,
-    HomeModule
+    HomeModule,
+    ProjectModule
   ],
   providers: [
     AccessGuard,
     UserService,
-    HomeService
+    HomeService,
+    ProjectService
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

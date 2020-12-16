@@ -1,13 +1,12 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AccessGuard } from '../core/guards/access.guard';
-
-import { HomeComponent } from './home.component';
-import { CreateComponent } from './post/create/create.component';
-import { EditComponent } from './post/edit/edit.component';
+import { CreateComponent } from './create/create.component';
+import { EditComponent } from './edit/edit.component';
+import { ProjectsComponent } from './list/projects.component';
 
 const routes: Routes = [
     {
-        path: 'home',
+        path: 'projects',
         canActivateChild: [
             AccessGuard
         ],
@@ -15,7 +14,7 @@ const routes: Routes = [
             {
                 path: '',
                 pathMatch: 'full',
-                component: HomeComponent
+                component: ProjectsComponent
             },
             {
                 path: 'edit/:id',
@@ -35,4 +34,4 @@ const routes: Routes = [
     }
 ];
 
-export const HomeRoutingModule = RouterModule.forChild(routes);
+export const ProjectRoutingModule = RouterModule.forChild(routes);

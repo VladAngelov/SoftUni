@@ -17,7 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ParentsComponent } from './parents/parents.component';
-import { ProjectsComponent } from './projects/projects.component';
+import { ProjectsComponent } from './projects/list/projects.component';
 
 const routes: Routes = [
   {

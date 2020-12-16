@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   onDelete(id: string): void {
     this.homeService.deleteItem(id);
     window.alert("Успешно изтрихте поста!");
-    this.router.navigate["/"];
+    this.router.navigate["/home"];
   }
   ngOnDestroy(): void {
     this.posts = null;

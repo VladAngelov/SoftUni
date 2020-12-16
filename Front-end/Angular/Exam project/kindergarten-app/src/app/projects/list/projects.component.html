@@ -1,0 +1,19 @@
+<h2>Проекти</h2>
+<article class="content">
+    <ul>
+        <li *ngIf="isLogged">
+            <button routerLink="/projects/create" class="btn btn-add">
+                Добави
+            </button>
+        </li>
+        <li *ngFor="let project of projects">
+            <app-loader [isLoading]="isLoading"></app-loader>
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.content }}</p>
+            <div *ngIf="isLogged">
+                <button [routerLink]="['/projects/edit', project._id]" class="btn btn-edit">Промени</button>
+                <button class="btn btn-delete" (click)="onDelete(project._id)">Изтрий</button>
+            </div>
+        </li>
+    </ul>
+</article>
