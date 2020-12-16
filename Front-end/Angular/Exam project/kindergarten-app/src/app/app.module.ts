@@ -12,7 +12,6 @@ import { AwardsComponent } from './about/awards/awards.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
-import { FirefliesComponent } from './groups/fireflies/fireflies.component';
 import { LadybugsComponent } from './groups/ladybugs/ladybugs.component';
 import { LionsComponent } from './groups/lions/lions.component';
 import { MargaritasComponent } from './groups/margaritas/margaritas.component';
@@ -34,7 +33,8 @@ import { AccessGuard } from './core/guards/access.guard';
 import { HomeModule } from './home/home.module';
 import { ProjectService } from './projects/project.service';
 import { ProjectModule } from './projects/project.module';
-import { ProjectsComponent } from './projects/list/projects.component';
+import { FirefliesModule } from './groups/fireflies/fireflies.module';
+import { FirefliesService } from './groups/fireflies/fireflies.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,6 @@ import { ProjectsComponent } from './projects/list/projects.component';
     MissionComponent,
     PlaceComponent,
     SchoolsComponent,
-    FirefliesComponent,
     LadybugsComponent,
     LionsComponent,
     MargaritasComponent,
@@ -68,13 +67,15 @@ import { ProjectsComponent } from './projects/list/projects.component';
     HttpClientModule,
     UserModule,
     HomeModule,
-    ProjectModule
+    ProjectModule,
+    FirefliesModule
   ],
   providers: [
     AccessGuard,
     UserService,
     HomeService,
-    ProjectService
+    ProjectService,
+    FirefliesService
   ],
   bootstrap: [AppComponent]
 })

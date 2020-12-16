@@ -6,7 +6,7 @@ import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { GalleryComponent } from './gallery/gallery.component';
-import { FirefliesComponent } from './groups/fireflies/fireflies.component';
+import { FirefliesComponent } from './groups/fireflies/list/fireflies.component';
 import { LadybugsComponent } from './groups/ladybugs/ladybugs.component';
 import { LionsComponent } from './groups/lions/lions.component';
 import { MargaritasComponent } from './groups/margaritas/margaritas.component';
@@ -50,31 +50,31 @@ const routes: Routes = [
     component: SchoolsComponent
   },
   {
-    path: 'groups/fireflies',
+    path: 'groups/list/fireflies',
     component: FirefliesComponent
   },
   {
-    path: 'groups/ladybugs',
+    path: 'groups/list/ladybugs',
     component: LadybugsComponent
   },
   {
-    path: 'groups/lions',
+    path: 'groups/list/lions',
     component: LionsComponent
   },
   {
-    path: 'groups/margaritas',
+    path: 'groups/list/margaritas',
     component: MargaritasComponent
   },
   {
-    path: 'groups/puh',
+    path: 'groups/list/puh',
     component: PuhComponent
   },
   {
-    path: 'groups/sun',
+    path: 'groups/list/sun',
     component: SunComponent
   },
   {
-    path: 'groups/stars',
+    path: 'groups/list/stars',
     component: StarsComponent
   },
   {
