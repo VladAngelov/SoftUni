@@ -7,7 +7,7 @@ import { SchoolsComponent } from './about/schools/schools.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { FirefliesComponent } from './groups/fireflies/list/fireflies.component';
-import { LadybugsComponent } from './groups/ladybugs/ladybugs.component';
+import { LadybugsComponent } from './groups/ladybugs/list/ladybugs.component';
 import { LionsComponent } from './groups/lions/lions.component';
 import { MargaritasComponent } from './groups/margaritas/margaritas.component';
 import { PuhComponent } from './groups/puh/puh.component';
@@ -34,19 +34,19 @@ const routes: Routes = [
     component: HistoryComponent
   },
   {
-    path: 'about/awards',
+    path: 'about/list/awards',
     component: AwardsComponent
   },
   {
-    path: 'about/mission',
+    path: 'about/list/mission',
     component: MissionComponent
   },
   {
-    path: 'about/place',
+    path: 'about/list/place',
     component: PlaceComponent
   },
   {
-    path: 'about/schools',
+    path: 'about/list/schools',
     component: SchoolsComponent
   },
   {
@@ -78,15 +78,15 @@ const routes: Routes = [
     component: StarsComponent
   },
   {
-    path: 'parents',
+    path: 'list/parents',
     component: ParentsComponent
   },
   {
-    path: 'gallery',
+    path: 'list/gallery',
     component: GalleryComponent
   },
   {
-    path: 'news',
+    path: 'list/news',
     component: NewsComponent
   },
   {
@@ -94,7 +94,7 @@ const routes: Routes = [
     component: ProjectsComponent
   },
   {
-    path: 'contacts',
+    path: 'list/contacts',
     component: ContactsComponent
   },
   {

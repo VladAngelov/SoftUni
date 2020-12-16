@@ -1,13 +1,13 @@
 <body>
     <section class="section-text">
         <article class="welcome-text">
-            <h1>Добре дошли в група "Светулки"</h1>
+            <h1>Добре дошли в група "Калинки"</h1>
         </article>
 
         <article class="content">
             <ul>
                 <li *ngIf="isLogged">
-                    <button routerLink="/fireflies/create" class="btn btn-add">
+                    <button routerLink="/ladybugs/create" class="btn btn-add">
                         Добави
                     </button>
                 </li>
@@ -16,7 +16,7 @@
                     <h3>{{ post.title }}</h3>
                     <p>{{ post.content }}</p>
                     <div *ngIf="isLogged">
-                        <button [routerLink]="['/fireflies/edit', post._id]" class="btn btn-edit">Промени</button>
+                        <button [routerLink]="['/ladybugs/edit', post._id]" class="btn btn-edit">Промени</button>
                         <button class="btn btn-delete" (click)="onDelete(post._id)">Изтрий</button>
                     </div>
                 </li>
@@ -25,10 +25,7 @@
 
     </section>
     <section class="section-img">
-        <img src="../../../assets/img/groups/fireflies.png" alt="banner-img" class="img-fluid" />
-        <p><i>Светулке, покажи ми пътя</i></p>
-        <p class="mt-2"><i>с твойта нежна светлинка!</i></p>
-        <p class="mt-2"><i>Аз търся детската градина,</i></p>
-        <p class="mt-2"><i>за да играя и раста!</i></p>
+        <img src="../../../assets/img/groups/ladybugs.png" alt="banner-img" class="img-fluid" />
+
     </section>
 </body>
