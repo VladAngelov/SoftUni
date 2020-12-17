@@ -45,5 +45,4 @@ export class EditComponent implements OnDestroy {
     this.router.navigate(["/groups/list/puh"]);
     window.location.reload();
   }
-
 }

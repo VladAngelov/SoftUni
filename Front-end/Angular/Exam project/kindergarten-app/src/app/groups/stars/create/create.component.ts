@@ -1,14 +1,14 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LadybugsService } from '../ladybugs.service';
+import { StarsService } from '../stars.service';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss', '../../../../form-style.scss']
 })
-export class CreateComponent implements OnDestroy {
+export class CreateComponent {
 
   form = new FormGroup({
     title: new FormControl(''),
@@ -18,12 +18,9 @@ export class CreateComponent implements OnDestroy {
   isLoading = false;
 
   constructor(
-    private ladybugsService: LadybugsService,
+    private starsService: StarsService,
     private router: Router
   ) { }
-
-  ngOnInit(): void {
-  }
 
   submitHandler(): void {
     this.isLoading = true;
@@ -31,9 +28,9 @@ export class CreateComponent implements OnDestroy {
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
     const createdAt = new Date();
-    this.ladybugsService.createPost(title, content, createdAt.toLocaleString());
+    this.starsService.createPost(title, content, createdAt.toLocaleString());
     this.isLoading = false;
-    this.router.navigate(['/groups/list/ladybugs']);
+    this.router.navigate(['/groups/list/stars']);
   }
 
   ngOnDestroy(): void {

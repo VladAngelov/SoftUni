@@ -13,7 +13,6 @@ import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
 import { SunComponent } from './groups/sun/sun.component';
-import { StarsComponent } from './groups/stars/stars.component';
 import { ParentsComponent } from './parents/parents.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { NewsComponent } from './news/news.component';
@@ -39,6 +38,8 @@ import { MargaritasModule } from './groups/margaritas/margaritas.module';
 import { MargaritasService } from './groups/margaritas/margaritas.service';
 import { PuhModule } from './groups/puh/puh.module';
 import { PuhService } from './groups/puh/puh.service';
+import { StarsModule } from './groups/stars/stars.module';
+import { StarsService } from './groups/stars/stars.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,6 @@ import { PuhService } from './groups/puh/puh.service';
     PlaceComponent,
     SchoolsComponent,
     SunComponent,
-    StarsComponent,
     ParentsComponent,
     GalleryComponent,
     NewsComponent,
@@ -72,7 +72,8 @@ import { PuhService } from './groups/puh/puh.service';
     LadybugsModule,
     LionsModule,
     MargaritasModule,
-    PuhModule
+    PuhModule,
+    StarsModule
   ],
   providers: [
     AccessGuard,
@@ -83,7 +84,8 @@ import { PuhService } from './groups/puh/puh.service';
     LadybugsService,
     LionsService,
     MargaritasService,
-    PuhService
+    PuhService,
+    StarsService
   ],
   bootstrap: [AppComponent]
 })
