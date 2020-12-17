@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMainPagePost } from 'src/app/shared/interfaces';
-import { ProjectService } from '../project.service';
+import { NewsService } from '../news.service';
 
 @Component({
   selector: 'app-edit',
@@ -12,7 +12,7 @@ import { ProjectService } from '../project.service';
 export class EditComponent {
 
   id: string;
-  project: IMainPagePost;
+  post: IMainPagePost;
   isLoading = false;
 
   form = new FormGroup({
@@ -21,28 +21,28 @@ export class EditComponent {
   });
 
   constructor(
-    private projectService: ProjectService,
+    private newsService: NewsService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
     this.id = null;
     this.id = activatedRoute.snapshot.params.id;
-    this.project = projectService.loadProjectById(this.id);
+    this.post = newsService.loadPostById(this.id);
   }
 
   submitHandler(): void {
     this.isLoading = true;
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
-    this.projectService.updateProject(this.id, title, content);
+    this.newsService.updatePost(this.id, title, content);
     this.isLoading = false;
-    this.router.navigate(["/list/projects"]);
+    this.router.navigate(["/list/news"]);
   }
 
   ngOnDestroy(): void {
     this.id = null;
-    this.project = null;
-    this.router.navigate(["/list/projects"]);
+    this.post = null;
+    this.router.navigate(["/list/news"]);
     window.location.reload();
   }
 }

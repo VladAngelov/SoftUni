@@ -14,7 +14,7 @@ import { PuhComponent } from './groups/puh/list/puh.component';
 import { StarsComponent } from './groups/stars/list/stars.component';
 import { SunComponent } from './groups/sun/list/sun.component';
 import { HomeComponent } from './home/home.component';
-import { NewsComponent } from './news/news.component';
+import { NewsComponent } from './news/list/news.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ParentsComponent } from './parents/list/parents.component';
 import { ProjectsComponent } from './projects/list/projects.component';

@@ -17,7 +17,6 @@
                     </button>
                 </li>
                 <li *ngFor="let post of posts">
-                    <app-loader [isLoading]="isLoading"></app-loader>
                     <h2>{{ post.title }}</h2>
                     <h4>{{ post.content }}</h4>
                     <div *ngIf="isLogged">
@@ -27,7 +26,7 @@
                 </li>
             </ul>
         </article>
-
+        <app-loader [isLoading]="!posts"></app-loader>
     </section>
     <section class="section-img">
         <img src="../../assets/img/main.png" alt="banner-img" class="img-fluid" />

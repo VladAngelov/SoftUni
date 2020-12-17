@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IBasePost } from 'src/app/shared/interfaces';
-import { ParentsService } from '../parents.service';
+import { NewsService } from '../news.service';
 
 @Component({
-  selector: 'app-parents',
-  templateUrl: './parents.component.html',
-  styleUrls: ['./parents.component.scss']
+  selector: 'app-news',
+  templateUrl: './news.component.html',
+  styleUrls: ['./news.component.scss']
 })
-export class ParentsComponent implements OnInit {
+export class NewsComponent implements OnInit {
 
   posts: IBasePost[];
   isLogged = false;
   isLoading = false;
 
   constructor(
-    private parentsService: ParentsService,
+    private newsService: NewsService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.isLoading = true;
     debugger;
-    this.posts = this.parentsService.loadAllProjects();
+    this.posts = this.newsService.loadAllPosts();
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
@@ -32,8 +32,8 @@ export class ParentsComponent implements OnInit {
   }
 
   onDelete(id: string): void {
-    this.parentsService.deleteProject(id);
-    window.alert("Успешно изтрихте поста!");
+    this.newsService.deletePost(id);
+    window.alert("Успешно изтрихте новината!");
     window.location.reload();
   }
 

@@ -16,16 +16,23 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private homeService: HomeService,
-    private router: Router) { }
-
-  ngOnInit(): void {
+    private router: Router) {
     this.isLoading = true;
+    console.log('Is loading? --> ', this.isLoading);
+
     this.posts = this.homeService.loadAllPosts();
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
     }
     this.isLoading = false;
+
+    console.log('Is loading 2? --> ', this.isLoading);
+
+  }
+
+  ngOnInit(): void {
+
   }
 
   onDelete(id: string): void {
