@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProjectService } from '../project.service';
+import { ParentsService } from '../parents.service';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss', '../../../form-style.scss']
 })
-export class CreateComponent implements OnInit {
+
+export class CreateComponent {
 
   form = new FormGroup({
     title: new FormControl(''),
@@ -18,11 +19,9 @@ export class CreateComponent implements OnInit {
   isLoading = false;
 
   constructor(
-    private projectService: ProjectService,
-    private router: Router) { }
-
-  ngOnInit(): void {
-  }
+    private parentsService: ParentsService,
+    private router: Router
+  ) { }
 
   submitHandler(): void {
     this.isLoading = true;
@@ -30,9 +29,8 @@ export class CreateComponent implements OnInit {
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
     const createdAt = new Date();
-    this.projectService.createProject(title, content, createdAt.toLocaleString());
+    this.parentsService.createProject(title, content, createdAt.toLocaleString());
     this.isLoading = false;
-    this.router.navigate(['/list/projects']);
-    window.location.reload();
+    this.router.navigate(['/list/parents']);
   }
 }

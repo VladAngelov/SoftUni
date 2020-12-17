@@ -12,7 +12,6 @@ import { AwardsComponent } from './about/awards/awards.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
-import { ParentsComponent } from './parents/parents.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { NewsComponent } from './news/news.component';
 import { ContactsComponent } from './contacts/contacts.component';
@@ -41,6 +40,8 @@ import { StarsModule } from './groups/stars/stars.module';
 import { StarsService } from './groups/stars/stars.service';
 import { SunModule } from './groups/sun/sun.module';
 import { SunService } from './groups/sun/sun.service';
+import { ParentsService } from './parents/parents.service';
+import { ParentsModule } from './parents/parents.module';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,6 @@ import { SunService } from './groups/sun/sun.service';
     MissionComponent,
     PlaceComponent,
     SchoolsComponent,
-    ParentsComponent,
     GalleryComponent,
     NewsComponent,
     ContactsComponent,
@@ -74,7 +74,8 @@ import { SunService } from './groups/sun/sun.service';
     MargaritasModule,
     PuhModule,
     StarsModule,
-    SunModule
+    SunModule,
+    ParentsModule
   ],
   providers: [
     AccessGuard,
@@ -87,7 +88,8 @@ import { SunService } from './groups/sun/sun.service';
     MargaritasService,
     PuhService,
     StarsService,
-    SunService
+    SunService,
+    ParentsService
   ],
   bootstrap: [AppComponent]
 })

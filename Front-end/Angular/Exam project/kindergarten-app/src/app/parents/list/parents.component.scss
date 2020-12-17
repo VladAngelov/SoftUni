@@ -1,4 +1,4 @@
-  body {
+body {
     margin: 0px auto;
     display: flex;
     flex-direction: column;
@@ -16,6 +16,11 @@
    margin: auto;
    display: flex;
    justify-content: start;
+  }
+
+  p {
+    margin: 5px auto;
+    color: #6c757d;
   }
 
   article {
