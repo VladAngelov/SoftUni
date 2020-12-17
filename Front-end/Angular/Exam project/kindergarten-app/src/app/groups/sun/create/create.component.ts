@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { StarsService } from '../stars.service';
+import { SunService } from '../sun.service';
 
 @Component({
   selector: 'app-create',
@@ -18,7 +18,7 @@ export class CreateComponent {
   isLoading = false;
 
   constructor(
-    private starsService: StarsService,
+    private sunService: SunService,
     private router: Router
   ) { }
 
@@ -27,9 +27,9 @@ export class CreateComponent {
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
     const createdAt = new Date();
-    this.starsService.createPost(title, content, createdAt.toLocaleString());
+    this.sunService.createPost(title, content, createdAt.toLocaleString());
     this.isLoading = false;
-    this.router.navigate(['/groups/list/stars']);
+    this.router.navigate(['/groups/list/sun']);
   }
 
   ngOnDestroy(): void {

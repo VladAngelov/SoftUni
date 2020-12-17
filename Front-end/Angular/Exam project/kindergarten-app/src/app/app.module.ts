@@ -12,7 +12,6 @@ import { AwardsComponent } from './about/awards/awards.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
-import { SunComponent } from './groups/sun/sun.component';
 import { ParentsComponent } from './parents/parents.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { NewsComponent } from './news/news.component';
@@ -40,6 +39,8 @@ import { PuhModule } from './groups/puh/puh.module';
 import { PuhService } from './groups/puh/puh.service';
 import { StarsModule } from './groups/stars/stars.module';
 import { StarsService } from './groups/stars/stars.service';
+import { SunModule } from './groups/sun/sun.module';
+import { SunService } from './groups/sun/sun.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,6 @@ import { StarsService } from './groups/stars/stars.service';
     MissionComponent,
     PlaceComponent,
     SchoolsComponent,
-    SunComponent,
     ParentsComponent,
     GalleryComponent,
     NewsComponent,
@@ -73,7 +73,8 @@ import { StarsService } from './groups/stars/stars.service';
     LionsModule,
     MargaritasModule,
     PuhModule,
-    StarsModule
+    StarsModule,
+    SunModule
   ],
   providers: [
     AccessGuard,
@@ -85,7 +86,8 @@ import { StarsService } from './groups/stars/stars.service';
     LionsService,
     MargaritasService,
     PuhService,
-    StarsService
+    StarsService,
+    SunService
   ],
   bootstrap: [AppComponent]
 })

@@ -12,7 +12,7 @@ import { LionsComponent } from './groups/lions/list/lions.component';
 import { MargaritasComponent } from './groups/margaritas/list/margaritas.component';
 import { PuhComponent } from './groups/puh/list/puh.component';
 import { StarsComponent } from './groups/stars/list/stars.component';
-import { SunComponent } from './groups/sun/sun.component';
+import { SunComponent } from './groups/sun/list/sun.component';
 import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import { NotFoundComponent } from './not-found/not-found.component';
