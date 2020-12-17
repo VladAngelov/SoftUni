@@ -1,15 +1,15 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMainPagePost } from 'src/app/shared/interfaces';
-import { MargaritasService } from '../margaritas.service';
+import { PuhService } from '../puh.service';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss', '../../../../form-style.scss']
 })
-export class EditComponent {
+export class EditComponent implements OnDestroy {
 
   id: string;
   post: IMainPagePost;
@@ -21,28 +21,29 @@ export class EditComponent {
   });
 
   constructor(
-    private margaritasService: MargaritasService,
+    private puhService: PuhService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
     this.id = null;
     this.id = activatedRoute.snapshot.params.id;
-    this.post = margaritasService.loadPostById(this.id);
+    this.post = puhService.loadPostById(this.id);
   }
 
   submitHandler(): void {
     this.isLoading = true;
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
-    this.margaritasService.updatePost(this.id, title, content);
+    this.puhService.updatePost(this.id, title, content);
     this.isLoading = false;
-    this.router.navigate(["/groups/list/margaritas"]);
+    this.router.navigate(["/groups/list/puh"]);
   }
 
   ngOnDestroy(): void {
     this.id = null;
     this.post = null;
-    this.router.navigate(["/groups/list/margaritas"]);
+    this.router.navigate(["/groups/list/puh"]);
     window.location.reload();
   }
+
 }

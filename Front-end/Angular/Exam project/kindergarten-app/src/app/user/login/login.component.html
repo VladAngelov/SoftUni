@@ -1,48 +1,50 @@
-<form #f="ngForm" class="login" (ngSubmit)="submitFormHandler(f.value)">
-    <fieldset>
-        <h2>Вход</h2>
+<body>
+    <form #f="ngForm" class="login" (ngSubmit)="submitFormHandler(f.value)">
+        <fieldset>
+            <h2>Вход</h2>
 
-        <p class="field field-icon">
-            <label for="email">
-                <span><i class="fas fa-envelope"></i></span>
-            </label>
-            <input #userEmail="ngModel" ngModel required appEmailValidator
-                [class.input-error]="userEmail.touched && !!userEmail.errors" type="text" name="email" id="email"
-                placeholder="some.mail@gmail.com">
-        </p>
-        <p *ngIf="userEmail.touched && userEmail.errors?.required" class="error">
-            Необходим е имейл!
-        </p>
-        <p *ngIf="userEmail.touched && userEmail.errors?.emailValidator" class="error">
-            Имейлът е невалиден!
-        </p>
+            <p class="field field-icon">
+                <label for="email">
+                    <span><i class="fas fa-envelope"></i></span>
+                </label>
+                <input #userEmail="ngModel" ngModel required appEmailValidator
+                    [class.input-error]="userEmail.touched && !!userEmail.errors" type="text" name="email" id="email"
+                    placeholder="some.mail@gmail.com">
+            </p>
+            <p *ngIf="userEmail.touched && userEmail.errors?.required" class="error">
+                Необходим е имейл!
+            </p>
+            <p *ngIf="userEmail.touched && userEmail.errors?.emailValidator" class="error">
+                Имейлът е невалиден!
+            </p>
 
-        <p class="field field-icon">
-            <label for="password">
-                <span>
-                    <i class="fas fa-lock"></i>
-                </span>
-            </label>
-            <input #userPassword="ngModel" ngModel required minlength="6"
-                [class.input-error]="userPassword.touched && !!userPassword.errors" type="password" name="password"
-                id="password" placeholder="******">
-        </p>
-        <p class="error" *ngIf="userPassword.touched && userPassword.errors?.required">
-            Паролата е задължитлна!
-        </p>
-        <p class="error" *ngIf="userPassword.touched && userPassword.errors?.minlength">
-            Паролата, трябва да е поне 4 символа!
-        </p>
+            <p class="field field-icon">
+                <label for="password">
+                    <span>
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </label>
+                <input #userPassword="ngModel" ngModel required minlength="6"
+                    [class.input-error]="userPassword.touched && !!userPassword.errors" type="password" name="password"
+                    id="password" placeholder="******">
+            </p>
+            <p class="error" *ngIf="userPassword.touched && userPassword.errors?.required">
+                Паролата е задължитлна!
+            </p>
+            <p class="error" *ngIf="userPassword.touched && userPassword.errors?.minlength">
+                Паролата, трябва да е поне 4 символа!
+            </p>
 
-        <button [disabled]="isLoading || f.invalid">
-            Вход
-        </button>
-        <app-loader [isLoading]="isLoading"></app-loader>
+            <button [disabled]="isLoading || f.invalid">
+                Вход
+            </button>
+            <app-loader [isLoading]="isLoading"></app-loader>
 
-        <p class="text-center">
-            Нямате акаунт?
-            <a routerLink="/user/register">Регистрация</a>
-        </p>
+            <p class="text-center">
+                Нямате акаунт?
+                <a routerLink="/user/register">Регистрация</a>
+            </p>
 
-    </fieldset>
-</form>
+        </fieldset>
+    </form>
+</body>

@@ -1,52 +1,50 @@
-<form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
+<body>
+  <form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
+    <fieldset>
+      <h2>Регистрация</h2>
 
-  <fieldset>
-    <h2>Регистрация</h2>
+      <p class="field field-icon">
+        <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+        <input [class.input-error]="form.get('email').touched && !!form.get('email').errors" type="email" name="email"
+          id="email" placeholder="some.mail@gmail.com" formControlName="email">
+      </p>
+      <p *ngIf="form.get('email').touched && form.get('email').errors?.required" class="error">
+        Имейлът е задължителен!
+      </p>
+      <p *ngIf="form.get('email').touched && form.get('email').errors?.emailValidator" class="error">
+        Невалиден имейл!
+      </p>
 
-    <!-- email -->
-    <p class="field field-icon">
-      <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-      <input [class.input-error]="form.get('email').touched && !!form.get('email').errors" type="email" name="email"
-        id="email" placeholder="some.mail@gmail.com" formControlName="email">
-    </p>
-    <p *ngIf="form.get('email').touched && form.get('email').errors?.required" class="error">
-      Имейлът е задължителен!
-    </p>
-    <p *ngIf="form.get('email').touched && form.get('email').errors?.emailValidator" class="error">
-      Невалиден имейл!
-    </p>
+      <p class="field field-icon">
+        <label for="password"><span><i class="fas fa-lock"></i></span></label>
+        <input [class.input-error]="form.get('password').touched && !!form.get('password').errors" type="password"
+          name="password" id="password" placeholder="******" formControlName="password">
+      </p>
+      <p *ngIf="form.get('password').touched && form.get('password').errors?.required" class="error">
+        Паролата е задължителна!
+      </p>
+      <p *ngIf="form.get('password').touched && form.get('password').errors?.minlength" class="error">
+        Паролата, трябва да е поне 4 символа!
+      </p>
 
-    <!-- password -->
-    <p class="field field-icon">
-      <label for="password"><span><i class="fas fa-lock"></i></span></label>
-      <input [class.input-error]="form.get('password').touched && !!form.get('password').errors" type="password"
-        name="password" id="password" placeholder="******" formControlName="password">
-    </p>
-    <p *ngIf="form.get('password').touched && form.get('password').errors?.required" class="error">
-      Паролата е задължителна!
-    </p>
-    <p *ngIf="form.get('password').touched && form.get('password').errors?.minlength" class="error">
-      Паролата, трябва да е поне 4 символа!
-    </p>
+      <p class="field field-icon">
+        <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
+        <input [class.input-error]="form.get('rePassword').touched && !!form.get('rePassword').errors" type="password"
+          name="rePassword" id="rePassword" placeholder="******" formControlName="rePassword">
+      </p>
+      <p *ngIf="form.get('rePassword').touched && form.get('rePassword').errors?.required" class="error">
+        Повторете паролата!</p>
+      <p *ngIf="form.get('rePassword').touched && form.get('rePassword').errors?.rePasswordValidator" class="error">
+        Не съвпада с паролата!</p>
 
-    <!-- rePassword -->
-    <p class="field field-icon">
-      <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
-      <input [class.input-error]="form.get('rePassword').touched && !!form.get('rePassword').errors" type="password"
-        name="rePassword" id="rePassword" placeholder="******" formControlName="rePassword">
-    </p>
-    <p *ngIf="form.get('rePassword').touched && form.get('rePassword').errors?.required" class="error">
-      Повторете паролата!</p>
-    <p *ngIf="form.get('rePassword').touched && form.get('rePassword').errors?.rePasswordValidator" class="error">
-      Не съвпада с паролата!</p>
+      <button [disabled]="isLoading || form.invalid">Създай акаунт</button>
+      <app-loader [isLoading]="isLoading"></app-loader>
 
-    <button [disabled]="isLoading || form.invalid">Създай акаунт</button>
-    <app-loader [isLoading]="isLoading"></app-loader>
+      <p class="text-center">
+        Имате акаунт?
+        <a routerLink="/user/login">Вход</a>
+      </p>
 
-    <p class="text-center">
-      Имате акаунт?
-      <a routerLink="/user/login">Вход</a>
-    </p>
-
-  </fieldset>
-</form>
+    </fieldset>
+  </form>
+</body>
