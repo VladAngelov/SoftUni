@@ -12,7 +12,7 @@ import { AwardsComponent } from './about/awards/awards.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
-import { MargaritasComponent } from './groups/margaritas/margaritas.component';
+import { MargaritasComponent } from './groups/margaritas/list/margaritas.component';
 import { PuhComponent } from './groups/puh/puh.component';
 import { SunComponent } from './groups/sun/sun.component';
 import { StarsComponent } from './groups/stars/stars.component';
@@ -37,6 +37,8 @@ import { LadybugsService } from './groups/ladybugs/ladybugs.service';
 import { LadybugsModule } from './groups/ladybugs/ladybugs.module';
 import { LionsModule } from './groups/lions/lions.module';
 import { LionsService } from './groups/lions/lions.service';
+import { MargaritasModule } from './groups/margaritas/margaritas.module';
+import { MargaritasService } from './groups/margaritas/margaritas.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,6 @@ import { LionsService } from './groups/lions/lions.service';
     MissionComponent,
     PlaceComponent,
     SchoolsComponent,
-    MargaritasComponent,
     PuhComponent,
     SunComponent,
     StarsComponent,
@@ -70,7 +71,8 @@ import { LionsService } from './groups/lions/lions.service';
     ProjectModule,
     FirefliesModule,
     LadybugsModule,
-    LionsModule
+    LionsModule,
+    MargaritasModule
   ],
   providers: [
     AccessGuard,
@@ -79,7 +81,8 @@ import { LionsService } from './groups/lions/lions.service';
     ProjectService,
     FirefliesService,
     LadybugsService,
-    LionsService
+    LionsService,
+    MargaritasService
   ],
   bootstrap: [AppComponent]
 })

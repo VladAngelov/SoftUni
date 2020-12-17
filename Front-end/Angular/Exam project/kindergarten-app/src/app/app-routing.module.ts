@@ -9,7 +9,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { FirefliesComponent } from './groups/fireflies/list/fireflies.component';
 import { LadybugsComponent } from './groups/ladybugs/list/ladybugs.component';
 import { LionsComponent } from './groups/lions/list/lions.component';
-import { MargaritasComponent } from './groups/margaritas/margaritas.component';
+import { MargaritasComponent } from './groups/margaritas/list/margaritas.component';
 import { PuhComponent } from './groups/puh/puh.component';
 import { StarsComponent } from './groups/stars/stars.component';
 import { SunComponent } from './groups/sun/sun.component';

@@ -1,29 +1,30 @@
-<form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
+<body>
+    <form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
+        <fieldset>
+            <h2>Редактиране</h2>
+            <p class="field field-icon title-p">
+                <label for="title">Заглавие:<span class="red">*</span></label>
+                <input formControlName="title" type="text" name="title" id="title" class="create-edit-input" required
+                    minlength="5" value="{{post.title}}" placeholder="{{post.title}}">
+            </p>
+            <p class="error" *ngIf="form.get('title').touched && form.get('title').errors?.required">
+                Заглавието е задължително!
+            </p>
+            <p class="error" *ngIf="form.get('title').touched && form.get('title').errors?.minlength">
+                Заглавието, трябва да е поне 5 символа!
+            </p>
 
-    <fieldset>
-        <h2>Редактиране</h2>
-        <p class="field field-icon title-p">
-            <label for="title">Заглавие:<span class="red">*</span></label>
-            <input formControlName="title" type="text" name="title" id="title" class="create-edit-input" required
-                minlength="5" value="{{post.title}}" placeholder="{{post.title}}">
-        </p>
-        <p class="error" *ngIf="form.get('title').touched && form.get('title').errors?.required">
-            Заглавието е задължително!
-        </p>
-        <p class="error" *ngIf="form.get('title').touched && form.get('title').errors?.minlength">
-            Заглавието, трябва да е поне 5 символа!
-        </p>
-
-        <label for="content">Съдържание: </label>
-        <p>
-            <textarea formControlName="content" type="text" name="content" id="content" rows="8" cols="50"
-                class="height" required placeholder="{{post.content}}">
+            <label for="content">Съдържание: </label>
+            <p>
+                <textarea formControlName="content" type="text" name="content" id="content" rows="8" cols="50"
+                    class="height" required placeholder="{{post.content}}">
                 {{post.content}}
             </textarea>
-        </p>
-        <p class="error" *ngIf="form.get('content').touched && form.get('content').errors?.required">
-            Съдържанието е задължително!
-        </p>
-    </fieldset>
-    <button [disabled]="isLoading || form.invalid">Добави</button>
-</form>
+            </p>
+            <p class="error" *ngIf="form.get('content').touched && form.get('content').errors?.required">
+                Съдържанието е задължително!
+            </p>
+        </fieldset>
+        <button [disabled]="isLoading || form.invalid">Добави</button>
+    </form>
+</body>
