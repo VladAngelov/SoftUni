@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AwardsComponent } from './about/awards/list/awards.component';
 import { HistoryComponent } from './about/history/list/history.component';
-import { MissionComponent } from './about/mission/mission.component';
+import { MissionComponent } from './about/mission/list/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
 import { ListComponent } from './about/teachers/list/list.component';
