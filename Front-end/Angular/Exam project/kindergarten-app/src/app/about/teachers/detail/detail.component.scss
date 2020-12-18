@@ -1,0 +1,20 @@
+.btn {
+    font-size: 14px; 
+    text-decoration: none;
+    border-radius: 38px;
+    border: none;
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+  
+.btn-primary {
+    border: 1px solid rgb(0, 60, 255); 
+    color: rgb(0, 60, 255); ;
+  }
+  
+  .btn-primary:hover {
+    background: rgb(0, 60, 255); ; 
+    color: white;
+    cursor: pointer;
+  }

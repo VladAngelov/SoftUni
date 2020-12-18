@@ -1,0 +1,28 @@
+<body>
+    <form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
+        <fieldset>
+            <h2>Редактиране</h2>
+            <p class="field field-icon title-p">
+                <label for="name">Име: *</label>
+                <input formControlName="name" type="text" name="name" id="name" class="create-edit-input" required
+                    minlength="3" placeholder={{ teacher.name }}>
+            </p>
+            <p class="error" *ngIf="form.get('name').touched && form.get('name').errors?.required">
+                Името е задължително!
+            </p>
+            <p class="error" *ngIf="form.get('name').touched && form.get('name').errors?.minlength">
+                Името, трябва да е поне 3 символа!
+            </p>
+
+            <label for="position">Позиция: </label>
+            <input formControlName="position" type="text" name="position" id="position" class="create-edit-input"
+                placeholder={{ teacher.position }}>
+
+            <label for="group">Име на група: </label>
+            <input formControlName="group" type="text" name="group" id="group" class="create-edit-input" placeholder={{
+                teacher.group }}>
+
+        </fieldset>
+        <button [disabled]="isLoading || form.invalid">Добави</button>
+    </form>
+</body>

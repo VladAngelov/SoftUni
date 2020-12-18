@@ -31,3 +31,7 @@ html {
 background: #EAEAEA;
 margin: 0 auto 0 auto;
 }
+
+.btn:disabled {
+  cursor:not-allowed;
+}

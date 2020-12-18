@@ -1,27 +1,40 @@
 <body class="teachers-body">
   <section class="teachers">
-    <h1>Учители</h1>
+    <article class="welcome-text">
+      <h1>Учители</h1>
+    </article>
+    <article>
+      <div *ngIf="isLogged" class="btns">
+        <button routerLink="/teachers/create" class="btn btn-add">
+          Добави
+        </button>
+      </div>
+      <div *ngIf="teachers.length > 0">
+        <ul>
+          <li *ngFor="let teacher of teachers">
+            <a [routerLink]="['/teachers/detail/', teacher._id]">
+              <h3>{{ teacher.name }}</h3>
+            </a>
+            <p>{{ teacher.position }}</p>
+            <div *ngIf="isLogged">
+              <button [routerLink]="['/teachers/edit', teacher._id]" class="btn btn-edit">Промени</button>
+              <button class="btn btn-delete" (click)="onDelete(teacher._id)">Изтрий</button>
+            </div>
 
-    <app-loader [isLoading]="!teachersList"></app-loader>
-    <div *ngIf="teachersList">
-      <ul>
-        <li *ngFor="let teacher of teachersList">
-          <a [routerLink]="['/about/teachers/detail/', teacher.id]">
-            <h3>{{ teacher.username }}</h3>
-          </a>
-          <h5>Главен учител</h5>
-        </li>
-      </ul>
-    </div>
+          </li>
+        </ul>
+      </div>
+    </article>
   </section>
 </body>
 
-<!-- <ul>
-        <li>
-          <h3>Мариана Смиленова</h3>
-          <h4>Главен учител</h4>
-        </li>
+<app-loader [isLoading]="!teachers"></app-loader>
 
+
+
+
+<!-- <ul>
+      
         <li>
           <h3>Иво Ушатов</h3>
           <h4>Старши учител</h4>

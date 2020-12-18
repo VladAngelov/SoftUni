@@ -1,0 +1,12 @@
+body { 
+    background: white;
+ }
+
+fieldset {
+display: flex;
+flex-direction: column;
+}
+
+.name-field {
+    flex-direction: column;
+}

@@ -68,6 +68,10 @@ form.login, form.register {
     cursor: pointer;
 }
 
+.login button:disabled, .register button:disabled {
+    cursor: not-allowed;
+}
+
 .register .tel {
     padding-right: 0.8em;
 }

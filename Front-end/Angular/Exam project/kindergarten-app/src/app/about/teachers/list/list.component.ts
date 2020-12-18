@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ITeacher } from 'src/app/shared/interfaces';
 import { TeachersService } from '../teachers.service';
 
 @Component({
@@ -6,15 +7,28 @@ import { TeachersService } from '../teachers.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit{
+export class ListComponent implements OnInit, OnDestroy {
 
-  teachersList = null;
+  teachers: ITeacher[] = [];
+  isLogged = false;
 
-  constructor(private teacherService: TeachersService) { }
+  constructor(private teacherService: TeachersService) {
+    if (localStorage.getItem('auth')) {
+      this.isLogged = true;
+    }
+  }
 
   ngOnInit(): void {
-    this.teacherService.loadTeachers().subscribe( 
-      teachersList => this.teachersList = teachersList
-      );
+    this.teachers = this.teacherService.loadAllTeachers();
+  }
+
+  onDelete(id: string): void {
+    this.teacherService.deleteTeacher(id);
+    window.alert("Успешно премахнахте служителя!");
+    window.location.reload();
+  }
+
+  ngOnDestroy(): void {
+    this.teachers = [];
   }
 }

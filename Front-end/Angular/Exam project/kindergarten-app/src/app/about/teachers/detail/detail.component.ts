@@ -1,28 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ITeacher } from 'src/app/shared/interfaces';
 import { TeachersService } from '../teachers.service';
-import { tap, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent  implements OnInit{
+export class DetailComponent implements OnDestroy {
 
-  teacher: any;
-
+  teacher: ITeacher;
+  id: string;
   constructor(
     private teachersService: TeachersService,
-    private route: ActivatedRoute
-    ) { }
-
-  ngOnInit(): void {
-      this.route.params.pipe(
-        tap(() => this.teacher = null),
-        switchMap (({ id }) => this.teachersService.loadTeacher(id)))
-        .subscribe(teacher => {
-          this.teacher = teacher;
-        });      
-      };
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
+    this.id = null;
+    this.id = activatedRoute.snapshot.params.id;
+    this.teacher = teachersService.loadTeacherById(this.id);
   }
+
+  onDelete(id: string): void {
+    this.teachersService.deleteTeacher(id);
+    window.alert("Успешно премахнахте служителя!");
+    this.router.navigate(["/about/teachers"]);
+  }
+
+  ngOnDestroy(): void {
+    this.teacher = null;
+  }
+}

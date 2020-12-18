@@ -43,6 +43,7 @@ import { ParentsService } from './parents/parents.service';
 import { ParentsModule } from './parents/parents.module';
 import { NewsModule } from './news/news.module';
 import { NewsService } from './news/news.service';
+import { TeachersService } from './about/teachers/teachers.service';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { NewsService } from './news/news.service';
     StarsModule,
     SunModule,
     ParentsModule,
-    NewsModule
+    NewsModule,
+    TeachersModule
   ],
   providers: [
     AccessGuard,
@@ -91,7 +93,8 @@ import { NewsService } from './news/news.service';
     StarsService,
     SunService,
     ParentsService,
-    NewsService
+    NewsService,
+    TeachersService
   ],
   bootstrap: [AppComponent]
 })

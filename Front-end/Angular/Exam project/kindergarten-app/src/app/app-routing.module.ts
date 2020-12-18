@@ -4,6 +4,7 @@ import { HistoryComponent } from './about/history/history.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
+import { ListComponent } from './about/teachers/list/list.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { FirefliesComponent } from './groups/fireflies/list/fireflies.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'about/history',
     component: HistoryComponent
+  },
+  {
+    path: 'about/teachers',
+    component: ListComponent
   },
   {
     path: 'about/list/awards',

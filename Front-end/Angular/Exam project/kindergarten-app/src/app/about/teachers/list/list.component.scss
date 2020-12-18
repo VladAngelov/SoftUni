@@ -1,29 +1,21 @@
 .teachers-body {
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.7)
-  );
   display: flex;
+  margin: 0px auto;
+  flex-direction: column;
+  width: 90%;
 }
 
 .teachers {
-  width: 90%;
   margin: 40px auto 0 auto;
 }
 
-.teachers h1 {
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid black;
-}
-
-.teachers ul {
+ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
 }
 
-.teachers ul li {
+ ul li {
   list-style: none;
   background-color: #efa2a9;
   border-top-right-radius: 32px;
@@ -36,11 +28,6 @@
 .teachers ul li h3,
 .teachers ul li h5 {
   text-decoration: none;
-  color: black;
-}
-
-.teachers ul li h5 {
-  border-bottom: 1px solid black;
 }
 
 .teachers ul li a {
@@ -50,4 +37,107 @@
 .teachers ul li:hover {
   cursor: pointer;
   background-color: white;
+}
+
+h1 {
+  margin: auto;
+  border-bottom: 1px solid grey;
+  display: flex;
+  justify-content: center;
+}
+
+ h2 {
+ margin: auto;
+ display: flex;
+ justify-content: start;
+}
+
+p, h3 {
+  margin: 5px auto;
+  color: #6c757d;
+}
+
+p {
+  border-bottom: 1px solid grey;
+}
+
+article {
+  margin: 30px 0;
+}
+
+.section-text {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+.welcome-text {
+  align-items: center;
+}
+.welcome-text h1 {
+  font-size: 50px;
+  font-weight: 500;
+  margin: 30px auto;
+}
+
+.btn {
+  font-size: 14px; 
+  text-decoration: none;
+  border-radius: 38px;
+  border: none;
+  padding: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.btns {
+  margin-left: 40px;
+}
+
+.btn-documents {
+  font-size: 16px; 
+  background: #20c578; 
+  color: white;
+  padding: 20px 30px;
+}
+
+.btn-add {
+  border: 1px solid #20c578; 
+  color: #20c578;
+}
+
+.btn-add:hover {
+  background: #20c578; 
+  color: white;
+  cursor: pointer;
+}
+
+.btn-edit {
+  border: 1px solid orangered; 
+  color: orangered;
+}
+
+.btn-edit:hover {
+  background: orangered; 
+  color: white;
+}
+
+.btn-delete {
+  border: 1px solid red;
+  color: red;
+}
+
+.btn-delete:hover {
+  background: red;
+  color: white;
+}
+
+.documents-adrticle{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-documents:hover {
+  background: #232323;
 }

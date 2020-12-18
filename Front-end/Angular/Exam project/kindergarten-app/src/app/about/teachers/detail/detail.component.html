@@ -1,17 +1,23 @@
 <app-loader [isLoading]="!teacher"></app-loader>
 <div *ngIf="teacher">
-  <h5>{{ teacher.username }}</h5>
-  <a
-    *ngIf="teacher.id - 1 > 1"
-    [routerLink]="['/about/teachers/detail', teacher.id - 1]"
-  >
-    Prev Teacher
-  </a>
-  <a routerLink="/about/teachers"> Back To Teachers List </a>
-  <a
-    *ngIf="teacher.id + 1 < 10"
-    [routerLink]="['/about/teachers/detail', teacher.id + 1]"
-  >
-    Next Teacher
-  </a>
+  <div class="container">
+    <div class="profile"><img src="./assets/img/user/profile.png" alt="default user">
+      <h3>Информация за потребителя:</h3>
+      <div class="flex">
+        <p>Име: </p>
+        <p>{{ teacher.name }}</p>
+      </div>
+      <div class="flex">
+        <p>Позиция: </p>
+        <p>{{ teacher.position }}</p>
+      </div>
+      <div class="flex">
+        <p>Преподаващ в група: </p>
+        <p>{{ teacher.group }}</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" routerLink="/about/teachers"> Back To Teachers List </button>
+
 </div>
