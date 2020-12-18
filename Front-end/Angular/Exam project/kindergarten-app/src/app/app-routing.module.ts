@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AwardsComponent } from './about/awards/list/awards.component';
-import { HistoryComponent } from './about/history/history.component';
+import { HistoryComponent } from './about/history/list/history.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
@@ -31,7 +31,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'about/history',
+    path: 'about/list/history',
     component: HistoryComponent
   },
   {

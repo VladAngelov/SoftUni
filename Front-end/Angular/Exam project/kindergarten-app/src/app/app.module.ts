@@ -7,7 +7,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HistoryComponent } from './about/history/history.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
 import { SchoolsComponent } from './about/schools/schools.component';
@@ -44,11 +43,11 @@ import { NewsModule } from './news/news.module';
 import { NewsService } from './news/news.service';
 import { TeachersService } from './about/teachers/teachers.service';
 import { AwardsModule } from './about/awards/awards.module';
+import { HistoryModule } from './about/history/history.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HistoryComponent,
     MissionComponent,
     PlaceComponent,
     SchoolsComponent,
@@ -78,7 +77,8 @@ import { AwardsModule } from './about/awards/awards.module';
     ParentsModule,
     NewsModule,
     TeachersModule,
-    AwardsModule
+    AwardsModule,
+    HistoryModule
   ],
   providers: [
     AccessGuard,

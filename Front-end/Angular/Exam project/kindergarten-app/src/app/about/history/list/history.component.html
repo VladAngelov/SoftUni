@@ -1,0 +1,23 @@
+<body>
+    <article class="welcome-text">
+        <h1>История</h1>
+    </article>
+    <article>
+        <ul>
+            <li *ngIf="isLogged">
+                <button routerLink="/history/create" class="btn btn-add">
+                    Добави
+                </button>
+            </li>
+            <li *ngFor="let post of posts">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                <div *ngIf="isLogged">
+                    <button [routerLink]="['/history/edit', post._id]" class="btn btn-edit">Промени</button>
+                    <button class="btn btn-delete" (click)="onDelete(post._id)">Изтрий</button>
+                </div>
+            </li>
+        </ul>
+    </article>
+</body>
+<app-loader [isLoading]="isLoading"></app-loader>
