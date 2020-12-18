@@ -8,7 +8,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlaceComponent } from './about/place/place.component';
-import { SchoolsComponent } from './about/schools/schools.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { CoreModule } from './core/core.module';
@@ -44,12 +43,12 @@ import { TeachersService } from './about/teachers/teachers.service';
 import { AwardsModule } from './about/awards/awards.module';
 import { HistoryModule } from './about/history/history.module';
 import { MissionModule } from './about/mission/mission.module';
+import { SchoolsModule } from './about/schools/schools.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlaceComponent,
-    SchoolsComponent,
     GalleryComponent,
     ContactsComponent,
     NotFoundComponent
@@ -78,7 +77,8 @@ import { MissionModule } from './about/mission/mission.module';
     TeachersModule,
     AwardsModule,
     HistoryModule,
-    MissionModule
+    MissionModule,
+    SchoolsModule
   ],
   providers: [
     AccessGuard,

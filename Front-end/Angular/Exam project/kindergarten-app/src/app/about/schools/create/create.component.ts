@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MissionService } from '../mission.service';
+import { SchoolsService } from '../schools.service';
 
 @Component({
   selector: 'app-create',
@@ -18,7 +18,7 @@ export class CreateComponent {
   isLoading = false;
 
   constructor(
-    private missionService: MissionService,
+    private schoolsService: SchoolsService,
     private router: Router
   ) { }
 
@@ -28,9 +28,9 @@ export class CreateComponent {
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
     const createdAt = new Date();
-    this.missionService.createPost(title, content, createdAt.toLocaleString());
+    this.schoolsService.createPost(title, content, createdAt.toLocaleString());
     this.isLoading = false;
-    this.router.navigate(['/about/list/mission']);
+    this.router.navigate(['/about/list/schools']);
   }
 
   ngOnDestroy(): void {
