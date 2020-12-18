@@ -45,7 +45,6 @@ export class TeachersService {
 
   loadTeacherById(id: string): any {
     let teacher: Teacher = this.teachers.find(x => x._id === id);
-    console.log('Teacher in service --> ', teacher);
     return teacher;
   }
 }

@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { AwardsComponent } from './about/awards/awards.component';
+import { AwardsComponent } from './about/awards/list/awards.component';
 import { HistoryComponent } from './about/history/history.component';
 import { MissionComponent } from './about/mission/mission.component';
 import { PlaceComponent } from './about/place/place.component';
