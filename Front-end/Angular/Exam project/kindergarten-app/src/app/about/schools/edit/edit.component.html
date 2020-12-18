@@ -4,14 +4,8 @@
             <h2>Редактиране</h2>
             <p class="field field-icon title-p">
                 <label for="title">Заглавие: *</label>
-                <input formControlName="title" type="text" name="title" id="title" class="create-edit-input" required
+                <input formControlName="title" type="text" name="title" id="title" class="create-edit-input"
                     minlength="5" value="{{ post.title }}" placeholder="{{post.title}}">
-            </p>
-            <p class="error" *ngIf="form.get('title').touched && form.get('title').errors?.required">
-                Заглавието е задължително!
-            </p>
-            <p class="error" *ngIf="form.get('title').touched && form.get('title').errors?.minlength">
-                Заглавието, трябва да е поне 5 символа!
             </p>
 
             <label for="content">Съдържание: </label>
