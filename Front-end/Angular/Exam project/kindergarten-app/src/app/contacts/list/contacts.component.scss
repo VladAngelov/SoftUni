@@ -1,0 +1,163 @@
+
+.contact-page {
+    width: 80%;
+    margin: 30px auto;
+    background: #EAEAEA;
+  }
+  
+  .contacts-question,
+  .contacts ul li article,
+  .contact-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contacts ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .contacts ul li {
+    list-style: none;
+    margin: 30px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.5);
+    background: white;
+  }
+  
+  .contacts-question {
+    border-bottom: 1px solid black;
+    width: 80%;
+    padding: 30px;
+    margin: 0 auto;
+  }
+  
+  .contacts-question h1 {
+    font-size: 40px;
+  }
+  
+  .contacts-icons {
+    color: #20c578;
+  }
+  
+  .contacts-icons .location {
+    font-size: 30px;
+  }
+  
+  .contact-text p {
+    color: darkgray;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+  .contact-text-h3-p {
+    margin: 5px auto;
+  }
+
+  
+  @media all and (max-width: 414px) {
+    .contacts-question {
+      text-align: center;
+    }
+    .contacts-question h1 {
+      font-size: 30px;
+    }
+  
+    .contact-text {
+      text-align: center;
+    }
+  
+    .contacts ul {
+      padding: 0;
+    }
+  
+    .contacts ul li {
+      min-width: 280px;
+      margin: 10px;
+    }
+  }
+  
+.btn-p-add{
+  display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+  
+  .btn {
+    font-size: 14px; 
+    text-decoration: none;
+    border-radius: 38px;
+    border: none;
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+
+  .btn-documents {
+    font-size: 16px; 
+    background: #20c578; 
+    color: white;
+    padding: 20px 30px;
+  }
+
+  .btn-add {
+    border: 1px solid #20c578; 
+    color: #20c578;
+  }
+
+  .btn-add:hover {
+    background: #20c578; 
+    color: white;
+    cursor: pointer;
+  }
+  
+  .btn-edit {
+    border: 1px solid orangered; 
+    color: orangered;
+  }
+
+  .btn-edit:hover {
+    background: orangered; 
+    color: white;
+  }
+
+  .btn-delete {
+    border: 1px solid red;
+    color: red;
+  }
+
+  .btn-delete:hover {
+    background: red;
+    color: white;
+  }
+
+  @media (min-width: 450px) and (max-width: 1024px) {
+    .contacts ul {
+      display: block;
+    }
+  
+    .contacts-question h1 {
+      font-size: 35px;
+    }
+  
+    .contacts-question {
+      text-align: center;
+    }
+  
+    .contact-text {
+      text-align: center;
+    }
+
+    .contacts ul {
+      padding: 0;
+    }
+  
+    .contacts ul li {
+      min-width: 280px;
+      margin: 20px;
+    }
+  }

@@ -1,0 +1,38 @@
+<body>
+    <section class="contacts-question">
+        <h1>Имате въпрос?</h1>
+        <p>Свържете се с нас, ще се радваме да помогнем!</p>
+    </section>
+    <section class="contacts">
+        <p *ngIf="isLogged" class="btn-p-add">
+            <button routerLink="/contacts/create" class="btn btn-add">
+                Добави
+            </button>
+        </p>
+        <ul>
+            <li *ngFor="let contact of contacts">
+                <article>
+                    <!-- <div class="contacts-icons">
+                            <i class="far fa-envelope fa-2x"></i>
+                         </div> 
+                        <div class="contacts-icons">
+                            <i class="fas fa-mobile-alt fa-2x"></i>
+                        </div>
+                        <div class="contacts-icons">
+                            <i class="fas fa-map-marker-alt location"></i>
+                        </div>
+                    -->
+                    <app-loader [isLoading]="!contacts"></app-loader>
+                    <div class="contact-text">
+                        <h3 class="contact-text-h3-p">{{ contact.name }}</h3>
+                        <p class="contact-text-h3-p">{{ contact.content }}</p>
+                    </div>
+                    <div *ngIf="isLogged">
+                        <button [routerLink]="['/contacts/edit', contact._id]" class="btn btn-edit">Промени</button>
+                        <button class="btn btn-delete" (click)="onDelete(contact._id)">Изтрий</button>
+                    </div>
+                </article>
+            </li>
+        </ul>
+    </section>
+</body>
