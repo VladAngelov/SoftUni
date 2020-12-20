@@ -12,18 +12,35 @@
         <ul>
             <li *ngFor="let contact of contacts">
                 <article>
-                    <!-- <div class="contacts-icons">
-                            <i class="far fa-envelope fa-2x"></i>
-                         </div> 
-                        <div class="contacts-icons">
-                            <i class="fas fa-mobile-alt fa-2x"></i>
-                        </div>
-                        <div class="contacts-icons">
-                            <i class="fas fa-map-marker-alt location"></i>
-                        </div>
-                    -->
                     <app-loader [isLoading]="!contacts"></app-loader>
                     <div class="contact-text">
+                        <div class="contacts-icons">
+                            <i *ngIf="contact.name == ''" class="far fa-envelope fa-2x"></i>
+                        </div>
+                        <div [ngSwitch]="contact.name">
+                            <div *ngSwitchCase="contact.name === 'Електронна поща' ? contact.name : '' ">
+                                <div class="contacts-icons">
+                                    <i class="far fa-envelope fa-2x"></i>
+                                </div>
+                            </div>
+                            <div *ngSwitchCase="'range'">FORM 2</div>
+                        </div>
+                        <div [ngSwitch]="contact.name">
+                            <div *ngSwitchCase="contact.name === 'Мобилен телефон на директор' || 
+                                                contact.name === 'Стационарен телефон на директор' ||
+                                                contact.name === 'ЗАТС и домакин' ? contact.name : '' ">
+                                <div class="contacts-icons">
+                                    <i class="fas fa-mobile-alt fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div [ngSwitch]="contact.name">
+                            <div *ngSwitchCase="contact.name === 'Адрес' ? contact.name : '' ">
+                                <div class="contacts-icons">
+                                    <i class="fas fa-map-marker-alt location"></i>
+                                </div>
+                            </div>
+                        </div>
                         <h3 class="contact-text-h3-p">{{ contact.name }}</h3>
                         <p class="contact-text-h3-p">{{ contact.content }}</p>
                     </div>

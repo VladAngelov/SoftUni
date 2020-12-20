@@ -36,5 +36,6 @@ export class CreateComponent implements OnInit {
 
     this.isLoading = false;
     this.router.navigate(['/list/contacts']);
+    window.location.reload();
   }
 }
