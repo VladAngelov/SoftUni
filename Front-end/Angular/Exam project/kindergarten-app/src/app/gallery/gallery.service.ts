@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable, Observer } from 'rxjs';
 import { Photo } from '../models/photo';
-import { Post } from '../models/post.model';
-import { IBasePost } from '../shared/interfaces';
 import { IPhoto } from '../shared/interfaces/photo';
 
 @Injectable()

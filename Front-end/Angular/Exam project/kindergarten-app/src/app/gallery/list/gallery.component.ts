@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { IPhoto } from 'src/app/shared/interfaces/photo';
 import { GalleryService } from '../gallery.service';
 
 @Component({
@@ -14,11 +12,7 @@ export class GalleryComponent {
   isLogged = false;
   isLoading = false;
 
-  constructor(
-    private galleryService: GalleryService,
-    private router: Router,
-
-  ) {
+  constructor(private galleryService: GalleryService) {
     this.isLoading = true;
     this.posts = this.galleryService.loadAllPosts();
 
@@ -28,7 +22,6 @@ export class GalleryComponent {
     }
     this.isLoading = false;
   }
-
 
   formatImage(img: any): any {
     return img;

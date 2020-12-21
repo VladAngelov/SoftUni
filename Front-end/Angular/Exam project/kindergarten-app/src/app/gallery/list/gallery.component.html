@@ -1,22 +1,22 @@
 <body>
-    <article class="welcome-text">
-        <h1>Галерия</h1>
-    </article>
-    <article>
-        <ul>
-            <li *ngIf="isLogged">
-                <button routerLink="/gallery/create" class="btn btn-add">
+    <section class="gallery">
+        <article class="welcome-text">
+            <h1>Галерия</h1>
+        </article>
+        <article>
+            <ul>
+                <button *ngIf="isLogged" routerLink="/gallery/create" class="btn btn-add">
                     Добави
                 </button>
-            </li>
-            <li *ngFor="let post of posts">
-                <h2>{{ post.title }}</h2>
-                <img [src]="formatImage(post.content)">
-                <div *ngIf="isLogged">
-                    <button class="btn btn-delete" (click)="onDelete(post._id)">Изтрий</button>
-                </div>
-            </li>
-        </ul>
-    </article>
+                <li *ngFor="let post of posts">
+                    <h2>{{ post.title }}</h2>
+                    <img [src]="formatImage(post.content)">
+                    <div *ngIf="isLogged">
+                        <button class="btn btn-delete" (click)="onDelete(post._id)">Изтрий</button>
+                    </div>
+                </li>
+            </ul>
+        </article>
+    </section>
 </body>
 <app-loader [isLoading]="isLoading"></app-loader>

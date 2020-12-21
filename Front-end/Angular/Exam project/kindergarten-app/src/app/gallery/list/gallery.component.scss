@@ -5,7 +5,7 @@ body {
     width: 90%;
   }
 
-  h1 {
+  h1, h2 {
     margin: auto;
     border-bottom: 1px solid grey;
     display: flex;
@@ -27,24 +27,6 @@ body {
     margin: 30px 0;
   }
   
-  article ul li {
-    list-style: none;
-    margin-bottom: 30px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid grey;
-  }
-  
-  article ul li p {
-      margin: 5px auto;
-  }
-
-  .section-text {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    margin-right: 30px;
-  }
-  
   .welcome-text {
     align-items: center;
   }
@@ -62,13 +44,7 @@ body {
     padding: 5px;
     margin-right: 5px;
     margin-top: 5px;
-  }
-
-  .btn-documents {
-    font-size: 16px; 
-    background: #20c578; 
-    color: white;
-    padding: 20px 30px;
+    margin-bottom: 10px;
   }
 
   .btn-add {
@@ -81,16 +57,6 @@ body {
     color: white;
     cursor: pointer;
   }
-  
-  .btn-edit {
-    border: 1px solid orangered; 
-    color: orangered;
-  }
-
-  .btn-edit:hover {
-    background: orangered; 
-    color: white;
-  }
 
   .btn-delete {
     border: 1px solid red;
@@ -102,17 +68,58 @@ body {
     color: white;
   }
 
-  .documents-adrticle{
-    display: flex;
-    justify-content: center;
-  }
-
-  .btn-documents:hover {
-    background: #232323;
+  .gallery {
+    width: 80%;
+    margin-top: 50px;
+    margin-left: 50px;
   }
   
-  .img-fluid {
-    max-width: 450px;
-    margin: 50px auto;
+  .gallery ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+  
+  .gallery ul p {
+    margin-top: 20px;
+  }
+  
+  .gallery ul li {
+    list-style: none;
+    width: max-content;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+  }
+  
+  .gallery ul li img {
+    padding: 5px;
+    justify-content: center;
+    max-width: 550px;
+  }
+  
+  @media all and (max-width: 414px) {
+    .gallery {
+      width: 100%;
+      margin: 0;
+    }
+  
+    .gallery ul {
+      padding: 0;
+    }
+  
+    .gallery ul li {
+      width: 100%;
+      margin: 5px;
+    }
+  
+    .gallery ul li img {
+      width: 100%;
+    }
   }
   

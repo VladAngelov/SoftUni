@@ -1,34 +1,3 @@
-<!-- <body>
-    <form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
-        <fieldset>
-            <h2>Добави</h2>
-            <p class="field field-icon title-p">
-                <label for="title">Заглавие:*</label>
-                <input formControlName="title" type="text" name="title" id="title" class="create-edit-input" required
-                    minlength="5">
-            </p>
-            <p class="error" *ngIf="form.get('title').touched && form.get('title').errors?.required">
-                Заглавието е задължително!
-            </p>
-            <p class="error" *ngIf="form.get('title').touched && form.get('title').errors?.minlength">
-                Заглавието, трябва да е поне 5 символа!
-            </p>
-
-            <label for="content">Снимка: *</label>
-            <p>
-                <input type="file" formControlName="content" name="content" id="content" class="height" required>
-           
-                <input type="file" alife-file-to-base64 (onFileChanged)="onFileChanges($event)" [(fileModel)]="files" />
-           
-            </p>
-            <p class="error" *ngIf="form.get('content').touched && form.get('content').errors?.required">
-                Снимката е задължителна!
-            </p>
-        </fieldset>
-        <button [disabled]="isLoading || form.invalid">Добави</button>
-    </form>
-</body> -->
-
 <body>
     <form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
         <div class="form-group">
@@ -50,16 +19,7 @@
                 {{imageError}}
                 <div class="custom-file fileInputProfileWrap">
                     <input type="file" (change)="getBase64($event)" class="fileInputProfile">
-                    <div class="img-space">
 
-                        <ng-container *ngIf="isImageSaved; else elseTemplate">
-                            <img [src]="cardImageBase64" />
-                        </ng-container>
-                        <ng-template #elseTemplate>
-
-                            <img src="./../../assets/placeholder.png" class="img-responsive">
-                        </ng-template>
-                    </div>
                 </div>
             </fieldset>
         </div>
