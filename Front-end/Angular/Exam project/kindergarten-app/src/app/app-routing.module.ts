@@ -6,7 +6,7 @@ import { PlaceComponent } from './about/place/list/place.component';
 import { SchoolsComponent } from './about/schools/list/schools.component';
 import { ListComponent } from './about/teachers/list/list.component';
 import { ContactsComponent } from './contacts/list/contacts.component';
-import { GalleryComponent } from './gallery/gallery.component';
+import { GalleryComponent } from './gallery/list/gallery.component';
 import { FirefliesComponent } from './groups/fireflies/list/fireflies.component';
 import { LadybugsComponent } from './groups/ladybugs/list/ladybugs.component';
 import { LionsComponent } from './groups/lions/list/lions.component';

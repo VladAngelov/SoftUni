@@ -7,7 +7,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GalleryComponent } from './gallery/gallery.component';
+import { GalleryComponent } from './gallery/list/gallery.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { TeachersModule } from './about/teachers/teachers.module';
@@ -44,11 +44,11 @@ import { MissionModule } from './about/mission/mission.module';
 import { SchoolsModule } from './about/schools/schools.module';
 import { PlaceModule } from './about/place/place.module';
 import { ContactsModule } from './contacts/contacts.module';
+import { GalleryModule } from './gallery/gallery.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GalleryComponent,
     NotFoundComponent
   ],
   imports: [
@@ -78,7 +78,8 @@ import { ContactsModule } from './contacts/contacts.module';
     MissionModule,
     SchoolsModule,
     PlaceModule,
-    ContactsModule
+    ContactsModule,
+    GalleryModule
   ],
   providers: [
     AccessGuard,
