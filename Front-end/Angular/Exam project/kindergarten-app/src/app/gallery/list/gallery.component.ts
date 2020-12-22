@@ -16,7 +16,6 @@ export class GalleryComponent {
     this.isLoading = true;
     this.posts = this.galleryService.loadAllPosts();
 
-
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
     }

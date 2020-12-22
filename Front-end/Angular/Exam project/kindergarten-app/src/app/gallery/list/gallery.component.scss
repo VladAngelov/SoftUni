@@ -6,16 +6,10 @@ body {
   }
 
   h1, h2 {
-    margin: auto;
+    margin: 10px auto;
     border-bottom: 1px solid grey;
     display: flex;
     justify-content: center;
-  }
-
-   h2 {
-   margin: auto;
-   display: flex;
-   justify-content: start;
   }
 
   p {

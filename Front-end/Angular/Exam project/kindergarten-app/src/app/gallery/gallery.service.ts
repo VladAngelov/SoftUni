@@ -58,6 +58,7 @@ export class GalleryService {
   }
 
   createPost(title: string, content: string, createdAt: string) {
+    console.log('Content in service on create --->>> ', content);
     debugger;
     this.allMainPosts.push({ title: title, content: content, created_at: createdAt });
   }

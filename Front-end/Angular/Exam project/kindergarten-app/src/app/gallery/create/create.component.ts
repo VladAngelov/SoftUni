@@ -17,8 +17,7 @@ export class CreateComponent {
   isLoading = false;
 
   imageError: string;
-  isImageSaved: boolean;
-  cardImageBase64: string;
+
   dataUri: any;
   convImg: any;
 
@@ -29,30 +28,40 @@ export class CreateComponent {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
-
   getBase64(event) {
+    console.log('Event --->>> ', event)
     debugger;
     this.isLoading = true;
     let file = event.target.files[0];
     let reader = new FileReader();
+
+    console.log('File --->>> ', file)
+    debugger;
     reader.readAsDataURL(file);
     try {
       this.content = reader.result.valueOf().toString();
+
+      console.log('THIS.CONTENT --->>> ', this.content);
+      debugger;
+
+      if (this.content === null || this.content === '') {
+        window.alert('Избери отново снимката');
+        console.log('Избери отново снимката');
+        return 'Избери отново снимката';
+      }
+
       reader.onload = function () {
         let content = reader.result.toString();
+        console.log('Content in try-catch in function --->>> ', content);
+        debugger;
       };
     } catch {
       reader.onerror = function (error) {
+        console.log('Error --->>> ', error);
+        debugger;
         return `Error: ${error}`;
       };
     }
-  }
-
-  removeImage() {
-    this.cardImageBase64 = null;
-    this.isImageSaved = false;
   }
 
   submitHandler(): void {
@@ -60,6 +69,13 @@ export class CreateComponent {
     debugger;
     const title = this.form.controls['title'].value;
     const createdAt = new Date();
+    console.log(this.content);
+    debugger;
+    if (this.content === null || this.content === '') {
+      window.alert('Избери отново снимката');
+      console.log('Избери отново снимката');
+      window.location.reload();
+    }
     this.galleryService.createPost(title, this.content, createdAt.toLocaleString());
     this.isLoading = false;
     this.router.navigate(['/list/gallery']);
