@@ -6,7 +6,6 @@ import { EditComponent } from './edit/edit.component';
 import { NewsRoutingModule } from './news-routnig.model';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NewsService } from './news.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +19,6 @@ import { NewsService } from './news.service';
     SharedModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  providers: [
-    NewsService
   ],
   exports: [
     EditComponent,

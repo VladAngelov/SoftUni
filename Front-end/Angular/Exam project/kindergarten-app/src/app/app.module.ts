@@ -7,7 +7,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GalleryComponent } from './gallery/list/gallery.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { TeachersModule } from './about/teachers/teachers.module';
@@ -36,7 +35,6 @@ import { SunService } from './groups/sun/sun.service';
 import { ParentsService } from './parents/parents.service';
 import { ParentsModule } from './parents/parents.module';
 import { NewsModule } from './news/news.module';
-import { NewsService } from './news/news.service';
 import { TeachersService } from './about/teachers/teachers.service';
 import { AwardsModule } from './about/awards/awards.module';
 import { HistoryModule } from './about/history/history.module';
@@ -45,6 +43,7 @@ import { SchoolsModule } from './about/schools/schools.module';
 import { PlaceModule } from './about/place/place.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { GalleryModule } from './gallery/gallery.module';
+import { PostService } from './_services/post/post-service.service';
 
 @NgModule({
   declarations: [
@@ -94,8 +93,8 @@ import { GalleryModule } from './gallery/gallery.module';
     StarsService,
     SunService,
     ParentsService,
-    NewsService,
-    TeachersService
+    TeachersService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })

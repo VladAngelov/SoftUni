@@ -48,7 +48,6 @@ export class PostService {
     let post = new Post;
 
     let p = this.posts.find(x => x._id === id);
-
     post._id = p._id;
     post.content = p.content;
     post.title = p.title;
