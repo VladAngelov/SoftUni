@@ -11,7 +11,6 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { TeachersModule } from './about/teachers/teachers.module';
 import { UserService } from './user/user.service';
-import { HomeService } from './home/home.service';
 import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AccessGuard } from './core/guards/access.guard';
@@ -82,7 +81,6 @@ import { PostService } from './_services/post/post-service.service';
   providers: [
     AccessGuard,
     UserService,
-    HomeService,
     ProjectService,
     LadybugsService,
     LionsService,
