@@ -19,7 +19,6 @@ import { HomeModule } from './home/home.module';
 import { ProjectService } from './projects/project.service';
 import { ProjectModule } from './projects/project.module';
 import { FirefliesModule } from './groups/fireflies/fireflies.module';
-import { FirefliesService } from './groups/fireflies/fireflies.service';
 import { LadybugsService } from './groups/ladybugs/ladybugs.service';
 import { LadybugsModule } from './groups/ladybugs/ladybugs.module';
 import { LionsModule } from './groups/lions/lions.module';
@@ -85,7 +84,6 @@ import { PostService } from './_services/post/post-service.service';
     UserService,
     HomeService,
     ProjectService,
-    FirefliesService,
     LadybugsService,
     LionsService,
     MargaritasService,
