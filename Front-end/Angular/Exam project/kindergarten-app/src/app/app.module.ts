@@ -15,7 +15,6 @@ import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AccessGuard } from './core/guards/access.guard';
 import { HomeModule } from './home/home.module';
-import { ProjectService } from './projects/project.service';
 import { ProjectModule } from './projects/project.module';
 import { FirefliesModule } from './groups/fireflies/fireflies.module';
 import { LadybugsModule } from './groups/ladybugs/ladybugs.module';
@@ -75,7 +74,6 @@ import { PostService } from './_services/post/post-service.service';
   providers: [
     AccessGuard,
     UserService,
-    ProjectService,
     ParentsService,
     TeachersService,
     PostService
