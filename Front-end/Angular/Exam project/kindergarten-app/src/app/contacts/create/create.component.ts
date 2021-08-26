@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {
+  Component,
+  OnDestroy
+} from '@angular/core';
+import {
+  FormGroup,
+  FormControl
+} from '@angular/forms';
 import { Router } from '@angular/router';
-import { ContactsService } from '../contacts.service';
+
+import { ContactsService } from 'src/app/_services/contacts/contacts.service';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss', '../../../form-style.scss']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnDestroy {
 
   form = new FormGroup({
     title: new FormControl(''),
@@ -22,9 +29,6 @@ export class CreateComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-  }
-
   submitHandler(): void {
     this.isLoading = true;
     debugger;
@@ -32,10 +36,14 @@ export class CreateComponent implements OnInit {
     const content = this.form.controls['content'].value;
     const createdAt = new Date();
 
-    this.contactsService.createPost(name, content, createdAt.toLocaleString());
+    this.contactsService.createContact(name, content, createdAt.toLocaleString());
 
     this.isLoading = false;
     this.router.navigate(['/list/contacts']);
+    window.location.reload();
+  }
+
+  ngOnDestroy(): void {
     window.location.reload();
   }
 }

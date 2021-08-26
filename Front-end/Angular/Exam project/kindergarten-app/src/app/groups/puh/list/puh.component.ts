@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import { Router } from '@angular/router';
+
 import { IBasePost } from 'src/app/shared/interfaces';
-import { PuhService } from '../puh.service';
+import { PostService } from 'src/app/_services/post/post-service.service';
 
 @Component({
   selector: 'app-puh',
@@ -13,16 +17,17 @@ export class PuhComponent implements OnInit {
   posts: IBasePost[];
   isLogged = false;
   isLoading = false;
+  path = "groups/puh";
 
   constructor(
-    private puhService: PuhService,
+    private postService: PostService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.isLoading = true;
     this.posts = null;
-    this.posts = this.puhService.loadAllPosts();
+    this.posts = this.postService.getAll(this.path);
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
@@ -32,7 +37,7 @@ export class PuhComponent implements OnInit {
   }
 
   onDelete(id: string): void {
-    this.puhService.deletePost(id);
+    this.postService.deletePost(id);
     window.alert("Успешно изтрихте поста!");
     window.location.reload();
   }

@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  FormControl,
+  FormGroup
+} from '@angular/forms';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
+
 import { IContact } from 'src/app/shared/interfaces';
-import { ContactsService } from '../contacts.service';
+import { ContactsService } from 'src/app/_services/contacts/contacts.service';
 
 @Component({
   selector: 'app-edit',
@@ -28,22 +35,22 @@ export class EditComponent {
   ) {
     this.id = null;
     this.id = activatedRoute.snapshot.params.id;
-    this.contact = contactsService.loadPostById(this.id);
+    this.contact = contactsService.getById(this.id);
   }
 
   submitHandler(): void {
     this.isLoading = true;
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
-    this.contactsService.updatePost(this.id, title, content);
+    this.contactsService.updateContact(this.id, title, content);
     this.isLoading = false;
     this.router.navigate(["/list/contacts"]);
-    window.location.reload();
   }
 
   ngOnDestroy(): void {
     this.id = null;
     this.contact = null;
     this.router.navigate(["/list/contacts"]);
+    window.location.reload();
   }
 }

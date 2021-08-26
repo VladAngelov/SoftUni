@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  FormControl,
+  FormGroup
+} from '@angular/forms';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
+
 import { IMainPagePost } from 'src/app/shared/interfaces';
-import { ProjectService } from '../project.service';
+import { PostService } from 'src/app/_services/post/post-service.service';
 
 @Component({
   selector: 'app-edit',
@@ -21,20 +28,20 @@ export class EditComponent {
   });
 
   constructor(
-    private projectService: ProjectService,
+    private postService: PostService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
     this.id = null;
     this.id = activatedRoute.snapshot.params.id;
-    this.project = projectService.loadProjectById(this.id);
+    this.project = postService.getById(this.id);
   }
 
   submitHandler(): void {
     this.isLoading = true;
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
-    this.projectService.updateProject(this.id, title, content);
+    this.postService.updatePost(this.id, title, content);
     this.isLoading = false;
     this.router.navigate(["/list/projects"]);
   }

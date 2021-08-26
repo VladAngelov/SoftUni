@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
+
 import { PuhComponent } from './list/puh.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { PuhRoutingModule } from './puh-routing.model';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PuhService } from './puh.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,6 @@ import { PuhService } from './puh.service';
     SharedModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  providers: [
-    PuhService
   ],
   exports: [
     EditComponent,

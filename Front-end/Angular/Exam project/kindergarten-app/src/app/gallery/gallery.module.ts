@@ -5,13 +5,12 @@ import { CreateComponent } from './create/create.component';
 import { GalleryRoutingModule } from './gallery-routing.model';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GalleryService } from './gallery.service';
+import { GalleryService } from '../_services/gallery/gallery.service';
 
 @NgModule({
   declarations: [
     GalleryComponent,
     CreateComponent
-
   ],
   imports: [
     CommonModule,

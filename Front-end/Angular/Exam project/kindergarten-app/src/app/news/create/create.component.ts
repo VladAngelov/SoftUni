@@ -1,7 +1,13 @@
-import { Component, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  Component,
+  OnDestroy
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup
+} from '@angular/forms';
 import { Router } from '@angular/router';
-import { NewsService } from '../news.service';
+import { PostService } from 'src/app/_services/post/post-service.service';
 
 @Component({
   selector: 'app-create',
@@ -18,7 +24,7 @@ export class CreateComponent implements OnDestroy {
   isLoading = false;
 
   constructor(
-    private newsService: NewsService,
+    private postService: PostService,
     private router: Router
   ) { }
 
@@ -28,7 +34,7 @@ export class CreateComponent implements OnDestroy {
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
     const createdAt = new Date();
-    this.newsService.createPost(title, content, createdAt.toLocaleString());
+    this.postService.createPost(title, content, createdAt.toLocaleString());
     this.isLoading = false;
     this.router.navigate(['/list/news']);
   }

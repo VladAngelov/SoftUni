@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { Contact } from '../models/contact.model';
-import { IContact } from '../shared/interfaces';
+import {
+  AngularFireDatabase,
+  AngularFireList
+} from '@angular/fire/database';
+import { Post } from 'src/app/models/post.model';
+import { IBasePost } from 'src/app/shared/interfaces';
 
 @Injectable()
-export class ContactsService {
-
-  contacts: any[] = [];
-
-  posts: IContact[] = [];
+export class PostService {
+  posts: IBasePost[] = [];
   allPosts: AngularFireList<any>;
 
-  constructor(private database: AngularFireDatabase) {
-    this.allPosts = this.database.list('contacts');
-  }
+  constructor(private database: AngularFireDatabase) { }
 
-  loadAllPosts(): IContact[] {
+  getAll(path: string) {
     this.posts = [];
+    this.allPosts = this.database.list(path);
+
     this.allPosts.snapshotChanges()
       .subscribe(posts => {
         posts.forEach(post => {
-          let p = new Contact();
+          let p = new Post();
           p._id = post.key;
-          p.name = post.payload.val().title;
+          p.title = post.payload.val().title;
           p.content = post.payload.val().content;
           p.created_at = post.payload.val().createdAt;
           this.posts.push(p);
@@ -44,13 +44,13 @@ export class ContactsService {
     this.allPosts.remove(key);
   }
 
-  loadPostById(id: string): any {
-    let post = new Contact;
-    let p = this.posts.find(x => x._id === id);
+  getById(id: string): any {
+    let post = new Post;
 
+    let p = this.posts.find(x => x._id === id);
     post._id = p._id;
     post.content = p.content;
-    post.name = p.name;
+    post.title = p.title;
     post.created_at = p.created_at;
 
     return post;
