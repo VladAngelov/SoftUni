@@ -21,7 +21,6 @@ import { FirefliesModule } from './groups/fireflies/fireflies.module';
 import { LadybugsService } from './groups/ladybugs/ladybugs.service';
 import { LadybugsModule } from './groups/ladybugs/ladybugs.module';
 import { LionsModule } from './groups/lions/lions.module';
-import { LionsService } from './groups/lions/lions.service';
 import { MargaritasModule } from './groups/margaritas/margaritas.module';
 import { PuhModule } from './groups/puh/puh.module';
 import { StarsModule } from './groups/stars/stars.module';
@@ -79,7 +78,6 @@ import { PostService } from './_services/post/post-service.service';
     UserService,
     ProjectService,
     LadybugsService,
-    LionsService,
     ParentsService,
     TeachersService,
     PostService
