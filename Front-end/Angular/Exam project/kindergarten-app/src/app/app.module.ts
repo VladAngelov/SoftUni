@@ -29,7 +29,6 @@ import { PuhService } from './groups/puh/puh.service';
 import { StarsModule } from './groups/stars/stars.module';
 import { StarsService } from './groups/stars/stars.service';
 import { SunModule } from './groups/sun/sun.module';
-import { SunService } from './groups/sun/sun.service';
 import { ParentsService } from './parents/parents.service';
 import { ParentsModule } from './parents/parents.module';
 import { NewsModule } from './news/news.module';
@@ -87,7 +86,6 @@ import { PostService } from './_services/post/post-service.service';
     MargaritasService,
     PuhService,
     StarsService,
-    SunService,
     ParentsService,
     TeachersService,
     PostService
