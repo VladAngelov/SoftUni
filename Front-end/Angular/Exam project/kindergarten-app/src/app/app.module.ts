@@ -23,10 +23,8 @@ import { MargaritasModule } from './groups/margaritas/margaritas.module';
 import { PuhModule } from './groups/puh/puh.module';
 import { StarsModule } from './groups/stars/stars.module';
 import { SunModule } from './groups/sun/sun.module';
-import { ParentsService } from './parents/parents.service';
 import { ParentsModule } from './parents/parents.module';
 import { NewsModule } from './news/news.module';
-import { TeachersService } from './about/teachers/teachers.service';
 import { AwardsModule } from './about/awards/awards.module';
 import { HistoryModule } from './about/history/history.module';
 import { MissionModule } from './about/mission/mission.module';
@@ -74,8 +72,6 @@ import { PostService } from './_services/post/post-service.service';
   providers: [
     AccessGuard,
     UserService,
-    ParentsService,
-    TeachersService,
     PostService
   ],
   bootstrap: [AppComponent]
