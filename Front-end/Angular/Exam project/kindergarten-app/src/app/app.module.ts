@@ -18,7 +18,6 @@ import { HomeModule } from './home/home.module';
 import { ProjectService } from './projects/project.service';
 import { ProjectModule } from './projects/project.module';
 import { FirefliesModule } from './groups/fireflies/fireflies.module';
-import { LadybugsService } from './groups/ladybugs/ladybugs.service';
 import { LadybugsModule } from './groups/ladybugs/ladybugs.module';
 import { LionsModule } from './groups/lions/lions.module';
 import { MargaritasModule } from './groups/margaritas/margaritas.module';
@@ -77,7 +76,6 @@ import { PostService } from './_services/post/post-service.service';
     AccessGuard,
     UserService,
     ProjectService,
-    LadybugsService,
     ParentsService,
     TeachersService,
     PostService
