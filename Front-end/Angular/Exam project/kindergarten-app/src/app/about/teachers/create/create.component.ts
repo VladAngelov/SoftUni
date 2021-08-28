@@ -1,7 +1,14 @@
-import { Component, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  Component,
+  OnDestroy
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup
+} from '@angular/forms';
 import { Router } from '@angular/router';
-import { TeachersService } from '../teachers.service';
+
+import { TeachersService } from '../../../_services/teachers/teachers.service';
 
 @Component({
   selector: 'app-create',

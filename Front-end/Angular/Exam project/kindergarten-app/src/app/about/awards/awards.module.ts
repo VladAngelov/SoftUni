@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
+
 import { AwardsComponent } from './list/awards.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { AwardsRoutingModule } from './awards-routing.model';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AwardsService } from './awards.service';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +24,6 @@ import { AwardsService } from './awards.service';
     SharedModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  providers: [
-    AwardsService
   ],
   exports: [
     EditComponent,
