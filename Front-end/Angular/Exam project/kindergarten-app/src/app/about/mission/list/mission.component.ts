@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import { Router } from '@angular/router';
+
 import { IBasePost } from 'src/app/shared/interfaces';
-import { MissionService } from '../mission.service';
+import { PostService } from 'src/app/_services/post/post-service.service';
 
 @Component({
   selector: 'app-mission',
@@ -13,16 +17,16 @@ export class MissionComponent implements OnInit {
   posts: IBasePost[];
   isLogged = false;
   isLoading = false;
+  path = "mission";
 
   constructor(
-    private missionService: MissionService,
+    private postService: PostService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.isLoading = true;
-    debugger;
-    this.posts = this.missionService.loadAllPosts();
+    this.posts = this.postService.getAll(this.path);
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
@@ -32,7 +36,7 @@ export class MissionComponent implements OnInit {
   }
 
   onDelete(id: string): void {
-    this.missionService.deletePost(id);
+    this.postService.deletePost(id);
     window.alert("Успешно изтрихте мисия!");
     window.location.reload();
   }
