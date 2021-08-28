@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ITeacher } from 'src/app/shared/interfaces';
-import { TeachersService } from '../teachers.service';
+import { TeachersService } from '../../../_services/teachers/teachers.service';
 
 @Component({
   selector: 'app-detail',

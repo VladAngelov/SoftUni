@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import {
+  AngularFireDatabase,
+  AngularFireList
+} from '@angular/fire/database';
 import { Teacher } from 'src/app/models/teacher.model';
 import { ITeacher } from 'src/app/shared/interfaces';
 
