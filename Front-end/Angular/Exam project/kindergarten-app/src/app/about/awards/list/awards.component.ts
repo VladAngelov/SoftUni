@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import { Router } from '@angular/router';
+
 import { IBasePost } from 'src/app/shared/interfaces';
-import { AwardsService } from '../awards.service';
+import { PostService } from 'src/app/_services/post/post-service.service';
 
 @Component({
   selector: 'app-awards',
@@ -13,16 +17,17 @@ export class AwardsComponent implements OnInit {
   posts: IBasePost[];
   isLogged = false;
   isLoading = false;
+  path = "awards";
 
   constructor(
-    private awardsService: AwardsService,
+    private postService: PostService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.isLoading = true;
     debugger;
-    this.posts = this.awardsService.loadAllPosts();
+    this.posts = this.postService.getAll(this.path);
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
@@ -32,7 +37,7 @@ export class AwardsComponent implements OnInit {
   }
 
   onDelete(id: string): void {
-    this.awardsService.deletePost(id);
+    this.postService.deletePost(id);
     window.alert("Успешно изтрихте наградата!");
     window.location.reload();
   }
