@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { GalleryService } from '../gallery.service';
+import {
+  FormControl,
+  FormGroup
+} from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { GalleryService } from 'src/app/_services/gallery/gallery.service';
 
 @Component({
   selector: 'app-create',
@@ -15,12 +19,9 @@ export class CreateComponent {
   });
 
   isLoading = false;
-
   imageError: string;
-
   dataUri: any;
   convImg: any;
-
   content: string = '';
 
   constructor(
@@ -29,20 +30,13 @@ export class CreateComponent {
   ) { }
 
   getBase64(event) {
-    console.log('Event --->>> ', event)
-    debugger;
     this.isLoading = true;
     let file = event.target.files[0];
     let reader = new FileReader();
 
-    console.log('File --->>> ', file)
-    debugger;
     reader.readAsDataURL(file);
     try {
       this.content = reader.result.valueOf().toString();
-
-      console.log('THIS.CONTENT --->>> ', this.content);
-      debugger;
 
       if (this.content === null || this.content === '') {
         window.alert('Избери отново снимката');
@@ -53,12 +47,10 @@ export class CreateComponent {
       reader.onload = function () {
         let content = reader.result.toString();
         console.log('Content in try-catch in function --->>> ', content);
-        debugger;
       };
     } catch {
       reader.onerror = function (error) {
         console.log('Error --->>> ', error);
-        debugger;
         return `Error: ${error}`;
       };
     }
@@ -85,4 +77,3 @@ export class CreateComponent {
     window.location.reload();
   }
 }
-

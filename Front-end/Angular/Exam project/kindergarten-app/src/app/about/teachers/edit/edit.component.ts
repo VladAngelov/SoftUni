@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ITeacher } from 'src/app/shared/interfaces';
-import { TeachersService } from '../teachers.service';
+import { TeachersService } from '../../../_services/teachers/teachers.service';
 
 @Component({
   selector: 'app-edit',

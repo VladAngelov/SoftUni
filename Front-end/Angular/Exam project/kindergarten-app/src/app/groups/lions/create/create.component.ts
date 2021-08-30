@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  Component,
+  OnDestroy
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup
+} from '@angular/forms';
 import { Router } from '@angular/router';
-import { LionsService } from '../lions.service';
+
+import { PostService } from 'src/app/_services/post/post-service.service';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss', '../../../../form-style.scss']
 })
-export class CreateComponent {
+export class CreateComponent implements OnDestroy {
 
   form = new FormGroup({
     title: new FormControl(''),
@@ -18,7 +25,7 @@ export class CreateComponent {
   isLoading = false;
 
   constructor(
-    private lionsService: LionsService,
+    private postService: PostService,
     private router: Router
   ) { }
 
@@ -28,8 +35,12 @@ export class CreateComponent {
     const title = this.form.controls['title'].value;
     const content = this.form.controls['content'].value;
     const createdAt = new Date();
-    this.lionsService.createPost(title, content, createdAt.toLocaleString());
+    this.postService.createPost(title, content, createdAt.toLocaleString());
     this.isLoading = false;
     this.router.navigate(['/groups/list/lions']);
+  }
+
+  ngOnDestroy(): void {
+    window.location.reload();
   }
 }

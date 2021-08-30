@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import { IBasePost } from 'src/app/shared/interfaces';
-import { NewsService } from '../news.service';
+import { PostService } from 'src/app/_services/post/post-service.service';
 
 @Component({
   selector: 'app-news',
@@ -13,16 +15,13 @@ export class NewsComponent implements OnInit {
   posts: IBasePost[];
   isLogged = false;
   isLoading = false;
+  path = "news";
 
-  constructor(
-    private newsService: NewsService,
-    private router: Router
-  ) { }
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
     this.isLoading = true;
-    debugger;
-    this.posts = this.newsService.loadAllPosts();
+    this.posts = this.postService.getAll(this.path);
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
@@ -32,7 +31,7 @@ export class NewsComponent implements OnInit {
   }
 
   onDelete(id: string): void {
-    this.newsService.deletePost(id);
+    this.postService.deletePost(id);
     window.alert("Успешно изтрихте новината!");
     window.location.reload();
   }

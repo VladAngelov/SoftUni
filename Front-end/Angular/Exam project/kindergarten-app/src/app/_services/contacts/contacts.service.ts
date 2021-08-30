@@ -1,54 +1,60 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { Post } from 'src/app/models/post.model';
-import { IBasePost } from 'src/app/shared/interfaces';
+import {
+  AngularFireDatabase,
+  AngularFireList
+} from '@angular/fire/database';
+
+import { Contact } from 'src/app/models/contact.model';
+import { IContact } from 'src/app/shared/interfaces';
+
 
 @Injectable()
-export class PlaceService {
+export class ContactsService {
 
-  posts: IBasePost[] = [];
+  contacts: any[] = [];
+
+  posts: IContact[] = [];
   allPosts: AngularFireList<any>;
 
   constructor(private database: AngularFireDatabase) {
-    this.allPosts = this.database.list('place');
+    this.allPosts = this.database.list('contacts');
   }
 
-  loadAllPosts(): IBasePost[] {
+  getAll(): IContact[] {
     this.posts = [];
     this.allPosts.snapshotChanges()
       .subscribe(posts => {
         posts.forEach(post => {
-          let p = new Post();
+          let p = new Contact();
           p._id = post.key;
-          p.title = post.payload.val().title;
+          p.name = post.payload.val().title;
           p.content = post.payload.val().content;
           p.created_at = post.payload.val().createdAt;
-
           this.posts.push(p);
         });
       });
+
     return this.posts;
   }
 
-  createPost(title: string, content: string, createdAt: string) {
+  createContact(title: string, content: string, createdAt: string) {
     this.allPosts.push({ title: title, content: content, created_at: createdAt });
   }
 
-  updatePost(key: string, title: string, content: string) {
+  updateContact(key: string, title: string, content: string) {
     this.allPosts.update(key, { title: title, content: content });
   }
 
-  deletePost(key: string) {
+  deleteContact(key: string) {
     this.allPosts.remove(key);
   }
 
-  loadPostById(id: string): any {
-    let post = new Post;
+  getById(id: string): any {
+    let post = new Contact;
     let p = this.posts.find(x => x._id === id);
-
     post._id = p._id;
     post.content = p.content;
-    post.title = p.title;
+    post.name = p.name;
     post.created_at = p.created_at;
 
     return post;

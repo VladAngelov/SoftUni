@@ -19,6 +19,7 @@ import { NewsComponent } from './news/list/news.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ParentsComponent } from './parents/list/parents.component';
 import { ProjectsComponent } from './projects/list/projects.component';
+import { LoginComponent } from './user/login/login.component';
 
 const routes: Routes = [
   {
@@ -101,6 +102,10 @@ const routes: Routes = [
   {
     path: 'list/contacts',
     component: ContactsComponent
+  },
+  {
+    path: 'user/login',
+    component: LoginComponent
   },
   {
     path: '**',

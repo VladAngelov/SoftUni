@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
+
 import { MissionComponent } from './list/mission.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { MissionRoutingModule } from './mission-routing.model';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MissionService } from './mission.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,6 @@ import { MissionService } from './mission.service';
     SharedModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  providers: [
-    MissionService
   ],
   exports: [
     EditComponent,

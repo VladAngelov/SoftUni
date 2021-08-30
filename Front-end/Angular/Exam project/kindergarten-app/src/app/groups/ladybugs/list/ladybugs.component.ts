@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import { Router } from '@angular/router';
+
 import { IBasePost } from 'src/app/shared/interfaces';
-import { LadybugsService } from '../ladybugs.service';
+import { PostService } from 'src/app/_services/post/post-service.service';
 
 @Component({
   selector: 'app-ladybugs',
@@ -13,16 +17,17 @@ export class LadybugsComponent implements OnInit {
   posts: IBasePost[];
   isLogged = false;
   isLoading = false;
+  path = "groups/ladybugs";
 
   constructor(
-    private ladybugsService: LadybugsService,
+    private postService: PostService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.isLoading = true;
     this.posts = null;
-    this.posts = this.ladybugsService.loadAllPosts();
+    this.posts = this.postService.getAll(this.path);
 
     if (localStorage.getItem('auth')) {
       this.isLogged = true;
@@ -32,7 +37,7 @@ export class LadybugsComponent implements OnInit {
   }
 
   onDelete(id: string): void {
-    this.ladybugsService.deletePost(id);
+    this.postService.deletePost(id);
     window.alert("Успешно изтрихте поста!");
     window.location.reload();
   }

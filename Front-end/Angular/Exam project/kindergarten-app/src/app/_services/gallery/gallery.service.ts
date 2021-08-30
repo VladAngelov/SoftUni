@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import {
+  AngularFireDatabase,
+  AngularFireList
+} from '@angular/fire/database';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Photo } from '../models/photo';
-import { IPhoto } from '../shared/interfaces/photo';
+
+import { Photo } from 'src/app/models/photo';
+import { IPhoto } from 'src/app/shared/interfaces/photo';
 
 @Injectable()
 export class GalleryService {
 
-  posts: IPhoto[] = [];
+  photos: IPhoto[] = [];
 
-  allMainPosts: AngularFireList<any>;
+  allMainPhotos: AngularFireList<any>;
 
   constructor(
     private database: AngularFireDatabase,
     private sanitizer: DomSanitizer
   ) {
-    this.allMainPosts = this.database.list('gallery');
+    this.allMainPhotos = this.database.list('gallery');
   }
 
   loadAllPosts(): any[] {
-    this.posts = [];
-    this.allMainPosts.snapshotChanges()
+    this.photos = [];
+    this.allMainPhotos.snapshotChanges()
       .subscribe(posts => {
         posts.forEach(post => {
           let p = new Photo();
@@ -29,10 +33,10 @@ export class GalleryService {
           p.content = this.sanitizer.bypassSecurityTrustUrl(post.payload.val().content);
 
           p.created_at = post.payload.val().createdAt;
-          this.posts.push(p);
+          this.photos.push(p);
         });
       });
-    return this.posts;
+    return this.photos;
   }
 
   dataURItoBlob(dataURI) {
@@ -60,10 +64,10 @@ export class GalleryService {
   createPost(title: string, content: string, createdAt: string) {
     console.log('Content in service on create --->>> ', content);
     debugger;
-    this.allMainPosts.push({ title: title, content: content, created_at: createdAt });
+    this.allMainPhotos.push({ title: title, content: content, created_at: createdAt });
   }
 
   deleteItem(key: string) {
-    this.allMainPosts.remove(key);
+    this.allMainPhotos.remove(key);
   }
 }
