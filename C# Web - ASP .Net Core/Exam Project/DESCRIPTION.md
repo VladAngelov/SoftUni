@@ -12,6 +12,7 @@ There are three types users:
 They can also check all active rentals, full name, email and phone in their account. 
 They can sort cars by price or date of manufacture and search by name.
 
-The project supports **Administration**. 
-The *Administrator* has all rights a Regular User has. 
+The project supports **Administration**.
+
+The *Administrator* has all rights a Regular User has.
 The *Administrator* can also add, edit or delete cars.
